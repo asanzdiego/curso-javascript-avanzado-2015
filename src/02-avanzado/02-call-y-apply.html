@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Call y Apply</title>
+	<script>
+	var fn = function(saludo, edad) {
+		console.log(saludo + this.nombre + edad + this.anios);
+	};
+	
+	var obj = {
+		nombre: "Adolfo",
+		anios: 15
+	};
+	
+	obj.saludo = fn;
+	obj.saludo("Hola ", " tu edad es ");
+	
+	fn.call(obj, "Bonjour ", " ton age est ");
+	
+	var args = ["Hello ", " your age is "];
+	fn.apply(obj, args);
+	</script>
+</head>
+<body>
+	<h2>Call y Apply</h2>
+  <p>ver el código y la consola</p>
+</body>
+</html>

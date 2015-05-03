@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Anónimas</title>
+	<script>
+  
+  // funciones anónimas 1
+  function saludador(nombre) {
+    return function() {
+      console.log("Hola "+nombre);
+    };
+  }
+  var saluda1 = saludador("Mundo 1");
+  saluda1(); // Hola Mundo 1
+  
+  // funciones anónimas 2
+  function ejecuta(func) {
+    func()
+  }
+  var saluda2 = saludador("Mundo 2");
+  ejecuta(saluda2); // Hola Mundo 2
+  
+	</script>
+</head>
+<body>
+	<h2>Funciones anónimas</h2>
+  <p>ver el código y la consola</p>
+</body>
+</html>

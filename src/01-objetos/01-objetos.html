@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Objetos</title>
+</head>
+<body>
+	<h2>Objetos</h2>
+  <p>ver el código y la consola</p>
+  <script>
+    
+    // Objeto iniciador
+    var instanciaA1 = {
+      p1: "propiedad 1 de A1",
+      p2: "propiedad 2 de A2"
+    }
+    console.log(
+      "instanciaA1.__proto__ == Object.prototype",
+      instanciaA1.__proto__ == Object.prototype) // true
+    
+    // Función constructora
+    function ConstructorA(p1, p2) {
+      this.p1 = p1;
+      this.p2 = p2;
+    }
+    var instanciaA2 = new ConstructorA("p1 de A2", "p2 de A2");
+    console.log(
+      "instanciaA2.__proto__ == Object.prototype",
+      instanciaA2.__proto__ == Object.prototype) // false
+    console.log(
+      "instanciaA2.__proto__ == ConstructorA.prototype",
+      instanciaA2.__proto__ == ConstructorA.prototype) // true
+    
+    // MAL HECHO -> Función constructora sin new
+    var instanciaA3 = ConstructorA("p1 de A3", "p2 de A3");
+    console.log("instanciaA3", instanciaA3); // undefined pq ConstructorA no retorna nada
+    
+    // MAL HECHO -> Función constructora sin new (bis)
+    function ConstructorAbis(p1, p2) {
+      this.p1 = p1;
+      this.p2 = p2;
+      return this;
+    }
+    var instanciaA4 = ConstructorAbis("p1 de A4", "p2 de A4");
+    console.log(
+      "instanciaA4.__proto__ == Object.prototype",
+      instanciaA4.__proto__ == Object.prototype) // false
+    console.log(
+      "instanciaA4.__proto__ == ConstructorA.prototype",
+      instanciaA4.__proto__ == ConstructorAbis.prototype) // false
+    console.log(
+      "instanciaA4.__proto__ == Window.prototype",
+      instanciaA4.__proto__ == Window.prototype) // true (el this que retorna es el objeto global)
+  </script>
+</body>
+</html>

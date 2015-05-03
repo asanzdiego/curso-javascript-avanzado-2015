@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Herencia</title>
+</head>
+<body>
+	<h2>Herencia</h2>
+  <p>ver el código y la consola</p>
+  <script>
+    
+    function ConstructorA(p1) {
+      this.p1 = p1;
+    }
+    
+    function ConstructorB(p1, p2) {
+      // llamamos al super implicitamente
+      ConstructorA.call(this, p1);
+      this.p2 = p2;
+    }
+    
+    // Hacemos que B herede de A
+    ConstructorB.prototype = Object.create(ConstructorA.prototype);
+    
+    var instanciaB = new ConstructorB("p1", "p2");
+    console.log(
+      "instanciaB.__proto__ == ConstructorB.prototype",
+      instanciaB.__proto__ == ConstructorB.prototype) // true
+    console.log(
+      "instanciaB.__proto__.__proto__ == ConstructorA.prototype",
+      instanciaB.__proto__.__proto__ == ConstructorA.prototype) // true
+    console.log(
+      "instanciaB.__proto__.__proto__.__proto__ == Object.prototype",
+      instanciaB.__proto__.__proto__.__proto__ == Object.prototype) // true
+    console.log(
+      "instanciaB.__proto__.__proto__.__proto__.__proto__ == null",
+      instanciaB.__proto__.__proto__.__proto__.__proto__ == null) // true
+    
+    // o lo que es lo mismo:
+    console.log("instanciaB instanceof ConstructorB",
+        instanciaB instanceof ConstructorB); // true
+    console.log("instanciaB instanceof ConstructorA",
+        instanciaB instanceof ConstructorA); // true
+    console.log("instanciaB instanceof Object",
+        instanciaB instanceof Object); // true
+    
+    console.log("instanciaB.p1 =", instanciaB.p1); // "p1"
+    
+    function ConstructorBbis(p1, p2) {
+      // en este caso no llamamos al super
+      // por lo que no se hará nada con p1
+      // y se perderá como las lágrimas en la lluvia
+      this.p2 = p2;
+    }
+    
+    // Hacemos que Bbis herede de A
+    ConstructorBbis.prototype = Object.create(ConstructorA.prototype);
+    
+    var instanciaBbis = new ConstructorBbis("p1", "p2");
+    
+    console.log("instanciaBbis.p1 =", instanciaBbis.p1); // undefined
+        
+    // Extensión de funcionalidades
+    String.prototype.hola = function() {
+      console.log("Hola "+this);
+    }
+
+    "Adolfo".hola(); // "Hola Adolfo"
+    
+  </script>
+</body>
+</html>

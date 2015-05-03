@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Arguments</title>
+	<script>
+  function fn(param0) {
+    console.log("param0", param0)
+    for (var i = 0; i < arguments.length; i++) {  
+      console.log("arguments["+i+"]",
+                  arguments[i]);  
+    }  
+  }
+  fn();
+  fn("hola", "mundo");
+	</script>
+</head>
+<body>
+	<h2>Arguments</h2>
+  <p>ver el código y la consola</p>
+</body>
+</html>

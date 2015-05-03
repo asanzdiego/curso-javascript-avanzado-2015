@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="JavaScript Avanzado" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>JavaScript Avanzado</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">JavaScript Avanzado</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Mayo 2015</h4>
+</section>
+
+<section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">1</span> Acerca de</h1></section><section id="autor" class="slide level2">
+<h2><span class="header-section-number">1.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.blogspot.com.es/">asanzdiego.blogspot.com.es</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>Linkedin: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">1.2</span> Licencia</h2>
+<ul>
+<li><strong>Este obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+<li><strong>El código fuente de los programas están bajo una licencia:</strong>
+<ul>
+<li><a href="http://www.viti.es/gnu/licenses/gpl.html">GPL 3.0</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="javascript" class="titleslide slide level1"><h1><span class="header-section-number">2</span> JavaScript</h1></section><section id="historia" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Historia</h2>
+<ul>
+<li>Lo crea <strong>Brendan Eich en Netscape en 1995</strong> para hacer páginas web dinámicas</li>
+<li>Aparece por primera vez en Netscape Navigator 2.0</li>
+<li>Cada día más usado (clientes web, videojuegos, windows 8, servidores web, bases de datos, etc.)</li>
+</ul>
+</section><section id="el-lenguaje" class="slide level2">
+<h2><span class="header-section-number">2.2</span> El lenguaje</h2>
+<ul>
+<li>Orientado a objetos</li>
+<li>Basado en prototipos</li>
+<li>Funcional</li>
+<li>Débilmente tipado</li>
+<li>Dinámico</li>
+</ul>
+</section>
+<section id="orientación-a-objetos" class="titleslide slide level1"><h1><span class="header-section-number">3</span> Orientación a objetos</h1></section><section id="qué-es-un-objeto" class="slide level2">
+<h2><span class="header-section-number">3.1</span> ¿Qué es un objeto?</h2>
+<ul>
+<li><p><strong>Colección de propiedades</strong> (pares nombre-valor).</p></li>
+<li><p>Todo son objetos (las funciones también) excepto los primitivos: <strong>strings, números, booleans, null o undefined</strong></p></li>
+<li><p>Para saber si es un objeto o un primitivo hacer <strong>typeof variable</strong></p></li>
+</ul>
+</section><section id="propiedades-i" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Propiedades (I)</h2>
+<ul>
+<li>Podemos acceder directamente o como si fuese un contenedor:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">objeto</span>.<span class="fu">nombre</span> === objeto[nombre] <span class="co">// true</span></code></pre>
+</section><section id="propiedades-ii" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Propiedades (II)</h2>
+<ul>
+<li>Podemos crearlas y destruirlas en tiempo de ejecución</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> objeto = {};
+objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
+<span class="kw">delete</span> <span class="ot">objeto</span>.<span class="fu">nuevaPropiedad</span>; <span class="co">// eliminar</span></code></pre>
+</section><section id="objeto-iniciador" class="slide level2">
+<h2><span class="header-section-number">3.4</span> Objeto iniciador</h2>
+<ul>
+<li>Podemos crear un objeto así:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> objeto = {
+  <span class="dt">nombre</span>: <span class="st">&quot;Adolfo&quot;</span>,
+  <span class="dt">twitter</span>: <span class="st">&quot;@asanzdiego&quot;</span>
+};</code></pre>
+</section><section id="función-constructora" class="slide level2">
+<h2><span class="header-section-number">3.5</span> Función constructora</h2>
+<ul>
+<li>O con una función constructora y un new.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">Persona</span>(nombre, twitter) {
+  <span class="kw">this</span>.<span class="fu">nombre</span> = nombre;
+  <span class="kw">this</span>.<span class="fu">twitter</span> = twitter;
+};
+<span class="kw">var</span> objeto = <span class="kw">new</span> <span class="fu">Persona</span>(<span class="st">&quot;Adolfo&quot;</span>, <span class="st">&quot;@asanzdiego&quot;</span>);</code></pre>
+</section><section id="prototipos-i" class="slide level2">
+<h2><span class="header-section-number">3.6</span> Prototipos (I)</h2>
+<ul>
+<li><p>Las funciones son objetos y tienen una propiedad llamada <strong>prototype</strong>.</p></li>
+<li><p>Cuando creamos un objeto con new, la referencia a esa propiedad <strong>prototype</strong> es almacenada en una propiedad interna.</p></li>
+<li><p>El prototipo se utiliza para compartir propiedades.</p></li>
+</ul>
+</section><section id="prototipos-ii" class="slide level2">
+<h2><span class="header-section-number">3.7</span> Prototipos (II)</h2>
+<ul>
+<li>Podemos acceder al objeto prototipo de un objeto:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// Falla en Opera o IE &lt;= 8</span>
+<span class="ot">Object</span>.<span class="fu">getPrototypeOf</span>(objeto);
+ 
+<span class="co">// No es estandar y falla en IE</span>
+<span class="ot">objeto</span>.<span class="fu">__proto__</span>;</code></pre>
+</section><section id="herencia" class="slide level2">
+<h2><span class="header-section-number">3.8</span> Herencia</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">ConstructorA</span>(p1) {
+  <span class="kw">this</span>.<span class="fu">p1</span> = p1;
+}
+
+<span class="kw">function</span> <span class="fu">ConstructorB</span>(p1, p2) {
+  <span class="co">// llamamos al super para que no se pierda p1.</span>
+  <span class="ot">ConstructorA</span>.<span class="fu">call</span>(<span class="kw">this</span>, p1);
+  <span class="kw">this</span>.<span class="fu">p2</span> = p2;
+}
+
+<span class="co">// Hacemos que B herede de A</span>
+<span class="co">// Prototipo de Función Constructora B apunta al</span>
+<span class="co">// Prototipo de Función Constructora A</span>
+<span class="ot">ConstructorB</span>.<span class="fu">prototype</span> = <span class="ot">Object</span>.<span class="fu">create</span>(<span class="ot">ConstructorA</span>.<span class="fu">prototype</span>);</code></pre>
+</section><section id="cadena-de-prototipos-i" class="slide level2">
+<h2><span class="header-section-number">3.9</span> Cadena de prototipos (I)</h2>
+<ul>
+<li>Cuando se invoca una llamada a una propiedad, <strong>JavaScript primero busca en el propio objeto, y si no lo encuentra busca en su prototipo</strong>, y sino en el prototipo del prototipo, así hasta el prototipo de Object que es null.</li>
+</ul>
+</section><section id="cadena-de-prototipos-ii" class="slide level2">
+<h2><span class="header-section-number">3.10</span> Cadena de prototipos (II)</h2>
+<ul>
+<li>En el ejemplo anterior:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">instanciaB</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorB</span>.<span class="fu">prototype</span> <span class="co">// true</span>
+<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorA</span>.<span class="fu">prototype</span> <span class="co">// true</span>
+<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">Object</span>.<span class="fu">prototype</span> <span class="co">// true instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true</span></code></pre>
+</section><section id="operador-instanceof" class="slide level2">
+<h2><span class="header-section-number">3.11</span> Operador instanceof</h2>
+<ul>
+<li><p>La expresión <strong>instanciaB instanceof ConstructorA</strong> devolverá true, si el prototipo de la Función ConstructorA, se encuentra en la cadena de prototipos de la instanciaB.</p></li>
+<li><p>En el ejemplo anterior:</p></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">instanciaB <span class="kw">instanceof</span> ConstructorB; <span class="co">// true</span>
+instanciaB <span class="kw">instanceof</span> ConstructorA; <span class="co">// true</span>
+instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</span></code></pre>
+</section><section id="extensión" class="slide level2">
+<h2><span class="header-section-number">3.12</span> Extensión</h2>
+<ul>
+<li><p>Con los prototipos podemos extender la funcionalidad del propio lenguaje.</p></li>
+<li><p>Ejemplo:</p></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">String</span>.<span class="ot">prototype</span>.<span class="fu">hola</span> = <span class="kw">function</span>() {
+  <span class="kw">return</span> <span class="st">&quot;Hola &quot;</span>+<span class="kw">this</span>;
+}
+ 
+<span class="st">&quot;Adolfo&quot;</span>.<span class="fu">hola</span>(); <span class="co">// &quot;Hola Adolfo&quot;</span></code></pre>
+</section><section id="eficiencia-i" class="slide level2">
+<h2><span class="header-section-number">3.13</span> Eficiencia (I)</h2>
+<ul>
+<li>Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una <strong>función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo</strong>.</li>
+</ul>
+</section><section id="eficiencia-ii" class="slide level2">
+<h2><span class="header-section-number">3.14</span> Eficiencia (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">ConstructorA</span>(p1) {
+  <span class="kw">this</span>.<span class="fu">p1</span> = p1;
+}
+
+<span class="co">// los métodos los ponenmos en el prototipo</span>
+<span class="ot">ConstructorA</span>.<span class="ot">prototype</span>.<span class="fu">metodo1</span> = <span class="kw">function</span>() {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">p1</span>);
+};</code></pre>
+</section><section id="propiedades-y-métodos-estáticos-i" class="slide level2">
+<h2><span class="header-section-number">3.15</span> Propiedades y métodos estáticos (I)</h2>
+<ul>
+<li><p>Lo que se define dentro de la función constructora va a ser propio de la instancia.</p></li>
+<li><p>Pero como hemos dicho, en JavaScript, una función es un objeto, al que podemos añadir tanto atributos como funciones.</p></li>
+<li><p><strong>Añadiendo atributos y funciones a la función constructora obtenemos propiedades y métodos estáticos.</strong></p></li>
+</ul>
+</section><section id="propiedades-y-métodos-estáticos-ii" class="slide level2">
+<h2><span class="header-section-number">3.16</span> Propiedades y métodos estáticos (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">ConstructorA</span>() {
+
+  ConstructorA.propiedadEstatica = <span class="st">&quot;propiedad estática&quot;</span>;
+}
+
+<span class="ot">ConstructorA</span>.<span class="fu">metodoEstatico</span> = <span class="kw">function</span>() {
+  console.log(<span class="st">&quot;método estático&quot;</span>);
+}</code></pre>
+</section><section id="propiedades-y-métodos-privados-i" class="slide level2">
+<h2><span class="header-section-number">3.17</span> Propiedades y métodos privados (I)</h2>
+<ul>
+<li><p>La visibilidad de objetos depende del contexto.</p></li>
+<li><p>Los contextos en JavaScript son bloques de código entre dos {} y en general, desde uno de ellos, solo tienes acceso a lo que en él se defina y a lo que se defina en otros contextos que contengan al tuyo.</p></li>
+</ul>
+</section><section id="propiedades-y-métodos-privados-ii" class="slide level2">
+<h2><span class="header-section-number">3.18</span> Propiedades y métodos privados (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">ConstructorA</span>(privada, publica) {
+  <span class="kw">var</span> propiedadPrivada = privada;
+  <span class="kw">this</span>.<span class="fu">propiedadPublica</span> = publica;
+  <span class="kw">var</span> metodoPrivado = <span class="kw">function</span>() {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;--&gt;propiedadPrivada&quot;</span>, propiedadPrivada);
+  }
+  <span class="kw">this</span>.<span class="fu">metodoPublico</span> = <span class="kw">function</span>() {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;--&gt;propiedadPublica&quot;</span>, <span class="kw">this</span>.<span class="fu">propiedadPublica</span>);
+    <span class="fu">metodoPrivado</span>();
+  }
+}</code></pre>
+</section><section id="polimorfismo" class="slide level2">
+<h2><span class="header-section-number">3.19</span> Polimorfismo</h2>
+<ul>
+<li><p>Poder llamar a métodos sintácticamente iguales de objetos de tipos diferentes.</p></li>
+<li><p>Esto se consigue mediante herencia.</p></li>
+</ul>
+</section>
+<section id="técnicas-avanzadas" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Técnicas avanzadas</h1></section><section id="funciones" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Funciones</h2>
+<ul>
+<li><p>Son objetos con sus propiedades.</p></li>
+<li><p>Se pueden pasar como parámetros a otras funciones.</p></li>
+<li><p>Pueden guardarse en variables.</p></li>
+<li><p>Son mensajes cuyo receptor es <strong>this</strong>.</p></li>
+</ul>
+</section><section id="this" class="slide level2">
+<h2><span class="header-section-number">4.2</span> This</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> nombre = <span class="st">&quot;Laura&quot;</span>;
+
+<span class="kw">var</span> alba = {
+  <span class="dt">nombre</span>: <span class="st">&quot;Alba&quot;</span>,
+  <span class="dt">saludo</span>: <span class="kw">function</span>() {
+    <span class="kw">return</span> <span class="st">&quot;Hola &quot;</span>+<span class="kw">this</span>.<span class="fu">nombre</span>;
+  }
+}
+
+<span class="ot">alba</span>.<span class="fu">saludo</span>(); <span class="co">// Hola Alba</span>
+
+<span class="kw">var</span> fn = <span class="ot">alba</span>.<span class="fu">saludo</span>;
+
+<span class="fu">fn</span>(); <span class="co">// Hola Laura</span></code></pre>
+</section><section id="call-y-apply" class="slide level2">
+<h2><span class="header-section-number">4.3</span> call y apply</h2>
+<ul>
+<li>Dos funciones permiten manipular el this: <strong>call y apply</strong> que en lo único que se diferencian es en la llamada.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">fn</span>.<span class="fu">call</span>(thisArg [, arg1 [, arg2 [...]]])</code></pre>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">fn</span>.<span class="fu">apply</span>(thisArg [, arglist])</code></pre>
+</section><section id="número-variable-de-argumentos" class="slide level2">
+<h2><span class="header-section-number">4.4</span> Número variable de argumentos</h2>
+<ul>
+<li>Las funciones en JavaScript aunque tengan especificado un número de argumentos de entrada, <strong>pueden recibir más o menos argumentos</strong> y es válido.</li>
+</ul>
+</section><section id="arguments" class="slide level2">
+<h2><span class="header-section-number">4.5</span> Arguments</h2>
+<ul>
+<li>Es un objeto que <strong>contiene los parámetros</strong> de la función.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">echoArgs</span>() {
+  <span class="ot">console</span>.<span class="fu">lot</span>(arguments[<span class="dv">0</span>]); <span class="co">// Adolfo</span>
+  <span class="ot">console</span>.<span class="fu">lot</span>(arguments[<span class="dv">1</span>]); <span class="co">// Sanz</span>
+}
+<span class="fu">echoArgs</span>(<span class="st">&quot;Adolfo&quot;</span>, <span class="st">&quot;Sanz&quot;</span>);</code></pre>
+</section><section id="declaración-de-funciones" class="slide level2">
+<h2><span class="header-section-number">4.6</span> Declaración de funciones</h2>
+<ul>
+<li>Estas 2 declaraciones son <strong>equivalentes</strong>:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">holaMundo1</span>() {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola Mundo 1&quot;</span>);
+}
+<span class="fu">holaMundo1</span>();
+
+<span class="kw">var</span> holaMundo2 = <span class="kw">function</span>() {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola Mundo 2&quot;</span>);
+}
+<span class="fu">holaMundo2</span>();</code></pre>
+</section><section id="transfiriendo-funciones-a-otras-funciones" class="slide level2">
+<h2><span class="header-section-number">4.7</span> Transfiriendo funciones a otras funciones</h2>
+<ul>
+<li>Hemos dicho que las funciones son objetos, así que <strong>se pueden pasar como parámetros</strong>.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">saluda</span>() {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola&quot;</span>)
+}
+<span class="kw">function</span> <span class="fu">ejecuta</span>(func) {
+  <span class="fu">func</span>()
+}
+<span class="fu">ejecuta</span>(saluda);</code></pre>
+</section><section id="funciones-anónimas-i" class="slide level2">
+<h2><span class="header-section-number">4.8</span> Funciones anónimas (I)</h2>
+<ul>
+<li><p>Hemos dicho que las funciones se pueden declarar.</p></li>
+<li><p>Pero también <strong>podemos no declararlas y dejarlas como anónimas</strong>.</p></li>
+</ul>
+</section><section id="funciones-anónimas-ii" class="slide level2">
+<h2><span class="header-section-number">4.9</span> Funciones anónimas (II)</h2>
+<ul>
+<li>Una función anónima así declarada <strong>no se podría ejecutar</strong>.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span>(nombre) {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola &quot;</span>+nombre);
+}</code></pre>
+</section><section id="funciones-anónimas-iii" class="slide level2">
+<h2><span class="header-section-number">4.10</span> Funciones anónimas (III)</h2>
+<ul>
+<li>Pero <strong>una función puede devolver una función anónima</strong>.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">saludador</span>(nombre) {
+  <span class="kw">return</span> <span class="kw">function</span>() {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola &quot;</span>+nombre);
+  }
+}
+
+<span class="kw">var</span> saluda = <span class="fu">saludador</span>(<span class="st">&quot;mundo&quot;</span>);
+<span class="fu">saluda</span>(); <span class="co">// Hola mundo</span></code></pre>
+</section><section id="funciones-autoejecutables" class="slide level2">
+<h2><span class="header-section-number">4.11</span> Funciones autoejecutables</h2>
+<ul>
+<li>Podemos autoejecutar funciones anónimas.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>(nombre) {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola &quot;</span>+nombre);
+})(<span class="st">&quot;mundo&quot;</span>)</code></pre>
+</section><section id="clousures" class="slide level2">
+<h2><span class="header-section-number">4.12</span> Clousures</h2>
+<ul>
+<li>Un closure <strong>combina una función y el entorno en que se creó</strong>.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">creaSumador</span>(x) {
+  <span class="kw">return</span> <span class="kw">function</span>(y) {
+    <span class="kw">return</span> x + y;
+  };
+}
+
+<span class="kw">var</span> suma5 = <span class="fu">creaSumador</span>(<span class="dv">5</span>);
+<span class="kw">var</span> suma10 = <span class="fu">creaSumador</span>(<span class="dv">10</span>);
+
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma5</span>(<span class="dv">2</span>));  <span class="co">// muestra 7</span>
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma10</span>(<span class="dv">2</span>)); <span class="co">// muestra 12 </span></code></pre>
+</section><section id="el-patrón-modulo" class="slide level2">
+<h2><span class="header-section-number">4.13</span> El patrón Modulo</h2>
+<ul>
+<li>Se trata de una función que actúa como contenedor para un contexto de ejecución.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo = (<span class="kw">function</span>() {
+
+  <span class="kw">var</span> propiedadPrivada;
+
+  <span class="kw">function</span> <span class="fu">metodoPrivado</span>() { };
+ 
+  <span class="co">// API publica</span>
+  <span class="kw">return</span> {
+    <span class="dt">metodoPublico1</span>: <span class="kw">function</span> () {
+    },
+ 
+    <span class="dt">metodoPublico2</span>: <span class="kw">function</span> () {
+    }
+  }
+}());</code></pre>
+</section><section id="eficiencia-i-1" class="slide level2">
+<h2><span class="header-section-number">4.14</span> Eficiencia (I)</h2>
+<ul>
+<li><p>Si se ejecuta desde el navegador, <strong>se suele pasar como parámetro el objeto window para mejorar el rendimiento</strong>. Así cada vez que lo necesitemos el intérprete lo utilizará directamete en lugar de buscarlo remontando niveles.</p></li>
+<li><p>Y también <strong>se suele pasar el parámetro undefined, para evitar los errores que pueden darse si la palabra reservada ha sido reescrita</strong> en alguna parte del código y su valor no corresponda con el esperado.</p></li>
+</ul>
+</section><section id="eficiencia-ii-1" class="slide level2">
+<h2><span class="header-section-number">4.15</span> Eficiencia (II)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo = (<span class="kw">function</span>(window, <span class="kw">undefined</span>) {
+
+  <span class="co">// El código va aquí</span>
+  
+})( window );</code></pre>
+</section><section id="el-patrón-modulo-revelado-i" class="slide level2">
+<h2><span class="header-section-number">4.16</span> El patrón Modulo Revelado (I)</h2>
+<ul>
+<li><p>El problema del patrón Modulo es pasar un método de privado a público o viceversa.</p></li>
+<li><p>Por ese motivo lo que que se suele hacer es definir todo en el cuerpo, y luego <strong>referenciar solo los públicos en el bloque return</strong>.</p></li>
+</ul>
+</section><section id="el-patrón-modulo-revelado-ii" class="slide level2">
+<h2><span class="header-section-number">4.17</span> El patrón Modulo Revelado (II)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo = (<span class="kw">function</span>() {
+
+  <span class="kw">function</span> <span class="fu">metodoA</span>() { };
+
+  <span class="kw">function</span> <span class="fu">metodoB</span>() { };
+
+  <span class="kw">function</span> <span class="fu">metodoC</span>() { };
+ 
+  <span class="co">// API publica</span>
+  <span class="kw">return</span> {
+    <span class="dt">metodoPublico1</span>: metodoA,
+    <span class="dt">metodoPublico2</span>: metodoB
+  }
+}());</code></pre>
+</section><section id="espacios-de-nombres-i" class="slide level2">
+<h2><span class="header-section-number">4.18</span> Espacios de nombres (I)</h2>
+<ul>
+<li>Para simular espacios de nombre, en JavaScript se anidan objetos.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">miBiblioteca = miBiblioteca || {};
+
+<span class="ot">miBiblioteca</span>.<span class="fu">seccion1</span> = <span class="ot">miBiblioteca</span>.<span class="fu">seccion1</span> || {};
+
+<span class="ot">miBiblioteca</span>.<span class="fu">seccion1</span> = {
+  <span class="dt">priopiedad</span>: p1,
+  <span class="dt">metodo</span>: <span class="kw">function</span>() { },
+};
+
+<span class="ot">miBiblioteca</span>.<span class="fu">seccion2</span> = <span class="ot">miBiblioteca</span>.<span class="fu">seccion2</span> || {};
+
+<span class="ot">miBiblioteca</span>.<span class="fu">seccion2</span> = {
+  <span class="dt">priopiedad</span>: p2,
+  <span class="dt">metodo</span>: <span class="kw">function</span>() { },
+};</code></pre>
+</section><section id="espacios-de-nombres-ii" class="slide level2">
+<h2><span class="header-section-number">4.19</span> Espacios de nombres (II)</h2>
+<ul>
+<li>Se combinar lo anterior con módulos autoejecutables:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">
+miBiblioteca = miBiblioteca || {};
+
+(<span class="kw">function</span>(namespace) {
+
+  <span class="kw">var</span> propiedadPrivada = p1;
+
+  <span class="ot">namespace</span>.<span class="fu">propiedadPrivada</span> = p2;
+
+  <span class="kw">var</span> metodoPrivado = <span class="kw">function</span>() { };
+
+  <span class="ot">namespace</span>.<span class="fu">metodoPublico</span> = <span class="kw">function</span>() { };
+
+}(miBiblioteca));</code></pre>
+</section>
+<section id="document-object-model" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Document Object Model</h1></section><section id="qué-es-dom" class="slide level2">
+<h2><span class="header-section-number">5.1</span> ¿Qué es DOM?</h2>
+<ul>
+<li>Acrónimo de <strong>Document Object Model</strong></li>
+<li>Es un conjunto de utilidades específicamente diseñadas para <strong>manipular documentos XML, y por extensión documentos XHTML y HTML</strong>.</li>
+<li>DOM transforma internamente el archivo XML en una estructura más fácil de manejar formada por una jerarquía de nodos.</li>
+</ul>
+</section><section id="tipos-de-nodos" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Tipos de nodos</h2>
+<ul>
+<li>Los más importantes son:
+<ul>
+<li><strong>Document</strong>: representa el nodo raíz.</li>
+<li><strong>Element</strong>: representa el contenido definido por un par de etiquetas de apertura y cierre y puede tener tanto nodos hijos como atributos.</li>
+<li><strong>Attr</strong>: representa el atrributo de un elemento.</li>
+<li><strong>Text</strong>: almacena el contenido del texto que se encuentra entre una etiqueta de apertura y una de cierre.</li>
+</ul></li>
+</ul>
+</section><section id="recorrer-el-dom" class="slide level2">
+<h2><span class="header-section-number">5.3</span> Recorrer el DOM</h2>
+<ul>
+<li>JavaScript proporciona <strong>funciones</strong> para recorrer los nodos:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">getElementById</span>(id)
+<span class="fu">getElementsByName</span>(name)
+<span class="fu">getElementsByTagName</span>(tagname)
+<span class="fu">getElementsByClassName</span>(className)
+<span class="fu">getAttribute</span>(attributeName)
+<span class="fu">querySelector</span>(selector)
+<span class="fu">querySelectorAll</span>(selector)</code></pre>
+</section><section id="manipular-el-dom" class="slide level2">
+<h2><span class="header-section-number">5.4</span> Manipular el DOM</h2>
+<ul>
+<li>JavaScript proporciona <strong>funciones</strong> para la manipulación de nodos:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">createElement</span>(tagName)
+<span class="fu">createTextNode</span>(text)
+<span class="fu">createAttribute</span>(attributeName)
+<span class="fu">appendChild</span>(node)
+<span class="fu">insertBefore</span>(newElement, targetElement)
+<span class="fu">removeAttribute</span>(attributename)
+<span class="fu">removeChild</span>(childreference)
+<span class="fu">replaceChild</span>(newChild, oldChild)</code></pre>
+</section><section id="propiedades-nodos-i" class="slide level2">
+<h2><span class="header-section-number">5.5</span> Propiedades Nodos (I)</h2>
+<ul>
+<li>Los nodos tienen algunas <strong>propiedades</strong> muy útiles:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">attributes[]
+className
+id
+innerHTML
+nodeName
+nodeValue
+style
+tabIndex
+tagName
+title</code></pre>
+</section><section id="propiedades-nodos-ii" class="slide level2">
+<h2><span class="header-section-number">5.6</span> Propiedades Nodos (II)</h2>
+<ul>
+<li>Los nodos tienen algunas <strong>propiedades</strong> muy útiles:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">childNodes[]
+firstChild
+lastChild
+previousSibling
+nextSibling
+ownerDocument
+parentNode</code></pre>
+</section><section id="jquery" class="slide level2">
+<h2><span class="header-section-number">5.7</span> jQuery</h2>
+<ul>
+<li><strong>jQuery</strong> puede ser muy util en ciertos casos, pero en muchos otros es <strong>matar moscas a cañonados</strong>.</li>
+</ul>
+</section>
+<section id="enlaces" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Enlaces</h1></section><section id="general-es" class="slide level2">
+<h2><span class="header-section-number">6.1</span> General (ES)</h2>
+<ul>
+<li><a href="http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5">http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5</a></li>
+<li><a href="http://cevichejs.com/">http://cevichejs.com/</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/">http://www.arkaitzgarro.com/javascript/</a></li>
+<li><a href="http://www.etnassoft.com/category/javascript/">http://www.etnassoft.com/category/javascript/</a></li>
+</ul>
+</section><section id="general-en" class="slide level2">
+<h2><span class="header-section-number">6.2</span> General (EN)</h2>
+<ul>
+<li><a href="http://www.javascriptkit.com/">http://www.javascriptkit.com/</a></li>
+<li><a href="http://javascript.info/">http://javascript.info/</a></li>
+<li><a href="http://www.howtocreate.co.uk/tutorials/javascript/">http://www.howtocreate.co.uk/tutorials/javascript/</a></li>
+</ul>
+</section><section id="orientación-objetos-es-i" class="slide level2">
+<h2><span class="header-section-number">6.3</span> Orientación Objetos (ES) (I)</h2>
+<ul>
+<li><a href="http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/">http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/</a></li>
+<li><a href="http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/">http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/</a></li>
+<li><a href="http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/">http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/</a></li>
+</ul>
+</section><section id="orientación-objetos-es-ii" class="slide level2">
+<h2><span class="header-section-number">6.4</span> Orientación Objetos (ES) (II)</h2>
+<ul>
+<li><a href="http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo">http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo</a></li>
+<li><a href="http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces">http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/capitulo-9.html">http://www.arkaitzgarro.com/javascript/capitulo-9.html</a></li>
+<li><a href="http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/">http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/</a></li>
+</ul>
+</section><section id="orientación-objetos-en" class="slide level2">
+<h2><span class="header-section-number">6.5</span> Orientación Objetos (EN)</h2>
+<ul>
+<li><a href="http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns">http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns</a></li>
+<li><a href="http://javascript.info/tutorial/object-oriented-programming">http://javascript.info/tutorial/object-oriented-programming</a></li>
+<li><a href="http://www.howtocreate.co.uk/tutorials/javascript/objects">http://www.howtocreate.co.uk/tutorials/javascript/objects</a></li>
+</ul>
+</section><section id="técnicas-avanzadas-es-i" class="slide level2">
+<h2><span class="header-section-number">6.6</span> Técnicas avanzadas (ES) (I)</h2>
+<ul>
+<li><a href="http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/">http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/</a></li>
+<li><a href="http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/">http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Closures">https://developer.mozilla.org/es/docs/Web/JavaScript/Closures</a></li>
+<li><a href="http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html">http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html</a></li>
+</ul>
+</section><section id="técnicas-avanzadas-es-ii" class="slide level2">
+<h2><span class="header-section-number">6.7</span> Técnicas avanzadas (ES) (II)</h2>
+<ul>
+<li><a href="http://www.webanalyst.es/espacios-de-nombres-en-javascript/">http://www.webanalyst.es/espacios-de-nombres-en-javascript/</a></li>
+<li><a href="http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/">http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/</a></li>
+<li><a href="http://www.etnassoft.com/2011/04/18/ampliando-patron-modulo-javascript-submodulos/">http://www.etnassoft.com/2011/04/18/ampliando-patron-modulo-javascript-submodulos/</a></li>
+<li><a href="http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html">http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html</a></li>
+</ul>
+</section><section id="dom-es" class="slide level2">
+<h2><span class="header-section-number">6.8</span> DOM (ES)</h2>
+<ul>
+<li><a href="http://cevichejs.com/3-dom-cssom#dom">http://cevichejs.com/3-dom-cssom#dom</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/capitulo-13.html">http://www.arkaitzgarro.com/javascript/capitulo-13.html</a></li>
+</ul>
+</section><section id="dom-en" class="slide level2">
+<h2><span class="header-section-number">6.9</span> DOM (EN)</h2>
+<ul>
+<li><a href="http://www.javascriptkit.com/domref/">http://www.javascriptkit.com/domref/</a></li>
+<li><a href="http://javascript.info/tutorial/dom">http://javascript.info/tutorial/dom</a></li>
+</ul>
+</section><section id="es6-es" class="slide level2">
+<h2><span class="header-section-number">6.10</span> ES6 (ES)</h2>
+<ul>
+<li><a href="http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/">http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/</a></li>
+<li><a href="http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/">http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/</a></li>
+</ul>
+</section><section id="es6-en" class="slide level2">
+<h2><span class="header-section-number">6.11</span> ES6 (EN)</h2>
+<ul>
+<li><a href="http://es6-features.org/">http://es6-features.org/</a></li>
+<li><a href="http://kangax.github.io/compat-table/es5/">http://kangax.github.io/compat-table/es5/</a></li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Mayo 2015</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

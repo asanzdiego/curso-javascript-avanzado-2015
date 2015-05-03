@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Closures</title>
+	<script>
+  
+  // closure
+  function creaSumador(x) {
+    return function(y) {
+      return x + y;
+    };
+  }
+
+  var suma5 = creaSumador(5);
+  var suma10 = creaSumador(10);
+
+  console.log("suma5(2)", suma5(2));  // 7
+  console.log("suma10(2)", suma10(2)); // 12 
+  
+  // ejemplo 1
+  var gExecute1 = null;
+  var gExecute2 = null;
+
+  function createClosure1() {
+    console.log("createClosure1");
+    var num = 10;
+    gExecute1 = function () { console.log(num); };
+    num++;
+    gExecute2 = function () { console.log(num); };
+  }
+
+  createClosure1();
+  gExecute1(); // 11
+  gExecute2(); // 11
+
+  // ejemplo 2
+  var gExecute1 = null;
+  var gExecute2 = null;
+  var gExecute3 = null;
+
+  function createClosure2() {
+    console.log("createClosure2");
+    var num = 10;
+    gExecute1 = function () { console.log(num); };
+    gExecute2 = function () { console.log(++num); };
+  }
+
+  createClosure2();
+  gExecute1(); // 10
+  gExecute2(); // 11
+  gExecute1(); // 11
+  
+  // uso en funciones con parámetros
+  // en funciones que necesitan un función como parámetro
+  function muestraSuma(a, b)
+  {
+    console.log("closure muestraSuma invocado...");
+    return function() { 
+      console.log(a + " + " + b + " = " + (a + b)); 
+    };
+  }
+
+  var suma = muestraSuma(10, 40);
+
+  //Después de 2 segundo
+  setTimeout(suma, 2000); // 10 + 40 = 50
+
+  // acceso a atributos públicos desde métodos privados
+  function Constructor(msjPrivado, msjPublico) {
+ 
+    var propiedadPrivada = msjPrivado;
+    this.propiedadPublica = msjPublico;
+    
+    // La variable 'that' será guardada en el closure para ser 
+    /// utilizada en su momento por la función metodoPrivado()
+    var that = this; 
+
+    var metodoPrivado = function () {
+      console.log("propiedadPrivada", propiedadPrivada);
+      console.log("propiedadPrivada", that.propiedadPublica);
+    };
+ 
+    Constructor.prototype.metodoPublico = function () {
+          metodoPrivado();
+    };
+  }
+
+  var obj = new Constructor("mensaje privado", "mensaje público");
+  obj.metodoPublico(); 
+ 
+	</script>
+</head>
+<body>
+	<h2>Closures</h2>
+  <p>ver el código y la consola</p>
+</body>
+</html>

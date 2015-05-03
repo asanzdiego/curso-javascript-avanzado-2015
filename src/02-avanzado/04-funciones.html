@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funciones</title>
+	<script>
+    
+  // declaración de función 1
+  function holaMundo1() {
+    console.log("Hola Mundo 1");
+  }
+  holaMundo1(); // Hola Mundo 1
+
+  // declaración de función 2
+  var holaMundo2 = function() {
+    console.log("Hola Mundo 2");
+  }
+  holaMundo2(); // Hola Mundo 2
+
+  // transfiriendo funciones a otras funciones
+  function saluda() {
+    console.log("Hola")
+  }
+  function ejecuta(func) {
+    func()
+  }
+  ejecuta(saluda); // hola
+  
+  </script>
+</head>
+<body>
+	<h2>Declaración y ejecución de funciones</h2>
+  <p>ver el código y la consola</p>
+</body>
+</html>
