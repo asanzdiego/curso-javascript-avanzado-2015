@@ -1,5 +1,6 @@
-# Curso de JavaScript Avanzado (Mayo 2015)
-
+# Curso de JavaScript Avanzado
+## (Mayo 2015)
+### Temario
 - 1. Acerca de
   - 1.1. Autor
   - 1.2. Licencia
