@@ -1,8 +1,8 @@
 # curso-javascript-avanzado-2015
 
 1. Acerca de
-  1.1. Autor
-  1.2. Licencia
+  1. Autor
+  2. Licencia
 2. JavaScript
   2.1. Historia
   2.2. El lenguaje
