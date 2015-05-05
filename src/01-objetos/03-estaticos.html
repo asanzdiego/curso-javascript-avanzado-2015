@@ -1,38 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Estáticos</title>
+  <meta charset="UTF-8">
+  <title>Estáticos</title>
 </head>
 <body>
-	<h2>Propiedades y métodos estáticos</h2>
-  <p>ver el código y la consola</p>
+  <h1>Propiedades y métodos estáticos</h1>
+  <p>Ver código fuente y la consola del navegador</p>
   <script>
+  
+  function ConstructorA(_propiedadDeInstancia) {
+  
+    this.propiedadDeInstancia = _propiedadDeInstancia;
     
-    function ConstructorA(propiedadDeInstancia) {
-      
-      // Si no exixte se inicializa a cero
-      // la propiedad estática 'contadorDeInstancias'
-      if ( ! ConstructorA.contadorDeInstancias ) {
-        ConstructorA.contadorDeInstancias = 0;
-      }
-	    ConstructorA.contadorDeInstancias++
-      
-      this.propiedadDeInstancia = propiedadDeInstancia;
+    if ( ! ConstructorA.contadorDeInstancias ) {
+      ConstructorA.contadorDeInstancias = 0;
     }
-    
-    // creamos un método estático que
-    // nos diga el número de instancias
-    ConstructorA.numeroDeInstancias = function() {
-      console.log("ConstructorA.contadorDeInstancias",
-                  ConstructorA.contadorDeInstancias);
-    }
-    
-    var instanciaUNO = new ConstructorA("UNO");
-    ConstructorA.numeroDeInstancias();
-    var instanciaDOS = new ConstructorA("DOS");
-    ConstructorA.numeroDeInstancias();
-
+    ConstructorA.contadorDeInstancias++;
+  }
+  
+  ConstructorA.numeroDeInstancias = function() {
+    console.log("ConstructorA.contadorDeInstancias",
+      ConstructorA.contadorDeInstancias);
+  }
+  
+  var instanciaA1 = new ConstructorA("UNO");
+  ConstructorA.numeroDeInstancias();
+  var instanciaA2 = new ConstructorA("DOS");
+  ConstructorA.numeroDeInstancias();
   </script>
 </body>
 </html>

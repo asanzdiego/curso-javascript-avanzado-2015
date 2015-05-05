@@ -1,39 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Privados</title>
+  <meta charset="UTF-8">
+  <title>Privados</title>
 </head>
 <body>
-	<h2>Propiedades y métodos privados</h2>
-  <p>ver el código y la consola</p>
+  <h1>Propiedades y métodos privados</h1>
+  <p>Ver código fuente y la consola del navegador</p>
   <script>
-    
-    function ConstructorA(privada, publica) {
-      var propiedadPrivada = privada;
-      this.propiedadPublica = publica;
-      var metodoPrivado = function() {
-        console.log("-->propiedadPrivada", propiedadPrivada);
-      }
-      this.metodoPublico = function() {
-        console.log("-->propiedadPublica", this.propiedadPublica);
-        metodoPrivado();
-      }
+  function ConstructorA(privada, publica) {
+    var propiedadPrivada = privada;
+    this.propiedadPublica = publica;
+    var metodoPrivado = function() {
+      console.log("-->propiedadPrivada", propiedadPrivada);
     }
-        
-    var instanciaA = new ConstructorA("PRIVADA", "PUBLICA");
-    
-    console.log("instanciaA.propiedadPublica",
-                instanciaA.propiedadPublica); 
-    
-    console.log("instanciaA.propiedadPrivada",
-                instanciaA.propiedadPrivada); // undefined
-    
-    console.log("instanciaA.metodoPublico()");
-    instanciaA.metodoPublico(); 
-    
-    // da error
-    instanciaA.metodoPrivado(); 
+    this.metodoPublico = function() {
+      console.log("-->propiedadPublica", this.propiedadPublica);
+      metodoPrivado();
+    }
+  }
+  
+  var instanciaA = new ConstructorA("PRIVADA", "PUBLICA");
+  
+  console.log("instanciaA.propiedadPrivada",
+    instanciaA.propiedadPrivada); // undefined
+  console.log("instanciaA.propiedadPublica",
+    instanciaA.propiedadPublica); // PUBLICA
+  
+  instanciaA.metodoPublico(); // texto
+  instanciaA.metodoPrivado(); // da error
   </script>
 </body>
 </html>

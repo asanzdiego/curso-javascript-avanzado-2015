@@ -1,61 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Polimorfismo</title>
+  <meta charset="UTF-8">
+  <title>Plantilla</title>
 </head>
 <body>
-	<h2>Polimorfismo</h2>
-  <p>ver el código y la consola</p>
+  <h1>Plantilla</h1>
+  <p>Ver código fuente y la consola del navegador</p>
   <script>
-    
-    // Función Constructora Padre
-    function Figura(nombre) {
-      this.nombre = nombre;
-    }
-    
-    Figura.prototype.area = function() {
-      console.log("Funcion no implementada para "+this.nombre);
-    }
-    
-    // Función Constructora Hija 1
-    function Rectangulo(nombre,base,altura) {
-      Figura.call(this, nombre);
-      this.base = base;
-      this.altura = altura;
-    }
-    
-    Rectangulo.prototype = Object.create(Figura.prototype);
-    
-    Rectangulo.prototype.area = function() {
-      console.log("area rectangulo "+this.nombre,
-                  this.base*this.altura);
-    }
-    
-    // Función Constructora Hija 2
-    function Triangulo(nombre,base,altura) {
-      Figura.call(this, nombre);
-      this.base = base;
-      this.altura = altura;
-    }
-    
-    Triangulo.prototype = Object.create(Figura.prototype);
-    
-    Triangulo.prototype.area = function() {
-      console.log("area triangulo "+this.nombre,
-                  (this.base*this.altura)/2);
-    }
-    
-    // Procesamos los datos
-    var figuras = [
-      new Rectangulo("vertical", 5, 10),
-      new Triangulo("isosceles", 5, 10),
-      new Figura("amorfico")
-    ];
-    
-    figuras.forEach(function(figura) {
-      figura.area();
-    });
+  
+  function Figura(_b, _h) {
+    this.b = _b;
+    this.h = _h;
+  }
+  Figura.prototype.area = function() {
+    console.log("Método no implementado");
+  }
+  
+  function Rectangulo(_b, _h) {
+    Figura.call(this, _b, _h);
+  }
+  Rectangulo.prototype = Object.create(Figura.prototype);
+  Rectangulo.prototype.area = function() {
+    console.log("Area del rectángulo", this.h * this.b);
+  }
+  
+  function Triangulo(_b, _h) {
+    Figura.call(this, _b, _h);
+  }
+  Triangulo.prototype = Object.create(Figura.prototype);
+  Triangulo.prototype.area = function() {
+    console.log("Area del triangulo", (this.h * this.b)/2);
+  }
+  
+  var figuras = [
+    new Rectangulo(4, 2),
+    new Triangulo(4, 2),
+    new Rectangulo(3, 2)
+  ];
+  
+  figuras.forEach(function(figura) {
+    figura.area();
+  });
   </script>
 </body>
 </html>

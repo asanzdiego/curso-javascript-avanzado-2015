@@ -1,19 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Autoejecutables</title>
-	<script>
-  
-  // funciones autoejecutables
-  (function(nombre) {
-    console.log("Hola "+nombre);
-  })("mundito") // Hola mundito
-  
-	</script>
+  <meta charset="UTF-8">
+  <title>Autoejecutables</title>
 </head>
 <body>
-	<h2>Funciones autoejecutables</h2>
-  <p>ver el código y la consola</p>
+  <h1>Funciones Autoejecutables</h1>
+  <p>Ver código fuente y la consola del navegador</p>
+  <script>
+  
+  (function() {
+    console.log("Hola Mundo");
+  })();
+  
+  (function(nombre) {
+    console.log("Hola "+nombre);
+  })("Adolfo");
+
+  </script>
 </body>
 </html>

@@ -1,98 +1,128 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Closures</title>
-	<script>
+  <title>Closures</title>
+</head>
+<body>
+  <meta charset="UTF-8">
+  <h1>Closures</h1>
+  <p>Ver código fuente y la consola del navegador</p>
+  <script>
   
-  // closure
   function creaSumador(x) {
     return function(y) {
-      return x + y;
+    return x + y;
     };
   }
 
   var suma5 = creaSumador(5);
   var suma10 = creaSumador(10);
 
-  console.log("suma5(2)", suma5(2));  // 7
-  console.log("suma10(2)", suma10(2)); // 12 
+  console.log(suma5(2));  // muestra 7
+  console.log(suma10(2)); // muestra 12 
   
-  // ejemplo 1
-  var gExecute1 = null;
-  var gExecute2 = null;
-
-  function createClosure1() {
-    console.log("createClosure1");
+  var ejecutaA1 = null;
+  var ejecutaA2 = null;
+  
+  function crearClosureA() {
+    console.log("crearClosureA");
     var num = 10;
-    gExecute1 = function () { console.log(num); };
+    ejecutaA1 = function() {
+      console.log(num);
+    };
     num++;
-    gExecute2 = function () { console.log(num); };
-  }
-
-  createClosure1();
-  gExecute1(); // 11
-  gExecute2(); // 11
-
-  // ejemplo 2
-  var gExecute1 = null;
-  var gExecute2 = null;
-  var gExecute3 = null;
-
-  function createClosure2() {
-    console.log("createClosure2");
-    var num = 10;
-    gExecute1 = function () { console.log(num); };
-    gExecute2 = function () { console.log(++num); };
-  }
-
-  createClosure2();
-  gExecute1(); // 10
-  gExecute2(); // 11
-  gExecute1(); // 11
-  
-  // uso en funciones con parámetros
-  // en funciones que necesitan un función como parámetro
-  function muestraSuma(a, b)
-  {
-    console.log("closure muestraSuma invocado...");
-    return function() { 
-      console.log(a + " + " + b + " = " + (a + b)); 
+    ejecutaA2 = function() {
+      console.log(num);
     };
   }
+  
+  crearClosureA();
+  ejecutaA1(); // 11
+  ejecutaA2(); // 11
+    
+  var ejecutaB1 = null;
+  var ejecutaB2 = null;
+  var ejecutaB3 = null;
+  
+  function crearClosureB() {
+    console.log("crearClosureB");
+    var num = 10;
+    ejecutaB1 = function() {
+      console.log(num);
+    };
+    ejecutaB2 = function() {
+      console.log(num+1);
+    };
+    ejecutaB3 = function() {
+      console.log(num+1);
+    };
+  }
+  
+  crearClosureB();
+  ejecutaB1(); // 10
+  ejecutaB2(); // 11
+  ejecutaB3(); // 11
 
-  var suma = muestraSuma(10, 40);
-
-  //Después de 2 segundo
-  setTimeout(suma, 2000); // 10 + 40 = 50
-
+  var ejecutaC1 = null;
+  var ejecutaC2 = null;
+  var ejecutaC3 = null;
+  
+  function crearClosureC() {
+    console.log("crearClosureC");
+    var num = 10;
+    ejecutaC1 = function() {
+      var n = num;
+      console.log(n);
+    };
+    ejecutaC2 = function() {
+      var n = ++num;
+      console.log(n);
+    };
+    ejecutaC3 = function() {
+      var n = ++num;
+      console.log(n);
+    };
+  }
+  
+  crearClosureC();
+  ejecutaC1(); // 10
+  ejecutaC2(); // 11
+  ejecutaC3(); // 12
+  ejecutaC1(); // 12
+  ejecutaC2(); // 13
+  ejecutaC3(); // 14
+    
+  function muestraSuma(a, b) {
+    console.log("closure muestraSuma invocado...");
+    return function() {
+      console.log(a + "+" + b + "=" + (a+b));
+    }
+  }
+  
+  var suma = muestraSuma(10, 15);
+  
+  // ejecutar dentro de un segundo
+  setTimeout(suma, 1000);
+  
   // acceso a atributos públicos desde métodos privados
   function Constructor(msjPrivado, msjPublico) {
- 
+
     var propiedadPrivada = msjPrivado;
     this.propiedadPublica = msjPublico;
-    
+
     // La variable 'that' será guardada en el closure para ser 
     /// utilizada en su momento por la función metodoPrivado()
-    var that = this; 
+    var that = this; // también se suele poner self
 
     var metodoPrivado = function () {
       console.log("propiedadPrivada", propiedadPrivada);
       console.log("propiedadPrivada", that.propiedadPublica);
     };
- 
+
     Constructor.prototype.metodoPublico = function () {
-          metodoPrivado();
+      metodoPrivado();
     };
   }
-
-  var obj = new Constructor("mensaje privado", "mensaje público");
-  obj.metodoPublico(); 
- 
-	</script>
-</head>
-<body>
-	<h2>Closures</h2>
-  <p>ver el código y la consola</p>
+  </script>
 </body>
 </html>

@@ -1,9 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Namespaces</title>
-	<script>
+  <meta charset="UTF-8">
+  <title>Namespaces</title>
+</head>
+<body>
+  <h1>Namespaces</h1>
+  <p>Ver código fuente y la consola del navegador</p>
+  <script>
   
   var miBiblioteca1 = miBiblioteca1 || {};
 
@@ -26,10 +30,10 @@
   };
 
   console.log("miBiblioteca1.seccion1.priopiedad",
-              miBiblioteca1.seccion1.priopiedad);
+      miBiblioteca1.seccion1.priopiedad);
   console.log("miBiblioteca1.seccion2.priopiedad",
-              miBiblioteca1.seccion2.priopiedad);
-    
+      miBiblioteca1.seccion2.priopiedad);
+
   miBiblioteca1.seccion1.metodo();
   miBiblioteca1.seccion2.metodo();
 
@@ -47,23 +51,19 @@
 
     namespace.metodoPublico = function() {
       console.log("metodoPublico");
-    };
+  };
 
   }(miBiblioteca2));
 
   console.log("miBiblioteca2.propiedadPrivada",
-              miBiblioteca2.propiedadPrivada)
-  
+    miBiblioteca2.propiedadPrivada)
+
   console.log("miBiblioteca2.propiedadPublica",
-              miBiblioteca2.propiedadPublica)
-  
+     miBiblioteca2.propiedadPublica)
+
   miBiblioteca2.metodoPublico();
   // miBiblioteca2.metodoPrivado(); // da error
     
-	</script>
-</head>
-<body>
-	<h2>Namespaces</h2>
-  <p>ver el código y la consola</p>
+  </script>
 </body>
 </html>

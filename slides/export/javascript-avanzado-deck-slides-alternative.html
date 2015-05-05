@@ -358,8 +358,8 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 <li>Es un objeto que <strong>contiene los parámetros</strong> de la función.</li>
 </ul>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">echoArgs</span>() {
-  <span class="ot">console</span>.<span class="fu">lot</span>(arguments[<span class="dv">0</span>]); <span class="co">// Adolfo</span>
-  <span class="ot">console</span>.<span class="fu">lot</span>(arguments[<span class="dv">1</span>]); <span class="co">// Sanz</span>
+  <span class="ot">console</span>.<span class="fu">log</span>(arguments[<span class="dv">0</span>]); <span class="co">// Adolfo</span>
+  <span class="ot">console</span>.<span class="fu">log</span>(arguments[<span class="dv">1</span>]); <span class="co">// Sanz</span>
 }
 <span class="fu">echoArgs</span>(<span class="st">&quot;Adolfo&quot;</span>, <span class="st">&quot;Sanz&quot;</span>);</code></pre>
 </section><section id="declaración-de-funciones" class="slide level2">
@@ -526,7 +526,7 @@ miBiblioteca = miBiblioteca || {};
 
   <span class="kw">var</span> propiedadPrivada = p1;
 
-  <span class="ot">namespace</span>.<span class="fu">propiedadPrivada</span> = p2;
+  <span class="ot">namespace</span>.<span class="fu">propiedadPublica</span> = p2;
 
   <span class="kw">var</span> metodoPrivado = <span class="kw">function</span>() { };
 

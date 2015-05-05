@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Recorrer el DOM</title>
+  <meta charset="UTF-8">
+  <title>Recorrer el DOM</title>
 </head>
 
 <body>
   
-	<h1>Recorrer el DOM</h1>
-	<p class="name">My name is Donald</p>
-	<p>I live in Duckburg</p>
-	<p class="friend">My best friend is Mickey</p>
-	Who is your favourite:
-	<ul id="choose">
-		<li id="Goofy">Goofy</li>
-		<li id="Mickey">Mickey</li>
-		<li id="Pluto">Pluto</li>
-		<li id="Minnie">Minnie</li>
-	</ul>
+  <h1>Recorrer el DOM</h1>
+  <p class="name">My name is Donald</p>
+  <p>I live in Duckburg</p>
+  <p class="friend">My best friend is Mickey</p>
+  Who is your favourite:
+  <ul id="choose">
+    <li id="Goofy">Goofy</li>
+    <li id="Mickey">Mickey</li>
+    <li id="Pluto">Pluto</li>
+    <li id="Minnie">Minnie</li>
+  </ul>
 
   <script>
 
@@ -28,7 +28,7 @@
   document.querySelector("#Mickey").onmouseover = function(e) {
     console.log("QUERY=#Mickey", e);
   };
-    
+
   var elements = document.getElementsByTagName("p");
   for (var i=0; i<elements.length; i++) {
     elements[i].onclick = function(e) {

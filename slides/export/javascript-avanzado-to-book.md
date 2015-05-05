@@ -299,8 +299,8 @@ Es un objeto que **contiene los parámetros** de la función.
 
 ~~~{.javascript}
 function echoArgs() {
-  console.lot(arguments[0]); // Adolfo
-  console.lot(arguments[1]); // Sanz
+  console.log(arguments[0]); // Adolfo
+  console.log(arguments[1]); // Sanz
 }
 echoArgs("Adolfo", "Sanz");
 ~~~
@@ -481,7 +481,7 @@ miBiblioteca = miBiblioteca || {};
 
   var propiedadPrivada = p1;
 
-  namespace.propiedadPrivada = p2;
+  namespace.propiedadPublica = p2;
 
   var metodoPrivado = function() { };
 
