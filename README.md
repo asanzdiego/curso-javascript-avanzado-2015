@@ -18,7 +18,6 @@
 - [HTML](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html)
 - [DOCX](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.docx)
 - [ODT](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.odt)
-- [PDF](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.pdf)
 - [Markdown](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-to-book.md)
 
 ### Ejemplos
