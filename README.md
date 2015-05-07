@@ -41,9 +41,9 @@
   - [08-modulos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/08-modulos.html)
   - [09-namespaces.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/09-namespaces.html)
 - 03-dom
-  - [01-recorrer-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/01-recorrer-dom.html)
-  - [02-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/02-manipular-dom.html)
-  - [03-recorrer-y-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/03-recorrer-y-manipular-dom.html)
+  - [01-recorrer-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/03-dom/01-recorrer-dom.html)
+  - [02-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/03-dom/02-manipular-dom.html)
+  - [03-recorrer-y-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/03-dom/03-recorrer-y-manipular-dom.html)
 
 ### Temario
 

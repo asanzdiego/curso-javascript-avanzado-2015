@@ -13,7 +13,7 @@ echo "FROM=$FROM"
 echo "FOLDERTO=$FOLDERTO"
 echo "TO=$TO"
 
-exit 0
+#exit 0
 
 DATE=`date +"%Y.%m.%d-%H:%M"`
 TO_OLD=$TO'-OLD-'$DATE
