@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Herencia</title>
+</head>
+<body>
+  <h1>Herencia</h1>
+  <p>Ver código fuente y la consola del navegador</p>
+  <script>
+  
+  function ConstructorA(_p1) {
+    this.p1 = _p1;
+  }
+  
+  function ConstructorB(_p1, _p2) {
+    ConstructorA.call(this, _p1);
+    this.p2 = _p2;
+  }
+  
+  ConstructorB.prototype = Object.create(ConstructorA.prototype);
+  
+  var instanciaB = new ConstructorB("p1", "p2");
+  
+  // CADENA DE PROTOTIPOS DE LA INSTANCIA B
+  console.log("instanciaB.__proto__ == ConstructorB.prototype",
+    instanciaB.__proto__ == ConstructorB.prototype); // true
+  console.log("instanciaB.__proto__.__proto__ == ConstructorA.prototype",
+    instanciaB.__proto__.__proto__ == ConstructorA.prototype); // true
+  console.log("instanciaB.__proto__.__proto__.__proto__ == Object.prototype",
+    instanciaB.__proto__.__proto__.__proto__ == Object.prototype); // true
+  console.log("instanciaB.__proto__.__proto__.__proto__.__proto__ == null",
+    instanciaB.__proto__.__proto__.__proto__.__proto__ == null); // true
+
+  console.log("instanciaB instanceof ConstructorB",
+    instanciaB instanceof ConstructorB); // true
+  console.log("instanciaB instanceof ConstructorA",
+    instanciaB instanceof ConstructorA); // true
+  console.log("instanciaB instanceof Object",
+    instanciaB instanceof Object); // true
+  
+  //   Prototipos de la función constructora B
+  console.log("ConstructorB.prototype.__proto__ == ConstructorA.prototype",
+    ConstructorB.prototype.__proto__ == ConstructorA.prototype); // true
+  console.log("ConstructorB.prototype.__proto__.__proto__ == Object.prototype",
+    ConstructorB.prototype.__proto__.__proto__ == Object.prototype); // true
+  console.log("ConstructorB.prototype.__proto__.__proto__.__proto__ == null",
+    ConstructorB.prototype.__proto__.__proto__.__proto__ == null); // true
+  
+  console.log("ConstructorB.__proto__ == Function.prototype",
+    ConstructorB.__proto__ == Function.prototype); // true
+  console.log("ConstructorB.__proto__.__proto__ == Object.prototype",
+    ConstructorB.__proto__.__proto__ == Object.prototype); // true
+  console.log("ConstructorB.__proto__.__proto__ == Object.prototype",
+    ConstructorB.__proto__.__proto__.__proto__ == null); // true
+
+  console.log("ConstructorB instanceof Function",
+    ConstructorB instanceof Function); // true
+  console.log("ConstructorB instanceof Object",
+    ConstructorB instanceof Object); // true
+
+  //   Prototipos de la función constructora A
+  console.log("ConstructorA.prototype.__proto__ == Object.prototype",
+    ConstructorA.prototype.__proto__ == Object.prototype); // true
+  console.log("ConstructorA.prototype.__proto__.__proto__ == null",
+    ConstructorA.prototype.__proto__.__proto__ == null); // true
+
+  console.log("ConstructorA.__proto__ == Function.prototype",
+    ConstructorA.__proto__ == Function.prototype); // true
+  console.log("ConstructorA.__proto__.__proto__ == Object.prototype",
+    ConstructorA.__proto__.__proto__ == Object.prototype); // true
+  console.log("ConstructorA.__proto__.__proto__ == Object.prototype",
+    ConstructorA.__proto__.__proto__.__proto__ == null); // true
+
+  console.log("ConstructorA instanceof Function",
+    ConstructorA instanceof Function); // true
+  console.log("ConstructorA instanceof Object",
+    ConstructorA instanceof Object); // true
+
+  // BIS1 Y BIS2 -> HERENCIA MAL HECHA
+  
+  // BIS1 -> NO LLAMAMOS AL CONSTRUCTOR PADRE
+  // se mantiene la herencia pero se pierde p1
+  function ConstructorBis1(_p1, _p2) {
+    // no llamamos al constructor padre
+    // ConstructorA.call(this, _p1);
+    this.p2 = _p2;
+  }
+  ConstructorBis1.prototype = Object.create(ConstructorA.prototype);
+  var instanciaBis1 = new ConstructorBis1("p1", "p2");
+  
+  console.log("instanciaBis1 instanceof ConstructorBis1",
+    instanciaBis1 instanceof ConstructorBis1); // true
+  console.log("instanciaBis1 instanceof ConstructorA",
+    instanciaBis1 instanceof ConstructorA); // true
+  console.log("instanciaBis1 instanceof Object",
+    instanciaBis1 instanceof Object); // true
+  console.log("instanciaBis1.p1", instanciaBis1.p1); // undefined
+  
+  // BIS2 -> NO MANTENEMOS LA HERENCIA
+  // perdemos la cadena de los prototipos
+  function ConstructorBis2(_p1, _p2) {
+    ConstructorA.call(this, _p1);
+    this.p2 = _p2;
+  }
+  // no mantenemos la herencia
+  //ConstructorBis2.prototype = Object.create(ConstructorA.prototype);
+  var instanciaBis2 = new ConstructorBis2("p1", "p2");
+  
+  console.log("instanciaBis2 instanceof ConstructorBis2",
+    instanciaBis2 instanceof ConstructorBis2); // true
+  console.log("instanciaBis2 instanceof ConstructorA",
+    instanciaBis2 instanceof ConstructorA); // false
+  console.log("instanciaBis2 instanceof Object",
+    instanciaBis2 instanceof Object); // true
+  console.log("instanciaBis2.p1", instanciaBis2.p1); // p1
+  
+  // LOS PROTOTIPOS NOS PERMITEN EXTENDER FUNCIONALIDAD
+  String.prototype.hola = function() {
+    console.log("Hola "+this);
+  }
+  
+  "Adolfo".hola();
+  
+  </script>
+</body>
+</html>

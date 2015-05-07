@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Plantilla</title>
+</head>
+<body>
+  <h1>Plantilla</h1>
+  <p>Ver código fuente y la consola del navegador</p>
+  <script>
+  
+  function Figura(_b, _h) {
+    this.b = _b;
+    this.h = _h;
+  }
+  Figura.prototype.area = function() {
+    console.log("Método no implementado");
+  }
+  
+  function Rectangulo(_b, _h) {
+    Figura.call(this, _b, _h);
+  }
+  Rectangulo.prototype = Object.create(Figura.prototype);
+  Rectangulo.prototype.area = function() {
+    console.log("Area del rectángulo", this.h * this.b);
+  }
+  
+  function Triangulo(_b, _h) {
+    Figura.call(this, _b, _h);
+  }
+  Triangulo.prototype = Object.create(Figura.prototype);
+  Triangulo.prototype.area = function() {
+    console.log("Area del triangulo", (this.h * this.b)/2);
+  }
+  
+  var figuras = [
+    new Rectangulo(4, 2),
+    new Triangulo(4, 2),
+    new Rectangulo(3, 2)
+  ];
+  
+  figuras.forEach(function(figura) {
+    figura.area();
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Modulos</title>
+</head>
+<body>
+  <h2>Modulos</h2>
+  <p>ver el código y la consola</p>
+  <script>
+  
+  miModulo = (function(undefined) {
+
+    var propiedadPrivada = "propiedadPrivada";
+
+    function metodoPrivado() {
+      console.log("metodoPrivado->", propiedadPrivada);
+    };
+
+    // API publica
+    return {
+      metodoPublico1: function () {
+      console.log("metodoPublico1");
+      metodoPrivado();
+      console.log("propiedadPrivada", propiedadPrivada);
+      },
+
+      metodoPublico2: function () {
+      console.log("metodoPublico2");
+      metodoPrivado();
+      console.log("propiedadPrivada", propiedadPrivada);
+      }
+    }
+  }());
+
+  miModulo.metodoPublico1();
+  miModulo.metodoPublico2();
+  console.log("miModulo.propiedadPrivada", miModulo.propiedadPrivada); // undefined
+  // miModulo.metodoPrivado(); // darÃ¡ error
+
+
+  miModuloRevelado = (function(undefined) {
+
+    var propiedadPrivada = "propiedadPrivada";
+
+    function metodoPrivado() {
+      console.log("metodoPrivado->", propiedadPrivada);
+    };
+
+    function metodoPublico1() {
+      console.log("metodoPublico1");
+      metodoPrivado();
+      console.log("propiedadPrivada", propiedadPrivada);
+    };
+
+    function metodoPublico2() {
+      console.log("metodoPublico2");
+      metodoPrivado();
+      console.log("propiedadPrivada", propiedadPrivada);
+    };
+
+    // API pública
+    return {
+      metodoPublico1: metodoPublico1,
+      metodoPublico2: metodoPublico2
+    }
+  }());
+
+  miModuloRevelado.metodoPublico1();
+  miModuloRevelado.metodoPublico2();
+  console.log("miModulo.propiedadPrivada", miModulo.propiedadPrivada); // undefined
+  // miModuloRevelado.metodoPrivado(); // da error
+
+  </script>
+</body>
+</html>
