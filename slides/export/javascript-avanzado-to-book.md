@@ -30,6 +30,12 @@
 
 -  [GPL 3.0](http://www.viti.es/gnu/licenses/gpl.html)
 
+## Ejemplos
+
+Las slides y los códigos de ejemplo los podéis encontrar en:
+
+-  <https://github.com/asanzdiego/curso-javascript-avanzado-2015>
+
 # JavaScript
 
 ## Historia

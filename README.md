@@ -1,6 +1,53 @@
 # Curso de JavaScript Avanzado
+
 ## (Mayo 2015)
+
+### Slides
+
+- [SlideShare](http://www.slideshare.net/asanzdiego/javascript-avanzado)
+- [Deck](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-deck-slides.html)
+- [Deck alternative](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-deck-slides-alternative.html)
+- [Reveal](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-reveal-slides.html)
+- [Reveal alternative](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-reveal-slides-alternative.html)
+- [PDF](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-reveal-slides.pdf)
+- [PDF alternative](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-reveal-slides-alternative.pdf)
+- [Markdown](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-to-slides.md)
+
+### Book
+
+- [HTML](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html)
+- [DOCX](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.docx)
+- [ODT](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.odt)
+- [PDF](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.pdf)
+- [Markdown](http://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado-to-book.md)
+
+### Ejemplos
+
+- 00-Inicio
+  - [01-inicio.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/00-inicio/01-inicio.html)
+- 01-objetos
+  - [01-objetos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/01-objetos/01-objetos.html)
+  - [02-herencia.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/01-objetos/02-herencia.html)
+  - [03-estaticos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/01-objetos/03-estaticos.html)
+  - [04-privados.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/01-objetos/04-privados.html)
+  - [05-polimorfismo.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/01-objetos/05-polimorfismo.html)
+- 02-avanzado
+  - [01-this.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/01-this.html)
+  - [02-call-y-apply.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/02-call-y-apply.html)
+  - [03-arguments.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/03-arguments.html)
+  - [04-funciones.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/04-funciones.html)
+  - [05-anonimas.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/05-anonimas.html)
+  - [06-autoejecutables.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/06-autoejecutables.html)
+  - [07-closures.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/07-closures.html)
+  - [08-modulos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/08-modulos.html)
+  - [09-namespaces.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/09-namespaces.html)
+- 03-dom
+  - [01-recorrer-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/01-recorrer-dom.html)
+  - [02-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/02-manipular-dom.html)
+  - [03-recorrer-y-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/blob/master/src/02-avanzado/03-recorrer-y-manipular-dom.html)
+
 ### Temario
+
 - 1. Acerca de
   - 1.1. Autor
   - 1.2. Licencia
