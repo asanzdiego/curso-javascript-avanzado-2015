@@ -262,7 +262,8 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
 </ul>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">instanciaB</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorB</span>.<span class="fu">prototype</span> <span class="co">// true</span>
 <span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorA</span>.<span class="fu">prototype</span> <span class="co">// true</span>
-<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">Object</span>.<span class="fu">prototype</span> <span class="co">// true instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true</span></code></pre>
+<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">Object</span>.<span class="fu">prototype</span> <span class="co">// true</span>
+<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="kw">null</span> <span class="co">// true</span></code></pre>
 </section><section id="operador-instanceof" class="slide level2">
 <h2><span class="header-section-number">3.11</span> Operador instanceof</h2>
 <ul>
@@ -534,7 +535,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 </section><section id="espacios-de-nombres-i" class="slide level2">
 <h2><span class="header-section-number">4.18</span> Espacios de nombres (I)</h2>
 <ul>
-<li>Para simular espacios de nombre, en JavaScript se anidan objetos.</li>
+<li>Para simular espacios de nombres, en JavaScript se anidan objetos.</li>
 </ul>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">miBiblioteca = miBiblioteca || {};
 
@@ -554,7 +555,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 </section><section id="espacios-de-nombres-ii" class="slide level2">
 <h2><span class="header-section-number">4.19</span> Espacios de nombres (II)</h2>
 <ul>
-<li>Se combinar lo anterior con módulos autoejecutables:</li>
+<li>Se puede combinar lo anterior con módulos autoejecutables:</li>
 </ul>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">
 miBiblioteca = miBiblioteca || {};
@@ -717,6 +718,7 @@ parentNode</code></pre>
 <ul>
 <li><a href="http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/">http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/</a></li>
 <li><a href="http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/">http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/</a></li>
+<li><a href="http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html">http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html</a></li>
 </ul>
 </section><section id="es6-en" class="slide level2">
 <h2><span class="header-section-number">6.11</span> ES6 (EN)</h2>

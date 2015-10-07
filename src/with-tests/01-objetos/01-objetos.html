@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+</head>
+
+  <script>
+    describe("tests", function() {
+
+      var instanciaA1 = {
+        p1: "p 1 de A1",
+        p2: "p 2 de A1"
+      };
+      instanciaA1.p3 = "p 3 de A1";
+      
+      it('instanciaA1 propiedades iniciales', function() {
+        
+        //expect(instanciaA1.p1).toEqual();
+        //expect(instanciaA1.p2).toEqual();
+        //expect(instanciaA1.p3).toEqual();
+      });
+      
+      it('instanciaA1 propiedades borradas', function() {
+        
+        delete instanciaA1.p2;
+        //expect(instanciaA1.p2).toEqual();
+        //expect(instanciaA1).toEqual();
+        instanciaA1.p2 = "p 2 de A1";
+        //expect(instanciaA1.p2).toEqual();
+      });
+      
+      it('instanciaA1 prototipos', function() {
+        
+        //expect(instanciaA1.__proto__).toEqual();
+        //expect(instanciaA1.__proto__.__proto__).toEqual();
+      });
+      
+      // Funcion constructora
+      function ConstructorA (_p1, _p2) {
+        this.p1 = _p1;
+        this.p2 = _p2;
+      }
+      
+      var instanciaA2 = new ConstructorA("p 1 de A3", "p 2 de A2");
+      
+      it('instanciaA2 prototipo', function() {
+        
+        //expect(instanciaA2.__proto__).toEqual();
+      });
+      
+      // MAL HECHO -> función constructora sin new
+      var instanciaA3 = ConstructorA("p 1 de A3", "p 2 de A3");
+      
+      it('instanciaA3', function() {
+        
+        //expect(instanciaA3).toEqual();
+      });
+
+      // MAL HECHO -> función constructora sin new (bis)
+      function ConstructorAbis(_p1, _p2) {
+        this.p1 = _p1;
+        this.p2 = _p2;
+        return this;
+      }
+      
+      var instanciaA4 = ConstructorAbis("p 1 de A4", "p 2 de A4");
+      
+      it('instanciaA4', function() {
+        
+        //expect(instanciaA4).toEqual();
+      });
+      
+      it('instanciaA4 prototipo', function() {
+        
+        //expect(instanciaA4.__proto__).toEqual(); 
+      });
+
+      // "MAL HECHO" -> función constructora sin new (bis)
+      function ConstructorAbis2(_p1, _p2) {
+        return {
+          p1: _p1,
+          p2: _p2
+        };
+      }
+      var instanciaA5 = ConstructorAbis2("p 1 de A5", "p 2 de A5");
+      
+      it('instanciaA5', function() {
+        
+        //expect(instanciaA5).toEqual();
+      });
+      
+      it('instanciaA5 prototipo', function() {
+        
+        //expect(instanciaA5.__proto__).toEqual();
+      });
+
+      // añadir métodos a nuestros objetos (la menos eficiente)
+      function ConstructorB1(_propiedad){
+        this.propiedad = _propiedad;
+        this.metodo = function() {
+          return this.propiedad;
+        }
+      }
+      var instanciaB1 = new ConstructorB1("p de B1");
+      
+      it('instanciaB1 metodo', function() {
+        
+        //expect(instanciaB1.metodo()).toEqual();
+      });
+
+      // añadir métodos a nuestros objetos (la más eficiente)
+      function ConstructorB2(_propiedad){
+        this.propiedad = _propiedad;
+      }
+      ConstructorB2.prototype.metodo = function() {
+        return this.propiedad;
+      };
+      var instanciaB2 = new ConstructorB2("p de B2");
+
+      it('instanciaB2 metodo', function() {
+        
+        //expect(instanciaB2.metodo()).toEqual();
+      });
+      
+    });
+  </script>
+  
+<body>
+</body>
+</html>

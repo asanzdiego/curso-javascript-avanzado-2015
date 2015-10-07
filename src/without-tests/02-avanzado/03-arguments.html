@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arguments</title>
+</head>
+<body>
+  <h1>Arguments</h1>
+  <p>Ver código fuente y la consola del navegador</p>
+  <script>
+  
+  function fn(param0) {
+    
+    console.log("param0", param0);
+    
+    for ( var i = 0; i < arguments.length; i++) {
+      console.log("arguments["+i+"]", arguments[i]);
+    }
+  }
+  
+  fn();
+  fn("Hola", "mundo", 2015);
+  </script>
+</body>
+</html>

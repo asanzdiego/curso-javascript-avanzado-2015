@@ -193,7 +193,8 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
 <p>En el ejemplo anterior:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">instanciaB</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorB</span>.<span class="fu">prototype</span> <span class="co">// true</span>
 <span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorA</span>.<span class="fu">prototype</span> <span class="co">// true</span>
-<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">Object</span>.<span class="fu">prototype</span> <span class="co">// true instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true</span></code></pre>
+<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">Object</span>.<span class="fu">prototype</span> <span class="co">// true</span>
+<span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="kw">null</span> <span class="co">// true</span></code></pre>
 <h2 id="operador-instanceof"><span class="header-section-number">3.8</span> Operador instanceof</h2>
 <p>La expresión <strong>instanciaB instanceof ConstructorA</strong> devolverá true, si el prototipo de la Función ConstructorA, se encuentra en la cadena de prototipos de la instanciaB.</p>
 <p>En el ejemplo anterior:</p>
@@ -382,7 +383,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   }
 }());</code></pre>
 <h2 id="espacios-de-nombres"><span class="header-section-number">4.14</span> Espacios de nombres</h2>
-<p>Para simular espacios de nombre, en JavaScript se anidan objetos.</p>
+<p>Para simular espacios de nombres, en JavaScript se anidan objetos.</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">miBiblioteca = miBiblioteca || {};
 
 <span class="ot">miBiblioteca</span>.<span class="fu">seccion1</span> = <span class="ot">miBiblioteca</span>.<span class="fu">seccion1</span> || {};
@@ -398,7 +399,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   <span class="dt">priopiedad</span>: p2,
   <span class="dt">metodo</span>: <span class="kw">function</span>() { },
 };</code></pre>
-<p>Se combinar lo anterior con módulos autoejecutables:</p>
+<p>Se puede combinar lo anterior con módulos autoejecutables:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">
 miBiblioteca = miBiblioteca || {};
 
@@ -507,6 +508,7 @@ parentNode</code></pre>
 <h2 id="es6-es"><span class="header-section-number">6.8</span> ES6 (ES)</h2>
 <p><a href="http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/">http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/</a></p>
 <p><a href="http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/">http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/</a></p>
+<p><a href="http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html">http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html</a></p>
 <h2 id="es6-en"><span class="header-section-number">6.9</span> ES6 (EN)</h2>
 <p><a href="http://es6-features.org/">http://es6-features.org/</a></p>
 <p><a href="http://kangax.github.io/compat-table/es5/">http://kangax.github.io/compat-table/es5/</a></p>

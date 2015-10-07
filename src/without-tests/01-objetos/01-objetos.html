@@ -22,10 +22,11 @@
   
   console.log("instanciaA1", instanciaA1); // { p1, p2, p3 }
   delete instanciaA1.p2;
-  console.log("instanciaA1", instanciaA1); // { p1, p3 }
   console.log("instanciaA1.p2", instanciaA1.p2); // undefined
+  console.log("instanciaA1", instanciaA1); // { p1, p3 }
   instanciaA1.p2 = "propiedad 2 de A1";
   console.log("instanciaA1.p2", instanciaA1.p2); // propiedad 2 de A1
+  console.log("instanciaA1", instanciaA1); // { p1, p2, p3 }
   
   console.log("instanciaA1.__proto__ == Object.prototype", 
     instanciaA1.__proto__ == Object.prototype); // true

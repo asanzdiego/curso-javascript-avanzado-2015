@@ -20,25 +20,26 @@
   
   // Es false
   // Cadenas vacías
-  if ( ! "" ) console.log( "cadena vacia es false" );
+  if ( ! "" ) console.log( "cadena vacia es false", "" );
   
   // Valores undefined
-  if ( ! variableC ) console.log( "undefined es false" );
+  if ( ! variableC ) console.log( "undefined es false", variableC );
   
   // 0
   var variableC = 0;
-  if ( ! variableC ) console.log( "0 es false" );
+  if ( ! variableC ) console.log( "0 es false", variableC  );
   
+  variableC = [];
   // Arrays vacíos
-  if ( [] ) console.log( "array vacio es true" );
+  if ( variableC ) console.log( "array vacio es true" , variableC  );
   
   // null 
   variableC = null;
-  if ( ! variableC ) console.log( "null es false" );
+  if ( ! variableC ) console.log( "null es false", variableC  );
   
   // NaN
   variableC = 10 / "H";
-  if ( ! variableC ) console.log( "NaN es false" );
+  if ( ! variableC ) console.log( "NaN es false", variableC  );
   </script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recorrer el DOM</title>
+  <style>
+  .bg {
+    background-color: blue;
+  }
+  .txt {
+    color: pink;
+  }
+  </style>
+</head>
+
+<body>
+  
+  <h1>Recorrer y manipular el DOM</h1>
+  <p class="name">My name is Donald</p>
+  <p>I live in Duckburg</p>
+  <p class="friend">My best friend is Mickey</p>
+  Who is your favourite:
+  <ul id="choose">
+    <li id="Goofy">Goofy</li>
+    <li id="Mickey">Mickey</li>
+    <li id="Pluto">Pluto</li>
+    <li id="Minnie">Minnie</li>
+  </ul>
+
+  <script>
+  
+  (function (undefined) {
+  
+    var segundoLi = document.querySelector("body ul li:nth-child(2)");
+    segundoLi.className="bg txt";
+    
+    var parrafo = document.createElement("p");
+    parrafo.innerHTML = "Adios, me llamo <strong>Adolfo</strong>";
+    segundoLi.appendChild(parrafo);
+  
+    var textNode = document.createTextNode("Hola, me llamo <strong>Adolfo</strong>");
+    segundoLi.insertBefore(textNode, parrafo);
+  })();
+
+  </script>
+
+</body>
+  
+</html>

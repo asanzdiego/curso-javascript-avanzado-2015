@@ -31,6 +31,8 @@
 - Las slides y los códigos de ejemplo los podéis encontrar en:
     - <https://github.com/asanzdiego/curso-javascript-avanzado-2015>
 
+
+
 # JavaScript
 
 
@@ -156,7 +158,8 @@ ConstructorB.prototype = Object.create(ConstructorA.prototype);
 ~~~{.javascript}
 instanciaB.__proto__ == ConstructorB.prototype // true
 instanciaB.__proto__.__proto__ == ConstructorA.prototype // true
-instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
+instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true
+instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
 ~~~
 
 ## Operador instanceof
@@ -477,7 +480,7 @@ miModulo = (function() {
 
 ## Espacios de nombres (I)
 
-- Para simular espacios de nombre, en JavaScript se anidan objetos.
+- Para simular espacios de nombres, en JavaScript se anidan objetos.
 
 ~~~{.javascript}
 miBiblioteca = miBiblioteca || {};
@@ -499,7 +502,7 @@ miBiblioteca.seccion2 = {
 
 ## Espacios de nombres (II)
 
-- Se combinar lo anterior con módulos autoejecutables:
+- Se puede combinar lo anterior con módulos autoejecutables:
 
 ~~~{.javascript}
 
@@ -673,6 +676,7 @@ pero en muchos otros es **matar moscas a cañonados**.
 
 - <http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/>
 - <http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/>
+- <http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html>
 
 ## ES6 (EN)
 

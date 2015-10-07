@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+</head>
+
+  <script>
+    describe("Player", function() {
+      
+      it('"1" == 1', function() {
+        //expect("1" == 1).toBeFalsy();
+        //expect("1" == 1).toBeTruthy();
+      });
+      
+      it('"1" === 1', function() {
+        //expect("1" === 1).toBeFalsy();
+        //expect("1" === 1).toBeTruthy();
+      });
+      
+      it('1 === 1', function() {
+        //expect(1 === 1).toBeFalsy();
+        //expect(1 === 1).toBeTruthy();
+      });
+      
+      it('""', function() {
+        //expect("").toBeFalsy();
+        //expect("").toBeTruthy();
+      });
+      
+      it('[]', function() {
+        //expect([]).toBeFalsy();
+        expect([]).toBeTruthy();
+      });
+
+      it('undefined', function() {
+        //expect(undefined).toBeFalsy();
+        //expect(undefined).toBeTruthy();
+      });
+
+      it('1', function() {
+        //expect(1).toBeFalsy();
+        //expect(1).toBeTruthy();
+      });
+      
+      it('0', function() {
+        //expect(0).toBeFalsy();
+        //expect(0).toBeTruthy();
+      });
+
+      it('10 / "a"', function() {
+        //expect(10 / "a").toEqual();
+      });
+      
+      it('10 / "a"' , function() {
+        //expect(10 / "a").toBeFalsy();
+        //expect(10 / "a").toBeTruthy();
+      });
+    });
+  
+  </script>
+  
+<body>
+</body>
+</html>
