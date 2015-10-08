@@ -1,3 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+</head>
+
+  <script>
+    describe("tests", function() {
+      
+      it('miModulo', function() {
+
+        miModulo = (function(undefined) {
+
+          var propiedadPrivada = "propiedadPrivada";
+
+          function metodoPrivado() {
+            return "Privado -> " + propiedadPrivada;
+          };
+
+          // API publica
+          return {
+            metodoPublico1: function () {
+              return "Publico 1 -> " + propiedadPrivada + " " + metodoPrivado();
+            },
+
+            metodoPublico2: function () {
+              return "Publico 2 -> " + propiedadPrivada + " " + metodoPrivado();
+            }
+          }
+        }());
+
+        //expect(miModulo.metodoPublico1()).toEqual();
+        //expect(miModulo.metodoPublico2()).toEqual();
+        //expect(miModulo.propiedadPrivada).toEqual();
+        /*
+        expect(function() {
+          miModulo.metodoPrivado();
+        }).toThrowError();
+        */
+      });
+
+      it('miModuloRevelado', function() {
+        
+        miModuloRevelado = (function(undefined) {
+
+          var propiedadPrivada = "propiedadPrivada";
+
+          var that = this;
+          
+          function metodoPrivado() {
+            return "Privado -> " + propiedadPrivada;
+          };
+
+          function metodoPublico1() {
+            return "Publico 1 -> " + propiedadPrivada + " " + metodoPrivado();
+          };
+
+          function metodoPublico2() {
+            return "Publico 2 -> " + propiedadPrivada + " " + metodoPrivado();
+          };
+
+          // API pública
+          return {
+            metodoPublico1: metodoPublico1,
+            metodoPublico2: metodoPublico2
+          }
+        }());
+
+        //expect(miModuloRevelado.metodoPublico1()).toEqual();
+        //expect(miModuloRevelado.metodoPublico2()).toEqual();
+        //expect(miModuloRevelado.propiedadPrivada).toEqual();
+        /*
+        expect(function() {
+          miModulo.metodoPrivado();
+        }).toThrowError();
+        */
+      });
+    });
+  </script>
+  
+<body>
+</body>
+</html>
+
 <!doctype html>
 <html>
 <head>
@@ -9,67 +102,6 @@
   <p>ver el código y la consola</p>
   <script>
   
-  miModulo = (function(undefined) {
-
-    var propiedadPrivada = "propiedadPrivada";
-
-    function metodoPrivado() {
-      console.log("metodoPrivado->", propiedadPrivada);
-    };
-
-    // API publica
-    return {
-      metodoPublico1: function () {
-      console.log("metodoPublico1");
-      metodoPrivado();
-      console.log("propiedadPrivada", propiedadPrivada);
-      },
-
-      metodoPublico2: function () {
-      console.log("metodoPublico2");
-      metodoPrivado();
-      console.log("propiedadPrivada", propiedadPrivada);
-      }
-    }
-  }());
-
-  miModulo.metodoPublico1();
-  miModulo.metodoPublico2();
-  console.log("miModulo.propiedadPrivada", miModulo.propiedadPrivada); // undefined
-  // miModulo.metodoPrivado(); // darÃ¡ error
-
-
-  miModuloRevelado = (function(undefined) {
-
-    var propiedadPrivada = "propiedadPrivada";
-
-    function metodoPrivado() {
-      console.log("metodoPrivado->", propiedadPrivada);
-    };
-
-    function metodoPublico1() {
-      console.log("metodoPublico1");
-      metodoPrivado();
-      console.log("propiedadPrivada", propiedadPrivada);
-    };
-
-    function metodoPublico2() {
-      console.log("metodoPublico2");
-      metodoPrivado();
-      console.log("propiedadPrivada", propiedadPrivada);
-    };
-
-    // API pública
-    return {
-      metodoPublico1: metodoPublico1,
-      metodoPublico2: metodoPublico2
-    }
-  }());
-
-  miModuloRevelado.metodoPublico1();
-  miModuloRevelado.metodoPublico2();
-  console.log("miModulo.propiedadPrivada", miModulo.propiedadPrivada); // undefined
-  // miModuloRevelado.metodoPrivado(); // da error
 
   </script>
 </body>

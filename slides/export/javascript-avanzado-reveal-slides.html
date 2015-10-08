@@ -119,7 +119,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <div id="only-print-child">
       <h1 class="title">JavaScript Avanzado</h2>
       <h2 class="author">Adolfo Sanz De Diego</h2>
-      <h3 class="date">Mayo 2015</h3>
+      <h3 class="date">Octubre 2015</h3>
     </div>
 </section>
 
@@ -231,8 +231,26 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
  
 <span class="co">// No es estandar y falla en IE</span>
 <span class="ot">objeto</span>.<span class="fu">__proto__</span>;</code></pre>
+</section><section id="eficiencia-i" class="slide level2">
+<h2><span class="header-section-number">3.8</span> Eficiencia (I)</h2>
+<ul>
+<li>Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una <strong>función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo</strong>.</li>
+</ul>
+</section><section id="eficiencia-ii" class="slide level2">
+<h2><span class="header-section-number">3.9</span> Eficiencia (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">ConstructorA</span>(p1) {
+  <span class="kw">this</span>.<span class="fu">p1</span> = p1;
+}
+
+<span class="co">// los métodos los ponenmos en el prototipo</span>
+<span class="ot">ConstructorA</span>.<span class="ot">prototype</span>.<span class="fu">metodo1</span> = <span class="kw">function</span>() {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">p1</span>);
+};</code></pre>
 </section><section id="herencia" class="slide level2">
-<h2><span class="header-section-number">3.8</span> Herencia</h2>
+<h2><span class="header-section-number">3.10</span> Herencia</h2>
 <ul>
 <li>Ejemplo:</li>
 </ul>
@@ -250,13 +268,13 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
 <span class="co">// Prototipo de Función Constructora B apunta al</span>
 <span class="co">// Prototipo de Función Constructora A</span>
 <span class="ot">ConstructorB</span>.<span class="fu">prototype</span> = <span class="ot">Object</span>.<span class="fu">create</span>(<span class="ot">ConstructorA</span>.<span class="fu">prototype</span>);</code></pre>
-</section><section id="cadena-de-prototipos-i" class="slide level2">
-<h2><span class="header-section-number">3.9</span> Cadena de prototipos (I)</h2>
+</section><section id="cadena-de-prototipos" class="slide level2">
+<h2><span class="header-section-number">3.11</span> Cadena de prototipos</h2>
 <ul>
 <li>Cuando se invoca una llamada a una propiedad, <strong>JavaScript primero busca en el propio objeto, y si no lo encuentra busca en su prototipo</strong>, y sino en el prototipo del prototipo, así hasta el prototipo de Object que es null.</li>
 </ul>
-</section><section id="cadena-de-prototipos-ii" class="slide level2">
-<h2><span class="header-section-number">3.10</span> Cadena de prototipos (II)</h2>
+</section><section id="cadena-de-prototipos-de-la-instancia" class="slide level2">
+<h2><span class="header-section-number">3.12</span> Cadena de prototipos de la instancia</h2>
 <ul>
 <li>En el ejemplo anterior:</li>
 </ul>
@@ -264,8 +282,21 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
 <span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">ConstructorA</span>.<span class="fu">prototype</span> <span class="co">// true</span>
 <span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="ot">Object</span>.<span class="fu">prototype</span> <span class="co">// true</span>
 <span class="ot">instanciaB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span> == <span class="kw">null</span> <span class="co">// true</span></code></pre>
+</section><section id="cadena-de-prototipos-de-la-función-constructora" class="slide level2">
+<h2><span class="header-section-number">3.13</span> Cadena de prototipos de la función constructora</h2>
+<ul>
+<li>En el ejemplo anterior:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">expect</span>(<span class="ot">ConstructorB</span>.<span class="fu">__proto__</span>).<span class="fu">toEqual</span>(<span class="ot">Function</span>.<span class="fu">prototype</span>);
+<span class="fu">expect</span>(<span class="ot">ConstructorB</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span>).<span class="fu">toEqual</span>(<span class="ot">Object</span>.<span class="fu">prototype</span>);
+<span class="fu">expect</span>(<span class="ot">ConstructorB</span>.<span class="ot">__proto__</span>.<span class="ot">__proto__</span>.<span class="fu">__proto__</span>).<span class="fu">toEqual</span>(<span class="kw">null</span>);</code></pre>
+</section><section id="esquema-prototipos" class="slide level2">
+<h2><span class="header-section-number">3.14</span> Esquema prototipos</h2>
+<figure>
+<img src="../img/esquema-prototipos.png" alt="Esquema prototipos" /><figcaption>Esquema prototipos</figcaption>
+</figure>
 </section><section id="operador-instanceof" class="slide level2">
-<h2><span class="header-section-number">3.11</span> Operador instanceof</h2>
+<h2><span class="header-section-number">3.15</span> Operador instanceof</h2>
 <ul>
 <li><p>La expresión <strong>instanciaB instanceof ConstructorA</strong> devolverá true, si el prototipo de la Función ConstructorA, se encuentra en la cadena de prototipos de la instanciaB.</p></li>
 <li><p>En el ejemplo anterior:</p></li>
@@ -274,7 +305,7 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
 instanciaB <span class="kw">instanceof</span> ConstructorA; <span class="co">// true</span>
 instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</span></code></pre>
 </section><section id="extensión" class="slide level2">
-<h2><span class="header-section-number">3.12</span> Extensión</h2>
+<h2><span class="header-section-number">3.16</span> Extensión</h2>
 <ul>
 <li><p>Con los prototipos podemos extender la funcionalidad del propio lenguaje.</p></li>
 <li><p>Ejemplo:</p></li>
@@ -284,33 +315,15 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 }
  
 <span class="st">&quot;Adolfo&quot;</span>.<span class="fu">hola</span>(); <span class="co">// &quot;Hola Adolfo&quot;</span></code></pre>
-</section><section id="eficiencia-i" class="slide level2">
-<h2><span class="header-section-number">3.13</span> Eficiencia (I)</h2>
-<ul>
-<li>Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una <strong>función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo</strong>.</li>
-</ul>
-</section><section id="eficiencia-ii" class="slide level2">
-<h2><span class="header-section-number">3.14</span> Eficiencia (II)</h2>
-<ul>
-<li>Ejemplo:</li>
-</ul>
-<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">ConstructorA</span>(p1) {
-  <span class="kw">this</span>.<span class="fu">p1</span> = p1;
-}
-
-<span class="co">// los métodos los ponenmos en el prototipo</span>
-<span class="ot">ConstructorA</span>.<span class="ot">prototype</span>.<span class="fu">metodo1</span> = <span class="kw">function</span>() {
-  <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">p1</span>);
-};</code></pre>
 </section><section id="propiedades-y-métodos-estáticos-i" class="slide level2">
-<h2><span class="header-section-number">3.15</span> Propiedades y métodos estáticos (I)</h2>
+<h2><span class="header-section-number">3.17</span> Propiedades y métodos estáticos (I)</h2>
 <ul>
 <li><p>Lo que se define dentro de la función constructora va a ser propio de la instancia.</p></li>
 <li><p>Pero como hemos dicho, en JavaScript, una función es un objeto, al que podemos añadir tanto atributos como funciones.</p></li>
 <li><p><strong>Añadiendo atributos y funciones a la función constructora obtenemos propiedades y métodos estáticos.</strong></p></li>
 </ul>
 </section><section id="propiedades-y-métodos-estáticos-ii" class="slide level2">
-<h2><span class="header-section-number">3.16</span> Propiedades y métodos estáticos (II)</h2>
+<h2><span class="header-section-number">3.18</span> Propiedades y métodos estáticos (II)</h2>
 <ul>
 <li>Ejemplo:</li>
 </ul>
@@ -323,13 +336,13 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   console.log(<span class="st">&quot;método estático&quot;</span>);
 }</code></pre>
 </section><section id="propiedades-y-métodos-privados-i" class="slide level2">
-<h2><span class="header-section-number">3.17</span> Propiedades y métodos privados (I)</h2>
+<h2><span class="header-section-number">3.19</span> Propiedades y métodos privados (I)</h2>
 <ul>
 <li><p>La visibilidad de objetos depende del contexto.</p></li>
 <li><p>Los contextos en JavaScript son bloques de código entre dos {} y en general, desde uno de ellos, solo tienes acceso a lo que en él se defina y a lo que se defina en otros contextos que contengan al tuyo.</p></li>
 </ul>
 </section><section id="propiedades-y-métodos-privados-ii" class="slide level2">
-<h2><span class="header-section-number">3.18</span> Propiedades y métodos privados (II)</h2>
+<h2><span class="header-section-number">3.20</span> Propiedades y métodos privados (II)</h2>
 <ul>
 <li>Ejemplo:</li>
 </ul>
@@ -345,7 +358,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   }
 }</code></pre>
 </section><section id="polimorfismo" class="slide level2">
-<h2><span class="header-section-number">3.19</span> Polimorfismo</h2>
+<h2><span class="header-section-number">3.21</span> Polimorfismo</h2>
 <ul>
 <li><p>Poder llamar a métodos sintácticamente iguales de objetos de tipos diferentes.</p></li>
 <li><p>Esto se consigue mediante herencia.</p></li>
@@ -461,8 +474,8 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 <pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>(nombre) {
   <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Hola &quot;</span>+nombre);
 })(<span class="st">&quot;mundo&quot;</span>)</code></pre>
-</section><section id="clousures" class="slide level2">
-<h2><span class="header-section-number">4.12</span> Clousures</h2>
+</section><section id="clousures-i" class="slide level2">
+<h2><span class="header-section-number">4.12</span> Clousures (I)</h2>
 <ul>
 <li>Un closure <strong>combina una función y el entorno en que se creó</strong>.</li>
 </ul>
@@ -477,8 +490,13 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 
 <span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma5</span>(<span class="dv">2</span>));  <span class="co">// muestra 7</span>
 <span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma10</span>(<span class="dv">2</span>)); <span class="co">// muestra 12 </span></code></pre>
+</section><section id="clousures-ii" class="slide level2">
+<h2><span class="header-section-number">4.13</span> Clousures (II)</h2>
+<ul>
+<li>En una closures la función interna almacena una <strong>referencia al último valor</strong> de la variable establecido cuando la función externa termina de ejecutarse.</li>
+</ul>
 </section><section id="el-patrón-modulo" class="slide level2">
-<h2><span class="header-section-number">4.13</span> El patrón Modulo</h2>
+<h2><span class="header-section-number">4.14</span> El patrón Modulo</h2>
 <ul>
 <li>Se trata de una función que actúa como contenedor para un contexto de ejecución.</li>
 </ul>
@@ -498,26 +516,26 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   }
 }());</code></pre>
 </section><section id="eficiencia-i-1" class="slide level2">
-<h2><span class="header-section-number">4.14</span> Eficiencia (I)</h2>
+<h2><span class="header-section-number">4.15</span> Eficiencia (I)</h2>
 <ul>
 <li><p>Si se ejecuta desde el navegador, <strong>se suele pasar como parámetro el objeto window para mejorar el rendimiento</strong>. Así cada vez que lo necesitemos el intérprete lo utilizará directamete en lugar de buscarlo remontando niveles.</p></li>
 <li><p>Y también <strong>se suele pasar el parámetro undefined, para evitar los errores que pueden darse si la palabra reservada ha sido reescrita</strong> en alguna parte del código y su valor no corresponda con el esperado.</p></li>
 </ul>
 </section><section id="eficiencia-ii-1" class="slide level2">
-<h2><span class="header-section-number">4.15</span> Eficiencia (II)</h2>
+<h2><span class="header-section-number">4.16</span> Eficiencia (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo = (<span class="kw">function</span>(window, <span class="kw">undefined</span>) {
 
   <span class="co">// El código va aquí</span>
   
 })( window );</code></pre>
 </section><section id="el-patrón-modulo-revelado-i" class="slide level2">
-<h2><span class="header-section-number">4.16</span> El patrón Modulo Revelado (I)</h2>
+<h2><span class="header-section-number">4.17</span> El patrón Modulo Revelado (I)</h2>
 <ul>
 <li><p>El problema del patrón Modulo es pasar un método de privado a público o viceversa.</p></li>
 <li><p>Por ese motivo lo que que se suele hacer es definir todo en el cuerpo, y luego <strong>referenciar solo los públicos en el bloque return</strong>.</p></li>
 </ul>
 </section><section id="el-patrón-modulo-revelado-ii" class="slide level2">
-<h2><span class="header-section-number">4.17</span> El patrón Modulo Revelado (II)</h2>
+<h2><span class="header-section-number">4.18</span> El patrón Modulo Revelado (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo = (<span class="kw">function</span>() {
 
   <span class="kw">function</span> <span class="fu">metodoA</span>() { };
@@ -533,7 +551,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   }
 }());</code></pre>
 </section><section id="espacios-de-nombres-i" class="slide level2">
-<h2><span class="header-section-number">4.18</span> Espacios de nombres (I)</h2>
+<h2><span class="header-section-number">4.19</span> Espacios de nombres (I)</h2>
 <ul>
 <li>Para simular espacios de nombres, en JavaScript se anidan objetos.</li>
 </ul>
@@ -553,7 +571,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   <span class="dt">metodo</span>: <span class="kw">function</span>() { },
 };</code></pre>
 </section><section id="espacios-de-nombres-ii" class="slide level2">
-<h2><span class="header-section-number">4.19</span> Espacios de nombres (II)</h2>
+<h2><span class="header-section-number">4.20</span> Espacios de nombres (II)</h2>
 <ul>
 <li>Se puede combinar lo anterior con módulos autoejecutables:</li>
 </ul>

@@ -1,31 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Call y Apply</title>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
 </head>
-<body>
-  <h1>Call y Apply</h1>
-  <p>Ver código fuente y la consola del navegador</p>
+
   <script>
-  
-  var fn = function(saludo, edad) {
-    console.log(saludo + this.nombre + edad + this.anios);
-  }
-  
-  var adolfo = {
-    nombre: "Adolfo",
-    anios: 15
-  }
-  
-  adolfo.saludo = fn;
-  adolfo.saludo("Hola ", " tu edad es ");
-    
-  fn.call(adolfo, "Bonjour ", " ton age es ");
-  
-  var args = ["Hello ", " your age is "];
-  fn.apply(adolfo, args);
-  
+      
+    describe("tests", function() {
+      
+		it('tests', function() {
+
+			var fn = function(saludo, edad) {
+				return saludo + this.nombre + edad + this.anios;
+			}
+
+			var adolfo = {
+				nombre: "Adolfo",
+				anios: 15
+			}
+
+			adolfo.saludo = fn;
+			//expect(adolfo.saludo("Hola ", " tu edad es ")).toEqual();
+
+			var isabel = {
+				nombre: "Isabel",
+				anios: 15
+			}
+			
+			//expect(fn.call(isabel, "Bonjour ", " ton age es ")).toEqual();
+
+			var args = ["Hello ", " your age is "];
+			//expect(fn.apply(isabel, args)).toEqual();
+
+		});
+    });
   </script>
+  
+<body>
 </body>
 </html>

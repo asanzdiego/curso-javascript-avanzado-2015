@@ -33,9 +33,18 @@
         
         delete instanciaA1.p2;
         expect(instanciaA1.p2).toEqual(undefined);
-        expect(instanciaA1).toEqual({ p1: 'p 1 de A1', p3: 'p 3 de A1' });
+        expect(instanciaA1).toEqual( {
+			p1: "p 1 de A1", 
+			//p2: "p 2 de A1", 
+			p3: "p 3 de A1"
+		} );
         instanciaA1.p2 = "p 2 de A1";
-        expect(instanciaA1.p2).toEqual("p 2 de A1");
+		expect(instanciaA1.p2).toEqual("p 2 de A1");
+        expect(instanciaA1).toEqual( {
+			p1: "p 1 de A1", 
+			p2: "p 2 de A1", 
+			p3: "p 3 de A1"
+		} );
       });
       
       it('instanciaA1 prototipos', function() {
@@ -95,7 +104,10 @@
       
       it('instanciaA5', function() {
         
-        expect(instanciaA5).toEqual({ p1: 'p 1 de A5', p2: 'p 2 de A5' });
+        expect(instanciaA5).toEqual({
+          p1: "p 1 de A5",
+          p2: "p 2 de A5"
+        });
       });
       
       it('instanciaA5 prototipo', function() {

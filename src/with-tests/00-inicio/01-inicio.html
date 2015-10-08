@@ -14,7 +14,7 @@
 </head>
 
   <script>
-    describe("Player", function() {
+    describe("tests", function() {
       
       it('"1" == 1', function() {
         //expect("1" == 1).toBeFalsy();
@@ -40,7 +40,7 @@
         //expect([]).toBeFalsy();
         expect([]).toBeTruthy();
       });
-
+      
       it('undefined', function() {
         //expect(undefined).toBeFalsy();
         //expect(undefined).toBeTruthy();
@@ -50,10 +50,20 @@
         //expect(1).toBeFalsy();
         //expect(1).toBeTruthy();
       });
+	  
+      it('-1', function() {
+        //expect(-1).toBeFalsy();
+        //expect(-1).toBeTruthy();
+      });
       
       it('0', function() {
         //expect(0).toBeFalsy();
         //expect(0).toBeTruthy();
+      });
+      
+      it('"0"', function() {
+        //expect("0").toBeFalsy();
+        //expect("0").toBeTruthy();
       });
 
       it('10 / "a"', function() {

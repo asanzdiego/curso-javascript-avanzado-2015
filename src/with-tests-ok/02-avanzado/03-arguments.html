@@ -1,25 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Arguments</title>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
 </head>
-<body>
-  <h1>Arguments</h1>
-  <p>Ver código fuente y la consola del navegador</p>
+
   <script>
-  
-  function fn(param0) {
-    
-    console.log("param0", param0);
-    
-    for ( var i = 0; i < arguments.length; i++) {
-      console.log("arguments["+i+"]", arguments[i]);
-    }
-  }
-  
-  fn();
-  fn("Hola", "mundo", 2015);
+      
+    describe("tests", function() {
+      
+		it('tests', function() {
+
+			function fn() {
+		
+				var result = "";
+				for ( var i = 0; i < arguments.length; i++) {
+					result = result + arguments[i] + " ";
+				}
+				return result;
+			}
+
+			expect(fn()).toEqual("");
+			expect(fn("Hola", "mundo", 2015)).toEqual("Hola mundo 2015 ");
+		});
+    });
   </script>
+  
+<body>
 </body>
 </html>

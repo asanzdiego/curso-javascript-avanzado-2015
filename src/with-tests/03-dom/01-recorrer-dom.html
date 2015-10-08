@@ -21,41 +21,17 @@
 
   <script>
 
-  document.getElementById("Goofy").onmouseover = function(e) {
-    console.log("ID=Goofy", e);
-  };
+    // añadir evento onmouseover a Goofy con getElementById
+    
+    // añadir evento onmouseover a Mickey con querySelector
 
-  document.querySelector("#Mickey").onmouseover = function(e) {
-    console.log("QUERY=#Mickey", e);
-  };
+    // añadir a todos los elementos P un evento onclick con getElementsByTagName
 
-  var elements = document.getElementsByTagName("p");
-  for (var i=0; i<elements.length; i++) {
-    elements[i].onclick = function(e) {
-      console.log("TAG=p", e);
-    };
-  };
+    // añadir a todos los elementos con class friend un evento onmouseover con getElementsByClassName
 
-  var elements = document.getElementsByClassName("friend");
-  for (var i=0; i<elements.length; i++) {
-    elements[i].onmouseover = function(e) {
-      console.log("CLASS=friend", e);
-    };
-  };
-
-  var elements = document.querySelectorAll("body ul *");
-  for (var i=0; i<elements.length; i++) {
-    elements[i].onclick = function(e) {
-      console.log("QUERY=body ul *", e);
-    };
-  };
-
-  var elements = document.querySelectorAll("body ul li:last-child");
-  for (var i=0; i<elements.length; i++) {
-    elements[i].onclick = function(e) {
-      console.log("QUERY=body ul li:last-child", e);
-    };
-  };
+    // añadir a todos los elementos li que cuelgan de ul y body un evento onclick con querySelectorAll
+    
+    // aañadir al ultimo hijo li que cuelga de ul y body un evento onclick con querySelectorAll
 
   </script>
 

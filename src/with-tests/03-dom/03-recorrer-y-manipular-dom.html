@@ -29,18 +29,19 @@
 
   <script>
   
-  (function (undefined) {
-  
-    var segundoLi = document.querySelector("body ul li:nth-child(2)");
-    segundoLi.className="bg txt";
+    // dentro de una función anónia autoejecutable
     
-    var parrafo = document.createElement("p");
-    parrafo.innerHTML = "Adios, me llamo <strong>Adolfo</strong>";
-    segundoLi.appendChild(parrafo);
-  
-    var textNode = document.createTextNode("Hola, me llamo <strong>Adolfo</strong>");
-    segundoLi.insertBefore(textNode, parrafo);
-  })();
+    // seleccionar el segundo LI
+    
+    // cambiarle la classe y ponerle bg y txt
+    
+    // crear un elemento P con un innerHTML "Adios, me llamo <strong>Adolfo</strong>"
+    
+    // añádir al final del segundo LI el párrafo recien creado
+    
+    // crear un texto que pongo "Hola, me llamo <strong>Adolfo</strong>"
+    
+    // insertar dicho texto antes del parrafo anterior
 
   </script>
 

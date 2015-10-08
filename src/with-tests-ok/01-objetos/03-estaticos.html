@@ -27,11 +27,16 @@
       }
 
       ConstructorA.numeroDeInstancias = function() {
+        if ( ! ConstructorA.contadorDeInstancias ) {
+          return 0;
+        }
         return ConstructorA.contadorDeInstancias;
       }    
       
       it('estaticos', function() {
         
+        expect(ConstructorA.numeroDeInstancias()).toEqual(0);
+		
         var instanciaA1 = new ConstructorA("A1");
         expect(ConstructorA.numeroDeInstancias()).toEqual(1);
 

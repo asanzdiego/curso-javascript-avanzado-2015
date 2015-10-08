@@ -1,6 +1,6 @@
 % JavaScript Avanzado
 % Adolfo Sanz De Diego
-% Mayo 2015
+% Octubre 2015
 
 
 
@@ -126,6 +126,25 @@ Object.getPrototypeOf(objeto);
 objeto.__proto__;
 ~~~
 
+## Eficiencia (I)
+
+- Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una **función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo**.
+
+## Eficiencia (II)
+
+- Ejemplo:
+
+~~~{.javascript}
+function ConstructorA(p1) {
+  this.p1 = p1;
+}
+
+// los métodos los ponenmos en el prototipo
+ConstructorA.prototype.metodo1 = function() {
+  console.log(this.p1);
+};
+~~~
+
 ## Herencia
 
 - Ejemplo:
@@ -147,11 +166,11 @@ function ConstructorB(p1, p2) {
 ConstructorB.prototype = Object.create(ConstructorA.prototype);
 ~~~
 
-## Cadena de prototipos (I)
+## Cadena de prototipos
 
 - Cuando se invoca una llamada a una propiedad, **JavaScript primero busca en el propio objeto, y si no lo encuentra busca en su prototipo**, y sino en el prototipo del prototipo, así hasta el prototipo de Object que es null.
 
-## Cadena de prototipos (II)
+## Cadena de prototipos de la instancia
 
 - En el ejemplo anterior:
 
@@ -161,6 +180,20 @@ instanciaB.__proto__.__proto__ == ConstructorA.prototype // true
 instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true
 instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
 ~~~
+
+## Cadena de prototipos de la función constructora
+
+- En el ejemplo anterior:
+
+~~~{.javascript}
+expect(ConstructorB.__proto__).toEqual(Function.prototype);
+expect(ConstructorB.__proto__.__proto__).toEqual(Object.prototype);
+expect(ConstructorB.__proto__.__proto__.__proto__).toEqual(null);
+~~~
+
+## Esquema prototipos
+
+![Esquema prototipos](../img/esquema-prototipos.png)
 
 ## Operador instanceof
 
@@ -186,25 +219,6 @@ String.prototype.hola = function() {
 }
  
 "Adolfo".hola(); // "Hola Adolfo"
-~~~
-
-## Eficiencia (I)
-
-- Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una **función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo**.
-
-## Eficiencia (II)
-
-- Ejemplo:
-
-~~~{.javascript}
-function ConstructorA(p1) {
-  this.p1 = p1;
-}
-
-// los métodos los ponenmos en el prototipo
-ConstructorA.prototype.metodo1 = function() {
-  console.log(this.p1);
-};
 ~~~
 
 ## Propiedades y métodos estáticos (I)
@@ -396,7 +410,7 @@ saluda(); // Hola mundo
 })("mundo")
 ~~~
 
-## Clousures
+## Clousures (I)
 
 -  Un closure **combina una función y el entorno en que se creó**.
 
@@ -413,6 +427,11 @@ var suma10 = creaSumador(10);
 console.log(suma5(2));  // muestra 7
 console.log(suma10(2)); // muestra 12 
 ~~~
+
+## Clousures (II)
+
+- En una closures la función interna almacena una **referencia al último valor**
+ de la variable establecido cuando la función externa termina de ejecutarse.
 
 ## El patrón Modulo
 

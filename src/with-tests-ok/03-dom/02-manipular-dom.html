@@ -19,17 +19,16 @@
   
   <button id="iniciar">iniciar</button>
   
+  <div id="fin">capa fin</div>
+  
   <script>
   
   document.getElementById("iniciar").onclick = function(e) {
 
-    console.log("parrafo undefined", parrafo);
     var parrafo = document.createElement("p");
     parrafo.id = "parrafo";
     console.log("parrafo con id", parrafo);
     
-    parrafo.innerHTML = "Hola, me llamo <strong>Adolfo</strong>";
-    console.log("parrafo.innerHTML", parrafo.innerHTML);
     parrafo.innerHTML = "Hola, hago un <strong>Append</strong>";
     document.getElementById("inicio").appendChild(parrafo);
     
@@ -41,10 +40,7 @@
     newParrafo.style="background-color: green;";
     
     var textNode = document.createTextNode("Hola, me llamo <strong>Adolfo</strong>");
-    console.log("textNode", textNode);
-    
-    document.getElementById("inicio").replaceChild(textNode, newParrafo);
-    document.getElementById("inicio").removeChild(textNode);
+    document.getElementById("fin").appendChild(textNode);
     
   };
   </script>

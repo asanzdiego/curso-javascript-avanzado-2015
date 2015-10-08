@@ -39,11 +39,18 @@
       Triangulo.prototype.area = function() {
         return ((this.h * this.b)/2);
       }
+	  
+      var pepinillo = {
+        area: function() {
+          return 5;
+        }
+      };
 
       var figuras = [
         new Rectangulo(4, 2),
         new Triangulo(4, 2),
-        new Figura(4, 2)
+        new Figura(4, 2),
+        pepinillo,
       ];
 
       it('areas', function() {
@@ -55,6 +62,7 @@
           figuras[2].area();
         }).toThrow();
         */
+        //expect(figuras[3].area()).toEqual();
       });
     });
   </script>

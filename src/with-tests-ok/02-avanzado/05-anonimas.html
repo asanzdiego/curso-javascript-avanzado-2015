@@ -1,55 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Anónimas</title>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
 </head>
-<body>
-  <h1>Funciones anónimas</h1>
-  <p>Ver código fuente y la consola del navegador</p>
+
   <script>
-  
-  // definición fuinción que ejecuta funciones
-  function ejecuta(func) {
-    func();
-  }
-  
-  // ejecución función anónima
-  ejecuta(function() {
-    console.log("mi primera función anónima");
-  });
-  
-  // función que devuelve una función anónima
-  function saludador(nombre) {
-    return function() {
-      console.log("Hola "+nombre);
-    }
-  }
-  
-  var saluda1 = saludador("mundo 1");
-  saluda1();
-  
-  var saluda2 = function() {
-    console.log("Hola "+"mundo 2");
-  };
-  saluda2();
-  
-  ejecuta(saluda1);
-  
-  // función que devuelve una función anónima con un parametro
-  function saludadorEdad(nombre) {
-    return function(edad) {
-      console.log("Hola "+nombre+" tu edad es "+edad);
-    }
-  }
-  
-  var holaAdolfo = saludadorEdad("Adolfo");
-  holaAdolfo(15);
-  holaAdolfo(20);
-  
-  var holaIsabel = saludadorEdad("Isabel");
-  holaIsabel(14);
-  holaIsabel(19);
+    describe("tests", function() {
+      
+      it('tests', function() {
+
+        // definición función que ejecuta funciones
+        function ejecuta(func) {
+          return func();
+        }
+
+        // ejecución función anónima
+        expect(
+          ejecuta(function() {
+            return "mi primera función anónima";
+          })
+        ).toEqual("mi primera función anónima");
+        
+        // función que devuelve una función anónima
+        function saludador(nombre) {
+          return function() {
+            return "Hola "+nombre;
+          }
+        }
+
+        var saluda1 = function() {
+          return "Hola "+"mundo 1";
+        };
+        expect(saluda1()).toEqual("Hola mundo 1");
+
+        var saluda2 = saludador("mundo 2");
+        expect(saluda2()).toEqual("Hola mundo 2");
+
+        // rizando el rizo
+        expect(ejecuta(saluda2)).toEqual("Hola mundo 2");
+
+        // función que devuelve una función anónima con un parametro
+        function saludadorEdad(nombre) {
+          return function(edad) {
+            return "Hola "+nombre+" tu edad es "+edad;
+          }
+        }
+
+        var holaAdolfo = saludadorEdad("Adolfo");
+        expect(holaAdolfo(15)).toEqual("Hola Adolfo tu edad es 15");
+        expect(holaAdolfo(20)).toEqual("Hola Adolfo tu edad es 20");
+
+        var holaIsabel = saludadorEdad("Isabel");
+        expect(holaIsabel(14)).toEqual("Hola Isabel tu edad es 14");
+        expect(holaIsabel(19)).toEqual("Hola Isabel tu edad es 19");
+
+      });
+    });
   </script>
+  
+<body>
 </body>
 </html>

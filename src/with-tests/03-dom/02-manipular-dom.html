@@ -19,32 +19,33 @@
   
   <button id="iniciar">iniciar</button>
   
+  <div id="fin">capa fin</div>
+  
   <script>
   
   document.getElementById("iniciar").onclick = function(e) {
 
-    console.log("parrafo undefined", parrafo);
-    var parrafo = document.createElement("p");
-    parrafo.id = "parrafo";
-    console.log("parrafo con id", parrafo);
+    // crear un elemento P con un id=parrafo
+
+    // mostrar por consola el párrafo creado
     
-    parrafo.innerHTML = "Hola, me llamo <strong>Adolfo</strong>";
-    console.log("parrafo.innerHTML", parrafo.innerHTML);
-    parrafo.innerHTML = "Hola, hago un <strong>Append</strong>";
-    document.getElementById("inicio").appendChild(parrafo);
+    // añadir al innerHTML del párrafo creado "Hola, hago un <strong>Append</strong>>"
     
-    var newParrafo = document.createElement("p");
-    newParrafo.innerHTML = "Hola, hago un <strong>insertBefore</strong>";
-    document.getElementById("inicio").insertBefore(newParrafo, parrafo);
+    // añadir el párrafo creeado al final del elemento inicio
     
-    parrafo.className="bg-red txt-white";
-    newParrafo.style="background-color: green;";
+    // crear un nuevo elemento P
     
-    var textNode = document.createTextNode("Hola, me llamo <strong>Adolfo</strong>");
-    console.log("textNode", textNode);
+    // añadir al innerHTML de este segundo párrafo "Hola, hago un <strong>insertBefore</strong>";
     
-    document.getElementById("inicio").replaceChild(textNode, newParrafo);
-    document.getElementById("inicio").removeChild(textNode);
+    // añadir el este segundo párrafo antes que el párrafo creado antes
+    
+    // poner las classes bg-red y txt-white al primer párrafo creado
+    
+    // poner un style background-color: green; al segundo párrafo creado
+    
+    // crear un nodo de texto con "Hola, me llamo <strong>Adolfo</strong>"
+    
+    // añadir el texto creado al final del del elemento final
     
   };
   </script>

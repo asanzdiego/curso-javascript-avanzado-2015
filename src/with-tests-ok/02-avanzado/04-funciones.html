@@ -1,31 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Funciones</title>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
 </head>
-<body>
-  <h1>Funciones</h1>
-  <p>Ver código fuente y la consola del navegador</p>
+
   <script>
+    describe("tests", function() {
+      
+      it('tests', function() {
 
-  function holaMundo1() {
-    console.log("Hola Mundo 1");
-  }
-  holaMundo1();
+        function holaMundo1() {
+          return "Hola Mundo 1";
+        }
+        expect(holaMundo1()).toEqual("Hola Mundo 1");
 
-  var holaMundo2 = function() {
-    console.log("Hola Mundo 2");
-  }
-  holaMundo2();
-  
-  function saluda() {
-    console.log("Hola");
-  }
-  function ejecuta(func) {
-    func();
-  }
-  ejecuta(saluda);
+        var holaMundo2 = function() {
+          return "Hola Mundo 2";
+        }
+        expect(holaMundo2()).toEqual("Hola Mundo 2");
+
+        function saluda() {
+          return "Hola";
+        }
+        function ejecuta(func) {
+          return func();
+        }
+        expect(ejecuta(saluda)).toEqual("Hola");
+
+      });
+    });
   </script>
+  
+<body>
 </body>
 </html>
