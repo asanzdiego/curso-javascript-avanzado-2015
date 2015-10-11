@@ -18,21 +18,27 @@
   <div id="inicio">capa inicio</div>
   
   <button id="iniciar">iniciar</button>
+  <button id="sustituir">sustituir</button>
+  <button id="eliminar">eliminar</button>
   
   <div id="fin">capa fin</div>
   
   <script>
   
+  var parrafo = null;
+  var newParrafo = null;
+  var parrafoSustituto = null;
+    
   document.getElementById("iniciar").onclick = function(e) {
 
-    var parrafo = document.createElement("p");
+    parrafo = document.createElement("p");
     parrafo.id = "parrafo";
     console.log("parrafo con id", parrafo);
     
     parrafo.innerHTML = "Hola, hago un <strong>Append</strong>";
     document.getElementById("inicio").appendChild(parrafo);
     
-    var newParrafo = document.createElement("p");
+    newParrafo = document.createElement("p");
     newParrafo.innerHTML = "Hola, hago un <strong>insertBefore</strong>";
     document.getElementById("inicio").insertBefore(newParrafo, parrafo);
     
@@ -43,6 +49,20 @@
     document.getElementById("fin").appendChild(textNode);
     
   };
+    
+  document.getElementById("sustituir").onclick = function(e) {
+    
+    parrafoSustituto = document.createElement("p");
+    parrafoSustituto.innerHTML = "Hola, soy el nuevo";
+    
+    document.getElementById("inicio").replaceChild(parrafoSustituto, parrafo);
+  };
+    
+  document.getElementById("eliminar").onclick = function(e) {
+    
+    document.getElementById("inicio").removeChild(parrafoSustituto);
+  };
+  
   </script>
 
 </body>
