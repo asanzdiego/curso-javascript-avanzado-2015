@@ -116,12 +116,12 @@ var objeto = new Persona("Adolfo", "@asanzdiego");
 
 ## Prototipos (II)
 
-- Podemos acceder al objeto prototipo de un objeto: 
+- Podemos acceder al objeto prototipo de un objeto:
 
 ~~~{.javascript}
 // Falla en Opera o IE <= 8
 Object.getPrototypeOf(objeto);
- 
+
 // No es estandar y falla en IE
 objeto.__proto__;
 ~~~
@@ -217,7 +217,7 @@ instanciaB instanceof Object; // true
 String.prototype.hola = function() {
   return "Hola "+this;
 }
- 
+
 "Adolfo".hola(); // "Hola Adolfo"
 ~~~
 
@@ -425,7 +425,7 @@ var suma5 = creaSumador(5);
 var suma10 = creaSumador(10);
 
 console.log(suma5(2));  // muestra 7
-console.log(suma10(2)); // muestra 12 
+console.log(suma10(2)); // muestra 12
 ~~~
 
 ## Clousures (II)
@@ -443,12 +443,12 @@ miModulo = (function() {
   var propiedadPrivada;
 
   function metodoPrivado() { };
- 
+
   // API publica
   return {
     metodoPublico1: function () {
     },
- 
+
     metodoPublico2: function () {
     }
   }
@@ -467,7 +467,7 @@ miModulo = (function() {
 miModulo = (function(window, undefined) {
 
   // El código va aquí
-  
+
 })( window );
 ~~~
 
@@ -488,7 +488,7 @@ miModulo = (function() {
   function metodoB() { };
 
   function metodoC() { };
- 
+
   // API publica
   return {
     metodoPublico1: metodoA,
@@ -549,7 +549,7 @@ miBiblioteca = miBiblioteca || {};
 ## ¿Qué es DOM?
 
 - Acrónimo de **Document Object Model**
-- Es un conjunto de utilidades específicamente diseñadas para 
+- Es un conjunto de utilidades específicamente diseñadas para
 **manipular documentos XML, y por extensión documentos XHTML y HTML**.
 - DOM transforma internamente el archivo XML en una estructura más fácil de manejar
 formada por una jerarquía de nodos.
@@ -624,10 +624,55 @@ ownerDocument
 parentNode
 ~~~
 
-## jQuery
+## Librerías y Frameworks
 
 - **jQuery** puede ser muy util en ciertos casos,
 pero en muchos otros es **matar moscas a cañonados**.
+
+- Terminar esta sección
+
+
+
+# Eventos
+
+
+
+## Suscripción
+
+## Propagación
+
+## PubSub
+
+## WebSockets
+
+
+
+# AJAX
+
+
+
+## JSON, JSONP, CORS
+
+## Uso de APIs
+
+
+
+# Inyección de dependencias
+
+
+
+## AMD (RequireJS)
+
+## CommonJS (Browserify)
+
+
+
+# ECMAScript6
+
+## Principales Novedades
+
+## Como usarlo hoy
+
 
 
 
@@ -701,4 +746,3 @@ pero en muchos otros es **matar moscas a cañonados**.
 
 - <http://es6-features.org/>
 - <http://kangax.github.io/compat-table/es5/>
-
