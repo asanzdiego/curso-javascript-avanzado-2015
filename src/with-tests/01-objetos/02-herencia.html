@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+</head>
+
+  <script>
+    describe("tests", function() {
+
+      function ConstructorA(_p1) {
+        this.p1 = _p1;
+      }
+
+      function ConstructorB(_p1, _p2) {
+        ConstructorA.call(this, _p1);
+        this.p2 = _p2;
+      }
+
+      ConstructorB.prototype = Object.create(ConstructorA.prototype);
+
+      var instanciaB = new ConstructorB("p1", "p2");
+      
+      it('instanciaB prototipos', function() {
+        //expect(instanciaB.__proto__).toEqual();
+        //expect(instanciaB.__proto__.__proto__).toEqual();
+        //expect(instanciaB.__proto__.__proto__.__proto__).toEqual();
+        //expect(instanciaB.__proto__.__proto__.__proto__.__proto__).toEqual();
+      });
+      
+      it('instanciaB instanceof', function() {
+        
+        //expect(instanciaB instanceof ConstructorB).toBeFalsy();
+        //expect(instanciaB instanceof ConstructorB).toBeTruthy();
+
+        //expect(instanciaB instanceof ConstructorA).toBeFalsy();
+        //expect(instanciaB instanceof ConstructorA).toBeTruthy();
+
+        //expect(instanciaB instanceof Object).toBeFalsy();
+        //expect(instanciaB instanceof Object).toBeTruthy();
+      });
+      
+      it('ConstructorB prototipos', function() {
+        
+        //expect(ConstructorB.prototype.__proto__).toEqual();
+        //expect(ConstructorB.prototype.__proto__.__proto__).toEqual();
+        //expect(ConstructorB.prototype.__proto__.__proto__.__proto__).toEqual();
+
+        //expect(ConstructorB.__proto__).toEqual();
+        //expect(ConstructorB.__proto__.__proto__).toEqual();
+        //expect(ConstructorB.__proto__.__proto__.__proto__).toEqual();
+      });
+      
+      it('ConstructorB instanceof', function() {
+        
+        //expect(ConstructorB instanceof Function).toBeFalsy();
+        //expect(ConstructorB instanceof Function).toBeTruthy();
+
+        //expect(ConstructorB instanceof Object).toBeFalsy();
+        //expect(ConstructorB instanceof Object).toBeTruthy();
+      });
+      
+      it('ConstructorA prototipos', function() {
+        
+        //expect(ConstructorA.prototype.__proto__).toEqual();
+        //expect(ConstructorA.prototype.__proto__.__proto__).toEqual();
+
+        //expect(ConstructorA.__proto__).toEqual();
+        //expect(ConstructorA.__proto__.__proto__).toEqual();
+        //expect(ConstructorA.__proto__.__proto__.__proto__).toEqual();
+      });
+      
+      it('ConstructorA instanceof', function() {
+        
+        //expect(ConstructorA instanceof Function).toBeFalsy();
+        //expect(ConstructorA instanceof Function).toBeTruthy();
+
+        //expect(ConstructorA instanceof Object).toBeFalsy();
+        //expect(ConstructorA instanceof Object).toBeTruthy();
+      });
+
+      // BIS1 -> NO LLAMAMOS AL CONSTRUCTOR PADRE
+      // se mantiene la herencia pero se pierde p1
+      function ConstructorBis1(_p1, _p2) {
+        // no llamamos al constructor padre
+        // ConstructorA.call(this, _p1);
+        this.p2 = _p2;
+      }
+      ConstructorBis1.prototype = Object.create(ConstructorA.prototype);
+      var instanciaBis1 = new ConstructorBis1("p1", "p2");
+      
+      it('instanciaBis1 instanceof', function() {
+        
+        //expect(instanciaBis1 instanceof ConstructorBis1).toBeFalsy();
+        //expect(instanciaBis1 instanceof ConstructorBis1).toBeTruthy();
+
+        //expect(instanciaBis1 instanceof ConstructorA).toBeFalsy();
+        //expect(instanciaBis1 instanceof ConstructorA).toBeTruthy();
+
+        //expect(instanciaBis1 instanceof Object).toBeFalsy();
+        //expect(instanciaBis1 instanceof Object).toBeTruthy();
+      });
+      
+      it('instanciaBis1 propiedad', function() {
+        
+        //expect(instanciaBis1.p1).toEqual();
+      });
+      
+      // BIS2 -> NO MANTENEMOS LA HERENCIA
+      // perdemos la cadena de los prototipos
+      function ConstructorBis2(_p1, _p2) {
+        ConstructorA.call(this, _p1);
+        this.p2 = _p2;
+      }
+      // no mantenemos la herencia
+      //ConstructorBis2.prototype = Object.create(ConstructorA.prototype);
+      var instanciaBis2 = new ConstructorBis2("p1", "p2");
+
+      it('instanciaBis2 instanceof', function() {
+        
+        //expect(instanciaBis2 instanceof ConstructorBis2).toBeFalsy();
+        //expect(instanciaBis2 instanceof ConstructorBis2).toBeTruthy();
+
+        //expect(instanciaBis2 instanceof ConstructorA).toBeFalsy();
+        //expect(instanciaBis2 instanceof ConstructorA).toBeTruthy();
+
+        //expect(instanciaBis2 instanceof Object).toBeFalsy();
+        //expect(instanciaBis2 instanceof Object).toBeTruthy();
+      });
+      
+      it('instanciaBis2 propiedad', function() {
+        
+        //expect(instanciaBis2.p1).toEqual();
+      });
+
+      String.prototype.hola = function() {
+        return "Hola "+this;
+      }
+      
+      it('extender funcionalidad', function() {
+        
+        //expect("Adolfo".hola()).toEqual();
+      });
+
+    });
+  </script>
+  
+<body>
+</body>
+</html>

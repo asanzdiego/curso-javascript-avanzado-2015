@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+</head>
+
+  <script>
+    describe("tests", function() {
+      
+      it('miBiblioteca1', function() {
+
+        var miBiblioteca1 = miBiblioteca1 || {};
+
+        miBiblioteca1.seccion1 = miBiblioteca1.seccion1 || {};
+
+        miBiblioteca1.seccion1 = {
+          priopiedad: "propiedad seccion 1",
+          metodo: function() {
+            return "metodo seccion 1";
+          }
+        };
+
+        miBiblioteca1.seccion2 = miBiblioteca1.seccion2 || {};
+
+        miBiblioteca1.seccion2 = {
+          priopiedad: "propiedad seccion 2",
+          metodo: function() {
+            return "metodo seccion 2";
+          }
+        };
+
+        expect(miBiblioteca1.seccion1.priopiedad).toEqual("propiedad seccion 1");
+        expect(miBiblioteca1.seccion2.priopiedad).toEqual("propiedad seccion 2");
+
+        expect(miBiblioteca1.seccion1.metodo()).toEqual("metodo seccion 1");
+        expect(miBiblioteca1.seccion2.metodo()).toEqual("metodo seccion 2");
+      });
+      
+      it('miBiblioteca2', function() {
+        
+        var miBiblioteca2 = miBiblioteca2 || {};
+
+        (function(namespace) {
+
+          var propiedadPrivada = "propiedad privada";
+
+          namespace.propiedadPublica = "propiedad publica";
+
+          var metodoPrivado = function() {
+            return "metodoPrivado";
+          };
+
+          namespace.metodoPublico = function() {
+            return "metodoPublico";
+          };
+
+        }(miBiblioteca2));
+
+        expect(miBiblioteca2.propiedadPrivada).toEqual(undefined);
+        expect(miBiblioteca2.propiedadPublica).toEqual("propiedad publica");
+
+        expect(miBiblioteca2.metodoPublico()).toEqual("metodoPublico");
+        expect(function() {
+          miBiblioteca2.metodoPrivado();
+        }).toThrowError("miBiblioteca2.metodoPrivado is not a function");
+      });
+    });
+  </script>
+  
+<body>
+</body>
+</html>

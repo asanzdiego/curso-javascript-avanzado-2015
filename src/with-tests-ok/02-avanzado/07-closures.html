@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+</head>
+
+  <script>
+    describe("tests", function() {
+      
+      it('crearSumador', function() {
+
+        function creaSumador(x) {
+          return function(y) {
+            return x + y;
+          };
+        }
+
+        var suma5 = creaSumador(5);
+        var suma10 = creaSumador(10);
+
+        expect(suma5(2)).toEqual(7);
+        expect(suma10(2)).toEqual(12);
+      });
+      
+      it('crearClosureA', function() {
+  
+        var ejecutaA1 = null;
+        var ejecutaA2 = null;
+
+        (function() {
+
+          var num = 10;
+          ejecutaA1 = function() {
+            return num;
+          };
+          num++;
+          ejecutaA2 = function() {
+            return num;
+          };
+        })();
+        
+        expect(ejecutaA1()).toEqual(11);
+        expect(ejecutaA2()).toEqual(11);
+      });
+      
+      it('crearClosureB', function() {
+        
+        var ejecutaB1 = null;
+        var ejecutaB2 = null;
+        var ejecutaB3 = null;
+
+        (function() {
+
+          var num = 10;
+          ejecutaB1 = function() {
+            return num;
+          };
+          ejecutaB2 = function() {
+            return num+1;
+          };
+          ejecutaB3 = function() {
+            return num+1;
+          };
+        })();
+
+        expect(ejecutaB1()).toEqual(10);
+        expect(ejecutaB2()).toEqual(11);
+        expect(ejecutaB3()).toEqual(11);
+      });
+      
+      it('crearClosureC', function() {
+        
+        var ejecutaC1 = null;
+        var ejecutaC2 = null;
+        var ejecutaC3 = null;
+
+        (function() {
+
+          var num = 10;
+          ejecutaC1 = function() {
+            var n = num;
+            return n;
+          };
+          ejecutaC2 = function() {
+            var n = ++num;
+            return n;
+          };
+          ejecutaC3 = function() {
+            var n = ++num;
+            return n;
+          };
+        })();
+
+        expect(ejecutaC1()).toEqual(10);
+        expect(ejecutaC2()).toEqual(11);
+        expect(ejecutaC3()).toEqual(12);
+        expect(ejecutaC1()).toEqual(12);
+        expect(ejecutaC2()).toEqual(13);
+        expect(ejecutaC3()).toEqual(14);
+      });
+      
+      it('that', function() {
+        
+        // acceso a atributos públicos desde métodos privados
+        function Constructor(msjPrivado, msjPublico) {
+
+          var propiedadPrivada = msjPrivado;
+          this.propiedadPublica = msjPublico;
+
+          // La variable 'that' será guardada en el closure para ser 
+          // utilizada en su momento por la función metodoPrivado()
+          var that = this; // también se suele poner self
+
+          var metodoPrivado = function () {
+            return propiedadPrivada + that.propiedadPublica;
+          };
+
+          Constructor.prototype.metodoPublico = function () {
+            return metodoPrivado();
+          };
+        }
+
+        var instancia = new Constructor("PRIVADO", "PUBLICO");
+        expect(instancia.metodoPublico()).toEqual("PRIVADOPUBLICO");
+      });
+      
+      it('timeouts', function() {
+
+        function muestraSuma(a, b) {
+          return function() {
+            alert(a + "+" + b + "=" + (a+b));
+          }
+        }
+        
+        var suma = muestraSuma(10, 15);
+
+        // ejecutar dentro de un segundo
+        setTimeout(suma, 1000);
+      });
+    });
+  </script>
+  
+<body>
+</body>
+</html>

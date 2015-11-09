@@ -1,6 +1,6 @@
 % JavaScript Avanzado
 % Adolfo Sanz De Diego
-% Mayo 2015
+% Octubre 2015
 
 
 
@@ -25,6 +25,11 @@
 
 - **El código fuente de los programas están bajo una licencia:**
     - [GPL 3.0](http://www.viti.es/gnu/licenses/gpl.html)
+
+## Ejemplos
+
+- Las slides y los códigos de ejemplo los podéis encontrar en:
+    - <https://github.com/asanzdiego/curso-javascript-avanzado-2015>
 
 
 
@@ -111,14 +116,33 @@ var objeto = new Persona("Adolfo", "@asanzdiego");
 
 ## Prototipos (II)
 
-- Podemos acceder al objeto prototipo de un objeto: 
+- Podemos acceder al objeto prototipo de un objeto:
 
 ~~~{.javascript}
 // Falla en Opera o IE <= 8
 Object.getPrototypeOf(objeto);
- 
+
 // No es estandar y falla en IE
 objeto.__proto__;
+~~~
+
+## Eficiencia (I)
+
+- Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una **función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo**.
+
+## Eficiencia (II)
+
+- Ejemplo:
+
+~~~{.javascript}
+function ConstructorA(p1) {
+  this.p1 = p1;
+}
+
+// los métodos los ponenmos en el prototipo
+ConstructorA.prototype.metodo1 = function() {
+  console.log(this.p1);
+};
 ~~~
 
 ## Herencia
@@ -142,19 +166,34 @@ function ConstructorB(p1, p2) {
 ConstructorB.prototype = Object.create(ConstructorA.prototype);
 ~~~
 
-## Cadena de prototipos (I)
+## Cadena de prototipos
 
 - Cuando se invoca una llamada a una propiedad, **JavaScript primero busca en el propio objeto, y si no lo encuentra busca en su prototipo**, y sino en el prototipo del prototipo, así hasta el prototipo de Object que es null.
 
-## Cadena de prototipos (II)
+## Cadena de prototipos de la instancia
 
 - En el ejemplo anterior:
 
 ~~~{.javascript}
 instanciaB.__proto__ == ConstructorB.prototype // true
 instanciaB.__proto__.__proto__ == ConstructorA.prototype // true
-instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
+instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true
+instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
 ~~~
+
+## Cadena de prototipos de la función constructora
+
+- En el ejemplo anterior:
+
+~~~{.javascript}
+expect(ConstructorB.__proto__).toEqual(Function.prototype);
+expect(ConstructorB.__proto__.__proto__).toEqual(Object.prototype);
+expect(ConstructorB.__proto__.__proto__.__proto__).toEqual(null);
+~~~
+
+## Esquema prototipos
+
+![Esquema prototipos](../img/esquema-prototipos.png)
 
 ## Operador instanceof
 
@@ -178,27 +217,8 @@ instanciaB instanceof Object; // true
 String.prototype.hola = function() {
   return "Hola "+this;
 }
- 
+
 "Adolfo".hola(); // "Hola Adolfo"
-~~~
-
-## Eficiencia (I)
-
-- Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una **función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo**.
-
-## Eficiencia (II)
-
-- Ejemplo:
-
-~~~{.javascript}
-function ConstructorA(p1) {
-  this.p1 = p1;
-}
-
-// los métodos los ponenmos en el prototipo
-ConstructorA.prototype.metodo1 = function() {
-  console.log(this.p1);
-};
 ~~~
 
 ## Propiedades y métodos estáticos (I)
@@ -390,7 +410,7 @@ saluda(); // Hola mundo
 })("mundo")
 ~~~
 
-## Clousures
+## Clousures (I)
 
 -  Un closure **combina una función y el entorno en que se creó**.
 
@@ -405,8 +425,13 @@ var suma5 = creaSumador(5);
 var suma10 = creaSumador(10);
 
 console.log(suma5(2));  // muestra 7
-console.log(suma10(2)); // muestra 12 
+console.log(suma10(2)); // muestra 12
 ~~~
+
+## Clousures (II)
+
+- En una closures la función interna almacena una **referencia al último valor**
+ de la variable establecido cuando la función externa termina de ejecutarse.
 
 ## El patrón Modulo
 
@@ -418,12 +443,12 @@ miModulo = (function() {
   var propiedadPrivada;
 
   function metodoPrivado() { };
- 
+
   // API publica
   return {
     metodoPublico1: function () {
     },
- 
+
     metodoPublico2: function () {
     }
   }
@@ -442,7 +467,7 @@ miModulo = (function() {
 miModulo = (function(window, undefined) {
 
   // El código va aquí
-  
+
 })( window );
 ~~~
 
@@ -463,7 +488,7 @@ miModulo = (function() {
   function metodoB() { };
 
   function metodoC() { };
- 
+
   // API publica
   return {
     metodoPublico1: metodoA,
@@ -474,7 +499,7 @@ miModulo = (function() {
 
 ## Espacios de nombres (I)
 
-- Para simular espacios de nombre, en JavaScript se anidan objetos.
+- Para simular espacios de nombres, en JavaScript se anidan objetos.
 
 ~~~{.javascript}
 miBiblioteca = miBiblioteca || {};
@@ -496,7 +521,7 @@ miBiblioteca.seccion2 = {
 
 ## Espacios de nombres (II)
 
-- Se combinar lo anterior con módulos autoejecutables:
+- Se puede combinar lo anterior con módulos autoejecutables:
 
 ~~~{.javascript}
 
@@ -524,7 +549,7 @@ miBiblioteca = miBiblioteca || {};
 ## ¿Qué es DOM?
 
 - Acrónimo de **Document Object Model**
-- Es un conjunto de utilidades específicamente diseñadas para 
+- Es un conjunto de utilidades específicamente diseñadas para
 **manipular documentos XML, y por extensión documentos XHTML y HTML**.
 - DOM transforma internamente el archivo XML en una estructura más fácil de manejar
 formada por una jerarquía de nodos.
@@ -599,10 +624,55 @@ ownerDocument
 parentNode
 ~~~
 
-## jQuery
+## Librerías y Frameworks
 
 - **jQuery** puede ser muy util en ciertos casos,
 pero en muchos otros es **matar moscas a cañonados**.
+
+- Terminar esta sección
+
+
+
+# Eventos
+
+
+
+## Suscripción
+
+## Propagación
+
+## PubSub
+
+## WebSockets
+
+
+
+# AJAX
+
+
+
+## JSON, JSONP, CORS
+
+## Uso de APIs
+
+
+
+# Inyección de dependencias
+
+
+
+## AMD (RequireJS)
+
+## CommonJS (Browserify)
+
+
+
+# ECMAScript6
+
+## Principales Novedades
+
+## Como usarlo hoy
+
 
 
 
@@ -670,9 +740,9 @@ pero en muchos otros es **matar moscas a cañonados**.
 
 - <http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/>
 - <http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/>
+- <http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html>
 
 ## ES6 (EN)
 
 - <http://es6-features.org/>
 - <http://kangax.github.io/compat-table/es5/>
-

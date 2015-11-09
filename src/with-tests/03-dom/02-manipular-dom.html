@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Manipular el DOM</title>
+	<style>
+	.bg-red {
+		background-color: red;
+	}
+	.txt-white {
+		color: white;
+	}
+	</style>
+</head>
+
+<body>
+
+  <div id="inicio">capa inicio</div>
+  
+  <button id="iniciar">iniciar</button>
+  <button id="sustituir">sustituir</button>
+  <button id="eliminar">eliminar</button>
+  
+  <div id="fin">capa fin</div>
+  
+  <script>
+  
+  document.getElementById("iniciar").onclick = function(e) {
+
+    // crear un elemento P con un id=parrafo
+
+    // mostrar por consola el párrafo creado
+    
+    // añadir al innerHTML del párrafo creado "Hola, hago un <strong>Append</strong>"
+    
+    // añadir el párrafo creeado al final del elemento inicio
+    
+    // crear un nuevo elemento P
+    
+    // añadir al innerHTML de este segundo párrafo "Hola, hago un <strong>insertBefore</strong>";
+    
+    // añadir el este segundo párrafo antes que el párrafo creado antes
+    
+    // poner las classes bg-red y txt-white al primer párrafo creado
+    
+    // poner un style background-color: green; al segundo párrafo creado
+    
+    // crear un nodo de texto con "Hola, me llamo <strong>Adolfo</strong>"
+    
+    // añadir el texto creado al final del del elemento final
+    
+  };
+
+    
+  document.getElementById("sustituir").onclick = function(e) {
+    
+    // crear un elemento P y añadirle al innerHTML "Hola, soy el nuevo"
+    
+    // remplazar el primer párrafo creado anteriormente con este nuevo párrafo.
+  };
+    
+  document.getElementById("eliminar").onclick = function(e) {
+    
+    // eliminar el párrafo  creado en el ejercio anterior.
+  };
+
+  </script>
+
+</body>
+
+</html>

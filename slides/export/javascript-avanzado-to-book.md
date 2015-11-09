@@ -1,6 +1,6 @@
 % JavaScript Avanzado
 % Adolfo Sanz De Diego
-% Mayo 2015
+% Octubre 2015
 
 # Acerca de
 
@@ -29,6 +29,12 @@
 **El código fuente de los programas están bajo una licencia:**
 
 -  [GPL 3.0](http://www.viti.es/gnu/licenses/gpl.html)
+
+## Ejemplos
+
+Las slides y los códigos de ejemplo los podéis encontrar en:
+
+-  <https://github.com/asanzdiego/curso-javascript-avanzado-2015>
 
 # JavaScript
 
@@ -119,6 +125,23 @@ Object.getPrototypeOf(objeto);
 objeto.__proto__;
 ~~~
 
+## Eficiencia
+
+Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una **función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo**.
+
+Ejemplo:
+
+~~~{.javascript}
+function ConstructorA(p1) {
+  this.p1 = p1;
+}
+
+// los métodos los ponenmos en el prototipo
+ConstructorA.prototype.metodo1 = function() {
+  console.log(this.p1);
+};
+~~~
+
 ## Herencia
 
 Ejemplo:
@@ -144,13 +167,30 @@ ConstructorB.prototype = Object.create(ConstructorA.prototype);
 
 Cuando se invoca una llamada a una propiedad, **JavaScript primero busca en el propio objeto, y si no lo encuentra busca en su prototipo**, y sino en el prototipo del prototipo, así hasta el prototipo de Object que es null.
 
+## Cadena de prototipos de la instancia
+
 En el ejemplo anterior:
 
 ~~~{.javascript}
 instanciaB.__proto__ == ConstructorB.prototype // true
 instanciaB.__proto__.__proto__ == ConstructorA.prototype // true
-instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
+instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true
+instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
 ~~~
+
+## Cadena de prototipos de la función constructora
+
+En el ejemplo anterior:
+
+~~~{.javascript}
+expect(ConstructorB.__proto__).toEqual(Function.prototype);
+expect(ConstructorB.__proto__.__proto__).toEqual(Object.prototype);
+expect(ConstructorB.__proto__.__proto__.__proto__).toEqual(null);
+~~~
+
+## Esquema prototipos
+
+<div style="text-align:center">![Esquema prototipos](../img/esquema-prototipos.png)</div>
 
 ## Operador instanceof
 
@@ -176,23 +216,6 @@ String.prototype.hola = function() {
 }
  
 "Adolfo".hola(); // "Hola Adolfo"
-~~~
-
-## Eficiencia
-
-Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una **función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo**.
-
-Ejemplo:
-
-~~~{.javascript}
-function ConstructorA(p1) {
-  this.p1 = p1;
-}
-
-// los métodos los ponenmos en el prototipo
-ConstructorA.prototype.metodo1 = function() {
-  console.log(this.p1);
-};
 ~~~
 
 ## Propiedades y métodos estáticos
@@ -390,6 +413,9 @@ console.log(suma5(2));  // muestra 7
 console.log(suma10(2)); // muestra 12 
 ~~~
 
+En una closures la función interna almacena una **referencia al último valor**
+ de la variable establecido cuando la función externa termina de ejecutarse.
+
 ## El patrón Modulo
 
 Se trata de una función que actúa como contenedor para un contexto de ejecución.
@@ -451,7 +477,7 @@ miModulo = (function() {
 
 ## Espacios de nombres
 
-Para simular espacios de nombre, en JavaScript se anidan objetos.
+Para simular espacios de nombres, en JavaScript se anidan objetos.
 
 ~~~{.javascript}
 miBiblioteca = miBiblioteca || {};
@@ -471,7 +497,7 @@ miBiblioteca.seccion2 = {
 };
 ~~~
 
-Se combinar lo anterior con módulos autoejecutables:
+Se puede combinar lo anterior con módulos autoejecutables:
 
 ~~~{.javascript}
 
@@ -658,6 +684,8 @@ pero en muchos otros es **matar moscas a cañonados**.
 <http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/>
 
 <http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/>
+
+<http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html>
 
 ## ES6 (EN)
 
