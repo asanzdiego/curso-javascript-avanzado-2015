@@ -624,12 +624,105 @@ ownerDocument
 parentNode
 ~~~
 
-## Librerías y Frameworks
 
-- **jQuery** puede ser muy util en ciertos casos,
-pero en muchos otros es **matar moscas a cañonados**.
+# Librerías y Frameworks
 
-- Terminar esta sección
+
+## jQuery
+
+- [jQuery](https://jquery.com/): libreria que reduce código ("write less, do more").
+
+~~~
+// Vanilla JavaScript
+var elem = document.getElementById("miElemento");
+
+//jQuery
+var elem = $("#miElemento");  
+~~~
+
+## jQuery UI & Mobile
+
+- [jQuery UI](http://jqueryui.com/): diseño interfaces gráficas.
+
+- [jQuery Mobile](https://jquerymobile.com/): versión adaptada para móviles (eventos y tamaño).
+
+
+## Frameworks CSS
+
+- [Bootstrap](http://getbootstrap.com/) y [Foundation](http://foundation.zurb.com/).
+
+- Fácil maquetación, sistema rejilla, clases CSS, temas, etc.
+
+## MVC en el front
+
+- [BackboneJS](http://backbonejs.org/): ligero y flexible.
+
+- [EmberJS](http://emberjs.com/): "Convention over Configuration",
+muy popular entre desarrolladores [Ruby on Rails](http://rubyonrails.org/).
+
+- [AngularJS](http://angularjs.org/) extiende etiquetas HML (g-app, ng-controller, ng-model, ng-view),
+detrás está Google, tiene gran popularidad, abrupta curva de aprendizaje.
+
+## NodeJS
+
+- [NodeJS](http://nodejs.org/) permite ejecutar JS fuera del navegador.
+
+- Viene con su propio gestor de paquetes: [npm](https://www.npmjs.com/)
+
+## Automatización de tareas
+
+- [GruntJS](http://gruntjs.com/): más popularidad y más plugins.
+
+- [GulpJS](http://gulpjs.com/): más rápido tanto al escribir ("Code over Configure")
+como al ejecutar (streams).
+
+## Gestión de dependencias
+
+- [Bower](http://bower.io/): para el lado cliente. Puede trabajar con repositorios Git.
+
+- [Browserify](http://browserify.org/): permite escribir módulos como en [NodeJS](http://nodejs.org/)
+y compilarlos para que se puedan usar en el navegador.
+
+- [RequeriJS](http://requirejs.org/): las dependencias se cargan de forma asíncrona y solo cuando se necesitam.
+
+- [WebPack](https://webpack.github.io/): es un empaquetador de módulos
+
+## Aplicaciones de escritorio multiplataforma
+
+- [AppJS](http://appjs.com/), y su fork [DeskShell](http://deskshell.org/):
+los más antiguos, un poco abandonados.
+
+- [NW.js](http://nwjs.io/): opción más popular y madura hoy en día.
+
+- [Electron](http://electron.atom.io/): creada para
+el [editor Atom de GitHub](https://atom.io/): está creciendo en popularidad.
+
+## Aplicaciones móviles híbridas
+
+- [cordova](https://cordova.apache.org/): una de los primeros. Hoy en día, otros frameworks se basan en él.
+
+- [ionic](http://ionicframework.com/): utiliza AngularJS, tiene una CLI, muy popular.
+
+- [React Native](https://facebook.github.io/react-native/): recién liberado por facebook.
+
+## WebComponents
+
+- [WebComponents](http://www.w3.org/wiki/WebComponents/) es una especificación de la W3C
+para permitir crear componentes y reutilizarlos.
+
+- [polymer](https://www.polymer-project.org/): proyecto de Google para poder empezar a usar
+los WebComponents en todos los navegadores.
+
+## Otros
+
+- [React](https://facebook.github.io/react/): librería hecho por Facebook para crear
+interfaces que se renderizan muy rápido, ya sea en cliente o servidor.
+
+- [Flux](https://facebook.github.io/flux/): framework  hecho por Facebook
+que utiliza React.
+
+- [Meteor](https://www.meteor.com/): es una plataforma que permite desarrollar
+aplicaciones real-time con JS Isomófico (se ejecuta en front y back)
 
 
 
@@ -637,11 +730,176 @@ pero en muchos otros es **matar moscas a cañonados**.
 
 
 
+## Principales eventos (I)
+
+Evento      | Descripción
+------------|-----------------------------------------
+onblur      | Un elemento pierde el foco
+onchange    | Un elemento ha sido modificado
+onclick     | Pulsar y soltar el ratón
+ondblclick  | Pulsar dos veces seguidas con el ratón
+
+## Principales eventos (II)
+
+Evento      | Descripción
+------------|-----------------------------------------
+onfocus     | Un elemento obtiene el foco
+onkeydown   | Pulsar una tecla y no soltarla
+onkeypress  | Pulsar una tecla
+onkeyup     | Soltar una tecla pulsada
+onload      | Página cargada completamente
+
+## Principales eventos (III)
+
+Evento      | Descripción
+------------|-----------------------------------------
+onmousedown | Pulsar un botón del ratón y no soltarlo
+onmousemove | Mover el ratón
+onmouseout  | El ratón "sale" del elemento
+onmouseover | El ratón "entra" en el elemento
+onmouseup   | Soltar el botón del ratón
+
+## Principales eventos (IV)
+
+Evento      | Descripción
+------------|-----------------------------------------
+onreset     | Inicializar el formulario
+onresize    | Modificar el tamaño de la ventana
+onselect    | Seleccionar un texto
+onsubmit    | Enviar el formulario
+onunload    | Se abandona la página
+
 ## Suscripción
+
+- Para añadir o eliminar un **Listener** de un evento a un elemento:
+
+~~~
+var windowOnLoad = function(e) {
+  console.log('window:load', e);
+};
+
+window.addEventListener('load', windowOnLoad);
+
+window.removeEventListener('load', windowOnLoad);
+~~~
+
+## Eventos personalizados (I)
+
+- Podemos crear **eventos personalizados**:
+
+~~~
+var event = new Event('build');
+
+elem.addEventListener('build', function (e) { ... }, false);
+~~~
+
+## Eventos personalizados (II)
+
+- Podemos crear **eventos personalizados con datos**:
+
+~~~
+var event = new CustomEvent('build', { 'detail': detail });
+
+elem.addEventListener('build', function (e)  {
+  log('The time is: ' + e.detail);
+}, false);
+~~~
+
+
+## Disparar un evento
+
+- Podemos **disparar** eventos:
+
+~~~
+function simulateClick() {
+  var event = new MouseEvent('click');
+  var element = document.getElementById('id');
+  element.dispatchEvent(event);
+}
+~~~
 
 ## Propagación
 
-## PubSub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## El patrón PubSub (I)
+
+~~~
+var EventBus = {
+  topics: {},
+
+  subscribe: function(topic, listener) {
+    if (!this.topics[topic]) this.topics[topic] = [];
+    this.topics[topic].push(listener);
+  },
+
+  publish: function(topic, data) {
+    if (!this.topics[topic] || this.topics[topic].length < 1) return;
+    this.topics[topic].forEach(function(listener) {
+      listener(data || {});
+    });
+  }
+};
+~~~
+
+## El patrón PubSub (II)
+
+~~~
+EventBus.subscribe('foo', alert);
+EventBus.publish('foo', 'Hello World!');
+~~~
+
+## El patrón PubSub (III)
+
+~~~
+var Mailer = function() {
+  EventBus.subscribe('order/new', this.sendPurchaseEmail);
+};
+
+Mailer.prototype = {
+  sendPurchaseEmail: function(userEmail) {
+    console.log("Sent email to " + userEmail);
+  }
+};
+
+var Order = function(params) {
+  this.params = params;
+};
+
+Order.prototype = {
+  saveOrder: function() {
+    EventBus.publish('order/new', this.params.userEmail);
+  }
+};
+~~~
+
+## El patrón PubSub (IV)
+
+~~~
+var mailer = new Mailer();
+var order = new Order({userEmail: 'john@gmail.com'});
+order.saveOrder();
+"Sent email to john@gmail.com"
+~~~
 
 ## WebSockets
 
@@ -735,6 +993,38 @@ pero en muchos otros es **matar moscas a cañonados**.
 
 - <http://www.javascriptkit.com/domref/>
 - <http://javascript.info/tutorial/dom>
+
+## Frameworks (ES)
+
+- <https://carlosazaustre.es/blog/frameworks-de-javascript/>
+- <https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit>
+- <http://www.lostiemposcambian.com/blog/javascript/backbone-vs-angular-vs-ember/>
+- <http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/>
+
+## Frameworks (EN)
+
+- <http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone>
+- <http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs>
+- <http://www.hongkiat.com/blog/gulp-vs-grunt/>
+- <https://mattdesl.svbtle.com/browserify-vs-webpack>
+- <http://hackhat.com/p/110/module-loader-webpack-vs-requirejs-vs-browserify/>
+- <http://devzum.com/2014/02/10-best-node-js-mvc-frameworks-for-javascript-developers/>
+- <http://www.tivix.com/blog/nwjs-and-electronjs-web-technology-desktop/>
+- <http://stackshare.io/stackups/phonegap-vs-ionic-vs-react-native>
+- <https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options>
+
+## Eventos (ES)
+
+- <http://cevichejs.com/3-dom-cssom#eventos>
+- <http://www.arkaitzgarro.com/javascript/capitulo-15.html>
+- <http://codexexempla.org/curso/curso_4_3_e.php>
+
+## Eventos (EN)
+
+- <https://developer.mozilla.org/en-US/docs/Web/API/EventTarget>
+- <https://developer.mozilla.org/en-US/docs/Web/API/Event>
+- <http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/>
+- <https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault>
 
 ## ES6 (ES)
 

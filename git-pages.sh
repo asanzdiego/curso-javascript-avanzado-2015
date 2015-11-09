@@ -4,16 +4,14 @@ echo "*****************************"
 echo "* PUSH CHANGES TO GIT PAGES *"
 echo "*****************************"
 
-
 FROM=`pwd`
-FOLDERTO='~/gh-pages'
+FOLDERTO="$HOME/gh-pages"
 TO="$FOLDERTO/`basename $FROM`"
 
+echo "HOME="$HOME
 echo "FROM=$FROM"
 echo "FOLDERTO=$FOLDERTO"
 echo "TO=$TO"
-
-#exit 0
 
 DATE=`date +"%Y.%m.%d-%H:%M"`
 TO_OLD=$TO'-OLD-'$DATE
@@ -24,7 +22,7 @@ rm -rf $TO'/.git' && \
 cp -r $TO_OLD'/.git' $TO && \
 cd $TO && \
 
-git diff | grep +++
+git status
 
 read -p "You want to continue? [y|*N*]: " OPTION
 
@@ -39,8 +37,10 @@ if [ "$OPTION" == "y" ]; then
 
 else
 
-  rm -rf $TO && \
-  mv $TO_OLD $TO
+    echo "rm -rf $TO" && \
+    rm -rf $TO && \
+    echo "mv $TO_OLD $TO" && \
+    mv $TO_OLD $TO
 
 fi
 
