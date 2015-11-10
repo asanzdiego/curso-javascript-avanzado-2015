@@ -199,7 +199,7 @@ objeto.nuevaPropiedad = 1; <span class="co">// añadir</span>
 </ul>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// Falla en Opera o IE &lt;= 8</span>
 <span class="ot">Object</span>.<span class="fu">getPrototypeOf</span>(objeto);
- 
+
 <span class="co">// No es estandar y falla en IE</span>
 <span class="ot">objeto</span>.<span class="fu">__proto__</span>;</code></pre>
 </section><section id="eficiencia-i" class="slide level2">
@@ -284,7 +284,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">String</span>.<span class="ot">prototype</span>.<span class="fu">hola</span> = <span class="kw">function</span>() {
   <span class="kw">return</span> <span class="st">&quot;Hola &quot;</span>+<span class="kw">this</span>;
 }
- 
+
 <span class="st">&quot;Adolfo&quot;</span>.<span class="fu">hola</span>(); <span class="co">// &quot;Hola Adolfo&quot;</span></code></pre>
 </section><section id="propiedades-y-métodos-estáticos-i" class="slide level2">
 <h2><span class="header-section-number">3.17</span> Propiedades y métodos estáticos (I)</h2>
@@ -460,7 +460,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 <span class="kw">var</span> suma10 = <span class="fu">creaSumador</span>(<span class="dv">10</span>);
 
 <span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma5</span>(<span class="dv">2</span>));  <span class="co">// muestra 7</span>
-<span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma10</span>(<span class="dv">2</span>)); <span class="co">// muestra 12 </span></code></pre>
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="fu">suma10</span>(<span class="dv">2</span>)); <span class="co">// muestra 12</span></code></pre>
 </section><section id="clousures-ii" class="slide level2">
 <h2><span class="header-section-number">4.13</span> Clousures (II)</h2>
 <ul>
@@ -476,12 +476,12 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   <span class="kw">var</span> propiedadPrivada;
 
   <span class="kw">function</span> <span class="fu">metodoPrivado</span>() { };
- 
+
   <span class="co">// API publica</span>
   <span class="kw">return</span> {
     <span class="dt">metodoPublico1</span>: <span class="kw">function</span> () {
     },
- 
+
     <span class="dt">metodoPublico2</span>: <span class="kw">function</span> () {
     }
   }
@@ -497,7 +497,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
 <pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo = (<span class="kw">function</span>(window, <span class="kw">undefined</span>) {
 
   <span class="co">// El código va aquí</span>
-  
+
 })( window );</code></pre>
 </section><section id="el-patrón-modulo-revelado-i" class="slide level2">
 <h2><span class="header-section-number">4.17</span> El patrón Modulo Revelado (I)</h2>
@@ -514,7 +514,7 @@ instanciaB <span class="kw">instanceof</span> Object; <span class="co">// true</
   <span class="kw">function</span> <span class="fu">metodoB</span>() { };
 
   <span class="kw">function</span> <span class="fu">metodoC</span>() { };
- 
+
   <span class="co">// API publica</span>
   <span class="kw">return</span> {
     <span class="dt">metodoPublico1</span>: metodoA,
@@ -631,14 +631,318 @@ previousSibling
 nextSibling
 ownerDocument
 parentNode</code></pre>
-</section><section id="jquery" class="slide level2">
-<h2><span class="header-section-number">5.7</span> jQuery</h2>
+</section>
+<section id="librerías-y-frameworks" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Librerías y Frameworks</h1></section><section id="jquery" class="slide level2">
+<h2><span class="header-section-number">6.1</span> jQuery</h2>
 <ul>
-<li><strong>jQuery</strong> puede ser muy util en ciertos casos, pero en muchos otros es <strong>matar moscas a cañonados</strong>.</li>
+<li><a href="https://jquery.com/">jQuery</a>: libreria que reduce código (&quot;write less, do more&quot;).</li>
+</ul>
+<pre><code>// Vanilla JavaScript
+var elem = document.getElementById(&quot;miElemento&quot;);
+
+//jQuery
+var elem = $(&quot;#miElemento&quot;);  </code></pre>
+</section><section id="jquery-ui-mobile" class="slide level2">
+<h2><span class="header-section-number">6.2</span> jQuery UI &amp; Mobile</h2>
+<ul>
+<li><p><a href="http://jqueryui.com/">jQuery UI</a>: diseño interfaces gráficas.</p></li>
+<li><p><a href="https://jquerymobile.com/">jQuery Mobile</a>: versión adaptada para móviles (eventos y tamaño).</p></li>
+</ul>
+</section><section id="frameworks-css" class="slide level2">
+<h2><span class="header-section-number">6.3</span> Frameworks CSS</h2>
+<ul>
+<li><p><a href="http://getbootstrap.com/">Bootstrap</a> y <a href="http://foundation.zurb.com/">Foundation</a>.</p></li>
+<li><p>Fácil maquetación, sistema rejilla, clases CSS, temas, etc.</p></li>
+</ul>
+</section><section id="mvc-en-el-front" class="slide level2">
+<h2><span class="header-section-number">6.4</span> MVC en el front</h2>
+<ul>
+<li><p><a href="http://backbonejs.org/">BackboneJS</a>: ligero y flexible.</p></li>
+<li><p><a href="http://emberjs.com/">EmberJS</a>: &quot;Convention over Configuration&quot;, muy popular entre desarrolladores <a href="http://rubyonrails.org/">Ruby on Rails</a>.</p></li>
+<li><p><a href="http://angularjs.org/">AngularJS</a> extiende etiquetas HML (g-app, ng-controller, ng-model, ng-view), detrás está Google, tiene gran popularidad, abrupta curva de aprendizaje.</p></li>
+</ul>
+</section><section id="nodejs" class="slide level2">
+<h2><span class="header-section-number">6.5</span> NodeJS</h2>
+<ul>
+<li><p><a href="http://nodejs.org/">NodeJS</a> permite ejecutar JS fuera del navegador.</p></li>
+<li><p>Viene con su propio gestor de paquetes: <a href="https://www.npmjs.com/">npm</a></p></li>
+</ul>
+</section><section id="automatización-de-tareas" class="slide level2">
+<h2><span class="header-section-number">6.6</span> Automatización de tareas</h2>
+<ul>
+<li><p><a href="http://gruntjs.com/">GruntJS</a>: más popularidad y más plugins.</p></li>
+<li><p><a href="http://gulpjs.com/">GulpJS</a>: más rápido tanto al escribir (&quot;Code over Configure&quot;) como al ejecutar (streams).</p></li>
+</ul>
+</section><section id="gestión-de-dependencias" class="slide level2">
+<h2><span class="header-section-number">6.7</span> Gestión de dependencias</h2>
+<ul>
+<li><p><a href="http://bower.io/">Bower</a>: para el lado cliente. Puede trabajar con repositorios Git.</p></li>
+<li><p><a href="http://browserify.org/">Browserify</a>: permite escribir módulos como en <a href="http://nodejs.org/">NodeJS</a> y compilarlos para que se puedan usar en el navegador.</p></li>
+<li><p><a href="http://requirejs.org/">RequeriJS</a>: las dependencias se cargan de forma asíncrona y solo cuando se necesitam.</p></li>
+<li><p><a href="https://webpack.github.io/">WebPack</a>: es un empaquetador de módulos</p></li>
+</ul>
+</section><section id="aplicaciones-de-escritorio-multiplataforma" class="slide level2">
+<h2><span class="header-section-number">6.8</span> Aplicaciones de escritorio multiplataforma</h2>
+<ul>
+<li><p><a href="http://appjs.com/">AppJS</a>, y su fork <a href="http://deskshell.org/">DeskShell</a>: los más antiguos, un poco abandonados.</p></li>
+<li><p><a href="http://nwjs.io/">NW.js</a>: opción más popular y madura hoy en día.</p></li>
+<li><p><a href="http://electron.atom.io/">Electron</a>: creada para el <a href="https://atom.io/">editor Atom de GitHub</a>: está creciendo en popularidad.</p></li>
+</ul>
+</section><section id="aplicaciones-móviles-híbridas" class="slide level2">
+<h2><span class="header-section-number">6.9</span> Aplicaciones móviles híbridas</h2>
+<ul>
+<li><p><a href="https://cordova.apache.org/">cordova</a>: una de los primeros. Hoy en día, otros frameworks se basan en él.</p></li>
+<li><p><a href="http://ionicframework.com/">ionic</a>: utiliza AngularJS, tiene una CLI, muy popular.</p></li>
+<li><p><a href="https://facebook.github.io/react-native/">React Native</a>: recién liberado por facebook.</p></li>
+</ul>
+</section><section id="webcomponents" class="slide level2">
+<h2><span class="header-section-number">6.10</span> WebComponents</h2>
+<ul>
+<li><p><a href="http://www.w3.org/wiki/WebComponents/">WebComponents</a> es una especificación de la W3C para permitir crear componentes y reutilizarlos.</p></li>
+<li><p><a href="https://www.polymer-project.org/">polymer</a>: proyecto de Google para poder empezar a usar los WebComponents en todos los navegadores.</p></li>
+</ul>
+</section><section id="otros" class="slide level2">
+<h2><span class="header-section-number">6.11</span> Otros</h2>
+<ul>
+<li><p><a href="https://facebook.github.io/react/">React</a>: librería hecho por Facebook para crear interfaces que se renderizan muy rápido, ya sea en cliente o servidor.</p></li>
+<li><p><a href="https://facebook.github.io/flux/">Flux</a>: framework hecho por Facebook que utiliza React.</p></li>
+<li><p><a href="https://www.meteor.com/">Meteor</a>: es una plataforma que permite desarrollar aplicaciones real-time con JS Isomófico (se ejecuta en front y back)</p></li>
 </ul>
 </section>
-<section id="enlaces" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Enlaces</h1></section><section id="general-es" class="slide level2">
-<h2><span class="header-section-number">6.1</span> General (ES)</h2>
+<section id="eventos" class="titleslide slide level1"><h1><span class="header-section-number">7</span> Eventos</h1></section><section id="principales-eventos-i" class="slide level2">
+<h2><span class="header-section-number">7.1</span> Principales eventos (I)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onblur</td>
+<td style="text-align: left;">Un elemento pierde el foco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onchange</td>
+<td style="text-align: left;">Un elemento ha sido modificado</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onclick</td>
+<td style="text-align: left;">Pulsar y soltar el ratón</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ondblclick</td>
+<td style="text-align: left;">Pulsar dos veces seguidas con el ratón</td>
+</tr>
+</tbody>
+</table>
+</section><section id="principales-eventos-ii" class="slide level2">
+<h2><span class="header-section-number">7.2</span> Principales eventos (II)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onfocus</td>
+<td style="text-align: left;">Un elemento obtiene el foco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onkeydown</td>
+<td style="text-align: left;">Pulsar una tecla y no soltarla</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onkeypress</td>
+<td style="text-align: left;">Pulsar una tecla</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onkeyup</td>
+<td style="text-align: left;">Soltar una tecla pulsada</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onload</td>
+<td style="text-align: left;">Página cargada completamente</td>
+</tr>
+</tbody>
+</table>
+</section><section id="principales-eventos-iii" class="slide level2">
+<h2><span class="header-section-number">7.3</span> Principales eventos (III)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onmousedown</td>
+<td style="text-align: left;">Pulsar un botón del ratón y no soltarlo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onmousemove</td>
+<td style="text-align: left;">Mover el ratón</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onmouseout</td>
+<td style="text-align: left;">El ratón &quot;sale&quot; del elemento</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onmouseover</td>
+<td style="text-align: left;">El ratón &quot;entra&quot; en el elemento</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onmouseup</td>
+<td style="text-align: left;">Soltar el botón del ratón</td>
+</tr>
+</tbody>
+</table>
+</section><section id="principales-eventos-iv" class="slide level2">
+<h2><span class="header-section-number">7.4</span> Principales eventos (IV)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onreset</td>
+<td style="text-align: left;">Inicializar el formulario</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onresize</td>
+<td style="text-align: left;">Modificar el tamaño de la ventana</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onselect</td>
+<td style="text-align: left;">Seleccionar un texto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onsubmit</td>
+<td style="text-align: left;">Enviar el formulario</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onunload</td>
+<td style="text-align: left;">Se abandona la página</td>
+</tr>
+</tbody>
+</table>
+</section><section id="suscripción" class="slide level2">
+<h2><span class="header-section-number">7.5</span> Suscripción</h2>
+<ul>
+<li>Para añadir o eliminar un <strong>Listener</strong> de un evento a un elemento:</li>
+</ul>
+<pre><code>var windowOnLoad = function(e) {
+  console.log(&#39;window:load&#39;, e);
+};
+
+window.addEventListener(&#39;load&#39;, windowOnLoad);
+
+window.removeEventListener(&#39;load&#39;, windowOnLoad);</code></pre>
+</section><section id="eventos-personalizados-i" class="slide level2">
+<h2><span class="header-section-number">7.6</span> Eventos personalizados (I)</h2>
+<ul>
+<li>Podemos crear <strong>eventos personalizados</strong>:</li>
+</ul>
+<pre><code>var event = new Event(&#39;build&#39;);
+
+elem.addEventListener(&#39;build&#39;, function (e) { ... }, false);</code></pre>
+</section><section id="eventos-personalizados-ii" class="slide level2">
+<h2><span class="header-section-number">7.7</span> Eventos personalizados (II)</h2>
+<ul>
+<li>Podemos crear <strong>eventos personalizados con datos</strong>:</li>
+</ul>
+<pre><code>var event = new CustomEvent(&#39;build&#39;, { &#39;detail&#39;: detail });
+
+elem.addEventListener(&#39;build&#39;, function (e)  {
+  log(&#39;The time is: &#39; + e.detail);
+}, false);</code></pre>
+</section><section id="disparar-un-evento" class="slide level2">
+<h2><span class="header-section-number">7.8</span> Disparar un evento</h2>
+<ul>
+<li>Podemos <strong>disparar</strong> eventos:</li>
+</ul>
+<pre><code>function simulateClick() {
+  var event = new MouseEvent(&#39;click&#39;);
+  var element = document.getElementById(&#39;id&#39;);
+  element.dispatchEvent(event);
+}</code></pre>
+</section><section id="propagación" class="slide level2">
+<h2><span class="header-section-number">7.9</span> Propagación</h2>
+</section><section id="el-patrón-pubsub-i" class="slide level2">
+<h2><span class="header-section-number">7.10</span> El patrón PubSub (I)</h2>
+<pre><code>var EventBus = {
+  topics: {},
+
+  subscribe: function(topic, listener) {
+    if (!this.topics[topic]) this.topics[topic] = [];
+    this.topics[topic].push(listener);
+  },
+
+  publish: function(topic, data) {
+    if (!this.topics[topic] || this.topics[topic].length &lt; 1) return;
+    this.topics[topic].forEach(function(listener) {
+      listener(data || {});
+    });
+  }
+};</code></pre>
+</section><section id="el-patrón-pubsub-ii" class="slide level2">
+<h2><span class="header-section-number">7.11</span> El patrón PubSub (II)</h2>
+<pre><code>EventBus.subscribe(&#39;foo&#39;, alert);
+EventBus.publish(&#39;foo&#39;, &#39;Hello World!&#39;);</code></pre>
+</section><section id="el-patrón-pubsub-iii" class="slide level2">
+<h2><span class="header-section-number">7.12</span> El patrón PubSub (III)</h2>
+<pre><code>var Mailer = function() {
+  EventBus.subscribe(&#39;order/new&#39;, this.sendPurchaseEmail);
+};
+
+Mailer.prototype = {
+  sendPurchaseEmail: function(userEmail) {
+    console.log(&quot;Sent email to &quot; + userEmail);
+  }
+};
+
+var Order = function(params) {
+  this.params = params;
+};
+
+Order.prototype = {
+  saveOrder: function() {
+    EventBus.publish(&#39;order/new&#39;, this.params.userEmail);
+  }
+};</code></pre>
+</section><section id="el-patrón-pubsub-iv" class="slide level2">
+<h2><span class="header-section-number">7.13</span> El patrón PubSub (IV)</h2>
+<pre><code>var mailer = new Mailer();
+var order = new Order({userEmail: &#39;john@gmail.com&#39;});
+order.saveOrder();
+&quot;Sent email to john@gmail.com&quot;</code></pre>
+</section><section id="websockets" class="slide level2">
+<h2><span class="header-section-number">7.14</span> WebSockets</h2>
+</section>
+<section id="ajax" class="titleslide slide level1"><h1><span class="header-section-number">8</span> AJAX</h1></section><section id="json-jsonp-cors" class="slide level2">
+<h2><span class="header-section-number">8.1</span> JSON, JSONP, CORS</h2>
+</section><section id="uso-de-apis" class="slide level2">
+<h2><span class="header-section-number">8.2</span> Uso de APIs</h2>
+</section>
+<section id="inyección-de-dependencias" class="titleslide slide level1"><h1><span class="header-section-number">9</span> Inyección de dependencias</h1></section><section id="amd-requirejs" class="slide level2">
+<h2><span class="header-section-number">9.1</span> AMD (RequireJS)</h2>
+</section><section id="commonjs-browserify" class="slide level2">
+<h2><span class="header-section-number">9.2</span> CommonJS (Browserify)</h2>
+</section>
+<section id="ecmascript6" class="titleslide slide level1"><h1><span class="header-section-number">10</span> ECMAScript6</h1></section><section id="principales-novedades" class="slide level2">
+<h2><span class="header-section-number">10.1</span> Principales Novedades</h2>
+</section><section id="como-usarlo-hoy" class="slide level2">
+<h2><span class="header-section-number">10.2</span> Como usarlo hoy</h2>
+</section>
+<section id="enlaces" class="titleslide slide level1"><h1><span class="header-section-number">11</span> Enlaces</h1></section><section id="general-es" class="slide level2">
+<h2><span class="header-section-number">11.1</span> General (ES)</h2>
 <ul>
 <li><a href="http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5">http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5</a></li>
 <li><a href="http://cevichejs.com/">http://cevichejs.com/</a></li>
@@ -646,21 +950,21 @@ parentNode</code></pre>
 <li><a href="http://www.etnassoft.com/category/javascript/">http://www.etnassoft.com/category/javascript/</a></li>
 </ul>
 </section><section id="general-en" class="slide level2">
-<h2><span class="header-section-number">6.2</span> General (EN)</h2>
+<h2><span class="header-section-number">11.2</span> General (EN)</h2>
 <ul>
 <li><a href="http://www.javascriptkit.com/">http://www.javascriptkit.com/</a></li>
 <li><a href="http://javascript.info/">http://javascript.info/</a></li>
 <li><a href="http://www.howtocreate.co.uk/tutorials/javascript/">http://www.howtocreate.co.uk/tutorials/javascript/</a></li>
 </ul>
 </section><section id="orientación-objetos-es-i" class="slide level2">
-<h2><span class="header-section-number">6.3</span> Orientación Objetos (ES) (I)</h2>
+<h2><span class="header-section-number">11.3</span> Orientación Objetos (ES) (I)</h2>
 <ul>
 <li><a href="http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/">http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/</a></li>
 <li><a href="http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/">http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/</a></li>
 <li><a href="http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/">http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/</a></li>
 </ul>
 </section><section id="orientación-objetos-es-ii" class="slide level2">
-<h2><span class="header-section-number">6.4</span> Orientación Objetos (ES) (II)</h2>
+<h2><span class="header-section-number">11.4</span> Orientación Objetos (ES) (II)</h2>
 <ul>
 <li><a href="http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo">http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo</a></li>
 <li><a href="http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces">http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces</a></li>
@@ -668,14 +972,14 @@ parentNode</code></pre>
 <li><a href="http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/">http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/</a></li>
 </ul>
 </section><section id="orientación-objetos-en" class="slide level2">
-<h2><span class="header-section-number">6.5</span> Orientación Objetos (EN)</h2>
+<h2><span class="header-section-number">11.5</span> Orientación Objetos (EN)</h2>
 <ul>
 <li><a href="http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns">http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns</a></li>
 <li><a href="http://javascript.info/tutorial/object-oriented-programming">http://javascript.info/tutorial/object-oriented-programming</a></li>
 <li><a href="http://www.howtocreate.co.uk/tutorials/javascript/objects">http://www.howtocreate.co.uk/tutorials/javascript/objects</a></li>
 </ul>
 </section><section id="técnicas-avanzadas-es-i" class="slide level2">
-<h2><span class="header-section-number">6.6</span> Técnicas avanzadas (ES) (I)</h2>
+<h2><span class="header-section-number">11.6</span> Técnicas avanzadas (ES) (I)</h2>
 <ul>
 <li><a href="http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/">http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/</a></li>
 <li><a href="http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/">http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/</a></li>
@@ -683,7 +987,7 @@ parentNode</code></pre>
 <li><a href="http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html">http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html</a></li>
 </ul>
 </section><section id="técnicas-avanzadas-es-ii" class="slide level2">
-<h2><span class="header-section-number">6.7</span> Técnicas avanzadas (ES) (II)</h2>
+<h2><span class="header-section-number">11.7</span> Técnicas avanzadas (ES) (II)</h2>
 <ul>
 <li><a href="http://www.webanalyst.es/espacios-de-nombres-en-javascript/">http://www.webanalyst.es/espacios-de-nombres-en-javascript/</a></li>
 <li><a href="http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/">http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/</a></li>
@@ -691,26 +995,62 @@ parentNode</code></pre>
 <li><a href="http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html">http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html</a></li>
 </ul>
 </section><section id="dom-es" class="slide level2">
-<h2><span class="header-section-number">6.8</span> DOM (ES)</h2>
+<h2><span class="header-section-number">11.8</span> DOM (ES)</h2>
 <ul>
 <li><a href="http://cevichejs.com/3-dom-cssom#dom">http://cevichejs.com/3-dom-cssom#dom</a></li>
 <li><a href="http://www.arkaitzgarro.com/javascript/capitulo-13.html">http://www.arkaitzgarro.com/javascript/capitulo-13.html</a></li>
 </ul>
 </section><section id="dom-en" class="slide level2">
-<h2><span class="header-section-number">6.9</span> DOM (EN)</h2>
+<h2><span class="header-section-number">11.9</span> DOM (EN)</h2>
 <ul>
 <li><a href="http://www.javascriptkit.com/domref/">http://www.javascriptkit.com/domref/</a></li>
 <li><a href="http://javascript.info/tutorial/dom">http://javascript.info/tutorial/dom</a></li>
 </ul>
+</section><section id="frameworks-es" class="slide level2">
+<h2><span class="header-section-number">11.10</span> Frameworks (ES)</h2>
+<ul>
+<li><a href="https://carlosazaustre.es/blog/frameworks-de-javascript/">https://carlosazaustre.es/blog/frameworks-de-javascript/</a></li>
+<li><a href="https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit">https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit</a></li>
+<li><a href="http://www.lostiemposcambian.com/blog/javascript/backbone-vs-angular-vs-ember/">http://www.lostiemposcambian.com/blog/javascript/backbone-vs-angular-vs-ember/</a></li>
+<li><a href="http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/">http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/</a></li>
+</ul>
+</section><section id="frameworks-en" class="slide level2">
+<h2><span class="header-section-number">11.11</span> Frameworks (EN)</h2>
+<ul>
+<li><a href="http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone">http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone</a></li>
+<li><a href="http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs">http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs</a></li>
+<li><a href="http://www.hongkiat.com/blog/gulp-vs-grunt/">http://www.hongkiat.com/blog/gulp-vs-grunt/</a></li>
+<li><a href="https://mattdesl.svbtle.com/browserify-vs-webpack">https://mattdesl.svbtle.com/browserify-vs-webpack</a></li>
+<li><a href="http://hackhat.com/p/110/module-loader-webpack-vs-requirejs-vs-browserify/">http://hackhat.com/p/110/module-loader-webpack-vs-requirejs-vs-browserify/</a></li>
+<li><a href="http://devzum.com/2014/02/10-best-node-js-mvc-frameworks-for-javascript-developers/">http://devzum.com/2014/02/10-best-node-js-mvc-frameworks-for-javascript-developers/</a></li>
+<li><a href="http://www.tivix.com/blog/nwjs-and-electronjs-web-technology-desktop/">http://www.tivix.com/blog/nwjs-and-electronjs-web-technology-desktop/</a></li>
+<li><a href="http://stackshare.io/stackups/phonegap-vs-ionic-vs-react-native">http://stackshare.io/stackups/phonegap-vs-ionic-vs-react-native</a></li>
+<li><a href="https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options">https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options</a></li>
+</ul>
+</section><section id="eventos-es" class="slide level2">
+<h2><span class="header-section-number">11.12</span> Eventos (ES)</h2>
+<ul>
+<li><a href="http://cevichejs.com/3-dom-cssom#eventos">http://cevichejs.com/3-dom-cssom#eventos</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/capitulo-15.html">http://www.arkaitzgarro.com/javascript/capitulo-15.html</a></li>
+<li><a href="http://codexexempla.org/curso/curso_4_3_e.php">http://codexexempla.org/curso/curso_4_3_e.php</a></li>
+</ul>
+</section><section id="eventos-en" class="slide level2">
+<h2><span class="header-section-number">11.13</span> Eventos (EN)</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></li>
+<li><a href="http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/">http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/</a></li>
+<li><a href="https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault">https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault</a></li>
+</ul>
 </section><section id="es6-es" class="slide level2">
-<h2><span class="header-section-number">6.10</span> ES6 (ES)</h2>
+<h2><span class="header-section-number">11.14</span> ES6 (ES)</h2>
 <ul>
 <li><a href="http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/">http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/</a></li>
 <li><a href="http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/">http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/</a></li>
 <li><a href="http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html">http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html</a></li>
 </ul>
 </section><section id="es6-en" class="slide level2">
-<h2><span class="header-section-number">6.11</span> ES6 (EN)</h2>
+<h2><span class="header-section-number">11.15</span> ES6 (EN)</h2>
 <ul>
 <li><a href="http://es6-features.org/">http://es6-features.org/</a></li>
 <li><a href="http://kangax.github.io/compat-table/es5/">http://kangax.github.io/compat-table/es5/</a></li>
