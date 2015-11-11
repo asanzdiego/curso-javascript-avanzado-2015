@@ -925,11 +925,355 @@ order.saveOrder();
 
 
 
-# ECMAScript6
+# Principales Novedades ES6
 
-## Principales Novedades
+## Función Arrow (I)
 
-## Como usarlo hoy
+~~~{.javascript}
+// ES5
+var data = [{...}, {...}, {...}, ...];  
+data.forEach(function(elem){  
+    console.log(elem)
+});
+~~~
+
+## Función Arrow (I)
+
+~~~{.javascript}
+//ES6
+var data = [{...}, {...}, {...}, ...];  
+data.forEach(elem => {  
+    console.log(elem);
+});
+~~~
+
+## Función Arrow (III)
+
+~~~{.javascript}
+// ES5
+var miFuncion = function(num1, num2) {  
+    return num1 + num2;
+}
+~~~
+
+## Función Arrow (IV)
+
+~~~{.javascript}
+// ES6
+var miFuncion = (num1, num2) => num1 + num2;  
+~~~
+
+## This (I)
+
+~~~{.javascript}
+//ES3
+var obj = {  
+    foo : function() {...},
+    bar : function() {
+        var that = this;
+        document.addEventListener("click", function(e) {
+            that.foo();
+        });
+    }
+}
+~~~
+
+## This (II)
+
+~~~{.javascript}
+//ES5
+var obj = {  
+    foo : function() {...},
+    bar : function() {
+        document.addEventListener("click", function(e) {
+            this.foo();
+        }.bind(this));
+    }
+}
+~~~
+
+## This (III)
+
+~~~{.javascript}
+//ES6
+var obj = {  
+    foo : function() {...},
+    bar : function() {
+        document.addEventListener("click", (e) => this.foo());
+    }
+}
+~~~
+
+## Definición de Clases (I)
+
+~~~{.javascript}
+//ES5
+var Shape = function (id, x, y) {
+    this.id = id;
+    this.move(x, y);
+};
+Shape.prototype.move = function (x, y) {
+    this.x = x;
+    this.y = y;
+};
+~~~
+
+## Definición de Clases (II)
+
+~~~{.javascript}
+//ES6
+class Shape {
+    constructor (id, x, y) {
+        this.id = id
+        this.move(x, y)
+    }
+    move (x, y) {
+        this.x = x
+        this.y = y
+    }
+}
+~~~
+
+## Herencia de Clases (I)
+
+~~~{.javascript}
+//ES5
+var Rectangle = function (id, x, y, width, height) {
+    Shape.call(this, id, x, y);
+    this.width  = width;
+    this.height = height;
+};
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
+
+var Circle = function (id, x, y, radius) {
+    Shape.call(this, id, x, y);
+    this.radius = radius;
+};
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+~~~
+
+## Herencia de Clases (II)
+
+~~~{.javascript}
+//ES6
+class Rectangle extends Shape {
+    constructor (id, x, y, width, height) {
+        super(id, x, y)
+        this.width  = width
+        this.height = height
+    }
+}
+class Circle extends Shape {
+    constructor (id, x, y, radius) {
+        super(id, x, y)
+        this.radius = radius
+    }
+}
+~~~
+
+## let (I)
+
+~~~{.javascript}
+//ES5
+(function() {
+    console.log(x); // x no está definida aún.
+    if(true) {
+        var x = "hola mundo";
+    }
+    console.log(x);
+    // Imprime "hola mundo", porque "var"
+    // hace que sea global a la función;
+})();
+~~~
+
+## let (II)
+
+~~~{.javascript}
+//ES6
+(function() {
+    if(true) {
+        let x = "hola mundo";
+    }
+    console.log(x);
+    //Da error, porque "x" ha sido definida dentro del "if"
+})();
+~~~
+
+Ahora podemos declarar variables con let en lugar de var si no queremos que sean accesibles más allá de un ámbito. Por ejemplo:
+
+## const (I)
+
+~~~{.javascript}
+//ES6
+(function() {
+    const PI;
+    PI = 3.15;
+    // ERROR, porque ha de asignarse un valor en la declaración
+})();
+~~~
+
+## const (II)
+
+~~~{.javascript}
+//ES6
+(function() {
+    const PI = 3.15;
+    PI = 3.14159;
+    // ERROR de nuevo, porque es de sólo-lectura
+})();
+~~~
+
+## Template Strings (I)
+
+~~~{.javascript}
+//ES6
+let nombre1 = "JavaScript";  
+let nombre2 = "awesome";  
+console.log("Sólo quiero decir que ${nombre1} is ${nombre2}");  
+// Solo quiero decir que JavaScript is awesome
+~~~
+
+## Template Strings (II)
+
+~~~{.javascript}
+//ES5
+var saludo = "ola " +  
+"que " +
+"ase ";
+~~~
+
+## Template Strings (III)
+
+~~~{.javascript}
+//ES6
+var saludo = "ola  
+que  
+ase";
+~~~
+
+## Destructuring (I)
+
+~~~{.javascript}
+//ES6
+var [a, b] = ["hola", "mundo"];  
+console.log(a); // "hola"  
+console.log(b); // "mundo"
+~~~
+
+## Destructuring (II)
+
+~~~{.javascript}
+//ES6
+var obj = { nombre: "Carlos", apellido: "Azaustre" };  
+var { nombre, apellido } = obj;  
+console.log(nombre); // "Carlos"  
+~~~
+
+## Destructuring (III)
+
+~~~{.javascript}
+//ES6
+var foo = function() {  
+    return ["175", "75"];
+};
+var [estatura, peso] = foo();  
+console.log(estatura); //175  
+console.log(peso); //75  
+~~~
+
+## Parámetros con nombre (I)
+
+~~~{.javascript}
+//ES5
+function f (arg) {
+    var name = arg[0];
+    var val  = arg[1];
+    console.log(name, val);
+};
+function g (arg) {
+    var n = arg.name;
+    var v = arg.val;
+    console.log(n, v);
+};
+function h (arg) {
+    var name = arg.name;
+    var val  = arg.val;
+    console.log(name, val);
+};
+f([ "bar", 42 ]);
+g({ name: "foo", val:  7 });
+h({ name: "bar", val: 42 });
+~~~
+
+## Parámetros con nombre (I)
+
+~~~{.javascript}
+//ES6
+function f ([ name, val ]) {
+    console.log(name, val)
+}
+function g ({ name: n, val: v }) {
+    console.log(n, v)
+}
+function h ({ name, val }) {
+    console.log(name, val)
+}
+f([ "bar", 42 ])
+g({ name: "foo", val:  7 })
+h({ name: "bar", val: 42 })
+~~~
+
+## Valores por defecto (I)
+
+~~~{.javascript}
+//ES5
+function(valor) {  
+    valor = valor || "foo";
+}
+~~~
+
+## Valores por defecto (I)
+
+~~~{.javascript}
+//ES6
+function(valor = "foo") {...};  
+~~~
+
+## Exportar módulos
+
+~~~{.javascript}
+//ES6
+
+// lib/math.js
+export function sum (x, y) { return x + y }
+export var pi = 3.141593
+~~~
+
+## Importar módulos
+
+~~~{.javascript}
+//ES6
+
+// someApp.js
+import * as math from "lib/math"
+console.log("2π = " + math.sum(math.pi, math.pi))
+
+// otherApp.js
+import { sum, pi } from "lib/math"
+console.log("2π = " + sum(pi, pi))
+~~~
+
+
+
+
+
+# Como usarlo hoy ES6
+
+
+
+
 
 
 
@@ -1031,6 +1375,7 @@ order.saveOrder();
 - <http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/>
 - <http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/>
 - <http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html>
+- <http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/>
 
 ## ES6 (EN)
 
