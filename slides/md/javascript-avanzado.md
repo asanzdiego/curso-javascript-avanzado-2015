@@ -880,7 +880,11 @@ Mailer.prototype = {
     console.log("Sent email to " + userEmail);
   }
 };
+~~~
 
+## El patrón PubSub (IV)
+
+~~~
 var Order = function(params) {
   this.params = params;
 };
@@ -892,7 +896,7 @@ Order.prototype = {
 };
 ~~~
 
-## El patrón PubSub (IV)
+## El patrón PubSub (V)
 
 ~~~
 var mailer = new Mailer();
@@ -905,13 +909,200 @@ order.saveOrder();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # AJAX
+
+
+
+## ¿Qué es AJAX?
+
+- Acrónimo de **Asynchronous JavaScript And XML**.
+- Técnica para crear **aplicaciones web interactivas** o RIA (Rich Internet Applications).
+- Estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios.
+- Mientras se mantiene la comunicación asíncrona con el servidor en segundo plano.
+- De esta forma es posible realizar **cambios sobre las páginas sin necesidad de recargarlas**.
+
+## Tecnologías AJAX
+
+- AJAX no es una tecnología en sí misma, en realidad, se trata de varias tecnologías
+independientes que se unen de formas nuevas y sorprendentes.
+
+- Las tecnologías que forman AJAX son:
+    - **XHTML y CSS**, como estándares de presentación.
+    - **DOM**, para la manipulación dinámica de la presentación.
+    - **XML, JSON y otros**, para la la manipulación de información.
+    - **XMLHttpRequest**, para el intercambio asíncrono de información.
+    - **JavaScript**, para unir todas las demás tecnologías.
+
+## ¿Qué es el XMLHttpRequest?
+
+- El intercambio de datos AJAX entre cliente y servidor
+se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuales.
+
+- **No es necesario que el contenido esté formateado en XML**.
+
+- Su manejo puede llegar a ser complejo, aunque librerías como
+**jQuery** facilitan enormemente su uso.
+
+## Ejemplo
+
+~~~{.javascript}
+var http_request = new XMLHttpRequest();
+var url = "http://example.net/jsondata.php"; // Esta URL debería devolver datos JSON
+
+// Descarga los datos JSON del servidor.
+http_request.onreadystatechange = handle_json;
+http_request.open("GET", url, true);
+http_request.send(null);
+
+function handle_json() {
+  if (http_request.readyState == 4) {
+    if (http_request.status == 200) {
+      var json_data = http_request.responseText;
+      var the_object = eval("(" + json_data + ")");
+    } else {
+      alert("Ocurrio un problema con la URL.");
+    }
+    http_request = null;
+  }
+}
+~~~
+
+
+# JSON
+
+## ¿Qué es JSON?
+
+- Acrónimo de **JavaScript Object Notation**.
+- Es un subconjunto de la notación literal de objetos de JavaScript.
+- Sirve como formato ligero para el intercambio de datos.
+- **Su simplicidad ha generalizado su uso, especialmente como alternativa a XML en AJAX**.
+- En JavaScript, un texto JSON se puede analizar fácilmente usando la **función eval()**.
+
+## Parse
+
+~~~{.javascript}
+miObjeto = eval('(' + json_datos + ')');
+~~~
+
+- Eval es muy rápido, pero como compila y ejecuta cualquier código JavaScript,
+las consideraciones de seguridad recomiendan no usarlo.
+
+- Lo recomendable usar las librerías de [JSON.org](http://www.json.org/):
+    - [JSON in JavaScript - Explanation](http://www.json.org/js.html)
+    - [JSON in JavaScript - Downloads](https://github.com/douglascrockford/JSON-js)
+
+## Ejemplo
+
+~~~{.javascript}
+{
+    curso: "AJAX y jQuery",
+    profesor: "Adolfo",
+    participantes: [
+        { nombre: "Isabel", edad: 35 },
+        { nombre: "Alba", edad: 15 },
+        { nombre: "Laura", edad: 10 }
+    ]
+}
+~~~
+
+
+
 
 
 
 ## JSON, JSONP, CORS
 
-## Uso de APIs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## APIs REST
+
+- REST (Representational State Transfer) es una técnica de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.
+
+- Es decir, **una URL (Uniform Resource Locator) representa un recurso al que se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE)**.
+
+- Ver [Artículos de REST de Enrique Amodeo Rubio (@eamodeorubio)](https://eamodeorubio.wordpress.com/category/webservices/rest/)
+
+## ¿Por qué REST?
+
+- Es **más sencillo** (tanto la API como la implementación).
+- Es **más rápido** (peticiones más lijeras que se puede cachear).
+- Es **multiformato** (HTML, XML, JSON, etc.).
+- Se complementa muy bien con **AJAX**.
+
+## Ejemplo API
+
+- **GET** a http://myhost.com/person
+    - Devuelve todas las personas
+- **POST** a http://myhost.com/person
+    - Crear una nueva persona
+- **GET** a http://myhost.com/person/123
+    - Devuelve la persona con id=123
+- **PUT** a http://myhost.com/person/123
+    - Actualiza la persona con id=123
+- **DELETE** a http://myhost.com/person/123
+    - Borra la persona con id=123
+
+## Manejo de errores
+
+- **Se pueden utilizar los errores del protocolo HTTP**:
+
+    - 200 OK Standard response for successful HTTP requests
+    - 201 Created
+    - 202 Accepted
+    - 301 Moved Permanently
+    - 400 Bad Request
+    - 401 Unauthorised
+    - 402 Payment Required
+    - 403 Forbidden
+    - 404 Not Found
+    - 405 Method Not Allowed
+    - 500 Internal Server Error
+    - 501 Not Implemented
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -925,7 +1116,22 @@ order.saveOrder();
 
 
 
-# Principales Novedades ES6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ES6
 
 ## Función Arrow (I)
 
@@ -1269,6 +1475,15 @@ console.log("2π = " + sum(pi, pi))
 
 
 
+
+
+
+
+
+
+## Generadores
+
+
 # Como usarlo hoy ES6
 
 
@@ -1369,6 +1584,11 @@ console.log("2π = " + sum(pi, pi))
 - <https://developer.mozilla.org/en-US/docs/Web/API/Event>
 - <http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/>
 - <https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault>
+
+## AJAX (ES)
+
+- <https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/>
+- <http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/>
 
 ## ES6 (ES)
 
