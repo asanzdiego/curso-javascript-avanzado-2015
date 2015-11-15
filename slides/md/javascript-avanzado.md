@@ -730,6 +730,70 @@ aplicaciones real-time con JS Isomófico (se ejecuta en front y back)
 
 
 
+## El patrón PubSub (I)
+
+~~~
+var EventBus = {
+  topics: {},
+
+  subscribe: function(topic, listener) {
+    if (!this.topics[topic]) this.topics[topic] = [];
+    this.topics[topic].push(listener);
+  },
+
+  publish: function(topic, data) {
+    if (!this.topics[topic] || this.topics[topic].length < 1) return;
+    this.topics[topic].forEach(function(listener) {
+      listener(data || {});
+    });
+  }
+};
+~~~
+
+## El patrón PubSub (II)
+
+~~~
+EventBus.subscribe('foo', alert);
+EventBus.publish('foo', 'Hello World!');
+~~~
+
+## El patrón PubSub (III)
+
+~~~
+var Mailer = function() {
+  EventBus.subscribe('order/new', this.sendPurchaseEmail);
+};
+
+Mailer.prototype = {
+  sendPurchaseEmail: function(userEmail) {
+    console.log("Sent email to " + userEmail);
+  }
+};
+~~~
+
+## El patrón PubSub (IV)
+
+~~~
+var Order = function(params) {
+  this.params = params;
+};
+
+Order.prototype = {
+  saveOrder: function() {
+    EventBus.publish('order/new', this.params.userEmail);
+  }
+};
+~~~
+
+## El patrón PubSub (V)
+
+~~~
+var mailer = new Mailer();
+var order = new Order({userEmail: 'john@gmail.com'});
+order.saveOrder();
+"Sent email to john@gmail.com"
+~~~
+
 ## Principales eventos (I)
 
 Evento      | Descripción
@@ -841,69 +905,7 @@ function simulateClick() {
 
 
 
-## El patrón PubSub (I)
 
-~~~
-var EventBus = {
-  topics: {},
-
-  subscribe: function(topic, listener) {
-    if (!this.topics[topic]) this.topics[topic] = [];
-    this.topics[topic].push(listener);
-  },
-
-  publish: function(topic, data) {
-    if (!this.topics[topic] || this.topics[topic].length < 1) return;
-    this.topics[topic].forEach(function(listener) {
-      listener(data || {});
-    });
-  }
-};
-~~~
-
-## El patrón PubSub (II)
-
-~~~
-EventBus.subscribe('foo', alert);
-EventBus.publish('foo', 'Hello World!');
-~~~
-
-## El patrón PubSub (III)
-
-~~~
-var Mailer = function() {
-  EventBus.subscribe('order/new', this.sendPurchaseEmail);
-};
-
-Mailer.prototype = {
-  sendPurchaseEmail: function(userEmail) {
-    console.log("Sent email to " + userEmail);
-  }
-};
-~~~
-
-## El patrón PubSub (IV)
-
-~~~
-var Order = function(params) {
-  this.params = params;
-};
-
-Order.prototype = {
-  saveOrder: function() {
-    EventBus.publish('order/new', this.params.userEmail);
-  }
-};
-~~~
-
-## El patrón PubSub (V)
-
-~~~
-var mailer = new Mailer();
-var order = new Order({userEmail: 'john@gmail.com'});
-order.saveOrder();
-"Sent email to john@gmail.com"
-~~~
 
 ## WebSockets
 

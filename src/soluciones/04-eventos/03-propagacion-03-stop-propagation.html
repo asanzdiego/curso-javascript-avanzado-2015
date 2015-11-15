@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>03 Propagación de eventos</title>
+</head>
+
+<body>
+
+  <div id="DIV1" style="border: 1px solid red; padding: 20px;">
+    <div id="DIV2" style="border: 5px solid black; padding: 20px;">
+      <a id="A" href="http://www.google.com" target="_blank" style="border: 1px solid blue; padding: 10px;">google</a>
+    </div>
+  </div>
+  <pre>
+                 1              2
+                | |            / \
+  --------------| |------------| |---------------
+  | DIV1        | |            | |              |
+  |   ----------| |------------| |---------     |
+  |   | DIV2    | |            | |        |     |
+  |   |   ------| |------------| |---------     |
+  |   |   | a   \ /            | |        |     |
+  |   |   ---------------------------------     |
+  |   -------------------------------------     |
+  |         FASE DE          FASE DE            |
+  |         CAPTURA          BURBUJA            |
+  |        DE EVENTOS       DE EVENTOS          |
+  -----------------------------------------------
+  </pre>
+  <p id="P" style="border: 1px solid green; padding: 10px;"></p>
+
+  <script>
+  var paragraph = document.getElementById("P");
+  function captureOnClickDIV1(e){
+    paragraph.innerHTML += "DIV1 -> on click en la fase de CAPTURA<br>";
+  }
+  function captureOnClickDIV2(e){
+    paragraph.innerHTML += "DIV2 -> on click en la fase de CAPTURA + e.stopPropagation()<br>";
+    e.stopPropagation();
+  }
+  function captureOnClickA(e){
+    paragraph.innerHTML += "A -> on click en la fase de CAPTURA<br>";
+  }
+  function bubblingOnClickDIV1(e){
+    paragraph.innerHTML += "DIV1 -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
+  }
+  function bubblingOnClickDIV2(e){
+    paragraph.innerHTML += "DIV2 -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
+  }
+  function bubblingOnClickA(e){
+    paragraph.innerHTML += "A -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
+  }
+  document.getElementById("DIV1").addEventListener("click",captureOnClickDIV1, true);
+  document.getElementById("DIV2").addEventListener("click",captureOnClickDIV2, true);
+  document.getElementById("A").addEventListener("click",captureOnClickA, true);
+  document.getElementById("DIV1").addEventListener("click",bubblingOnClickDIV1, false);
+  document.getElementById("DIV2").addEventListener("click",bubblingOnClickDIV2, false);
+  document.getElementById("A").addEventListener("click",bubblingOnClickA, false);
+  </script>
+
+</body>
+</html>
