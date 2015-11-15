@@ -50,12 +50,33 @@
   function bubblingOnClickA(e){
     paragraph.innerHTML += "A -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
   }
-  document.getElementById("DIV1").addEventListener("click",captureOnClickDIV1, true);
-  document.getElementById("DIV2").addEventListener("click",captureOnClickDIV2, true);
-  document.getElementById("A").addEventListener("click",captureOnClickA, true);
-  document.getElementById("DIV1").addEventListener("click",bubblingOnClickDIV1, false);
-  document.getElementById("DIV2").addEventListener("click",bubblingOnClickDIV2, false);
-  document.getElementById("A").addEventListener("click",bubblingOnClickA, false);
+
+  /*******************
+   * FASE DE CAPTURA *
+   *******************/
+
+  // click en DIV1 -> ejecuta función captureOnClickDIV1 en fase de CAPTURA
+  // document.getElementById("DIV1").addEventListener("click",captureOnClickDIV1...
+
+  // click en DIV2 -> ejecuta función captureOnClickDIV1 en fase de CAPTURA
+  // document.getElementById("DIV2").addEventListener("click",captureOnClickDIV2...
+
+  // click en A -> ejecuta función captureOnClickA en fase de CAPTURA
+  // document.getElementById("A").addEventListener("click",captureOnClickA..
+
+
+  /*******************
+   * FASE DE BURBUJA *
+   *******************/
+
+  // click en DIV1 -> ejecuta función captureOnClickDIV1 en fase de BURBUJA
+  // document.getElementById("DIV1").addEventListener("click",bubblingOnClickDIV1...
+
+  // click en DIV2 -> ejecuta función captureOnClickDIV2 en fase de BURBUJA
+  // document.getElementById("DIV2").addEventListener("click",bubblingOnClickDIV2...
+
+  // click en A -> ejecuta función captureOnClickA en fase de BURBUJA
+  // document.getElementById("A").addEventListener("click",bubblingOnClickA...
   </script>
 
 </body>

@@ -32,30 +32,23 @@
 
   <script>
   var paragraph = document.getElementById("P");
-  function captureOnClickDIV1(e){
-    paragraph.innerHTML += "DIV1 -> on click en la fase de CAPTURA<br>";
+  function onClickDIV1(e){
+    paragraph.innerHTML += "DIV1 -> on click<br>";
   }
-  function captureOnClickDIV2(e){
-    paragraph.innerHTML += "DIV2 -> on click en la fase de CAPTURA<br>";
+  function onClickDIV2(e){
+    paragraph.innerHTML += "DIV2 -> on click<br>";
   }
-  function captureOnClickA(e){
-    paragraph.innerHTML += "A -> on click en la fase de CAPTURA<br>";
+  function onClickA(e){
+    paragraph.innerHTML += "A -> on click<br>";
   }
-  function bubblingOnClickDIV1(e){
-    paragraph.innerHTML += "DIV1 -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
-  }
-  function bubblingOnClickDIV2(e){
-    paragraph.innerHTML += "DIV2 -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
-  }
-  function bubblingOnClickA(e){
-    paragraph.innerHTML += "A -> on click en la fase de BURBUJA [POR DEFECTO]<br>";
-  }
-  document.getElementById("DIV1").addEventListener("click",captureOnClickDIV1, true);
-  document.getElementById("DIV2").addEventListener("click",captureOnClickDIV2, true);
-  document.getElementById("A").addEventListener("click",captureOnClickA, true);
-  document.getElementById("DIV1").addEventListener("click",bubblingOnClickDIV1, false);
-  document.getElementById("DIV2").addEventListener("click",bubblingOnClickDIV2, false);
-  document.getElementById("A").addEventListener("click",bubblingOnClickA, false);
+  // cuando se haga click en DIV1 que se ejecute la función onClickDIV1
+  // document.getElementById("DIV1").addEventListener("click",onClickDIV1...
+
+  // cuando se haga click en DIV2 que se ejecute la función onClickDIV2
+  // document.getElementById("DIV2").addEventListener("click",onClickDIV2...
+
+  // cuando se haga click en A que se ejecute la función onClickA
+  // document.getElementById("A").addEventListener("click",onClickA...
   </script>
 
 </body>

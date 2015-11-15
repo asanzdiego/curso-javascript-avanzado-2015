@@ -31,12 +31,13 @@
   <p id="P" style="border: 1px solid green; padding: 10px;"></p>
 
   <script>
+  // parar la propagación de eventos en el elemento DIV2 en la fase de CAPTURA
   var paragraph = document.getElementById("P");
   function captureOnClickDIV1(e){
     paragraph.innerHTML += "DIV1 -> on click en la fase de CAPTURA<br>";
   }
   function captureOnClickDIV2(e){
-    paragraph.innerHTML += "DIV2 -> on click en la fase de CAPTURA<br>";
+    paragraph.innerHTML += "DIV2 -> on click en la fase de CAPTURA + e.stopPropagation()<br>";
   }
   function captureOnClickA(e){
     paragraph.innerHTML += "A -> on click en la fase de CAPTURA<br>";

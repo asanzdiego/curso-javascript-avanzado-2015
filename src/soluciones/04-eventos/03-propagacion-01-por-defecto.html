@@ -15,18 +15,18 @@
   <pre>
                  1              2
                 | |            / \
-  --------------| |------------| |---------------
-  | DIV1        | |            | |              |
-  |   ----------| |------------| |---------     |
-  |   | DIV2    | |            | |        |     |
-  |   |   ------| |------------| |---------     |
-  |   |   | a   \ /            | |        |     |
-  |   |   ---------------------------------     |
-  |   -------------------------------------     |
-  |         FASE DE          FASE DE            |
-  |         CAPTURA          BURBUJA            |
-  |        DE EVENTOS       DE EVENTOS          |
-  -----------------------------------------------
+  +-------------| |------------| |-------------+
+  | DIV1        | |            | |             |
+  |   +---------| |------------| |---------+   |
+  |   | DIV2    | |            | |         |   |
+  |   |   +-----| |------------| |-----+   |   |
+  |   |   | a   \ /            | |     |   |   |
+  |   |   +----------------------------+   |   |
+  |   +------------------------------------+   |
+  |           FASE DE        FASE DE           |
+  |           CAPTURA        BURBUJA           |
+  |          DE EVENTOS     DE EVENTOS         |
+  +--------------------------------------------+
   </pre>
   <p id="P" style="border: 1px solid green; padding: 10px;"></p>
 
@@ -41,9 +41,9 @@
   function onClickA(e){
     paragraph.innerHTML += "A -> on click<br>";
   }
-  document.getElementById("DIV1").addEventListener("click",onClickDIV1, true);
-  document.getElementById("DIV2").addEventListener("click",onClickDIV2, true);
-  document.getElementById("A").addEventListener("click",onClickA, true);
+  document.getElementById("DIV1").addEventListener("click",onClickDIV1);
+  document.getElementById("DIV2").addEventListener("click",onClickDIV2);
+  document.getElementById("A").addEventListener("click",onClickA);
   </script>
 
 </body>
