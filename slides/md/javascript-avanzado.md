@@ -1037,38 +1037,38 @@ las consideraciones de seguridad recomiendan no usarlo.
 }
 ~~~
 
+## JSONP
 
+- Por seguridad XMLHttpRequest sólo puede realizar peticiones al mismo dominio.
 
+- JSONP envuelve el JSON en una función definida por el cliente.
 
+- Esto nos permite hacer peticiones GET (sólo GET) a dominios distintos.
 
+## CORS (I)
 
-## JSON, JSONP, CORS
+- Protocolo Cross-Origin Resource Sharing (Compartición de recursos de distintos orígenes).
 
+- Realizar peticiones a otros dominios siempre y cuando el dominio de destino
+esté de acuerdo en recibir peticiones del dominio de origen.
 
+- Tanto navegador como servidor tienen que implementar el protocolo.
 
+##  CORS (II)
 
+- Desde el servidor, se envía en cabecera:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+~~~
+Access-Control-Allow-Origin: http://dominio-permitido.com
+~~~
 
 ## APIs REST
 
-- REST (Representational State Transfer) es una técnica de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.
+- REST (Representational State Transfer) es una técnica de arquitectura software
+para sistemas hipermedia distribuidos como la World Wide Web.
 
-- Es decir, **una URL (Uniform Resource Locator) representa un recurso al que se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE)**.
+- Es decir, una URL (Uniform Resource Locator) **representa un recurso** al que
+se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE).
 
 - Ver [Artículos de REST de Enrique Amodeo Rubio (@eamodeorubio)](https://eamodeorubio.wordpress.com/category/webservices/rest/)
 
@@ -1148,6 +1148,10 @@ las consideraciones de seguridad recomiendan no usarlo.
 
 
 # ES6
+
+## Como usarlo hoy
+
+- [Babel](https://babeljs.io/) nos permite utilizar ES6 hoy en día.
 
 ## Función Arrow (I)
 
@@ -1323,7 +1327,35 @@ class Circle extends Shape {
 })();
 ~~~
 
-Ahora podemos declarar variables con let en lugar de var si no queremos que sean accesibles más allá de un ámbito. Por ejemplo:
+## Scopes (I)
+
+~~~{.javascript}
+//ES5
+(function () {
+    var foo = function () { return 1; }
+    foo() === 1;
+    (function () {
+        var foo = function () { return 2; }
+        foo() === 2;
+    })();
+    foo() === 1;
+})();
+~~~
+
+## Scopes (II)
+
+~~~{.javascript}
+//ES6
+{
+    function foo () { return 1 }
+    foo() === 1
+    {
+        function foo () { return 2 }
+        foo() === 2
+    }
+    foo() === 1
+}
+~~~
 
 ## const (I)
 
@@ -1615,6 +1647,7 @@ console.log("2π = " + sum(pi, pi))
 
 - <https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/>
 - <http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/>
+- <https://eamodeorubio.wordpress.com/category/webservices/rest/>
 
 ## ES6 (ES)
 
