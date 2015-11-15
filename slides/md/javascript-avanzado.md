@@ -921,23 +921,24 @@ event.stopPropagation();
 event.preventDefault();
 ~~~
 
-## WebSockets
+
+
+# WebSockets
 
 
 
+## ¿Qué son los WebSockets?
 
+- Nos permiten **comunicación bidireccional** entre cliente y servidor.
 
+## Socket.IO
 
+- Librería cliente y servidor (NodeJS) para utilizar WebSockets:
 
-
-
-
-
-
-
-
-
-
+  - Simplifica la API.
+  - Permite envíar no sólo texto.
+  - Permite crear eventos propios.
+  - Permite utilizar navegadores sin soporte de WebSockets.
 
 
 
@@ -998,7 +999,6 @@ function handle_json() {
   }
 }
 ~~~
-
 
 # JSON
 
@@ -1600,6 +1600,16 @@ console.log("2π = " + sum(pi, pi))
 - <https://developer.mozilla.org/en-US/docs/Web/API/Event>
 - <http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/>
 - <https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault>
+
+## WebSockets (ES)
+
+- <http://www.html5rocks.com/es/tutorials/websockets/basics/>
+- <https://carlosazaustre.es/blog/websockets-como-utilizar-socket-io-en-tu-aplicacion-web/>
+
+## WebSockets (EN)
+
+- <https://davidwalsh.name/websocket>
+- <http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270>
 
 ## AJAX (ES)
 

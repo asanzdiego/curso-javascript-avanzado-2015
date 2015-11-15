@@ -1,0 +1,13 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "keywords": [],
+  "author": "Adolfo Sanz",
+  "license": "GPL",
+  "dependencies": {
+    "express": "4.13.3",
+    "socket.io": "1.3.7"
+  }
+}

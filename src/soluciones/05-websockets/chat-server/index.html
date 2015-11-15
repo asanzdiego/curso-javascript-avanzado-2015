@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Chat con Socket.io</title>
+</head>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+  var socket = io.connect('http://localhost:8080');
+
+  socket.on('message', function(message) {
+    console.log("Recibido:", message);
+    var messages = document.getElementById("messages");
+    messages.innerHTML += "<strong>"+message.author+"</strong>: "+message.text+"<br>";
+  })
+
+  function addMessage(e) {
+    var message = {
+      author: document.getElementById('author').value,
+      text: document.getElementById('text').value
+    };
+    console.log("Enviando", message);
+    socket.emit('new-message', message);
+    return false;
+  }
+  
+</script>
+
+<body>
+
+  <h1>Chat con Socket.io</h1>
+
+  <form onsubmit="return addMessage(this)">
+    <input type="text" id="author" placeholder="Tu Nombre" >
+    <input type="text" id="text" placeholder="Cuéntanos algo...">
+    <input type="submit" value="Enviar!">
+  </form>
+
+  <p id="messages"></p>
+
+</body>
+</html>
