@@ -1461,7 +1461,7 @@ g({ name: "foo", val:  7 });
 h({ name: "bar", val: 42 });
 ~~~
 
-## Parámetros con nombre (I)
+## Parámetros con nombre (II)
 
 ~~~{.javascript}
 //ES6
@@ -1477,6 +1477,27 @@ function h ({ name, val }) {
 f([ "bar", 42 ])
 g({ name: "foo", val:  7 })
 h({ name: "bar", val: 42 })
+~~~
+
+## Resto parámetros (I)
+
+~~~{.javascript}
+//ES5
+function f (x, y) {
+    var a = Array.prototype.slice.call(arguments, 2);
+    return (x + y) * a.length;
+};
+f(1, 2, "hello", true, 7) === 9;
+~~~
+
+## Resto parámetros (II)
+
+~~~{.javascript}
+//ES6
+function f (x, y, ...a) {
+    return (x + y) * a.length
+}
+f(1, 2, "hello", true, 7) === 9
 ~~~
 
 ## Valores por defecto (I)
@@ -1519,22 +1540,112 @@ import { sum, pi } from "lib/math"
 console.log("2π = " + sum(pi, pi))
 ~~~
 
-
-
-
-
-
-
-
-
-
-
 ## Generadores
 
+~~~{.javascript}
+//ES6
+function *soyUnGenerador(i) {  
+  yield i + 1;
+  yield i + 2;
+  yield i + 3;
+}
 
-# Como usarlo hoy ES6
+var gen = soyUnGenerador(1);  
+console.log(gen.next());  
+//  Object {value: 2, done: false}
+console.log(gen.next());  
+//  Object {value: 3, done: false}
+console.log(gen.next());  
+//  Object {value: 4, done: false}
+console.log(gen.next());  
+//  Object {value: undefined, done: true}
+~~~
 
+## Set
 
+~~~{.javascript}
+//ES6
+let s = new Set()
+s.add("hello").add("goodbye").add("hello")
+s.size === 2
+s.has("hello") === true
+for (let key of s.values()) { // insertion order
+  console.log(key)
+}
+~~~
+
+## Map
+
+~~~{.javascript}
+//ES6
+let m = new Map()
+m.set("hello", 42)
+m.set(s, 34)
+m.get(s) === 34
+m.size === 2
+for (let [ key, val ] of m.entries()) {}
+  console.log(key + " = " + val)
+}
+~~~
+
+## Nuevos métodos en String
+
+~~~{.javascript}
+//ES6
+"hello".startsWith("ello", 1) // true
+"hello".endsWith("hell", 4)   // true
+"hello".includes("ell")       // true
+"hello".includes("ell", 1)    // true
+"hello".includes("ell", 2)    // false
+~~~
+
+## Nuevos métodos en Number
+
+~~~{.javascript}
+//ES6
+Number.isNaN(42) === false
+Number.isNaN(NaN) === true
+Number.isSafeInteger(42) === true
+Number.isSafeInteger(9007199254740992) === false
+~~~
+
+## Proxies
+
+~~~{.javascript}
+//ES6
+let target = {
+    foo: "Welcome, foo"
+}
+let proxy = new Proxy(target, {
+    get (receiver, name) {
+        return name in receiver ? receiver[name] : `Hello, ${name}`
+    }
+})
+proxy.foo   === "Welcome, foo"
+proxy.world === "Hello, world"
+~~~
+
+## Internationalization (I)
+
+~~~{.javascript}
+//ES6
+var i10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
+var i10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
+var i10nEUR = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" })
+i10nUSD.format(100200300.40) === "$100,200,300.40"
+i10nGBP.format(100200300.40) === "£100,200,300.40"
+i10nEUR.format(100200300.40) === "100.200.300,40 €"
+~~~
+
+## Internationalization (II)
+
+~~~{.javascript}
+//ES6
+var i10nEN = new Intl.DateTimeFormat("en-US")
+var i10nDE = new Intl.DateTimeFormat("de-DE")
+i10nEN.format(new Date("2015-01-02")) === "1/2/2015"
+i10nDE.format(new Date("2015-01-02")) === "2.1.2015"
+~~~
 
 
 
