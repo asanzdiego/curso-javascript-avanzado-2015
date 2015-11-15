@@ -882,30 +882,44 @@ function simulateClick() {
 }
 ~~~
 
-## Propagación
+## Propagación (I)
 
+~~~
+               1              2
+              | |            / \
++-------------| |------------| |-------------+
+| DIV1        | |            | |             |
+|   +---------| |------------| |---------+   |
+|   | DIV2    | |            | |         |   |
+|   |   +-----| |------------| |-----+   |   |
+|   |   | A   \ /            | |     |   |   |
+|   |   +----------------------------+   |   |
+|   +------------------------------------+   |
+|           FASE DE        FASE DE           |
+|           CAPTURA        BURBUJA           |
+|          DE EVENTOS     DE EVENTOS         |
++--------------------------------------------+
+~~~
 
+## Propagación (II)
 
+~~~
+// en fase de CAPTURA
+addEventListener("eventName",callback, true);
 
+// en fase de BURBUJA
+addEventListener("eventName",callback, true);
+~~~
 
+## Propagación (III)
 
+~~~
+// detiene la propagación del evento
+event.stopPropagation();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// elimina las acciones por defecto (ejemplo: abrir enlace)
+event.preventDefault();
+~~~
 
 ## WebSockets
 
