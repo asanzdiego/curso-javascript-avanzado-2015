@@ -2,30 +2,40 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Inicio</title>
-
-  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
-  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
-
-  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
-  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
-  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
-
+  <title>Eventos</title>
 </head>
 
-  <script>
-    describe("tests", function() {
-      
-      it('"1" == 1', function() {
-        //expect("1" == 1).toEqual();
-      });
-      
-      it('"1" === 1', function() {
-        //expect("1" === 1).toEqual();
-      });
-    });
-  </script>
-  
 <body>
+
+  <p id="texto">texto</p>
+
+  <button id="add">Añadir onmouseover listener</button>
+  <button id="del">Eliminar onmouseover listener</button>
+  <button id="sim">Simular evento onmouseover</button>
+
+  <script>
+  var texto = document.getElementById("texto");
+  var bnAdd = document.getElementById("add");
+  var bnDel = document.getElementById("del");
+  var bnSim = document.getElementById("sim");
+
+  var puntitos = function() {
+    texto.innerHTML += ".";
+  }
+
+  bnAdd.onclick = function() {
+    texto.addEventListener('mouseover', puntitos);
+  }
+
+  bnDel.onclick = function() {
+    texto.removeEventListener('mouseover', puntitos);
+  }
+
+  bnSim.onclick = function() {
+    var event = new MouseEvent('mouseover');
+    texto.dispatchEvent(event);
+  }
+  </script>
+
 </body>
 </html>
