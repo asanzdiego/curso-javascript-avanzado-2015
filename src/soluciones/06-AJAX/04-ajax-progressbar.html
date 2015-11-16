@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>jQuery UI Progressbar</title>
+	<link rel="stylesheet" href="jquery-ui.css" />
+	<script src="jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+	<script>
+	$(document).ready(function() {
+
+		var init = new Date ();
+		var url = "http://localhost:3000/progress/" + init.getTime();
+
+		var progressbar = $( "#progressbar" );
+		var progressLabel = $( ".progress-label" );
+
+		progressbar.progressbar({
+			value: false,
+			change: function() {
+				progressLabel.text(
+					progressbar.progressbar("value")+"%");
+			},
+			complete: function() {
+				progressLabel.text("Complete!");
+			}
+		});
+
+		function progress() {
+
+	      console.log(url);
+
+	      $.ajax({
+	          url: url,
+	          dataType: 'jsonp',
+	          success: function(data) {
+
+	              console.log(data);
+	              var val = data.percentage;
+
+	              progressbar.progressbar( "value", val );
+
+	              if ( val < 99 ) {
+	                setTimeout( progress, 100 );
+	              }
+	          },
+	          error: function() {
+
+	              console.log('Error loading data...');
+	              progressLabel.text('Error loading data...');
+	          }
+	      });
+	    }
+
+		setTimeout( progress, 1000 );
+	});
+	</script>
+	  <style>
+	  .ui-progressbar {
+	    position: relative;
+	  }
+	  .progress-label {
+	    position: absolute;
+	    left: 50%;
+	    top: 4px;
+	    font-weight: bold;
+	    text-shadow: 1px 1px 0 #fff;
+	  }
+	  </style>
+</head>
+<body>
+	<h1>jQuery UI Progressbar</h1>
+	<div id="progressbar"><div class="progress-label">Loading...</div></div>
+</body>
+</html>
