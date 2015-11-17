@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combos dinámicos con jQuery - AJAX</title>
+    <script src="jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        $("#marcas").change(function(){
+
+            var selectModelos = $("#modelos").empty();
+            selectModelos.append('<option value="0">Select...</option>');
+
+            var idSelected = $("#marcas option:selected").val();
+            console.log("idSelected="+idSelected);
+
+            if ( idSelected != 0) {
+
+                var url = "http://localhost:3000/marca/" + idSelected;
+                console.log(url);
+
+                $.getJSON(url, function(data) {
+                    var modelos = data;
+                    for (var i = 0; i < modelos.length; i++) {
+                        var value = modelos[i];
+                        console.log(value.id + '=' + value.name);
+                        selectModelos.append('<option value="'
+                            + value.id + '">' + value.name + '</option>');
+                    }
+                });
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <h2>Combos dinámicos con jQuery - AJAX</h2>
+    <p>Marca:
+        <select name="marcas" id="marcas">
+            <option value="0">Select...</option>
+            <option value="1">Citroen</option>
+            <option value="2">Seat</option>
+            <option value="3">Peugeot</option>
+        </select></p>
+    <p>Modelo:
+        <select name="modelos" id="modelos">
+            <option value="0">Select...</option>
+        </select></p>
+</body>
+</html>

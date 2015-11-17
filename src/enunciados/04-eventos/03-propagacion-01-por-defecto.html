@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>03 Propagación de eventos</title>
+</head>
+
+<body>
+
+  <div id="DIV1" style="border: 1px solid red; padding: 20px;">
+    <div id="DIV2" style="border: 5px solid black; padding: 20px;">
+      <a id="A" href="http://www.google.com" target="_blank" style="border: 1px solid blue; padding: 10px;">google</a>
+    </div>
+  </div>
+  <pre>
+                 1              2
+                | |            / \
+  +-------------| |------------| |-------------+
+  | DIV1        | |            | |             |
+  |   +---------| |------------| |---------+   |
+  |   | DIV2    | |            | |         |   |
+  |   |   +-----| |------------| |-----+   |   |
+  |   |   | A   \ /            | |     |   |   |
+  |   |   +----------------------------+   |   |
+  |   +------------------------------------+   |
+  |           FASE DE        FASE DE           |
+  |           CAPTURA        BURBUJA           |
+  |          DE EVENTOS     DE EVENTOS         |
+  +--------------------------------------------+
+  </pre>
+  <p id="P" style="border: 1px solid green; padding: 10px;"></p>
+
+  <script>
+  var paragraph = document.getElementById("P");
+  function onClickDIV1(e){
+    paragraph.innerHTML += "DIV1 -> on click<br>";
+  }
+  function onClickDIV2(e){
+    paragraph.innerHTML += "DIV2 -> on click<br>";
+  }
+  function onClickA(e){
+    paragraph.innerHTML += "A -> on click<br>";
+  }
+  // cuando se haga click en DIV1 que se ejecute la función onClickDIV1
+  // document.getElementById("DIV1").addEventListener("click",onClickDIV1...
+
+  // cuando se haga click en DIV2 que se ejecute la función onClickDIV2
+  // document.getElementById("DIV2").addEventListener("click",onClickDIV2...
+
+  // cuando se haga click en A que se ejecute la función onClickA
+  // document.getElementById("A").addEventListener("click",onClickA...
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pub/Sub</title>
+  <style>
+  .azul {
+    background-color: blue;
+  }
+  .verde {
+    background-color: green;
+  }
+  .rojo {
+    background-color: red;
+  }
+  </style>
+</head>
+
+<body>
+
+  <p id="primero">primero</p>
+  <p id="segundo">segundo</p>
+  <p id="tercero">tercero</p>
+
+  <button id="azul">azul</button>
+  <button id="verde">verde</button>
+  <button id="rojo">rojo</button>
+
+  <script>
+  var EventBus = {
+    topics: {},
+
+    subscribe: function(topic, listener) {
+      console.log("subscribe ->", topic);
+      if (!this.topics[topic]) this.topics[topic] = [];
+      this.topics[topic].push(listener);
+    },
+
+    publish: function(topic, data) {
+      console.log("publish ->", topic);
+      if (!this.topics[topic] || this.topics[topic].length < 1) return;
+      this.topics[topic].forEach(function(listener) {
+        listener(data || {});
+      });
+    }
+  };
+
+  EventBus.subscribe('hola', alert);
+  EventBus.publish('hola', 'Hola Mundo');
+
+  var Mailer = function() {
+    EventBus.subscribe('compra', this.sendPurchaseEmail);
+  };
+
+  Mailer.prototype = {
+    sendPurchaseEmail: function(userEmail) {
+      console.log("Sent email to " + userEmail);
+    }
+  };
+
+  var Order = function(params) {
+    this.params = params;
+  };
+
+  Order.prototype = {
+    saveOrder: function() {
+      EventBus.publish('compra', this.params.userEmail);
+    }
+  };
+
+  var mailer = new Mailer();
+  var order = new Order({userEmail: 'john@gmail.com'});
+  order.saveOrder();
+
+  var cambiarClase = function(elemento) {
+    return function(color) {
+      console.log(color);
+      console.log(elemento);
+      elemento.className=color;
+    };
+  }
+
+  EventBus.subscribe('azul', cambiarClase(document.getElementById('primero')));
+  EventBus.subscribe('verde', cambiarClase(document.getElementById('primero')));
+  EventBus.subscribe('rojo', cambiarClase(document.getElementById('primero')));
+
+  EventBus.subscribe('azul', cambiarClase(document.getElementById('segundo')));
+  EventBus.subscribe('verde', cambiarClase(document.getElementById('segundo')));
+
+  EventBus.subscribe('azul', cambiarClase(document.getElementById('tercero')));
+
+  document.getElementById('azul').onclick = function() {
+    EventBus.publish('azul', 'azul');
+  }
+  document.getElementById('verde').onclick = function() {
+    EventBus.publish('verde', 'verde');
+  }
+  document.getElementById('rojo').onclick = function() {
+    EventBus.publish('rojo', 'rojo');
+  }
+
+  </script>
+
+</body>
+</html>

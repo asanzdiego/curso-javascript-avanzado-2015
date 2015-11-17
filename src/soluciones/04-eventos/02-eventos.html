@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Eventos</title>
+</head>
+
+<body>
+
+  <p id="texto">texto</p>
+
+  <button id="add">Añadir onmouseover listener</button>
+  <button id="del">Eliminar onmouseover listener</button>
+  <button id="sim">Simular evento onmouseover</button>
+
+  <script>
+  var texto = document.getElementById("texto");
+  var bnAdd = document.getElementById("add");
+  var bnDel = document.getElementById("del");
+  var bnSim = document.getElementById("sim");
+
+  var puntitos = function() {
+    texto.innerHTML += ".";
+  }
+
+  bnAdd.onclick = function() {
+    texto.addEventListener('mouseover', puntitos);
+  }
+
+  bnDel.onclick = function() {
+    texto.removeEventListener('mouseover', puntitos);
+  }
+
+  bnSim.onclick = function() {
+    var event = new MouseEvent('mouseover');
+    texto.dispatchEvent(event);
+  }
+  </script>
+
+</body>
+</html>

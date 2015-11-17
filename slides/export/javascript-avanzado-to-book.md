@@ -731,6 +731,70 @@ aplicaciones real-time con JS Isomófico (se ejecuta en front y back)
 
 
 
+## El patrón PubSub
+
+~~~
+var EventBus = {
+  topics: {},
+
+  subscribe: function(topic, listener) {
+    if (!this.topics[topic]) this.topics[topic] = [];
+    this.topics[topic].push(listener);
+  },
+
+  publish: function(topic, data) {
+    if (!this.topics[topic] || this.topics[topic].length < 1) return;
+    this.topics[topic].forEach(function(listener) {
+      listener(data || {});
+    });
+  }
+};
+~~~
+
+
+
+~~~
+EventBus.subscribe('foo', alert);
+EventBus.publish('foo', 'Hello World!');
+~~~
+
+
+
+~~~
+var Mailer = function() {
+  EventBus.subscribe('order/new', this.sendPurchaseEmail);
+};
+
+Mailer.prototype = {
+  sendPurchaseEmail: function(userEmail) {
+    console.log("Sent email to " + userEmail);
+  }
+};
+~~~
+
+
+
+~~~
+var Order = function(params) {
+  this.params = params;
+};
+
+Order.prototype = {
+  saveOrder: function() {
+    EventBus.publish('order/new', this.params.userEmail);
+  }
+};
+~~~
+
+
+
+~~~
+var mailer = new Mailer();
+var order = new Order({userEmail: 'john@gmail.com'});
+order.saveOrder();
+"Sent email to john@gmail.com"
+~~~
+
 ## Principales eventos
 
 Evento      | Descripción
@@ -821,88 +885,61 @@ function simulateClick() {
 
 ## Propagación
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## El patrón PubSub
-
 ~~~
-var EventBus = {
-  topics: {},
-
-  subscribe: function(topic, listener) {
-    if (!this.topics[topic]) this.topics[topic] = [];
-    this.topics[topic].push(listener);
-  },
-
-  publish: function(topic, data) {
-    if (!this.topics[topic] || this.topics[topic].length < 1) return;
-    this.topics[topic].forEach(function(listener) {
-      listener(data || {});
-    });
-  }
-};
+               1              2
+              | |            / \
++-------------| |------------| |-------------+
+| DIV1        | |            | |             |
+|   +---------| |------------| |---------+   |
+|   | DIV2    | |            | |         |   |
+|   |   +-----| |------------| |-----+   |   |
+|   |   | A   \ /            | |     |   |   |
+|   |   +----------------------------+   |   |
+|   +------------------------------------+   |
+|           FASE DE        FASE DE           |
+|           CAPTURA        BURBUJA           |
+|          DE EVENTOS     DE EVENTOS         |
++--------------------------------------------+
 ~~~
 
 
 
 ~~~
-EventBus.subscribe('foo', alert);
-EventBus.publish('foo', 'Hello World!');
+// en fase de CAPTURA
+addEventListener("eventName",callback, true);
+
+// en fase de BURBUJA
+addEventListener("eventName",callback, true);
 ~~~
 
 
 
 ~~~
-var Mailer = function() {
-  EventBus.subscribe('order/new', this.sendPurchaseEmail);
-};
+// detiene la propagación del evento
+event.stopPropagation();
 
-Mailer.prototype = {
-  sendPurchaseEmail: function(userEmail) {
-    console.log("Sent email to " + userEmail);
-  }
-};
-
-var Order = function(params) {
-  this.params = params;
-};
-
-Order.prototype = {
-  saveOrder: function() {
-    EventBus.publish('order/new', this.params.userEmail);
-  }
-};
+// elimina las acciones por defecto (ejemplo: abrir enlace)
+event.preventDefault();
 ~~~
 
 
 
-~~~
-var mailer = new Mailer();
-var order = new Order({userEmail: 'john@gmail.com'});
-order.saveOrder();
-"Sent email to john@gmail.com"
-~~~
+# WebSockets
 
-## WebSockets
+
+
+## ¿Qué son los WebSockets?
+
+- Nos permiten **comunicación bidireccional** entre cliente y servidor.
+
+## Socket.IO
+
+- Librería cliente y servidor (NodeJS) para utilizar WebSockets:
+
+  - Simplifica la API.
+  - Permite envíar no sólo texto.
+  - Permite crear eventos propios.
+  - Permite utilizar navegadores sin soporte de WebSockets.
 
 
 
@@ -910,9 +947,179 @@ order.saveOrder();
 
 
 
-## JSON, JSONP, CORS
+## ¿Qué es AJAX?
 
-## Uso de APIs
+- Acrónimo de **Asynchronous JavaScript And XML**.
+- Técnica para crear **aplicaciones web interactivas** o RIA (Rich Internet Applications).
+- Estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios.
+- Mientras se mantiene la comunicación asíncrona con el servidor en segundo plano.
+- De esta forma es posible realizar **cambios sobre las páginas sin necesidad de recargarlas**.
+
+## Tecnologías AJAX
+
+- AJAX no es una tecnología en sí misma, en realidad, se trata de varias tecnologías
+independientes que se unen de formas nuevas y sorprendentes.
+
+- Las tecnologías que forman AJAX son:
+    - **XHTML y CSS**, como estándares de presentación.
+    - **DOM**, para la manipulación dinámica de la presentación.
+    - **XML, JSON y otros**, para la la manipulación de información.
+    - **XMLHttpRequest**, para el intercambio asíncrono de información.
+    - **JavaScript**, para unir todas las demás tecnologías.
+
+## ¿Qué es el XMLHttpRequest?
+
+- El intercambio de datos AJAX entre cliente y servidor
+se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuales.
+
+- **No es necesario que el contenido esté formateado en XML**.
+
+- Su manejo puede llegar a ser complejo, aunque librerías como
+**jQuery** facilitan enormemente su uso.
+
+## Ejemplo
+
+~~~{.javascript}
+var http_request = new XMLHttpRequest();
+var url = "http://example.net/jsondata.php"; // Esta URL debería devolver datos JSON
+
+// Descarga los datos JSON del servidor.
+http_request.onreadystatechange = handle_json;
+http_request.open("GET", url, true);
+http_request.send(null);
+
+function handle_json() {
+  if (http_request.readyState == 4) {
+    if (http_request.status == 200) {
+      var json_data = http_request.responseText;
+      var the_object = eval("(" + json_data + ")");
+    } else {
+      alert("Ocurrio un problema con la URL.");
+    }
+    http_request = null;
+  }
+}
+~~~
+
+# JSON
+
+## ¿Qué es JSON?
+
+- Acrónimo de **JavaScript Object Notation**.
+- Es un subconjunto de la notación literal de objetos de JavaScript.
+- Sirve como formato ligero para el intercambio de datos.
+- **Su simplicidad ha generalizado su uso, especialmente como alternativa a XML en AJAX**.
+- En JavaScript, un texto JSON se puede analizar fácilmente usando la **función eval()**.
+
+## Parse
+
+~~~{.javascript}
+miObjeto = eval('(' + json_datos + ')');
+~~~
+
+- Eval es muy rápido, pero como compila y ejecuta cualquier código JavaScript,
+las consideraciones de seguridad recomiendan no usarlo.
+
+- Lo recomendable usar las librerías de [JSON.org](http://www.json.org/):
+    - [JSON in JavaScript - Explanation](http://www.json.org/js.html)
+    - [JSON in JavaScript - Downloads](https://github.com/douglascrockford/JSON-js)
+
+## Ejemplo
+
+~~~{.javascript}
+{
+    curso: "AJAX y jQuery",
+    profesor: "Adolfo",
+    participantes: [
+        { nombre: "Isabel", edad: 35 },
+        { nombre: "Alba", edad: 15 },
+        { nombre: "Laura", edad: 10 }
+    ]
+}
+~~~
+
+## JSONP
+
+- Por seguridad XMLHttpRequest sólo puede realizar peticiones al mismo dominio.
+
+- JSONP envuelve el JSON en una función definida por el cliente.
+
+- Esto nos permite hacer peticiones GET (sólo GET) a dominios distintos.
+
+## CORS
+
+- Protocolo Cross-Origin Resource Sharing (Compartición de recursos de distintos orígenes).
+
+- Realizar peticiones a otros dominios siempre y cuando el dominio de destino
+esté de acuerdo en recibir peticiones del dominio de origen.
+
+- Tanto navegador como servidor tienen que implementar el protocolo.
+
+
+
+- Desde el servidor, se envía en cabecera:
+
+~~~
+Access-Control-Allow-Origin: http://dominio-permitido.com
+~~~
+
+## APIs REST
+
+- REST (Representational State Transfer) es una técnica de arquitectura software
+para sistemas hipermedia distribuidos como la World Wide Web.
+
+- Es decir, una URL (Uniform Resource Locator) **representa un recurso** al que
+se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE).
+
+- Ver [Artículos de REST de Enrique Amodeo Rubio (@eamodeorubio)](https://eamodeorubio.wordpress.com/category/webservices/rest/)
+
+## ¿Por qué REST?
+
+- Es **más sencillo** (tanto la API como la implementación).
+- Es **más rápido** (peticiones más lijeras que se puede cachear).
+- Es **multiformato** (HTML, XML, JSON, etc.).
+- Se complementa muy bien con **AJAX**.
+
+## Ejemplo API
+
+- **GET** a http://myhost.com/person
+    - Devuelve todas las personas
+- **POST** a http://myhost.com/person
+    - Crear una nueva persona
+- **GET** a http://myhost.com/person/123
+    - Devuelve la persona con id=123
+- **PUT** a http://myhost.com/person/123
+    - Actualiza la persona con id=123
+- **DELETE** a http://myhost.com/person/123
+    - Borra la persona con id=123
+
+## Manejo de errores
+
+- **Se pueden utilizar los errores del protocolo HTTP**:
+
+    - 200 OK Standard response for successful HTTP requests
+    - 201 Created
+    - 202 Accepted
+    - 301 Moved Permanently
+    - 400 Bad Request
+    - 401 Unauthorised
+    - 402 Payment Required
+    - 403 Forbidden
+    - 404 Not Found
+    - 405 Method Not Allowed
+    - 500 Internal Server Error
+    - 501 Not Implemented
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -926,11 +1133,522 @@ order.saveOrder();
 
 
 
-# ECMAScript6
 
-## Principales Novedades
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ES6
 
 ## Como usarlo hoy
+
+- [Babel](https://babeljs.io/) nos permite utilizar ES6 hoy en día.
+
+## Función Arrow
+
+~~~{.javascript}
+// ES5
+var data = [{...}, {...}, {...}, ...];  
+data.forEach(function(elem){  
+    console.log(elem)
+});
+~~~
+
+## Función Arrow
+
+~~~{.javascript}
+//ES6
+var data = [{...}, {...}, {...}, ...];  
+data.forEach(elem => {  
+    console.log(elem);
+});
+~~~
+
+
+
+~~~{.javascript}
+// ES5
+var miFuncion = function(num1, num2) {  
+    return num1 + num2;
+}
+~~~
+
+
+
+~~~{.javascript}
+// ES6
+var miFuncion = (num1, num2) => num1 + num2;  
+~~~
+
+## This
+
+~~~{.javascript}
+//ES3
+var obj = {  
+    foo : function() {...},
+    bar : function() {
+        var that = this;
+        document.addEventListener("click", function(e) {
+            that.foo();
+        });
+    }
+}
+~~~
+
+
+
+~~~{.javascript}
+//ES5
+var obj = {  
+    foo : function() {...},
+    bar : function() {
+        document.addEventListener("click", function(e) {
+            this.foo();
+        }.bind(this));
+    }
+}
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+var obj = {  
+    foo : function() {...},
+    bar : function() {
+        document.addEventListener("click", (e) => this.foo());
+    }
+}
+~~~
+
+## Definición de Clases
+
+~~~{.javascript}
+//ES5
+var Shape = function (id, x, y) {
+    this.id = id;
+    this.move(x, y);
+};
+Shape.prototype.move = function (x, y) {
+    this.x = x;
+    this.y = y;
+};
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+class Shape {
+    constructor (id, x, y) {
+        this.id = id
+        this.move(x, y)
+    }
+    move (x, y) {
+        this.x = x
+        this.y = y
+    }
+}
+~~~
+
+## Herencia de Clases
+
+~~~{.javascript}
+//ES5
+var Rectangle = function (id, x, y, width, height) {
+    Shape.call(this, id, x, y);
+    this.width  = width;
+    this.height = height;
+};
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
+
+var Circle = function (id, x, y, radius) {
+    Shape.call(this, id, x, y);
+    this.radius = radius;
+};
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+class Rectangle extends Shape {
+    constructor (id, x, y, width, height) {
+        super(id, x, y)
+        this.width  = width
+        this.height = height
+    }
+}
+class Circle extends Shape {
+    constructor (id, x, y, radius) {
+        super(id, x, y)
+        this.radius = radius
+    }
+}
+~~~
+
+## let
+
+~~~{.javascript}
+//ES5
+(function() {
+    console.log(x); // x no está definida aún.
+    if(true) {
+        var x = "hola mundo";
+    }
+    console.log(x);
+    // Imprime "hola mundo", porque "var"
+    // hace que sea global a la función;
+})();
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+(function() {
+    if(true) {
+        let x = "hola mundo";
+    }
+    console.log(x);
+    //Da error, porque "x" ha sido definida dentro del "if"
+})();
+~~~
+
+## Scopes
+
+~~~{.javascript}
+//ES5
+(function () {
+    var foo = function () { return 1; }
+    foo() === 1;
+    (function () {
+        var foo = function () { return 2; }
+        foo() === 2;
+    })();
+    foo() === 1;
+})();
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+{
+    function foo () { return 1 }
+    foo() === 1
+    {
+        function foo () { return 2 }
+        foo() === 2
+    }
+    foo() === 1
+}
+~~~
+
+## const
+
+~~~{.javascript}
+//ES6
+(function() {
+    const PI;
+    PI = 3.15;
+    // ERROR, porque ha de asignarse un valor en la declaración
+})();
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+(function() {
+    const PI = 3.15;
+    PI = 3.14159;
+    // ERROR de nuevo, porque es de sólo-lectura
+})();
+~~~
+
+## Template Strings
+
+~~~{.javascript}
+//ES6
+let nombre1 = "JavaScript";  
+let nombre2 = "awesome";  
+console.log("Sólo quiero decir que ${nombre1} is ${nombre2}");  
+// Solo quiero decir que JavaScript is awesome
+~~~
+
+
+
+~~~{.javascript}
+//ES5
+var saludo = "ola " +  
+"que " +
+"ase ";
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+var saludo = "ola  
+que  
+ase";
+~~~
+
+## Destructuring
+
+~~~{.javascript}
+//ES6
+var [a, b] = ["hola", "mundo"];  
+console.log(a); // "hola"  
+console.log(b); // "mundo"
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+var obj = { nombre: "Carlos", apellido: "Azaustre" };  
+var { nombre, apellido } = obj;  
+console.log(nombre); // "Carlos"  
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+var foo = function() {  
+    return ["175", "75"];
+};
+var [estatura, peso] = foo();  
+console.log(estatura); //175  
+console.log(peso); //75  
+~~~
+
+## Parámetros con nombre
+
+~~~{.javascript}
+//ES5
+function f (arg) {
+    var name = arg[0];
+    var val  = arg[1];
+    console.log(name, val);
+};
+function g (arg) {
+    var n = arg.name;
+    var v = arg.val;
+    console.log(n, v);
+};
+function h (arg) {
+    var name = arg.name;
+    var val  = arg.val;
+    console.log(name, val);
+};
+f([ "bar", 42 ]);
+g({ name: "foo", val:  7 });
+h({ name: "bar", val: 42 });
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+function f ([ name, val ]) {
+    console.log(name, val)
+}
+function g ({ name: n, val: v }) {
+    console.log(n, v)
+}
+function h ({ name, val }) {
+    console.log(name, val)
+}
+f([ "bar", 42 ])
+g({ name: "foo", val:  7 })
+h({ name: "bar", val: 42 })
+~~~
+
+## Resto parámetros
+
+~~~{.javascript}
+//ES5
+function f (x, y) {
+    var a = Array.prototype.slice.call(arguments, 2);
+    return (x + y) * a.length;
+};
+f(1, 2, "hello", true, 7) === 9;
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+function f (x, y, ...a) {
+    return (x + y) * a.length
+}
+f(1, 2, "hello", true, 7) === 9
+~~~
+
+## Valores por defecto
+
+~~~{.javascript}
+//ES5
+function(valor) {  
+    valor = valor || "foo";
+}
+~~~
+
+## Valores por defecto
+
+~~~{.javascript}
+//ES6
+function(valor = "foo") {...};  
+~~~
+
+## Exportar módulos
+
+~~~{.javascript}
+//ES6
+
+// lib/math.js
+export function sum (x, y) { return x + y }
+export var pi = 3.141593
+~~~
+
+## Importar módulos
+
+~~~{.javascript}
+//ES6
+
+// someApp.js
+import * as math from "lib/math"
+console.log("2π = " + math.sum(math.pi, math.pi))
+
+// otherApp.js
+import { sum, pi } from "lib/math"
+console.log("2π = " + sum(pi, pi))
+~~~
+
+## Generadores
+
+~~~{.javascript}
+//ES6
+function *soyUnGenerador(i) {  
+  yield i + 1;
+  yield i + 2;
+  yield i + 3;
+}
+
+var gen = soyUnGenerador(1);  
+console.log(gen.next());  
+//  Object {value: 2, done: false}
+console.log(gen.next());  
+//  Object {value: 3, done: false}
+console.log(gen.next());  
+//  Object {value: 4, done: false}
+console.log(gen.next());  
+//  Object {value: undefined, done: true}
+~~~
+
+## Set
+
+~~~{.javascript}
+//ES6
+let s = new Set()
+s.add("hello").add("goodbye").add("hello")
+s.size === 2
+s.has("hello") === true
+for (let key of s.values()) { // insertion order
+  console.log(key)
+}
+~~~
+
+## Map
+
+~~~{.javascript}
+//ES6
+let m = new Map()
+m.set("hello", 42)
+m.set(s, 34)
+m.get(s) === 34
+m.size === 2
+for (let [ key, val ] of m.entries()) {}
+  console.log(key + " = " + val)
+}
+~~~
+
+## Nuevos métodos en String
+
+~~~{.javascript}
+//ES6
+"hello".startsWith("ello", 1) // true
+"hello".endsWith("hell", 4)   // true
+"hello".includes("ell")       // true
+"hello".includes("ell", 1)    // true
+"hello".includes("ell", 2)    // false
+~~~
+
+## Nuevos métodos en Number
+
+~~~{.javascript}
+//ES6
+Number.isNaN(42) === false
+Number.isNaN(NaN) === true
+Number.isSafeInteger(42) === true
+Number.isSafeInteger(9007199254740992) === false
+~~~
+
+## Proxies
+
+~~~{.javascript}
+//ES6
+let target = {
+    foo: "Welcome, foo"
+}
+let proxy = new Proxy(target, {
+    get (receiver, name) {
+        return name in receiver ? receiver[name] : `Hello, ${name}`
+    }
+})
+proxy.foo   === "Welcome, foo"
+proxy.world === "Hello, world"
+~~~
+
+## Internationalization
+
+~~~{.javascript}
+//ES6
+var i10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
+var i10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
+var i10nEUR = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" })
+i10nUSD.format(100200300.40) === "$100,200,300.40"
+i10nGBP.format(100200300.40) === "£100,200,300.40"
+i10nEUR.format(100200300.40) === "100.200.300,40 €"
+~~~
+
+
+
+~~~{.javascript}
+//ES6
+var i10nEN = new Intl.DateTimeFormat("en-US")
+var i10nDE = new Intl.DateTimeFormat("de-DE")
+i10nEN.format(new Date("2015-01-02")) === "1/2/2015"
+i10nDE.format(new Date("2015-01-02")) === "2.1.2015"
+~~~
+
+
 
 
 
@@ -1027,11 +1745,28 @@ order.saveOrder();
 - <http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/>
 - <https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault>
 
+## WebSockets (ES)
+
+- <http://www.html5rocks.com/es/tutorials/websockets/basics/>
+- <https://carlosazaustre.es/blog/websockets-como-utilizar-socket-io-en-tu-aplicacion-web/>
+
+## WebSockets (EN)
+
+- <https://davidwalsh.name/websocket>
+- <http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270>
+
+## AJAX (ES)
+
+- <https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/>
+- <http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/>
+- <https://eamodeorubio.wordpress.com/category/webservices/rest/>
+
 ## ES6 (ES)
 
 - <http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/>
 - <http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/>
 - <http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html>
+- <http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/>
 
 ## ES6 (EN)
 

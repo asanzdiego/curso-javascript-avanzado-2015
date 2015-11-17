@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pub/Sub</title>
+  <style>
+  .azul {
+    background-color: blue;
+  }
+  .verde {
+    background-color: green;
+  }
+  .rojo {
+    background-color: red;
+  }
+  </style>
+</head>
+
+<body>
+
+  <p id="primero">primero</p>
+  <p id="segundo">segundo</p>
+  <p id="tercero">tercero</p>
+
+  <button id="azul">azul</button>
+  <button id="verde">verde</button>
+  <button id="rojo">rojo</button>
+
+  <script>
+  var EventBus = {
+    topics: {},
+
+    subscribe: function(topic, listener) {
+      console.log("subscribe ->", topic);
+      if (!this.topics[topic]) this.topics[topic] = [];
+      this.topics[topic].push(listener);
+    },
+
+    publish: function(topic, data) {
+      console.log("publish ->", topic);
+      if (!this.topics[topic] || this.topics[topic].length < 1) return;
+      this.topics[topic].forEach(function(listener) {
+        listener(data || {});
+      });
+    }
+  };
+
+  // subscribir la función 'alert' al evento 'hola'
+  // EventBus.subscribe(...
+
+  // publicar el evento 'hola' con el saludo 'Hola mundo'
+  // EventBus.publish(...
+
+  var Mailer = function() {
+    // subscribir la función 'sendPurchaseEmail' al evento 'compra'
+    // EventBus.subscribe(...
+  };
+
+  Mailer.prototype = {
+    sendPurchaseEmail: function(userEmail) {
+      console.log("Sent email to " + userEmail);
+    }
+  };
+
+  var Order = function(params) {
+    this.params = params;
+  };
+
+  Order.prototype = {
+    saveOrder: function() {
+      // publicar un evento 'compra' con el 'userEmail'
+      // EventBus.publish(...
+    }
+  };
+
+  var mailer = new Mailer();
+  var order = new Order({userEmail: 'john@gmail.com'});
+  order.saveOrder();
+
+  var cambiarClase = function(elemento) {
+    return function(color) {
+      console.log(color);
+      console.log(elemento);
+      elemento.className=color;
+    };
+  }
+
+  // subscribir la función 'cambiar clase':
+  //    - con el elemento 'primero' al evento 'azul'
+  //    - con el elemento 'primero' al evento 'verde'
+  //    - con el elemento 'primero' al evento 'rojo'
+  //    - con el elemento 'segundo' al evento 'azul'
+  //    - con el elemento 'segundo' al evento 'verde'
+  //    - con el elemento 'tercero' al evento 'azul'
+
+  document.getElementById('azul').onclick = function() {
+    // publicar el evento 'azul' pasandole como dato 'azul'
+    // EventBus.publish(...
+  }
+  document.getElementById('verde').onclick = function() {
+    // publicar el evento 'verde' pasandole como dato 'verde'
+    // EventBus.publish(...
+  }
+  document.getElementById('rojo').onclick = function() {
+    // publicar el evento 'rojo' pasandole como dato 'rojo'
+    // EventBus.publish(...
+  }
+
+  </script>
+
+</body>
+</html>
