@@ -62,6 +62,7 @@ module.exports = function(app) {
 
         var response = marcas[marcaId];
 
+        console.log(response);
         res.send(response);
     }
 

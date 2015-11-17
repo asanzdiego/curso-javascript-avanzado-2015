@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador Wikipedia con jQuery y AJAX</title>
+    <script src="jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        $("#button").click(function(){
+
+            var search = $("#search").val();
+
+            var url = "http://es.wikipedia.org/w/api.php?format=json&srprop=snippet|titlesnippet"
+                        +"&action=query&list=search&srsearch="+search;
+
+            console.log(url);
+
+            // realizar una petición get
+            // y mostrar los datos devueltos en la capa "result"
+            // $.get(url, function(data) { ... }, "jsonp");
+        });
+    });
+    </script>
+</head>
+<body>
+    <h2>Buscador Wikipedia con jQuery y AJAX</h2>
+    <p>
+      <input id="search" type="text" />
+      <button id="button">Search</button>
+    <p>
+    <div id="result"></div>
+</body>
+</html>

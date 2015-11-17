@@ -21,7 +21,8 @@
                 console.log(url);
 
                 $.getJSON(url, function(data) {
-                    var modelos = data;
+                    console.log(data);
+                    var modelos = eval(data);
                     for (var i = 0; i < modelos.length; i++) {
                         var value = modelos[i];
                         console.log(value.id + '=' + value.name);

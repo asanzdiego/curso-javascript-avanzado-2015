@@ -1111,24 +1111,40 @@ se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 # Inyección de dependencias
 
 
 
 ## AMD (RequireJS)
 
+
+- Definición de Módulos Asíncronos (AMD)
+
+- La implementación más popular de este estándar es [RequireJS](http://www.requirejs.org/).
+
+- Sintaxis un poco complicada.
+
+- Permite la carga de módulos de forma asíncrona.
+
+- Se usa principalmente en navegadores.
+
 ## CommonJS (Browserify)
+
+- La implementación usada en [NodeJS](https://nodejs.org/) y [Browserify](http://browserify.org/).
+
+- Sintaxis sencilla.
+
+- Carga los módulos de forma síncrona.
+
+- Se usa principalmente en el servidor.
+
+## ECMAScript 6
+
+- Coje lo mejor de los 2 enfoques:
+
+  - Similitudes con **CommonJS**: sintaxis sencilla.
+
+  - Similitudes con **AMD**: soporte para carga asíncrona.
 
 
 
