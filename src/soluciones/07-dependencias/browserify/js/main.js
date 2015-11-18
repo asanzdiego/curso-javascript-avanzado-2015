@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var persona = require('./app.persona');
+var persona = require('./persona');
 
 $('h1').html('Hola Browserify');
 
