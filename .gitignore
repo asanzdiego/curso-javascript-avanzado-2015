@@ -4,4 +4,5 @@ src/enunciados/07-dependencias/browserify/node_modules/
 
 src/soluciones/05-websockets/chat-server/node_modules/
 src/soluciones/06-AJAX/servidor-node/node_modules/
+src/soluciones/06-AJAX/servidor-rest-node/node_modules/
 src/soluciones/07-dependencias/browserify/node_modules/

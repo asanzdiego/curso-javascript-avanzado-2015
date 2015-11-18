@@ -1,0 +1,12 @@
+{
+  "name": "rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "keywords": [],
+  "author": "Adolfo Sanz",
+  "license": "GPL",
+  "dependencies": {
+    "express" : "3.2.6"
+  }
+}
