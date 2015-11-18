@@ -1,8 +1,7 @@
 var $ = require('jquery');
 var persona = require('./app.persona');
 
-$('h1').html('Hola Browserify');
+// sustituir h1 con jQuery por 'Hola Browserify'
+// $('h1').html(...
 
-var carlos = new persona("Carlos", 30);
-carlos.saludar();
-carlos.presentar();
+// crear una persona y saludar

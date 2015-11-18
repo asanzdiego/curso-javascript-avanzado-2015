@@ -6,11 +6,7 @@ var Persona = function(nombre, edad) {
 
   return {
     saludar: function() {
-      alert("Hola, mi nombre es " + self.nombre);
-    },
-
-    presentar: function() {
-      alert("Tengo " + self.edad + " años.");
+      alert("Hola, mi nombre es " + self.nombre + " y tengo " + self.edad + " años.");
     }
   };
 }
