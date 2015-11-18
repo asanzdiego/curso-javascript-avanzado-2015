@@ -9,16 +9,12 @@ p.saludar();
 
 },{"./persona":2,"jquery":3}],2:[function(require,module,exports){
 var Persona = function(nombre, edad) {
-  this.nombre = nombre;
-  this.edad = edad;
+  
+    this.nombre = nombre;
 
-  var self = this;
-
-  return {
-    saludar: function() {
-      alert("Hola, mi nombre es " + self.nombre + " y tengo " + self.edad + " años.");
-    }
-  };
+    Persona.prototype.saludar = function() {
+        alert("Hola, mi nombre es " + this.nombre);
+    };
 }
 
 module.exports = Persona;

@@ -1,14 +1,10 @@
 var Persona = function(nombre, edad) {
-  this.nombre = nombre;
-  this.edad = edad;
 
-  var self = this;
+    this.nombre = nombre;
 
-  return {
-    saludar: function() {
-      alert("Hola, mi nombre es " + self.nombre + " y tengo " + self.edad + " años.");
-    }
-  };
+    Persona.prototype.saludar = function() {
+        alert("Hola, mi nombre es " + this.nombre);
+    };
 }
 
 module.exports = Persona;

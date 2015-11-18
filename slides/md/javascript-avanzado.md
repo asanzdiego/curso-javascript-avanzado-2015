@@ -980,7 +980,7 @@ se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuale
 
 ~~~{.javascript}
 var http_request = new XMLHttpRequest();
-var url = "http://example.net/jsondata.php"; // Esta URL debería devolver datos JSON
+var url = "http://example.net/jsondata.php";
 
 // Descarga los datos JSON del servidor.
 http_request.onreadystatechange = handle_json;
@@ -988,14 +988,11 @@ http_request.open("GET", url, true);
 http_request.send(null);
 
 function handle_json() {
-  if (http_request.readyState == 4) {
-    if (http_request.status == 200) {
-      var json_data = http_request.responseText;
-      var the_object = eval("(" + json_data + ")");
-    } else {
-      alert("Ocurrio un problema con la URL.");
-    }
-    http_request = null;
+  if (http_request.status == 200) {
+    var json_data = http_request.responseText;
+    var the_object = eval("(" + json_data + ")");
+  } else {
+    alert("Ocurrio un problema con la URL.");
   }
 }
 ~~~
@@ -1075,8 +1072,6 @@ para sistemas hipermedia distribuidos como la World Wide Web.
 - Es decir, una URL (Uniform Resource Locator) **representa un recurso** al que
 se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE).
 
-- Ver [Artículos de REST de Enrique Amodeo Rubio (@eamodeorubio)](https://eamodeorubio.wordpress.com/category/webservices/rest/)
-
 ## ¿Por qué REST?
 
 - Es **más sencillo** (tanto la API como la implementación).
@@ -1097,30 +1092,28 @@ se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET
 - **DELETE** a http://myhost.com/person/123
     - Borra la persona con id=123
 
-## Manejo de errores
+## Errores HTTP
 
-- **Se pueden utilizar los errores del protocolo HTTP**:
-
-    - 200 OK Standard response for successful HTTP requests
-    - 201 Created
-    - 202 Accepted
-    - 301 Moved Permanently
-    - 400 Bad Request
-    - 401 Unauthorised
-    - 402 Payment Required
-    - 403 Forbidden
-    - 404 Not Found
-    - 405 Method Not Allowed
-    - 500 Internal Server Error
-    - 501 Not Implemented
+- 200 OK
+- 201 Created
+- 202 Accepted
+- 301 Moved Permanently
+- 400 Bad Request
+- 401 Unauthorised
+- 402 Payment Required
+- 403 Forbidden
+- 404 Not Found
+- 405 Method Not Allowed
+- 500 Internal Server Error
+- 501 Not Implemented
 
 
 
-# Inyección de dependencias
+# Gestión de dependencias
 
 
 
-## AMD (RequireJS)
+## AMD
 
 
 - Definición de Módulos Asíncronos (AMD)
@@ -1133,7 +1126,70 @@ se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET
 
 - Se usa principalmente en navegadores.
 
-## CommonJS (Browserify)
+## RequireJS (I)
+
+- index.html
+
+~~~html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page 1</title>
+        <script data-main="js/index" src="js/lib/require.js"></script>
+    </head>
+    <body>
+        <h1>Hola Mundo</h1>
+    </body>
+</html>
+~~~
+
+## RequireJS (II)
+
+- js/index.js
+
+~~~javascript
+requirejs(['./common'], function (common) {
+    requirejs(['app/main']);
+});
+~~~
+
+## RequireJS (III)
+
+- app/main.js
+
+~~~javascript
+define(function (require) {
+    var $ = require('jquery');
+    var persona = require('./persona');
+
+    $('h1').html("Hola requery.js");
+
+    var p = new persona("Adolfo", 30);
+    p.saludar();
+});
+~~~
+
+## RequireJS (IV)
+
+- app/persona.js
+
+~~~javascript
+define(function () {
+
+  var Persona = function(nombre, edad) {
+
+      this.nombre = nombre;
+
+      Persona.prototype.saludar = function() {
+          alert("Hola, mi nombre es " + this.nombre);
+      };
+  }
+
+  return Persona;
+});
+~~~
+
+## CommonJS
 
 - La implementación usada en [NodeJS](https://nodejs.org/) y [Browserify](http://browserify.org/).
 
@@ -1143,13 +1199,99 @@ se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET
 
 - Se usa principalmente en el servidor.
 
+## Browserify (I)
+
+- Instalar browserify
+
+~~~
+npm install -g browserify
+~~~
+
+## Browserify (II)
+
+- Instalar dependencias de **package.json**
+
+~~~
+npm install
+~~~
+
+
+## Browserify (III)
+
+- **package.json**
+
+~~~javascript
+{
+  "name": "browserify-example",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "^2.1.3"
+  }
+}
+~~~
+
+## Browserify (IV)
+
+- Compilar las dependencias a **bundle.js**
+
+~~~
+browserify js/main.js -o js/bundle.js
+~~~
+
+## Browserify (V)
+
+- index.html
+
+~~~html
+<!doctype html>
+<html>
+  <head>
+    <title>Browserify Playground</title>
+  </head>
+  <body>
+    <h1>Hola Mundo</h1>
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
+~~~
+
+## Browserify (VI)
+
+- js/app/main.js
+
+~~~javascript
+var $ = require('jquery');
+var persona = require('./persona');
+
+$('h1').html('Hola Browserify');
+
+var p = new persona("Adolfo", 30);
+p.saludar();
+~~~
+
+## Browserify (VII)
+
+- js/app/persona.js
+
+~~~javascript
+var Persona = function(nombre, edad) {
+
+    this.nombre = nombre;
+
+    Persona.prototype.saludar = function() {
+        alert("Hola, mi nombre es " + this.nombre);
+    };
+}
+
+module.exports = Persona;
+~~~
+
 ## ECMAScript 6
 
 - Coje lo mejor de los 2 enfoques:
 
-  - Similitudes con **CommonJS**: sintaxis sencilla.
-
-  - Similitudes con **AMD**: soporte para carga asíncrona.
+    - Similitudes con **CommonJS**: sintaxis sencilla.
+    - Similitudes con **AMD**: soporte para carga asíncrona.
 
 
 
@@ -1830,10 +1972,11 @@ i10nDE.format(new Date("2015-01-02")) === "2.1.2015"
 - <https://davidwalsh.name/websocket>
 - <http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270>
 
-## AJAX (ES)
+## AJAX, JSON, REST (ES)
 
 - <https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/>
 - <http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/>
+- <https://eamodeorubio.wordpress.com/category/webservices/rest/>
 - <https://eamodeorubio.wordpress.com/category/webservices/rest/>
 
 ## ES6 (ES)

@@ -969,7 +969,7 @@ elem.addEventListener(&#39;build&#39;, function (e)  {
 addEventListener(&quot;eventName&quot;,callback, true);
 
 // en fase de BURBUJA
-addEventListener(&quot;eventName&quot;,callback, true);</code></pre>
+addEventListener(&quot;eventName&quot;,callback, false); // por defecto</code></pre>
 </section><section id="propagación-iii" class="slide level2">
 <h2><span class="header-section-number">7.16</span> Propagación (III)</h2>
 <pre><code>// detiene la propagación del evento
@@ -1025,7 +1025,7 @@ event.preventDefault();</code></pre>
 </section><section id="ejemplo" class="slide level2">
 <h2><span class="header-section-number">9.4</span> Ejemplo</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> http_request = <span class="kw">new</span> <span class="fu">XMLHttpRequest</span>();
-<span class="kw">var</span> url = <span class="st">&quot;http://example.net/jsondata.php&quot;</span>; <span class="co">// Esta URL debería devolver datos JSON</span>
+<span class="kw">var</span> url = <span class="st">&quot;http://example.net/jsondata.php&quot;</span>;
 
 <span class="co">// Descarga los datos JSON del servidor.</span>
 <span class="ot">http_request</span>.<span class="fu">onreadystatechange</span> = handle_json;
@@ -1033,14 +1033,11 @@ event.preventDefault();</code></pre>
 <span class="ot">http_request</span>.<span class="fu">send</span>(<span class="kw">null</span>);
 
 <span class="kw">function</span> <span class="fu">handle_json</span>() {
-  <span class="kw">if</span> (<span class="ot">http_request</span>.<span class="fu">readyState</span> == <span class="dv">4</span>) {
-    <span class="kw">if</span> (<span class="ot">http_request</span>.<span class="fu">status</span> == <span class="dv">200</span>) {
-      <span class="kw">var</span> json_data = <span class="ot">http_request</span>.<span class="fu">responseText</span>;
-      <span class="kw">var</span> the_object = <span class="fu">eval</span>(<span class="st">&quot;(&quot;</span> + json_data + <span class="st">&quot;)&quot;</span>);
-    } <span class="kw">else</span> {
-      <span class="fu">alert</span>(<span class="st">&quot;Ocurrio un problema con la URL.&quot;</span>);
-    }
-    http_request = <span class="kw">null</span>;
+  <span class="kw">if</span> (<span class="ot">http_request</span>.<span class="fu">status</span> == <span class="dv">200</span>) {
+    <span class="kw">var</span> json_data = <span class="ot">http_request</span>.<span class="fu">responseText</span>;
+    <span class="kw">var</span> the_object = <span class="fu">eval</span>(<span class="st">&quot;(&quot;</span> + json_data + <span class="st">&quot;)&quot;</span>);
+  } <span class="kw">else</span> {
+    <span class="fu">alert</span>(<span class="st">&quot;Ocurrio un problema con la URL.&quot;</span>);
   }
 }</code></pre>
 </section></section>
@@ -1095,15 +1092,15 @@ event.preventDefault();</code></pre>
 <li>Desde el servidor, se envía en cabecera:</li>
 </ul>
 <pre><code>Access-Control-Allow-Origin: http://dominio-permitido.com</code></pre>
-</section><section id="apis-rest" class="slide level2">
-<h2><span class="header-section-number">10.7</span> APIs REST</h2>
+</section></section>
+<section><section id="apis-rest" class="titleslide slide level1"><h1><span class="header-section-number">11</span> APIs REST</h1></section><section id="qué-es-un-api-rest" class="slide level2">
+<h2><span class="header-section-number">11.1</span> ¿Qué es un API REST?</h2>
 <ul>
 <li><p>REST (Representational State Transfer) es una técnica de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.</p></li>
 <li><p>Es decir, una URL (Uniform Resource Locator) <strong>representa un recurso</strong> al que se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE).</p></li>
-<li><p>Ver <span class="citation" data-cites="eamodeorubio">[Artículos de REST de Enrique Amodeo Rubio (@eamodeorubio)]</span>(https://eamodeorubio.wordpress.com/category/webservices/rest/)</p></li>
 </ul>
 </section><section id="por-qué-rest" class="slide level2">
-<h2><span class="header-section-number">10.8</span> ¿Por qué REST?</h2>
+<h2><span class="header-section-number">11.2</span> ¿Por qué REST?</h2>
 <ul>
 <li>Es <strong>más sencillo</strong> (tanto la API como la implementación).</li>
 <li>Es <strong>más rápido</strong> (peticiones más lijeras que se puede cachear).</li>
@@ -1111,7 +1108,7 @@ event.preventDefault();</code></pre>
 <li>Se complementa muy bien con <strong>AJAX</strong>.</li>
 </ul>
 </section><section id="ejemplo-api" class="slide level2">
-<h2><span class="header-section-number">10.9</span> Ejemplo API</h2>
+<h2><span class="header-section-number">11.3</span> Ejemplo API</h2>
 <ul>
 <li><strong>GET</strong> a http://myhost.com/person
 <ul>
@@ -1134,12 +1131,10 @@ event.preventDefault();</code></pre>
 <li>Borra la persona con id=123</li>
 </ul></li>
 </ul>
-</section><section id="manejo-de-errores" class="slide level2">
-<h2><span class="header-section-number">10.10</span> Manejo de errores</h2>
+</section><section id="errores-http" class="slide level2">
+<h2><span class="header-section-number">11.4</span> Errores HTTP</h2>
 <ul>
-<li><p><strong>Se pueden utilizar los errores del protocolo HTTP</strong>:</p>
-<ul>
-<li>200 OK Standard response for successful HTTP requests</li>
+<li>200 OK</li>
 <li>201 Created</li>
 <li>202 Accepted</li>
 <li>301 Moved Permanently</li>
@@ -1151,45 +1146,193 @@ event.preventDefault();</code></pre>
 <li>405 Method Not Allowed</li>
 <li>500 Internal Server Error</li>
 <li>501 Not Implemented</li>
+</ul>
+</section></section>
+<section><section id="gestión-de-dependencias-1" class="titleslide slide level1"><h1><span class="header-section-number">12</span> Gestión de dependencias</h1></section><section id="amd" class="slide level2">
+<h2><span class="header-section-number">12.1</span> AMD</h2>
+<ul>
+<li><p>Definición de Módulos Asíncronos (AMD)</p></li>
+<li><p>La implementación más popular de este estándar es <a href="http://www.requirejs.org/">RequireJS</a>.</p></li>
+<li><p>Sintaxis un poco complicada.</p></li>
+<li><p>Permite la carga de módulos de forma asíncrona.</p></li>
+<li><p>Se usa principalmente en navegadores.</p></li>
+</ul>
+</section><section id="requirejs-i" class="slide level2">
+<h2><span class="header-section-number">12.2</span> RequireJS (I)</h2>
+<ul>
+<li>index.html</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+    <span class="kw">&lt;head&gt;</span>
+        <span class="kw">&lt;title&gt;</span>Page 1<span class="kw">&lt;/title&gt;</span>
+        <span class="kw">&lt;script</span><span class="ot"> data-main=</span><span class="st">&quot;js/index&quot;</span><span class="ot"> src=</span><span class="st">&quot;js/lib/require.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;/head&gt;</span>
+    <span class="kw">&lt;body&gt;</span>
+        <span class="kw">&lt;h1&gt;</span>Hola Mundo<span class="kw">&lt;/h1&gt;</span>
+    <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+</section><section id="requirejs-ii" class="slide level2">
+<h2><span class="header-section-number">12.3</span> RequireJS (II)</h2>
+<ul>
+<li>js/index.js</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">requirejs</span>([<span class="st">&#39;./common&#39;</span>], <span class="kw">function</span> (common) {
+    <span class="fu">requirejs</span>([<span class="st">&#39;app/main&#39;</span>]);
+});</code></pre>
+</section><section id="requirejs-iii" class="slide level2">
+<h2><span class="header-section-number">12.4</span> RequireJS (III)</h2>
+<ul>
+<li>app/main.js</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">define</span>(<span class="kw">function</span> (require) {
+    <span class="kw">var</span> $ = <span class="fu">require</span>(<span class="st">&#39;jquery&#39;</span>);
+    <span class="kw">var</span> persona = <span class="fu">require</span>(<span class="st">&#39;./persona&#39;</span>);
+
+    <span class="fu">$</span>(<span class="st">&#39;h1&#39;</span>).<span class="fu">html</span>(<span class="st">&quot;Hola requery.js&quot;</span>);
+
+    <span class="kw">var</span> p = <span class="kw">new</span> <span class="fu">persona</span>(<span class="st">&quot;Adolfo&quot;</span>, <span class="dv">30</span>);
+    <span class="ot">p</span>.<span class="fu">saludar</span>();
+});</code></pre>
+</section><section id="requirejs-iv" class="slide level2">
+<h2><span class="header-section-number">12.5</span> RequireJS (IV)</h2>
+<ul>
+<li>app/persona.js</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">define</span>(<span class="kw">function</span> () {
+
+  <span class="kw">var</span> Persona = <span class="kw">function</span>(nombre, edad) {
+
+      <span class="kw">this</span>.<span class="fu">nombre</span> = nombre;
+
+      <span class="ot">Persona</span>.<span class="ot">prototype</span>.<span class="fu">saludar</span> = <span class="kw">function</span>() {
+          <span class="fu">alert</span>(<span class="st">&quot;Hola, mi nombre es &quot;</span> + <span class="kw">this</span>.<span class="fu">nombre</span>);
+      };
+  }
+
+  <span class="kw">return</span> Persona;
+});</code></pre>
+</section><section id="commonjs" class="slide level2">
+<h2><span class="header-section-number">12.6</span> CommonJS</h2>
+<ul>
+<li><p>La implementación usada en <a href="https://nodejs.org/">NodeJS</a> y <a href="http://browserify.org/">Browserify</a>.</p></li>
+<li><p>Sintaxis sencilla.</p></li>
+<li><p>Carga los módulos de forma síncrona.</p></li>
+<li><p>Se usa principalmente en el servidor.</p></li>
+</ul>
+</section><section id="browserify-i" class="slide level2">
+<h2><span class="header-section-number">12.7</span> Browserify (I)</h2>
+<ul>
+<li>Instalar browserify</li>
+</ul>
+<pre><code>npm install -g browserify</code></pre>
+</section><section id="browserify-ii" class="slide level2">
+<h2><span class="header-section-number">12.8</span> Browserify (II)</h2>
+<ul>
+<li>Instalar dependencias de <strong>package.json</strong></li>
+</ul>
+<pre><code>npm install</code></pre>
+</section><section id="browserify-iii" class="slide level2">
+<h2><span class="header-section-number">12.9</span> Browserify (III)</h2>
+<ul>
+<li><strong>package.json</strong></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">{
+  <span class="st">&quot;name&quot;</span>: <span class="st">&quot;browserify-example&quot;</span>,
+  <span class="st">&quot;version&quot;</span>: <span class="st">&quot;1.0.0&quot;</span>,
+  <span class="st">&quot;dependencies&quot;</span>: {
+    <span class="st">&quot;jquery&quot;</span>: <span class="st">&quot;^2.1.3&quot;</span>
+  }
+}</code></pre>
+</section><section id="browserify-iv" class="slide level2">
+<h2><span class="header-section-number">12.10</span> Browserify (IV)</h2>
+<ul>
+<li>Compilar las dependencias a <strong>bundle.js</strong></li>
+</ul>
+<pre><code>browserify js/main.js -o js/bundle.js</code></pre>
+</section><section id="browserify-v" class="slide level2">
+<h2><span class="header-section-number">12.11</span> Browserify (V)</h2>
+<ul>
+<li>index.html</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="er">&lt;</span>!doctype html&gt;
+<span class="kw">&lt;html&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;title&gt;</span>Browserify Playground<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Hola Mundo<span class="kw">&lt;/h1&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/bundle.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+</section><section id="browserify-vi" class="slide level2">
+<h2><span class="header-section-number">12.12</span> Browserify (VI)</h2>
+<ul>
+<li>js/app/main.js</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> $ = <span class="fu">require</span>(<span class="st">&#39;jquery&#39;</span>);
+<span class="kw">var</span> persona = <span class="fu">require</span>(<span class="st">&#39;./persona&#39;</span>);
+
+<span class="fu">$</span>(<span class="st">&#39;h1&#39;</span>).<span class="fu">html</span>(<span class="st">&#39;Hola Browserify&#39;</span>);
+
+<span class="kw">var</span> p = <span class="kw">new</span> <span class="fu">persona</span>(<span class="st">&quot;Adolfo&quot;</span>, <span class="dv">30</span>);
+<span class="ot">p</span>.<span class="fu">saludar</span>();</code></pre>
+</section><section id="browserify-vii" class="slide level2">
+<h2><span class="header-section-number">12.13</span> Browserify (VII)</h2>
+<ul>
+<li>js/app/persona.js</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> Persona = <span class="kw">function</span>(nombre, edad) {
+
+    <span class="kw">this</span>.<span class="fu">nombre</span> = nombre;
+
+    <span class="ot">Persona</span>.<span class="ot">prototype</span>.<span class="fu">saludar</span> = <span class="kw">function</span>() {
+        <span class="fu">alert</span>(<span class="st">&quot;Hola, mi nombre es &quot;</span> + <span class="kw">this</span>.<span class="fu">nombre</span>);
+    };
+}
+
+<span class="ot">module</span>.<span class="fu">exports</span> = Persona;</code></pre>
+</section><section id="ecmascript-6" class="slide level2">
+<h2><span class="header-section-number">12.14</span> ECMAScript 6</h2>
+<ul>
+<li><p>Coje lo mejor de los 2 enfoques:</p>
+<ul>
+<li>Similitudes con <strong>CommonJS</strong>: sintaxis sencilla.</li>
+<li>Similitudes con <strong>AMD</strong>: soporte para carga asíncrona.</li>
 </ul></li>
 </ul>
 </section></section>
-<section><section id="inyección-de-dependencias" class="titleslide slide level1"><h1><span class="header-section-number">11</span> Inyección de dependencias</h1></section><section id="amd-requirejs" class="slide level2">
-<h2><span class="header-section-number">11.1</span> AMD (RequireJS)</h2>
-</section><section id="commonjs-browserify" class="slide level2">
-<h2><span class="header-section-number">11.2</span> CommonJS (Browserify)</h2>
-</section></section>
-<section><section id="es6" class="titleslide slide level1"><h1><span class="header-section-number">12</span> ES6</h1></section><section id="como-usarlo-hoy" class="slide level2">
-<h2><span class="header-section-number">12.1</span> Como usarlo hoy</h2>
+<section><section id="es6" class="titleslide slide level1"><h1><span class="header-section-number">13</span> ES6</h1></section><section id="como-usarlo-hoy" class="slide level2">
+<h2><span class="header-section-number">13.1</span> Como usarlo hoy</h2>
 <ul>
 <li><a href="https://babeljs.io/">Babel</a> nos permite utilizar ES6 hoy en día.</li>
 </ul>
 </section><section id="función-arrow-i" class="slide level2">
-<h2><span class="header-section-number">12.2</span> Función Arrow (I)</h2>
+<h2><span class="header-section-number">13.2</span> Función Arrow (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// ES5</span>
 <span class="kw">var</span> data = [{...}, {...}, {...}, ...];  
 <span class="ot">data</span>.<span class="fu">forEach</span>(<span class="kw">function</span>(elem){  
     <span class="ot">console</span>.<span class="fu">log</span>(elem)
 });</code></pre>
 </section><section id="función-arrow-i-1" class="slide level2">
-<h2><span class="header-section-number">12.3</span> Función Arrow (I)</h2>
+<h2><span class="header-section-number">13.3</span> Función Arrow (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> data = [{...}, {...}, {...}, ...];  
 <span class="ot">data</span>.<span class="fu">forEach</span>(elem =&gt; {  
     <span class="ot">console</span>.<span class="fu">log</span>(elem);
 });</code></pre>
 </section><section id="función-arrow-iii" class="slide level2">
-<h2><span class="header-section-number">12.4</span> Función Arrow (III)</h2>
+<h2><span class="header-section-number">13.4</span> Función Arrow (III)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// ES5</span>
 <span class="kw">var</span> miFuncion = <span class="kw">function</span>(num1, num2) {  
     <span class="kw">return</span> num1 + num2;
 }</code></pre>
 </section><section id="función-arrow-iv" class="slide level2">
-<h2><span class="header-section-number">12.5</span> Función Arrow (IV)</h2>
+<h2><span class="header-section-number">13.5</span> Función Arrow (IV)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// ES6</span>
 <span class="kw">var</span> miFuncion = (num1, num2) =&gt; num1 + num2;  </code></pre>
 </section><section id="this-i" class="slide level2">
-<h2><span class="header-section-number">12.6</span> This (I)</h2>
+<h2><span class="header-section-number">13.6</span> This (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES3</span>
 <span class="kw">var</span> obj = {  
     <span class="dt">foo </span>: <span class="kw">function</span>() {...},
@@ -1201,7 +1344,7 @@ event.preventDefault();</code></pre>
     }
 }</code></pre>
 </section><section id="this-ii" class="slide level2">
-<h2><span class="header-section-number">12.7</span> This (II)</h2>
+<h2><span class="header-section-number">13.7</span> This (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">var</span> obj = {  
     <span class="dt">foo </span>: <span class="kw">function</span>() {...},
@@ -1212,7 +1355,7 @@ event.preventDefault();</code></pre>
     }
 }</code></pre>
 </section><section id="this-iii" class="slide level2">
-<h2><span class="header-section-number">12.8</span> This (III)</h2>
+<h2><span class="header-section-number">13.8</span> This (III)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> obj = {  
     <span class="dt">foo </span>: <span class="kw">function</span>() {...},
@@ -1221,7 +1364,7 @@ event.preventDefault();</code></pre>
     }
 }</code></pre>
 </section><section id="definición-de-clases-i" class="slide level2">
-<h2><span class="header-section-number">12.9</span> Definición de Clases (I)</h2>
+<h2><span class="header-section-number">13.9</span> Definición de Clases (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">var</span> Shape = <span class="kw">function</span> (id, x, y) {
     <span class="kw">this</span>.<span class="fu">id</span> = id;
@@ -1232,7 +1375,7 @@ event.preventDefault();</code></pre>
     <span class="kw">this</span>.<span class="fu">y</span> = y;
 };</code></pre>
 </section><section id="definición-de-clases-ii" class="slide level2">
-<h2><span class="header-section-number">12.10</span> Definición de Clases (II)</h2>
+<h2><span class="header-section-number">13.10</span> Definición de Clases (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">class</span> Shape {
     <span class="fu">constructor</span> (id, x, y) {
@@ -1245,7 +1388,7 @@ event.preventDefault();</code></pre>
     }
 }</code></pre>
 </section><section id="herencia-de-clases-i" class="slide level2">
-<h2><span class="header-section-number">12.11</span> Herencia de Clases (I)</h2>
+<h2><span class="header-section-number">13.11</span> Herencia de Clases (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">var</span> Rectangle = <span class="kw">function</span> (id, x, y, width, height) {
     <span class="ot">Shape</span>.<span class="fu">call</span>(<span class="kw">this</span>, id, x, y);
@@ -1262,7 +1405,7 @@ event.preventDefault();</code></pre>
 <span class="ot">Circle</span>.<span class="fu">prototype</span> = <span class="ot">Object</span>.<span class="fu">create</span>(<span class="ot">Shape</span>.<span class="fu">prototype</span>);
 <span class="ot">Circle</span>.<span class="ot">prototype</span>.<span class="fu">constructor</span> = Circle;</code></pre>
 </section><section id="herencia-de-clases-ii" class="slide level2">
-<h2><span class="header-section-number">12.12</span> Herencia de Clases (II)</h2>
+<h2><span class="header-section-number">13.12</span> Herencia de Clases (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">class</span> Rectangle <span class="kw">extends</span> Shape {
     <span class="fu">constructor</span> (id, x, y, width, height) {
@@ -1278,7 +1421,7 @@ event.preventDefault();</code></pre>
     }
 }</code></pre>
 </section><section id="let-i" class="slide level2">
-<h2><span class="header-section-number">12.13</span> let (I)</h2>
+<h2><span class="header-section-number">13.13</span> let (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 (<span class="kw">function</span>() {
     console.log(x); <span class="co">// x no está definida aún.</span>
@@ -1290,7 +1433,7 @@ event.preventDefault();</code></pre>
     <span class="co">// hace que sea global a la función;</span>
 })();</code></pre>
 </section><section id="let-ii" class="slide level2">
-<h2><span class="header-section-number">12.14</span> let (II)</h2>
+<h2><span class="header-section-number">13.14</span> let (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 (<span class="kw">function</span>() {
     <span class="kw">if</span>(<span class="kw">true</span>) {
@@ -1300,7 +1443,7 @@ event.preventDefault();</code></pre>
     <span class="co">//Da error, porque &quot;x&quot; ha sido definida dentro del &quot;if&quot;</span>
 })();</code></pre>
 </section><section id="scopes-i" class="slide level2">
-<h2><span class="header-section-number">12.15</span> Scopes (I)</h2>
+<h2><span class="header-section-number">13.15</span> Scopes (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 (<span class="kw">function</span> () {
     <span class="kw">var</span> foo = <span class="kw">function</span> () { <span class="kw">return</span> <span class="dv">1</span>; }
@@ -1312,7 +1455,7 @@ event.preventDefault();</code></pre>
     <span class="fu">foo</span>() === <span class="dv">1</span>;
 })();</code></pre>
 </section><section id="scopes-ii" class="slide level2">
-<h2><span class="header-section-number">12.16</span> Scopes (II)</h2>
+<h2><span class="header-section-number">13.16</span> Scopes (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 {
     <span class="kw">function</span> <span class="fu">foo</span> () { <span class="kw">return</span> <span class="dv">1</span> }
@@ -1324,7 +1467,7 @@ event.preventDefault();</code></pre>
     <span class="fu">foo</span>() === <span class="dv">1</span>
 }</code></pre>
 </section><section id="const-i" class="slide level2">
-<h2><span class="header-section-number">12.17</span> const (I)</h2>
+<h2><span class="header-section-number">13.17</span> const (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 (<span class="kw">function</span>() {
     <span class="kw">const</span> PI;
@@ -1332,7 +1475,7 @@ event.preventDefault();</code></pre>
     <span class="co">// ERROR, porque ha de asignarse un valor en la declaración</span>
 })();</code></pre>
 </section><section id="const-ii" class="slide level2">
-<h2><span class="header-section-number">12.18</span> const (II)</h2>
+<h2><span class="header-section-number">13.18</span> const (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 (<span class="kw">function</span>() {
     <span class="kw">const</span> PI = <span class="fl">3.15</span>;
@@ -1340,38 +1483,38 @@ event.preventDefault();</code></pre>
     <span class="co">// ERROR de nuevo, porque es de sólo-lectura</span>
 })();</code></pre>
 </section><section id="template-strings-i" class="slide level2">
-<h2><span class="header-section-number">12.19</span> Template Strings (I)</h2>
+<h2><span class="header-section-number">13.19</span> Template Strings (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">let</span> nombre1 = <span class="st">&quot;JavaScript&quot;</span>;  
 <span class="kw">let</span> nombre2 = <span class="st">&quot;awesome&quot;</span>;  
 console.log(<span class="st">&quot;Sólo quiero decir que ${nombre1} is ${nombre2}&quot;</span>);  
 <span class="co">// Solo quiero decir que JavaScript is awesome</span></code></pre>
 </section><section id="template-strings-ii" class="slide level2">
-<h2><span class="header-section-number">12.20</span> Template Strings (II)</h2>
+<h2><span class="header-section-number">13.20</span> Template Strings (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">var</span> saludo = <span class="st">&quot;ola &quot;</span> +  
 <span class="st">&quot;que &quot;</span> +
 <span class="st">&quot;ase &quot;</span>;</code></pre>
 </section><section id="template-strings-iii" class="slide level2">
-<h2><span class="header-section-number">12.21</span> Template Strings (III)</h2>
+<h2><span class="header-section-number">13.21</span> Template Strings (III)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> saludo = <span class="st">&quot;ola  </span>
 que  
 ase<span class="st">&quot;;</span></code></pre>
 </section><section id="destructuring-i" class="slide level2">
-<h2><span class="header-section-number">12.22</span> Destructuring (I)</h2>
+<h2><span class="header-section-number">13.22</span> Destructuring (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> [a, b] = [<span class="st">&quot;hola&quot;</span>, <span class="st">&quot;mundo&quot;</span>];  
 <span class="ot">console</span>.<span class="fu">log</span>(a); <span class="co">// &quot;hola&quot;  </span>
 <span class="ot">console</span>.<span class="fu">log</span>(b); <span class="co">// &quot;mundo&quot;</span></code></pre>
 </section><section id="destructuring-ii" class="slide level2">
-<h2><span class="header-section-number">12.23</span> Destructuring (II)</h2>
+<h2><span class="header-section-number">13.23</span> Destructuring (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> obj = { <span class="dt">nombre</span>: <span class="st">&quot;Carlos&quot;</span>, <span class="dt">apellido</span>: <span class="st">&quot;Azaustre&quot;</span> };  
 <span class="kw">var</span> { nombre, apellido } = obj;  
 <span class="ot">console</span>.<span class="fu">log</span>(nombre); <span class="co">// &quot;Carlos&quot;  </span></code></pre>
 </section><section id="destructuring-iii" class="slide level2">
-<h2><span class="header-section-number">12.24</span> Destructuring (III)</h2>
+<h2><span class="header-section-number">13.24</span> Destructuring (III)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> foo = <span class="kw">function</span>() {  
     <span class="kw">return</span> [<span class="st">&quot;175&quot;</span>, <span class="st">&quot;75&quot;</span>];
@@ -1380,7 +1523,7 @@ ase<span class="st">&quot;;</span></code></pre>
 <span class="ot">console</span>.<span class="fu">log</span>(estatura); <span class="co">//175  </span>
 <span class="ot">console</span>.<span class="fu">log</span>(peso); <span class="co">//75  </span></code></pre>
 </section><section id="parámetros-con-nombre-i" class="slide level2">
-<h2><span class="header-section-number">12.25</span> Parámetros con nombre (I)</h2>
+<h2><span class="header-section-number">13.25</span> Parámetros con nombre (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">function</span> <span class="fu">f</span> (arg) {
     <span class="kw">var</span> name = arg[<span class="dv">0</span>];
@@ -1401,7 +1544,7 @@ ase<span class="st">&quot;;</span></code></pre>
 <span class="fu">g</span>({ <span class="dt">name</span>: <span class="st">&quot;foo&quot;</span>, <span class="dt">val</span>:  <span class="dv">7</span> });
 <span class="fu">h</span>({ <span class="dt">name</span>: <span class="st">&quot;bar&quot;</span>, <span class="dt">val</span>: <span class="dv">42</span> });</code></pre>
 </section><section id="parámetros-con-nombre-ii" class="slide level2">
-<h2><span class="header-section-number">12.26</span> Parámetros con nombre (II)</h2>
+<h2><span class="header-section-number">13.26</span> Parámetros con nombre (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">function</span> <span class="fu">f</span> ([ name, val ]) {
     <span class="ot">console</span>.<span class="fu">log</span>(name, val)
@@ -1416,7 +1559,7 @@ ase<span class="st">&quot;;</span></code></pre>
 <span class="fu">g</span>({ <span class="dt">name</span>: <span class="st">&quot;foo&quot;</span>, <span class="dt">val</span>:  <span class="dv">7</span> })
 <span class="fu">h</span>({ <span class="dt">name</span>: <span class="st">&quot;bar&quot;</span>, <span class="dt">val</span>: <span class="dv">42</span> })</code></pre>
 </section><section id="resto-parámetros-i" class="slide level2">
-<h2><span class="header-section-number">12.27</span> Resto parámetros (I)</h2>
+<h2><span class="header-section-number">13.27</span> Resto parámetros (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">function</span> <span class="fu">f</span> (x, y) {
     <span class="kw">var</span> a = <span class="ot">Array</span>.<span class="ot">prototype</span>.<span class="ot">slice</span>.<span class="fu">call</span>(arguments, <span class="dv">2</span>);
@@ -1424,31 +1567,31 @@ ase<span class="st">&quot;;</span></code></pre>
 };
 <span class="fu">f</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;hello&quot;</span>, <span class="kw">true</span>, <span class="dv">7</span>) === <span class="dv">9</span>;</code></pre>
 </section><section id="resto-parámetros-ii" class="slide level2">
-<h2><span class="header-section-number">12.28</span> Resto parámetros (II)</h2>
+<h2><span class="header-section-number">13.28</span> Resto parámetros (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">function</span> <span class="fu">f</span> (x, y, ...<span class="fu">a</span>) {
     <span class="kw">return</span> (x + y) * <span class="ot">a</span>.<span class="fu">length</span>
 }
 <span class="fu">f</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;hello&quot;</span>, <span class="kw">true</span>, <span class="dv">7</span>) === <span class="dv">9</span></code></pre>
 </section><section id="valores-por-defecto-i" class="slide level2">
-<h2><span class="header-section-number">12.29</span> Valores por defecto (I)</h2>
+<h2><span class="header-section-number">13.29</span> Valores por defecto (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
 <span class="kw">function</span>(valor) {  
     valor = valor || <span class="st">&quot;foo&quot;</span>;
 }</code></pre>
 </section><section id="valores-por-defecto-i-1" class="slide level2">
-<h2><span class="header-section-number">12.30</span> Valores por defecto (I)</h2>
+<h2><span class="header-section-number">13.30</span> Valores por defecto (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">function</span>(valor = <span class="st">&quot;foo&quot;</span>) {...};  </code></pre>
 </section><section id="exportar-módulos" class="slide level2">
-<h2><span class="header-section-number">12.31</span> Exportar módulos</h2>
+<h2><span class="header-section-number">13.31</span> Exportar módulos</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 
 <span class="co">// lib/math.js</span>
 <span class="kw">export</span> <span class="kw">function</span> <span class="fu">sum</span> (x, y) { <span class="kw">return</span> x + y }
 <span class="kw">export</span> <span class="kw">var</span> pi = <span class="fl">3.141593</span></code></pre>
 </section><section id="importar-módulos" class="slide level2">
-<h2><span class="header-section-number">12.32</span> Importar módulos</h2>
+<h2><span class="header-section-number">13.32</span> Importar módulos</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 
 <span class="co">// someApp.js</span>
@@ -1459,7 +1602,7 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="ot">math</
 <span class="kw">import</span> { sum, pi } from <span class="st">&quot;lib/math&quot;</span>
 console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</span>(pi, pi))</code></pre>
 </section><section id="generadores" class="slide level2">
-<h2><span class="header-section-number">12.33</span> Generadores</h2>
+<h2><span class="header-section-number">13.33</span> Generadores</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">function</span> *<span class="fu">soyUnGenerador</span>(i) {  
   <span class="kw">yield</span> i + <span class="dv">1</span>;
@@ -1477,7 +1620,7 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</s
 <span class="ot">console</span>.<span class="fu">log</span>(<span class="ot">gen</span>.<span class="fu">next</span>());  
 <span class="co">//  Object {value: undefined, done: true}</span></code></pre>
 </section><section id="set" class="slide level2">
-<h2><span class="header-section-number">12.34</span> Set</h2>
+<h2><span class="header-section-number">13.34</span> Set</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">let</span> s = <span class="kw">new</span> <span class="fu">Set</span>()
 <span class="ot">s</span>.<span class="fu">add</span>(<span class="st">&quot;hello&quot;</span>).<span class="fu">add</span>(<span class="st">&quot;goodbye&quot;</span>).<span class="fu">add</span>(<span class="st">&quot;hello&quot;</span>)
@@ -1487,7 +1630,7 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</s
   <span class="ot">console</span>.<span class="fu">log</span>(key)
 }</code></pre>
 </section><section id="map" class="slide level2">
-<h2><span class="header-section-number">12.35</span> Map</h2>
+<h2><span class="header-section-number">13.35</span> Map</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">let</span> m = <span class="kw">new</span> <span class="fu">Map</span>()
 <span class="ot">m</span>.<span class="fu">set</span>(<span class="st">&quot;hello&quot;</span>, <span class="dv">42</span>)
@@ -1498,7 +1641,7 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</s
   <span class="ot">console</span>.<span class="fu">log</span>(key + <span class="st">&quot; = &quot;</span> + val)
 }</code></pre>
 </section><section id="nuevos-métodos-en-string" class="slide level2">
-<h2><span class="header-section-number">12.36</span> Nuevos métodos en String</h2>
+<h2><span class="header-section-number">13.36</span> Nuevos métodos en String</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="st">&quot;hello&quot;</span>.<span class="fu">startsWith</span>(<span class="st">&quot;ello&quot;</span>, <span class="dv">1</span>) <span class="co">// true</span>
 <span class="st">&quot;hello&quot;</span>.<span class="fu">endsWith</span>(<span class="st">&quot;hell&quot;</span>, <span class="dv">4</span>)   <span class="co">// true</span>
@@ -1506,14 +1649,67 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</s
 <span class="st">&quot;hello&quot;</span>.<span class="fu">includes</span>(<span class="st">&quot;ell&quot;</span>, <span class="dv">1</span>)    <span class="co">// true</span>
 <span class="st">&quot;hello&quot;</span>.<span class="fu">includes</span>(<span class="st">&quot;ell&quot;</span>, <span class="dv">2</span>)    <span class="co">// false</span></code></pre>
 </section><section id="nuevos-métodos-en-number" class="slide level2">
-<h2><span class="header-section-number">12.37</span> Nuevos métodos en Number</h2>
+<h2><span class="header-section-number">13.37</span> Nuevos métodos en Number</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="ot">Number</span>.<span class="fu">isNaN</span>(<span class="dv">42</span>) === <span class="kw">false</span>
 <span class="ot">Number</span>.<span class="fu">isNaN</span>(<span class="kw">NaN</span>) === <span class="kw">true</span>
 <span class="ot">Number</span>.<span class="fu">isSafeInteger</span>(<span class="dv">42</span>) === <span class="kw">true</span>
 <span class="ot">Number</span>.<span class="fu">isSafeInteger</span>(<span class="dv">9007199254740992</span>) === <span class="kw">false</span></code></pre>
+</section><section id="promesas-i" class="slide level2">
+<h2><span class="header-section-number">13.38</span> Promesas (I)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> promise = <span class="kw">new</span> <span class="fu">Promise</span>(<span class="kw">function</span>(resolve, reject) {
+
+  todoCorrecto = <span class="kw">true</span>; <span class="co">// o false dependiendo de como ha ido</span>
+
+  <span class="kw">if</span> (todoCorrecto) {
+    <span class="fu">resolve</span>(<span class="st">&quot;Promesa Resuelta!&quot;</span>);
+  } <span class="kw">else</span> {
+    <span class="fu">reject</span>(<span class="fu">Error</span>(<span class="st">&quot;Promesa Rechazada!&quot;</span>));
+  }
+});</code></pre>
+</section><section id="promesas-ii" class="slide level2">
+<h2><span class="header-section-number">13.39</span> Promesas (II)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="co">// llamamos el metodo &#39;then&#39; de la promesa</span>
+<span class="co">// con 2 callbacks (resolve y reject)</span>
+<span class="ot">promise</span>.<span class="fu">then</span>(<span class="kw">function</span>(result) {
+  <span class="ot">console</span>.<span class="fu">log</span>(result); <span class="co">// &quot;Promesa Resuelta!&quot;</span>
+}, <span class="kw">function</span>(err) {
+  <span class="ot">console</span>.<span class="fu">log</span>(err); <span class="co">// Error: &quot;Promesa Rechazada!&quot;</span>
+});</code></pre>
+</section><section id="promesas-iii" class="slide level2">
+<h2><span class="header-section-number">13.40</span> Promesas (III)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="co">// podemos también llamar al &#39;then&#39; con el callback &#39;resolve&#39;</span>
+<span class="co">// y luego al &#39;catch&#39; con el callback &#39;reject&#39;</span>
+<span class="ot">promise</span>.<span class="fu">then</span>(<span class="kw">function</span>(result) {
+  <span class="ot">console</span>.<span class="fu">log</span>(result); <span class="co">// &quot;Promesa Resuelta!&quot;</span>
+}).<span class="fu">catch</span>(<span class="kw">function</span>(err) {
+  <span class="ot">console</span>.<span class="fu">log</span>(err); <span class="co">// Error: &quot;Promesa Rechazada!&quot;</span>
+});</code></pre>
+</section><section id="promesas-iv" class="slide level2">
+<h2><span class="header-section-number">13.41</span> Promesas (IV)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="ot">Promise</span>.<span class="fu">all</span>([promesa1,promesa2]).<span class="fu">then</span>(<span class="kw">function</span>(results) {
+  <span class="ot">console</span>.<span class="fu">log</span>(results); <span class="co">// cuando todas las promesas terminen</span>
+}).<span class="fu">catch</span>(<span class="kw">function</span>(err) {
+  <span class="ot">console</span>.<span class="fu">log</span>(err); <span class="co">// Error: &quot;Error en alguna promesa!&quot;</span>
+});</code></pre>
+</section><section id="promesas-v" class="slide level2">
+<h2><span class="header-section-number">13.42</span> Promesas (V)</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="ot">Promise</span>.<span class="fu">all</span>([promesa1,promesa2]).<span class="fu">then</span>(<span class="kw">function</span>(firstResult) {
+  <span class="ot">console</span>.<span class="fu">log</span>(firstResult); <span class="co">// cuando termine la primera</span>
+}).<span class="fu">catch</span>(<span class="kw">function</span>(err) {
+  <span class="ot">console</span>.<span class="fu">log</span>(err); <span class="co">// Error: &quot;Error en alguna promesa!&quot;</span>
+});</code></pre>
 </section><section id="proxies" class="slide level2">
-<h2><span class="header-section-number">12.38</span> Proxies</h2>
+<h2><span class="header-section-number">13.43</span> Proxies</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">let</span> target = {
     <span class="dt">foo</span>: <span class="st">&quot;Welcome, foo&quot;</span>
@@ -1526,7 +1722,7 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</s
 <span class="ot">proxy</span>.<span class="fu">foo</span>   === <span class="st">&quot;Welcome, foo&quot;</span>
 <span class="ot">proxy</span>.<span class="fu">world</span> === <span class="st">&quot;Hello, world&quot;</span></code></pre>
 </section><section id="internationalization-i" class="slide level2">
-<h2><span class="header-section-number">12.39</span> Internationalization (I)</h2>
+<h2><span class="header-section-number">13.44</span> Internationalization (I)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> i10nUSD = <span class="kw">new</span> <span class="ot">Intl</span>.<span class="fu">NumberFormat</span>(<span class="st">&quot;en-US&quot;</span>, { <span class="dt">style</span>: <span class="st">&quot;currency&quot;</span>, <span class="dt">currency</span>: <span class="st">&quot;USD&quot;</span> })
 <span class="kw">var</span> i10nGBP = <span class="kw">new</span> <span class="ot">Intl</span>.<span class="fu">NumberFormat</span>(<span class="st">&quot;en-GB&quot;</span>, { <span class="dt">style</span>: <span class="st">&quot;currency&quot;</span>, <span class="dt">currency</span>: <span class="st">&quot;GBP&quot;</span> })
@@ -1535,15 +1731,15 @@ console.log(<span class="st">&quot;2π = &quot;</span> + <span class="fu">sum</s
 i10nGBP.format(100200300.40) === <span class="st">&quot;£100,200,300.40&quot;</span>
 i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;</span></code></pre>
 </section><section id="internationalization-ii" class="slide level2">
-<h2><span class="header-section-number">12.40</span> Internationalization (II)</h2>
+<h2><span class="header-section-number">13.45</span> Internationalization (II)</h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
 <span class="kw">var</span> i10nEN = <span class="kw">new</span> <span class="ot">Intl</span>.<span class="fu">DateTimeFormat</span>(<span class="st">&quot;en-US&quot;</span>)
 <span class="kw">var</span> i10nDE = <span class="kw">new</span> <span class="ot">Intl</span>.<span class="fu">DateTimeFormat</span>(<span class="st">&quot;de-DE&quot;</span>)
 <span class="ot">i10nEN</span>.<span class="fu">format</span>(<span class="kw">new</span> <span class="fu">Date</span>(<span class="st">&quot;2015-01-02&quot;</span>)) === <span class="st">&quot;1/2/2015&quot;</span>
 <span class="ot">i10nDE</span>.<span class="fu">format</span>(<span class="kw">new</span> <span class="fu">Date</span>(<span class="st">&quot;2015-01-02&quot;</span>)) === <span class="st">&quot;2.1.2015&quot;</span></code></pre>
 </section></section>
-<section><section id="enlaces" class="titleslide slide level1"><h1><span class="header-section-number">13</span> Enlaces</h1></section><section id="general-es" class="slide level2">
-<h2><span class="header-section-number">13.1</span> General (ES)</h2>
+<section><section id="enlaces" class="titleslide slide level1"><h1><span class="header-section-number">14</span> Enlaces</h1></section><section id="general-es" class="slide level2">
+<h2><span class="header-section-number">14.1</span> General (ES)</h2>
 <ul>
 <li><a href="http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5">http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5</a></li>
 <li><a href="http://cevichejs.com/">http://cevichejs.com/</a></li>
@@ -1551,21 +1747,21 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="http://www.etnassoft.com/category/javascript/">http://www.etnassoft.com/category/javascript/</a></li>
 </ul>
 </section><section id="general-en" class="slide level2">
-<h2><span class="header-section-number">13.2</span> General (EN)</h2>
+<h2><span class="header-section-number">14.2</span> General (EN)</h2>
 <ul>
 <li><a href="http://www.javascriptkit.com/">http://www.javascriptkit.com/</a></li>
 <li><a href="http://javascript.info/">http://javascript.info/</a></li>
 <li><a href="http://www.howtocreate.co.uk/tutorials/javascript/">http://www.howtocreate.co.uk/tutorials/javascript/</a></li>
 </ul>
 </section><section id="orientación-objetos-es-i" class="slide level2">
-<h2><span class="header-section-number">13.3</span> Orientación Objetos (ES) (I)</h2>
+<h2><span class="header-section-number">14.3</span> Orientación Objetos (ES) (I)</h2>
 <ul>
 <li><a href="http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/">http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/</a></li>
 <li><a href="http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/">http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/</a></li>
 <li><a href="http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/">http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/</a></li>
 </ul>
 </section><section id="orientación-objetos-es-ii" class="slide level2">
-<h2><span class="header-section-number">13.4</span> Orientación Objetos (ES) (II)</h2>
+<h2><span class="header-section-number">14.4</span> Orientación Objetos (ES) (II)</h2>
 <ul>
 <li><a href="http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo">http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo</a></li>
 <li><a href="http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces">http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces</a></li>
@@ -1573,14 +1769,14 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/">http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/</a></li>
 </ul>
 </section><section id="orientación-objetos-en" class="slide level2">
-<h2><span class="header-section-number">13.5</span> Orientación Objetos (EN)</h2>
+<h2><span class="header-section-number">14.5</span> Orientación Objetos (EN)</h2>
 <ul>
 <li><a href="http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns">http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns</a></li>
 <li><a href="http://javascript.info/tutorial/object-oriented-programming">http://javascript.info/tutorial/object-oriented-programming</a></li>
 <li><a href="http://www.howtocreate.co.uk/tutorials/javascript/objects">http://www.howtocreate.co.uk/tutorials/javascript/objects</a></li>
 </ul>
 </section><section id="técnicas-avanzadas-es-i" class="slide level2">
-<h2><span class="header-section-number">13.6</span> Técnicas avanzadas (ES) (I)</h2>
+<h2><span class="header-section-number">14.6</span> Técnicas avanzadas (ES) (I)</h2>
 <ul>
 <li><a href="http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/">http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/</a></li>
 <li><a href="http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/">http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/</a></li>
@@ -1588,7 +1784,7 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html">http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html</a></li>
 </ul>
 </section><section id="técnicas-avanzadas-es-ii" class="slide level2">
-<h2><span class="header-section-number">13.7</span> Técnicas avanzadas (ES) (II)</h2>
+<h2><span class="header-section-number">14.7</span> Técnicas avanzadas (ES) (II)</h2>
 <ul>
 <li><a href="http://www.webanalyst.es/espacios-de-nombres-en-javascript/">http://www.webanalyst.es/espacios-de-nombres-en-javascript/</a></li>
 <li><a href="http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/">http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/</a></li>
@@ -1596,19 +1792,19 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html">http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html</a></li>
 </ul>
 </section><section id="dom-es" class="slide level2">
-<h2><span class="header-section-number">13.8</span> DOM (ES)</h2>
+<h2><span class="header-section-number">14.8</span> DOM (ES)</h2>
 <ul>
 <li><a href="http://cevichejs.com/3-dom-cssom#dom">http://cevichejs.com/3-dom-cssom#dom</a></li>
 <li><a href="http://www.arkaitzgarro.com/javascript/capitulo-13.html">http://www.arkaitzgarro.com/javascript/capitulo-13.html</a></li>
 </ul>
 </section><section id="dom-en" class="slide level2">
-<h2><span class="header-section-number">13.9</span> DOM (EN)</h2>
+<h2><span class="header-section-number">14.9</span> DOM (EN)</h2>
 <ul>
 <li><a href="http://www.javascriptkit.com/domref/">http://www.javascriptkit.com/domref/</a></li>
 <li><a href="http://javascript.info/tutorial/dom">http://javascript.info/tutorial/dom</a></li>
 </ul>
 </section><section id="frameworks-es" class="slide level2">
-<h2><span class="header-section-number">13.10</span> Frameworks (ES)</h2>
+<h2><span class="header-section-number">14.10</span> Frameworks (ES)</h2>
 <ul>
 <li><a href="https://carlosazaustre.es/blog/frameworks-de-javascript/">https://carlosazaustre.es/blog/frameworks-de-javascript/</a></li>
 <li><a href="https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit">https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit</a></li>
@@ -1616,7 +1812,7 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/">http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/</a></li>
 </ul>
 </section><section id="frameworks-en" class="slide level2">
-<h2><span class="header-section-number">13.11</span> Frameworks (EN)</h2>
+<h2><span class="header-section-number">14.11</span> Frameworks (EN)</h2>
 <ul>
 <li><a href="http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone">http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone</a></li>
 <li><a href="http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs">http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs</a></li>
@@ -1629,14 +1825,14 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options">https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options</a></li>
 </ul>
 </section><section id="eventos-es" class="slide level2">
-<h2><span class="header-section-number">13.12</span> Eventos (ES)</h2>
+<h2><span class="header-section-number">14.12</span> Eventos (ES)</h2>
 <ul>
 <li><a href="http://cevichejs.com/3-dom-cssom#eventos">http://cevichejs.com/3-dom-cssom#eventos</a></li>
 <li><a href="http://www.arkaitzgarro.com/javascript/capitulo-15.html">http://www.arkaitzgarro.com/javascript/capitulo-15.html</a></li>
 <li><a href="http://codexexempla.org/curso/curso_4_3_e.php">http://codexexempla.org/curso/curso_4_3_e.php</a></li>
 </ul>
 </section><section id="eventos-en" class="slide level2">
-<h2><span class="header-section-number">13.13</span> Eventos (EN)</h2>
+<h2><span class="header-section-number">14.13</span> Eventos (EN)</h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></li>
@@ -1644,37 +1840,42 @@ i10nEUR.format(100200300.40) === <span class="st">&quot;100.200.300,40 €&quot;
 <li><a href="https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault">https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault</a></li>
 </ul>
 </section><section id="websockets-es" class="slide level2">
-<h2><span class="header-section-number">13.14</span> WebSockets (ES)</h2>
+<h2><span class="header-section-number">14.14</span> WebSockets (ES)</h2>
 <ul>
 <li><a href="http://www.html5rocks.com/es/tutorials/websockets/basics/">http://www.html5rocks.com/es/tutorials/websockets/basics/</a></li>
 <li><a href="https://carlosazaustre.es/blog/websockets-como-utilizar-socket-io-en-tu-aplicacion-web/">https://carlosazaustre.es/blog/websockets-como-utilizar-socket-io-en-tu-aplicacion-web/</a></li>
 </ul>
 </section><section id="websockets-en" class="slide level2">
-<h2><span class="header-section-number">13.15</span> WebSockets (EN)</h2>
+<h2><span class="header-section-number">14.15</span> WebSockets (EN)</h2>
 <ul>
 <li><a href="https://davidwalsh.name/websocket">https://davidwalsh.name/websocket</a></li>
 <li><a href="http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270">http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270</a></li>
 </ul>
-</section><section id="ajax-es" class="slide level2">
-<h2><span class="header-section-number">13.16</span> AJAX (ES)</h2>
+</section><section id="ajax-json-rest-es" class="slide level2">
+<h2><span class="header-section-number">14.16</span> AJAX, JSON, REST (ES)</h2>
 <ul>
 <li><a href="https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/">https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/</a></li>
 <li><a href="http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/">http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/</a></li>
 <li><a href="https://eamodeorubio.wordpress.com/category/webservices/rest/">https://eamodeorubio.wordpress.com/category/webservices/rest/</a></li>
+<li><a href="https://eamodeorubio.wordpress.com/category/webservices/rest/">https://eamodeorubio.wordpress.com/category/webservices/rest/</a></li>
 </ul>
 </section><section id="es6-es" class="slide level2">
-<h2><span class="header-section-number">13.17</span> ES6 (ES)</h2>
+<h2><span class="header-section-number">14.17</span> ES6 (ES)</h2>
 <ul>
 <li><a href="http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/">http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/</a></li>
 <li><a href="http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/">http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/</a></li>
 <li><a href="http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html">http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html</a></li>
 <li><a href="http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/">http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/</a></li>
+<li><a href="https://burabure.github.io/tut-ES6-promises-generators/">https://burabure.github.io/tut-ES6-promises-generators/</a></li>
 </ul>
 </section><section id="es6-en" class="slide level2">
-<h2><span class="header-section-number">13.18</span> ES6 (EN)</h2>
+<h2><span class="header-section-number">14.18</span> ES6 (EN)</h2>
 <ul>
 <li><a href="http://es6-features.org/">http://es6-features.org/</a></li>
 <li><a href="http://kangax.github.io/compat-table/es5/">http://kangax.github.io/compat-table/es5/</a></li>
+<li><a href="http://www.2ality.com/2015/11/sequential-execution.html">http://www.2ality.com/2015/11/sequential-execution.html</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/">http://www.html5rocks.com/en/tutorials/es6/promises/</a></li>
+<li><a href="http://www.datchley.name/es6-promises/">http://www.datchley.name/es6-promises/</a></li>
 </ul>
 </section></section>
     </div>
