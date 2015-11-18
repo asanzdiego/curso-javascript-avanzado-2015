@@ -908,7 +908,7 @@ function simulateClick() {
 addEventListener("eventName",callback, true);
 
 // en fase de BURBUJA
-addEventListener("eventName",callback, true);
+addEventListener("eventName",callback, false); // por defecto
 ~~~
 
 ## Propagación (III)
@@ -1062,7 +1062,12 @@ esté de acuerdo en recibir peticiones del dominio de origen.
 Access-Control-Allow-Origin: http://dominio-permitido.com
 ~~~
 
-## APIs REST
+
+
+# APIs REST
+
+
+## ¿Qué es un API REST?
 
 - REST (Representational State Transfer) es una técnica de arquitectura software
 para sistemas hipermedia distribuidos como la World Wide Web.
@@ -1148,22 +1153,9 @@ se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # ES6
+
+
 
 ## Como usarlo hoy
 
@@ -1625,6 +1617,74 @@ Number.isSafeInteger(42) === true
 Number.isSafeInteger(9007199254740992) === false
 ~~~
 
+## Promesas (I)
+
+~~~{.javascript}
+//ES6
+var promise = new Promise(function(resolve, reject) {
+
+  todoCorrecto = true; // o false dependiendo de como ha ido
+
+  if (todoCorrecto) {
+    resolve("Promesa Resuelta!");
+  } else {
+    reject(Error("Promesa Rechazada!"));
+  }
+});
+~~~
+
+## Promesas (II)
+
+~~~{.javascript}
+//ES6
+
+// llamamos el metodo 'then' de la promesa
+// con 2 callbacks (resolve y reject)
+promise.then(function(result) {
+  console.log(result); // "Promesa Resuelta!"
+}, function(err) {
+  console.log(err); // Error: "Promesa Rechazada!"
+});
+~~~
+
+## Promesas (III)
+
+~~~{.javascript}
+//ES6
+
+// podemos también llamar al 'then' con el callback 'resolve'
+// y luego al 'catch' con el callback 'reject'
+promise.then(function(result) {
+  console.log(result); // "Promesa Resuelta!"
+}).catch(function(err) {
+  console.log(err); // Error: "Promesa Rechazada!"
+});
+~~~
+
+## Promesas (IV)
+
+~~~{.javascript}
+//ES6
+
+Promise.all([promesa1,promesa2]).then(function(results) {
+  console.log(results); // cuando todas las promesas terminen
+}).catch(function(err) {
+  console.log(err); // Error: "Error en alguna promesa!"
+});
+~~~
+
+## Promesas (V)
+
+~~~{.javascript}
+//ES6
+
+Promise.all([promesa1,promesa2]).then(function(firstResult) {
+  console.log(firstResult); // cuando termine la primera
+}).catch(function(err) {
+  console.log(err); // Error: "Error en alguna promesa!"
+});
+~~~
+
 ## Proxies
 
 ~~~{.javascript}
@@ -1782,8 +1842,12 @@ i10nDE.format(new Date("2015-01-02")) === "2.1.2015"
 - <http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/>
 - <http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html>
 - <http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/>
+- <https://burabure.github.io/tut-ES6-promises-generators/>
 
 ## ES6 (EN)
 
 - <http://es6-features.org/>
 - <http://kangax.github.io/compat-table/es5/>
+- <http://www.2ality.com/2015/11/sequential-execution.html>
+- <http://www.html5rocks.com/en/tutorials/es6/promises/>
+- <http://www.datchley.name/es6-promises/>
