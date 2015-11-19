@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+    describe("tests", function() {
+
+      it('nuevos métodos de string', function() {
+
+        expect(true).toEqual("hello".startsWith("ello", 1));
+        expect(true).toEqual("hello".endsWith("hell", 4));
+        expect(true).toEqual("hello".includes("ell"));
+        expect(true).toEqual("hello".includes("ell", 1));
+        expect(false).toEqual("hello".includes("ell", 2));
+      });
+
+      it('nuevos métodos de number', function() {
+
+        expect(false).toEqual(Number.isNaN(42));
+        expect(true).toEqual(Number.isNaN(NaN));
+        expect(true).toEqual(Number.isSafeInteger(42));
+        expect(false).toEqual(Number.isSafeInteger(9007199254740992));
+      });
+    });
+  </script>
+
+<body>
+</body>
+</html>

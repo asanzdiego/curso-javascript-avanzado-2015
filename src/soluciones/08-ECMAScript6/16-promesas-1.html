@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <script src="babel/browser.js"></script>
+
+</head>
+
+  <script type="text/babel">
+
+  var promise = new Promise(function(resolve, reject) {
+
+    var todoCorrecto = false; // o false dependiendo de como ha ido
+
+    if (todoCorrecto) {
+      resolve("Promesa Resuelta!");
+    } else {
+      reject("Promesa Rechazada!");
+    }
+  });
+
+  // llamamos el metodo 'then' de la promesa
+  // con 2 callbacks (resolve y reject)
+  promise.then(function(result) {
+    console.log(result); // "Promesa Resuelta!"
+  }, function(err) {
+    console.log(err); // Error: "Promesa Rechazada!"
+  });
+
+  // podemos también llamar al 'then' con el callback 'resolve'
+  // y luego al 'catch' con el callback 'reject'
+  promise.then(function(result) {
+    console.log(result); // "Promesa Resuelta!"
+  }).catch(function(err) {
+    console.log(err); // Error: "Promesa Rechazada!"
+  });
+
+  </script>
+
+<body>
+</body>
+</html>

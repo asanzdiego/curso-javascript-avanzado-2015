@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+    describe("tests", function() {
+
+      it('currencies', function() {
+
+        var i10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
+        var i10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
+
+        expect("$100,200,300.40").toEqual(i10nUSD.format(100200300.40));
+        expect("£100,200,300.40").toEqual(i10nGBP.format(100200300.40));
+
+      });
+
+      it('DateTimeFormat', function() {
+
+        var i10nEN = new Intl.DateTimeFormat("en-US")
+        var i10nDE = new Intl.DateTimeFormat("de-DE")
+
+        expect("1/2/2015").toEqual(i10nEN.format(new Date("2015-01-02")));
+        expect("2.1.2015").toEqual(i10nDE.format(new Date("2015-01-02")));
+      });
+    });
+  </script>
+
+<body>
+</body>
+</html>

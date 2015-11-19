@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+    describe("tests", function() {
+
+      //ES5
+      var Shape5 = function (id, x, y) {
+          this.id = id;
+          this.move(x, y);
+      };
+      Shape5.prototype.move = function (x, y) {
+          this.x = x;
+          this.y = y;
+      };
+
+      var s5 = new Shape5(1, 2, 3);
+      s5.move(5, 6);
+
+      it('test 1', function() {
+        expect(5).toEqual(s5.x);
+        expect(6).toEqual(s5.y);
+      });
+
+      //ES6
+      class Shape6 {
+          constructor (id, x, y) {
+              this.id = id
+              this.move(x, y)
+          }
+          move (x, y) {
+              this.x = x
+              this.y = y
+          }
+      }
+
+      var s6 = new Shape5(1, 2, 3);
+      s6.move(5, 6);
+
+      it('test 2', function() {
+        expect(5).toEqual(s6.x);
+        expect(6).toEqual(s6.y);
+      });
+
+    });
+  </script>
+
+<body>
+</body>
+</html>

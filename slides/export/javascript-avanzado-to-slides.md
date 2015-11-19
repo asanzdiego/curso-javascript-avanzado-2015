@@ -69,7 +69,7 @@
 
 - Podemos acceder directamente o como si fuese un contenedor:
 
-~~~{.javascript}
+~~~javascript
 objeto.nombre === objeto[nombre] // true
 ~~~
 
@@ -77,7 +77,7 @@ objeto.nombre === objeto[nombre] // true
 
 - Podemos crearlas y destruirlas en tiempo de ejecución
 
-~~~{.javascript}
+~~~javascript
 var objeto = {};
 objeto.nuevaPropiedad = 1; // añadir
 delete objeto.nuevaPropiedad; // eliminar
@@ -87,7 +87,7 @@ delete objeto.nuevaPropiedad; // eliminar
 
 - Podemos crear un objeto así:
 
-~~~{.javascript}
+~~~javascript
 var objeto = {
   nombre: "Adolfo",
   twitter: "@asanzdiego"
@@ -98,7 +98,7 @@ var objeto = {
 
 - O con una función constructora y un new.
 
-~~~{.javascript}
+~~~javascript
 function Persona(nombre, twitter) {
   this.nombre = nombre;
   this.twitter = twitter;
@@ -118,7 +118,7 @@ var objeto = new Persona("Adolfo", "@asanzdiego");
 
 - Podemos acceder al objeto prototipo de un objeto:
 
-~~~{.javascript}
+~~~javascript
 // Falla en Opera o IE <= 8
 Object.getPrototypeOf(objeto);
 
@@ -134,7 +134,7 @@ objeto.__proto__;
 
 - Ejemplo:
 
-~~~{.javascript}
+~~~javascript
 function ConstructorA(p1) {
   this.p1 = p1;
 }
@@ -149,7 +149,7 @@ ConstructorA.prototype.metodo1 = function() {
 
 - Ejemplo:
 
-~~~{.javascript}
+~~~javascript
 function ConstructorA(p1) {
   this.p1 = p1;
 }
@@ -174,7 +174,7 @@ ConstructorB.prototype = Object.create(ConstructorA.prototype);
 
 - En el ejemplo anterior:
 
-~~~{.javascript}
+~~~javascript
 instanciaB.__proto__ == ConstructorB.prototype // true
 instanciaB.__proto__.__proto__ == ConstructorA.prototype // true
 instanciaB.__proto__.__proto__.__proto__ == Object.prototype // true
@@ -185,7 +185,7 @@ instanciaB.__proto__.__proto__.__proto__.__proto__ == null // true
 
 - En el ejemplo anterior:
 
-~~~{.javascript}
+~~~javascript
 expect(ConstructorB.__proto__).toEqual(Function.prototype);
 expect(ConstructorB.__proto__.__proto__).toEqual(Object.prototype);
 expect(ConstructorB.__proto__.__proto__.__proto__).toEqual(null);
@@ -201,7 +201,7 @@ expect(ConstructorB.__proto__.__proto__.__proto__).toEqual(null);
 
 - En el ejemplo anterior:
 
-~~~{.javascript}
+~~~javascript
 instanciaB instanceof ConstructorB; // true
 instanciaB instanceof ConstructorA; // true
 instanciaB instanceof Object; // true
@@ -213,7 +213,7 @@ instanciaB instanceof Object; // true
 
 - Ejemplo:
 
-~~~{.javascript}
+~~~javascript
 String.prototype.hola = function() {
   return "Hola "+this;
 }
@@ -233,7 +233,7 @@ String.prototype.hola = function() {
 
 - Ejemplo:
 
-~~~{.javascript}
+~~~javascript
 function ConstructorA() {
 
   ConstructorA.propiedadEstatica = "propiedad estática";
@@ -254,7 +254,7 @@ ConstructorA.metodoEstatico = function() {
 
 - Ejemplo:
 
-~~~{.javascript}
+~~~javascript
 function ConstructorA(privada, publica) {
   var propiedadPrivada = privada;
   this.propiedadPublica = publica;
@@ -294,7 +294,7 @@ function ConstructorA(privada, publica) {
 
 - Ejemplo:
 
-~~~{.javascript}
+~~~javascript
 var nombre = "Laura";
 
 var alba = {
@@ -315,11 +315,11 @@ fn(); // Hola Laura
 
 - Dos funciones permiten manipular el this: **call y apply** que en lo único que se diferencian es en la llamada.
 
-~~~{.javascript}
+~~~javascript
 fn.call(thisArg [, arg1 [, arg2 [...]]])
 ~~~
 
-~~~{.javascript}
+~~~javascript
 fn.apply(thisArg [, arglist])
 ~~~
 
@@ -331,7 +331,7 @@ fn.apply(thisArg [, arglist])
 
 - Es un objeto que **contiene los parámetros** de la función.
 
-~~~{.javascript}
+~~~javascript
 function echoArgs() {
   console.log(arguments[0]); // Adolfo
   console.log(arguments[1]); // Sanz
@@ -343,7 +343,7 @@ echoArgs("Adolfo", "Sanz");
 
 - Estas 2 declaraciones son **equivalentes**:
 
-~~~{.javascript}
+~~~javascript
 function holaMundo1() {
   console.log("Hola Mundo 1");
 }
@@ -359,7 +359,7 @@ holaMundo2();
 
 - Hemos dicho que las funciones son objetos, así que **se pueden pasar como parámetros**.
 
-~~~{.javascript}
+~~~javascript
 function saluda() {
   console.log("Hola")
 }
@@ -379,7 +379,7 @@ ejecuta(saluda);
 
 - Una función anónima así declarada **no se podría ejecutar**.
 
-~~~{.javascript}
+~~~javascript
 function(nombre) {
   console.log("Hola "+nombre);
 }
@@ -389,7 +389,7 @@ function(nombre) {
 
 - Pero **una función puede devolver una función anónima**.
 
-~~~{.javascript}
+~~~javascript
 function saludador(nombre) {
   return function() {
     console.log("Hola "+nombre);
@@ -404,7 +404,7 @@ saluda(); // Hola mundo
 
 - Podemos autoejecutar funciones anónimas.
 
-~~~{.javascript}
+~~~javascript
 (function(nombre) {
   console.log("Hola "+nombre);
 })("mundo")
@@ -414,7 +414,7 @@ saluda(); // Hola mundo
 
 -  Un closure **combina una función y el entorno en que se creó**.
 
-~~~{.javascript}
+~~~javascript
 function creaSumador(x) {
   return function(y) {
     return x + y;
@@ -437,7 +437,7 @@ console.log(suma10(2)); // muestra 12
 
 - Se trata de una función que actúa como contenedor para un contexto de ejecución.
 
-~~~{.javascript}
+~~~javascript
 miModulo = (function() {
 
   var propiedadPrivada;
@@ -463,7 +463,7 @@ miModulo = (function() {
 
 ## Eficiencia (II)
 
-~~~{.javascript}
+~~~javascript
 miModulo = (function(window, undefined) {
 
   // El código va aquí
@@ -480,7 +480,7 @@ miModulo = (function(window, undefined) {
 ## El patrón Modulo Revelado (II)
 
 
-~~~{.javascript}
+~~~javascript
 miModulo = (function() {
 
   function metodoA() { };
@@ -501,7 +501,7 @@ miModulo = (function() {
 
 - Para simular espacios de nombres, en JavaScript se anidan objetos.
 
-~~~{.javascript}
+~~~javascript
 miBiblioteca = miBiblioteca || {};
 
 miBiblioteca.seccion1 = miBiblioteca.seccion1 || {};
@@ -523,7 +523,7 @@ miBiblioteca.seccion2 = {
 
 - Se puede combinar lo anterior con módulos autoejecutables:
 
-~~~{.javascript}
+~~~javascript
 
 miBiblioteca = miBiblioteca || {};
 
@@ -568,7 +568,7 @@ formada por una jerarquía de nodos.
 
 - JavaScript proporciona **funciones** para recorrer los nodos:
 
-~~~{.javascript}
+~~~javascript
 getElementById(id)
 getElementsByName(name)
 getElementsByTagName(tagname)
@@ -582,7 +582,7 @@ querySelectorAll(selector)
 
 - JavaScript proporciona **funciones** para la manipulación de nodos:
 
-~~~{.javascript}
+~~~javascript
 createElement(tagName)
 createTextNode(text)
 createAttribute(attributeName)
@@ -597,7 +597,7 @@ replaceChild(newChild, oldChild)
 
 - Los nodos tienen algunas **propiedades** muy útiles:
 
-~~~{.javascript}
+~~~javascript
 attributes[]
 className
 id
@@ -614,7 +614,7 @@ title
 
 - Los nodos tienen algunas **propiedades** muy útiles:
 
-~~~{.javascript}
+~~~javascript
 childNodes[]
 firstChild
 lastChild
@@ -978,7 +978,7 @@ se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuale
 
 ## Ejemplo
 
-~~~{.javascript}
+~~~javascript
 var http_request = new XMLHttpRequest();
 var url = "http://example.net/jsondata.php";
 
@@ -1009,7 +1009,7 @@ function handle_json() {
 
 ## Parse
 
-~~~{.javascript}
+~~~javascript
 miObjeto = eval('(' + json_datos + ')');
 ~~~
 
@@ -1022,7 +1022,7 @@ las consideraciones de seguridad recomiendan no usarlo.
 
 ## Ejemplo
 
-~~~{.javascript}
+~~~javascript
 {
     curso: "AJAX y jQuery",
     profesor: "Adolfo",
@@ -1305,7 +1305,7 @@ module.exports = Persona;
 
 ## Función Arrow (I)
 
-~~~{.javascript}
+~~~javascript
 // ES5
 var data = [{...}, {...}, {...}, ...];  
 data.forEach(function(elem){  
@@ -1315,7 +1315,7 @@ data.forEach(function(elem){
 
 ## Función Arrow (I)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 var data = [{...}, {...}, {...}, ...];  
 data.forEach(elem => {  
@@ -1325,7 +1325,7 @@ data.forEach(elem => {
 
 ## Función Arrow (III)
 
-~~~{.javascript}
+~~~javascript
 // ES5
 var miFuncion = function(num1, num2) {  
     return num1 + num2;
@@ -1334,55 +1334,45 @@ var miFuncion = function(num1, num2) {
 
 ## Función Arrow (IV)
 
-~~~{.javascript}
+~~~javascript
 // ES6
 var miFuncion = (num1, num2) => num1 + num2;  
 ~~~
 
 ## This (I)
 
-~~~{.javascript}
-//ES3
-var obj = {  
-    foo : function() {...},
-    bar : function() {
-        var that = this;
-        document.addEventListener("click", function(e) {
-            that.foo();
-        });
-    }
+~~~javascript
+//ES5
+var objEJ5 = {
+  data : ["Adolfo", "Isabel", "Alba"],
+  duplicar : function() {
+    var that = this;
+    this.data.forEach(function(elem){
+        that.data.push(elem);
+    });
+    return this.data;
+  }
 }
 ~~~
 
 ## This (II)
 
-~~~{.javascript}
-//ES5
-var obj = {  
-    foo : function() {...},
-    bar : function() {
-        document.addEventListener("click", function(e) {
-            this.foo();
-        }.bind(this));
-    }
-}
-~~~
-
-## This (III)
-
-~~~{.javascript}
+~~~javascript
 //ES6
-var obj = {  
-    foo : function() {...},
-    bar : function() {
-        document.addEventListener("click", (e) => this.foo());
-    }
+var objEJ6 = {
+  data : ["Adolfo", "Isabel", "Alba"],
+  duplicar : function() {
+    this.data.forEach((elem) => {
+        this.data.push(elem);
+    });
+    return this.data;
+  }
 }
 ~~~
 
 ## Definición de Clases (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 var Shape = function (id, x, y) {
     this.id = id;
@@ -1396,7 +1386,7 @@ Shape.prototype.move = function (x, y) {
 
 ## Definición de Clases (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 class Shape {
     constructor (id, x, y) {
@@ -1412,7 +1402,7 @@ class Shape {
 
 ## Herencia de Clases (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 var Rectangle = function (id, x, y, width, height) {
     Shape.call(this, id, x, y);
@@ -1432,7 +1422,7 @@ Circle.prototype.constructor = Circle;
 
 ## Herencia de Clases (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 class Rectangle extends Shape {
     constructor (id, x, y, width, height) {
@@ -1451,7 +1441,7 @@ class Circle extends Shape {
 
 ## let (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 (function() {
     console.log(x); // x no está definida aún.
@@ -1466,7 +1456,7 @@ class Circle extends Shape {
 
 ## let (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 (function() {
     if(true) {
@@ -1479,7 +1469,7 @@ class Circle extends Shape {
 
 ## Scopes (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 (function () {
     var foo = function () { return 1; }
@@ -1494,7 +1484,7 @@ class Circle extends Shape {
 
 ## Scopes (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 {
     function foo () { return 1 }
@@ -1509,7 +1499,7 @@ class Circle extends Shape {
 
 ## const (I)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 (function() {
     const PI;
@@ -1520,7 +1510,7 @@ class Circle extends Shape {
 
 ## const (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 (function() {
     const PI = 3.15;
@@ -1531,17 +1521,17 @@ class Circle extends Shape {
 
 ## Template Strings (I)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 let nombre1 = "JavaScript";  
 let nombre2 = "awesome";  
-console.log("Sólo quiero decir que ${nombre1} is ${nombre2}");  
+console.log(`Sólo quiero decir que ${nombre1} is ${nombre2}`);  
 // Solo quiero decir que JavaScript is awesome
 ~~~
 
 ## Template Strings (II)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 var saludo = "ola " +  
 "que " +
@@ -1550,16 +1540,16 @@ var saludo = "ola " +
 
 ## Template Strings (III)
 
-~~~{.javascript}
+~~~javascript
 //ES6
-var saludo = "ola  
+var saludo = `ola  
 que  
-ase";
+ase`;
 ~~~
 
 ## Destructuring (I)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 var [a, b] = ["hola", "mundo"];  
 console.log(a); // "hola"  
@@ -1568,28 +1558,29 @@ console.log(b); // "mundo"
 
 ## Destructuring (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
-var obj = { nombre: "Carlos", apellido: "Azaustre" };  
+var obj = { nombre: "Adolfo", apellido: "Sanz" };  
 var { nombre, apellido } = obj;  
-console.log(nombre); // "Carlos"  
+console.log(nombre); // "Adolfo"  
+console.log(apellido); // "Sanz"  
 ~~~
 
 ## Destructuring (III)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 var foo = function() {  
-    return ["175", "75"];
+    return ["180", "78"];
 };
 var [estatura, peso] = foo();  
-console.log(estatura); //175  
-console.log(peso); //75  
+console.log(estatura); //180
+console.log(peso); //78
 ~~~
 
 ## Parámetros con nombre (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 function f (arg) {
     var name = arg[0];
@@ -1613,7 +1604,7 @@ h({ name: "bar", val: 42 });
 
 ## Parámetros con nombre (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 function f ([ name, val ]) {
     console.log(name, val)
@@ -1631,7 +1622,7 @@ h({ name: "bar", val: 42 })
 
 ## Resto parámetros (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 function f (x, y) {
     var a = Array.prototype.slice.call(arguments, 2);
@@ -1642,7 +1633,7 @@ f(1, 2, "hello", true, 7) === 9;
 
 ## Resto parámetros (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 function f (x, y, ...a) {
     return (x + y) * a.length
@@ -1652,7 +1643,7 @@ f(1, 2, "hello", true, 7) === 9
 
 ## Valores por defecto (I)
 
-~~~{.javascript}
+~~~javascript
 //ES5
 function(valor) {  
     valor = valor || "foo";
@@ -1661,24 +1652,25 @@ function(valor) {
 
 ## Valores por defecto (I)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 function(valor = "foo") {...};  
 ~~~
 
 ## Exportar módulos
 
-~~~{.javascript}
+~~~javascript
 //ES6
 
 // lib/math.js
 export function sum (x, y) { return x + y }
+export function div (x, y) { return x / y }
 export var pi = 3.141593
 ~~~
 
 ## Importar módulos
 
-~~~{.javascript}
+~~~javascript
 //ES6
 
 // someApp.js
@@ -1692,7 +1684,7 @@ console.log("2π = " + sum(pi, pi))
 
 ## Generadores
 
-~~~{.javascript}
+~~~javascript
 //ES6
 function *soyUnGenerador(i) {  
   yield i + 1;
@@ -1713,7 +1705,7 @@ console.log(gen.next());
 
 ## Set
 
-~~~{.javascript}
+~~~javascript
 //ES6
 let s = new Set()
 s.add("hello").add("goodbye").add("hello")
@@ -1726,21 +1718,21 @@ for (let key of s.values()) { // insertion order
 
 ## Map
 
-~~~{.javascript}
+~~~javascript
 //ES6
 let m = new Map()
 m.set("hello", 42)
 m.set(s, 34)
 m.get(s) === 34
 m.size === 2
-for (let [ key, val ] of m.entries()) {}
+for (let [ key, val ] of m.entries()) {
   console.log(key + " = " + val)
 }
 ~~~
 
 ## Nuevos métodos en String
 
-~~~{.javascript}
+~~~javascript
 //ES6
 "hello".startsWith("ello", 1) // true
 "hello".endsWith("hell", 4)   // true
@@ -1751,7 +1743,7 @@ for (let [ key, val ] of m.entries()) {}
 
 ## Nuevos métodos en Number
 
-~~~{.javascript}
+~~~javascript
 //ES6
 Number.isNaN(42) === false
 Number.isNaN(NaN) === true
@@ -1759,77 +1751,9 @@ Number.isSafeInteger(42) === true
 Number.isSafeInteger(9007199254740992) === false
 ~~~
 
-## Promesas (I)
-
-~~~{.javascript}
-//ES6
-var promise = new Promise(function(resolve, reject) {
-
-  todoCorrecto = true; // o false dependiendo de como ha ido
-
-  if (todoCorrecto) {
-    resolve("Promesa Resuelta!");
-  } else {
-    reject(Error("Promesa Rechazada!"));
-  }
-});
-~~~
-
-## Promesas (II)
-
-~~~{.javascript}
-//ES6
-
-// llamamos el metodo 'then' de la promesa
-// con 2 callbacks (resolve y reject)
-promise.then(function(result) {
-  console.log(result); // "Promesa Resuelta!"
-}, function(err) {
-  console.log(err); // Error: "Promesa Rechazada!"
-});
-~~~
-
-## Promesas (III)
-
-~~~{.javascript}
-//ES6
-
-// podemos también llamar al 'then' con el callback 'resolve'
-// y luego al 'catch' con el callback 'reject'
-promise.then(function(result) {
-  console.log(result); // "Promesa Resuelta!"
-}).catch(function(err) {
-  console.log(err); // Error: "Promesa Rechazada!"
-});
-~~~
-
-## Promesas (IV)
-
-~~~{.javascript}
-//ES6
-
-Promise.all([promesa1,promesa2]).then(function(results) {
-  console.log(results); // cuando todas las promesas terminen
-}).catch(function(err) {
-  console.log(err); // Error: "Error en alguna promesa!"
-});
-~~~
-
-## Promesas (V)
-
-~~~{.javascript}
-//ES6
-
-Promise.all([promesa1,promesa2]).then(function(firstResult) {
-  console.log(firstResult); // cuando termine la primera
-}).catch(function(err) {
-  console.log(err); // Error: "Error en alguna promesa!"
-});
-~~~
-
 ## Proxies
 
-~~~{.javascript}
+~~~javascript
 //ES6
 let target = {
     foo: "Welcome, foo"
@@ -1843,21 +1767,19 @@ proxy.foo   === "Welcome, foo"
 proxy.world === "Hello, world"
 ~~~
 
-## Internationalization (I)
+## Internacionalization (I)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 var i10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
 var i10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
-var i10nEUR = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" })
 i10nUSD.format(100200300.40) === "$100,200,300.40"
 i10nGBP.format(100200300.40) === "£100,200,300.40"
-i10nEUR.format(100200300.40) === "100.200.300,40 €"
 ~~~
 
-## Internationalization (II)
+## Internacionalization (II)
 
-~~~{.javascript}
+~~~javascript
 //ES6
 var i10nEN = new Intl.DateTimeFormat("en-US")
 var i10nDE = new Intl.DateTimeFormat("de-DE")
@@ -1865,6 +1787,73 @@ i10nEN.format(new Date("2015-01-02")) === "1/2/2015"
 i10nDE.format(new Date("2015-01-02")) === "2.1.2015"
 ~~~
 
+## Promesas (I)
+
+~~~javascript
+//ES6
+var promise = new Promise(function(resolve, reject) {
+
+  var todoCorrecto = true; // o false dependiendo de como ha ido
+
+  if (todoCorrecto) {
+    resolve("Promesa Resuelta!");
+  } else {
+    reject("Promesa Rechazada!");
+  }
+});
+~~~
+
+## Promesas (II)
+
+~~~javascript
+//ES6
+
+// llamamos el metodo 'then' de la promesa
+// con 2 callbacks (resolve y reject)
+promise.then(function(result) {
+  console.log(result); // "Promesa Resuelta!"
+}, function(err) {
+  console.log(err); // Error: "Promesa Rechazada!"
+});
+~~~
+
+## Promesas (III)
+
+~~~javascript
+//ES6
+
+// podemos también llamar al 'then' con el callback 'resolve'
+// y luego al 'catch' con el callback 'reject'
+promise.then(function(result) {
+  console.log(result); // "Promesa Resuelta!"
+}).catch(function(err) {
+  console.log(err); // Error: "Promesa Rechazada!"
+});
+~~~
+
+## Promesas (IV)
+
+~~~javascript
+//ES6
+
+Promise.all([promesa1,promesa2]).then(function(results) {
+  console.log(results); // cuando todas las promesas terminen
+}).catch(function(err) {
+  console.log(err); // Error: "Error en alguna promesa!"
+});
+~~~
+
+## Promesas (V)
+
+~~~javascript
+//ES6
+
+Promise.race([promesa1,promesa2]).then(function(firstResult) {
+  console.log(firstResult); // cuando termine la primera
+}).catch(function(err) {
+  console.log(err); // Error: "Error en alguna promesa!"
+});
+~~~
 
 
 

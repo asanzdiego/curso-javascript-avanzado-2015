@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+    describe("tests", function() {
+
+      it('test 1', function() {
+
+        let nombre1 = "JavaScript";
+        let nombre2 = "awesome";
+        let template = `Sólo quiero decir que ${nombre1} is ${nombre2}`
+        let expected = "Sólo quiero decir que JavaScript is awesome"
+        console.log("Sólo quiero decir que ${nombre1} is ${nombre2}");
+
+        expect(expected).toEqual(template);
+      });
+
+      it('test 2', function() {
+
+        //ES5
+        var saludo5 = "ola\n" +
+        "que\n" +
+        "ase";
+
+        //ES6
+        var saludo6 = `ola
+que
+ase`;
+
+        expect(saludo5).toEqual(saludo6);
+      });
+
+    });
+  </script>
+
+<body>
+</body>
+</html>

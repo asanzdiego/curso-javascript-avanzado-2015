@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inicio</title>
+
+  <script src="babel/browser.js"></script>
+
+</head>
+
+  <script type="text/babel">
+
+  var promise1 = new Promise(function(resolve, reject) {
+
+    var todoCorrecto = false; // o false dependiendo de como ha ido
+
+    if (todoCorrecto) {
+      resolve("Promesa 1 Resuelta!");
+    } else {
+      reject("Promesa 1 Rechazada!");
+    }
+  });
+
+  var promise2 = new Promise(function(resolve, reject) {
+
+    var todoCorrecto = true; // o false dependiendo de como ha ido
+
+    if (todoCorrecto) {
+      resolve("Promesa 2 Resuelta!");
+    } else {
+      reject("Promesa 2 Rechazada!");
+    }
+  });
+
+  var promise3 = new Promise(function(resolve, reject) {
+
+    var todoCorrecto = true; // o false dependiendo de como ha ido
+
+    if (todoCorrecto) {
+      resolve("Promesa 3 Resuelta!");
+    } else {
+      reject("Promesa 3 Rechazada!");
+    }
+  });
+
+  Promise.all([promise2,promise3]).then(function(results) {
+    console.log("all-1 > "+results); // cuando todas las promesas terminen
+  }).catch(function(err) {
+    console.log("all-1 > "+err); // Error: "Error en alguna promesa!"
+  });
+
+  Promise.all([promise1,promise2]).then(function(results) {
+    console.log("all-2 > "+results); // cuando todas las promesas terminen
+  }).catch(function(err) {
+    console.log("all-2 > "+err); // Error: "Error en alguna promesa!"
+  });
+
+  Promise.race([promise2,promise1]).then(function(results) {
+    console.log("race-3 > "+results); // cuando todas las promesas terminen
+  }).catch(function(err) {
+    console.log("race-3 > "+err); // Error: "Error en alguna promesa!"
+  });
+
+  Promise.race([promise1,promise2]).then(function(results) {
+    console.log("race-4 > "+results); // cuando todas las promesas terminen
+  }).catch(function(err) {
+    console.log("race-4 > "+err); // Error: "Error en alguna promesa!"
+  });
+  </script>
+
+<body>
+</body>
+</html>
