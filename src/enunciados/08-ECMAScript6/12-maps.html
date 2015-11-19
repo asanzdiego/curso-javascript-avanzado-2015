@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Generadores</title>
+  <title>Maps</title>
 
   <script src="babel/browser.js"></script>
 
@@ -19,24 +19,23 @@
   <script type="text/babel">
     describe("tests", function() {
 
-      it('generadores', function() {
+      it('Maps', function() {
 
-        /* TODAVÍA NO ESTÁ IMPLEMENTADO POR BABEL */
+        let m = new Map()
+        m.set("hello", 42)
+        m.set("goodbye", 34)
 
-        function *soyUnGenerador(i) {
-          yield i + 1;
-          yield i + 2;
-          yield i + 3;
+        expect("...1").toEqual(m.get("goodbye"));
+        expect("...2").toEqual(m.size);
+
+        var result = ""
+
+        for (let [ key, val ] of m.entries()) {
+          result += key + "=" + val + ";";
         }
+        expect("...3").toEqual(result);
 
-        var gen = soyUnGenerador(1);
-
-        expect({value: 2, done: false}).toEqual(gen.next());
-        expect({value: 3, done: false}).toEqual(gen.next());
-        expect({value: 4, done: false}).toEqual(gen.next());
-        expect({value: undefined, done: false}).toEqual(gen.next());
       });
-
     });
   </script>
 

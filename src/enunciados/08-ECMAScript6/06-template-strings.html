@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Generadores</title>
+  <title>Template Strings</title>
 
   <script src="babel/browser.js"></script>
 
@@ -19,22 +19,28 @@
   <script type="text/babel">
     describe("tests", function() {
 
-      it('generadores', function() {
+      it('Template Strings test 1', function() {
 
-        /* TODAVÍA NO ESTÁ IMPLEMENTADO POR BABEL */
+        let nombre1 = "JavaScript";
+        let nombre2 = "awesome";
+        let template = `Sólo quiero decir que ${nombre1} is ${nombre2}`
+        let expected = "...1"
+        console.log("Sólo quiero decir que ${nombre1} is ${nombre2}");
 
-        function *soyUnGenerador(i) {
-          yield i + 1;
-          yield i + 2;
-          yield i + 3;
-        }
+        expect(expected).toEqual(template);
+      });
 
-        var gen = soyUnGenerador(1);
+      it('Template Strings test 2', function() {
 
-        expect({value: 2, done: false}).toEqual(gen.next());
-        expect({value: 3, done: false}).toEqual(gen.next());
-        expect({value: 4, done: false}).toEqual(gen.next());
-        expect({value: undefined, done: false}).toEqual(gen.next());
+        //ES5
+        var saludo5 = "...2";
+
+        //ES6
+        var saludo6 = `ola
+que
+ase`;
+
+        expect(saludo5).toEqual(saludo6);
       });
 
     });

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Inicio</title>
+  <title>Destructuring</title>
 
   <script src="babel/browser.js"></script>
 
@@ -19,14 +19,14 @@
   <script type="text/babel">
     describe("tests", function() {
 
-      it('test 1', function() {
+      it('Destructuring test 1', function() {
 
         var [a, b] = ["hola", "mundo"];
         expect("hola").toEqual(a);
         expect("mundo").toEqual(b);
       });
 
-      it('test 2', function() {
+      it('Destructuring test 2', function() {
 
         var obj = { nombre: "Adolfo", apellido: "Sanz" };
         var { nombre, apellido } = obj;
@@ -34,7 +34,7 @@
         expect("Sanz").toEqual(apellido);
       });
 
-      it('test 3', function() {
+      it('Destructuring test 3', function() {
 
         var fn = function() {
             return [180, 78];

@@ -31,10 +31,10 @@
 
         var gen = soyUnGenerador(1);
 
-        expect({value: 2, done: false}).toEqual(gen.next());
-        expect({value: 3, done: false}).toEqual(gen.next());
-        expect({value: 4, done: false}).toEqual(gen.next());
-        expect({value: undefined, done: false}).toEqual(gen.next());
+        expect("...1").toEqual(gen.next());
+        expect("...2").toEqual(gen.next());
+        expect("...3").toEqual(gen.next());
+        expect("...4").toEqual(gen.next());
       });
 
     });

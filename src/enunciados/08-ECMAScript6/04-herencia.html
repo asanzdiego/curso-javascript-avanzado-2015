@@ -48,10 +48,10 @@
 
       it('Herencia ES5 test 1', function() {
 
-        expect(5).toEqual(r5.x);
-        expect(6).toEqual(r5.y);
-        expect(4).toEqual(r5.width);
-        expect(5).toEqual(r5.height);
+        expect("...1").toEqual(r5.x);
+        expect("...2").toEqual(r5.y);
+        expect("...3").toEqual(r5.width);
+        expect("...4").toEqual(r5.height);
       });
 
       var c5 = new Circle5(1, 2, 3, 4);
@@ -59,9 +59,9 @@
 
       it('Herencia ES5 test 2', function() {
 
-        expect(5).toEqual(c5.x);
-        expect(6).toEqual(c5.y);
-        expect(4).toEqual(c5.radius);
+        expect("...5").toEqual(c5.x);
+        expect("...6").toEqual(c5.y);
+        expect("...7").toEqual(c5.radius);
       });
 
       //ES6
@@ -94,10 +94,10 @@
 
       it('Herencia ES6 test 1', function() {
 
-        expect(5).toEqual(r6.x);
-        expect(6).toEqual(r6.y);
-        expect(4).toEqual(r6.width);
-        expect(5).toEqual(r6.height);
+        expect("...8").toEqual(r6.x);
+        expect("...9").toEqual(r6.y);
+        expect("..10").toEqual(r6.width);
+        expect("..11").toEqual(r6.height);
       });
 
       var c6 = new Circle6(1, 2, 3, 4);
@@ -105,9 +105,9 @@
 
       it('Herencia ES6 test 2', function() {
 
-        expect(5).toEqual(c6.x);
-        expect(6).toEqual(c6.y);
-        expect(4).toEqual(c6.radius);
+        expect("..12").toEqual(c6.x);
+        expect("..13").toEqual(c6.y);
+        expect("..14").toEqual(c6.radius);
       });
 
     });

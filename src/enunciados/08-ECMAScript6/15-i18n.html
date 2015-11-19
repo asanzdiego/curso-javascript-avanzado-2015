@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Generadores</title>
+  <title>i18n</title>
 
   <script src="babel/browser.js"></script>
 
@@ -19,24 +19,24 @@
   <script type="text/babel">
     describe("tests", function() {
 
-      it('generadores', function() {
+      it('currencies', function() {
 
-        /* TODAVÍA NO ESTÁ IMPLEMENTADO POR BABEL */
+        var i10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
+        var i10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
 
-        function *soyUnGenerador(i) {
-          yield i + 1;
-          yield i + 2;
-          yield i + 3;
-        }
+        expect("...1").toEqual(i10nUSD.format(100200300.40));
+        expect("...2").toEqual(i10nGBP.format(100200300.40));
 
-        var gen = soyUnGenerador(1);
-
-        expect({value: 2, done: false}).toEqual(gen.next());
-        expect({value: 3, done: false}).toEqual(gen.next());
-        expect({value: 4, done: false}).toEqual(gen.next());
-        expect({value: undefined, done: false}).toEqual(gen.next());
       });
 
+      it('DateTimeFormat', function() {
+
+        var i10nEN = new Intl.DateTimeFormat("en-US")
+        var i10nDE = new Intl.DateTimeFormat("de-DE")
+
+        expect("...3").toEqual(i10nEN.format(new Date("2015-01-02")));
+        expect("...4").toEqual(i10nDE.format(new Date("2015-01-02")));
+      });
     });
   </script>
 

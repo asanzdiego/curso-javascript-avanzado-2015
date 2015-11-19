@@ -22,12 +22,12 @@
       it('test sin let', function() {
 
         (function() {
-            expect(undefined).toEqual(x);
+            expect("...1").toEqual(x);
             if(true) {
                 var x = "hola mundo";
-                expect("hola mundo").toEqual(x);
+                expect("...2").toEqual(x);
             }
-            expect("hola mundo").toEqual(x);
+            expect("...3").toEqual(x);
         })();
 
       });
@@ -42,7 +42,7 @@
 
             if(true) {
                 let x = "hola mundo";
-                expect("hola mundo").toEqual(x);
+                expect("...4").toEqual(x);
             }
 
             expect(function() {
@@ -56,12 +56,12 @@
 
         (function () {
             var foo = function () { return 1; }
-            expect(1).toEqual(foo());
+            expect("...5").toEqual(foo());
             (function () {
                 var foo = function () { return 2; }
-                expect(2).toEqual(foo());
+                expect("...6").toEqual(foo());
             })();
-            expect(1).toEqual(foo());
+            expect("...7").toEqual(foo());
         })();
 
       });
@@ -70,12 +70,12 @@
 
         {
             function foo() { return 1 }
-            expect(1).toEqual(foo());
+            expect("...8").toEqual(foo());
             {
                 function foo() { return 2 }
-                expect(2).toEqual(foo());
+                expect("...8").toEqual(foo());
             }
-            expect(1).toEqual(foo());
+            expect("...9").toEqual(foo());
         }
 
       });
