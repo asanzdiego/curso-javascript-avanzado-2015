@@ -94,6 +94,7 @@
 ## Temario
 
 1. [Acerca de](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#acerca-de)
+
     1.1. [Autor](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#autor)
     1.2. [Licencia](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#licencia)
     1.3. [Ejemplos](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#ejemplos)
