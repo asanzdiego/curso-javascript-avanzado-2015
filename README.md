@@ -217,4 +217,3 @@
      - 14.14. [AJAX, JSON, REST (ES)](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#ajax-json-rest-es)
      - 14.15. [ES6 (ES)](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#es6-es)
      - 14.16. [ES6 (EN)](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#es6-en)
--
