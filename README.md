@@ -26,14 +26,12 @@
 
     - [./00-inicio:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/00-inicio)
         - [01-inicio.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-inicio.html)
-
     - [./01-objetos:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-objetos)
         - [01-objetos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-objetos.html)
         - [02-herencia.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-herencia.html)
         - [03-estaticos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-estaticos.html)
         - [04-privados.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/04-privados.html)
         - [05-polimorfismo.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/05-polimorfismo.html)
-
     - [./02-avanzado:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-avanzado)
         - [01-this.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-this.html)
         - [02-call-y-apply.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-call-y-apply.html)
@@ -44,12 +42,10 @@
         - [07-closures.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/07-closures.html)
         - [08-modulos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/08-modulos.html)
         - [09-namespaces.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/09-namespaces.html)
-
     - [./03-dom:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-dom)
         - [01-recorrer-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-recorrer-dom.html)
         - [02-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-manipular-dom.html)
         - [03-recorrer-y-manipular-dom.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-recorrer-y-manipular-dom.html)
-
     - [./04-eventos:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/04-eventos)
         - [01-pub-sub.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-pub-sub.html)
         - [02-eventos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-eventos.html)
@@ -57,20 +53,16 @@
         - [03-propagacion-02-captura-y-burbuja.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-propagacion-02-captura-y-burbuja.html)
         - [03-propagacion-03-stop-propagation.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-propagacion-03-stop-propagation.html)
         - [03-propagacion-04-prevent-default.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-propagacion-04-prevent-default.html)
-
     - [./05-websockets:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/05-websockets)
         - [chat-server](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/chat-server)
-
     - [./06-AJAX:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/06-AJAX)
         - [01-ajax-wikipedia.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-ajax-wikipedia.html)
         - [02-ajax-autocomplete.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-ajax-autocomplete.html)
         - [03-ajax-combos.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/03-ajax-combos.html)
         - [04-ajax-progressbar.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/04-ajax-progressbar.html)
-
     - [./07-dependencies:](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/07-dependencies)
         - [browserify](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/browserify)
         - [requirejs](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/requirejs)
-
     - [./08-ECMAScrit6](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/08-ECMAScrit6)
         - [01-arrow.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/01-arrow.html)
         - [02-this.html](https://github.com/asanzdiego/curso-javascript-avanzado-2015/tree/master/src/soluciones/02-this.html)
@@ -225,4 +217,4 @@
      - 14.14. [AJAX, JSON, REST (ES)](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#ajax-json-rest-es)
      - 14.15. [ES6 (ES)](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#es6-es)
      - 14.16. [ES6 (EN)](https://asanzdiego.github.io/curso-javascript-avanzado-2015/slides/export/javascript-avanzado.html#es6-en)
-- 
+-
