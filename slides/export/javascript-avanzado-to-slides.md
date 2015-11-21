@@ -1075,7 +1075,7 @@ se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET
 ## ¿Por qué REST?
 
 - Es **más sencillo** (tanto la API como la implementación).
-- Es **más rápido** (peticiones más lijeras que se puede cachear).
+- Es **más rápido** (peticiones más ligeras que se puede cachear).
 - Es **multiformato** (HTML, XML, JSON, etc.).
 - Se complementa muy bien con **AJAX**.
 
