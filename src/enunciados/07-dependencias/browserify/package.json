@@ -1,0 +1,10 @@
+{
+  "name": "browserify-example",
+  "version": "1.0.0",
+  "description": "Playground to use Browserify",
+  "author": "Adolfo Sanz De Diego <asanzdiego@gmail.com>",
+  "license": "GPL",
+  "dependencies": {
+    "jquery": "^2.1.3"
+  }
+}

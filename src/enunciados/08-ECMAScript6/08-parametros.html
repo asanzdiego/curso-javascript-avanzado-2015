@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Parámetros</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+    describe("tests", function() {
+
+      it('parámetros con nombre', function() {
+
+        function dividir ({divisor: D, dividendo: d}) {
+          return D/d;
+        }
+
+        expect("...1").toEqual(dividir({dividendo: 3, divisor:9}));
+      });
+
+      it('resto de parámetros', function() {
+
+        function restoParametros(x, y, ...a) {
+          return a;
+        }
+
+        expect("...2").toEqual(restoParametros(1, 2, 3, 4));
+      });
+
+      it('valor por defecto', function() {
+
+        function valorPorDefecto(x = 9) {
+          return x;
+        }
+
+        expect("...3").toEqual(valorPorDefecto(3));
+        expect("...4").toEqual(valorPorDefecto());
+      });
+
+    });
+  </script>
+
+<body>
+</body>
+</html>

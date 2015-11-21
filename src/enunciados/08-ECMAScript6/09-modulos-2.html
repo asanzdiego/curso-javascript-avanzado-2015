@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Modulos</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+
+    /* TODAVÍA NO ESTÁ IMPLEMENTADO POR BABEL */
+
+    import { sum, div } as math from "modulos/math"
+
+    describe("tests", function() {
+
+      it('Modulos', function() {
+
+          expect("...1").toEqual(undefined);
+          expect("...2").toEqual(math.sum(3,4));
+          expect("...3").toEqual(math.div(9,3));
+      });
+
+    });
+  </script>
+
+<body>
+</body>
+</html>

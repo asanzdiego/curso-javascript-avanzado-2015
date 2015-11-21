@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Autocomplete - AJAX</title>
+    <link rel="stylesheet" href="jquery-ui.css" />
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script>
+    $(function() {
+        $( "#tags" ).autocomplete({
+            // completar con la URL local necesaria
+            // source: "..."
+        });
+    });
+    </script>
+  </head>
+
+  <body>
+    <h2>jQuery UI Autocomplete - AJAX</h2>
+    <div class="ui-widget">
+      <label for="tags">Tags: </label>
+      <input id="tags" />
+    </div>
+  </body>
+
+</html>

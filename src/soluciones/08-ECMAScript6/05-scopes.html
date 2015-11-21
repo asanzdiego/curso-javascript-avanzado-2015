@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Scopes</title>
+
+  <script src="babel/browser.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" href="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.css">
+
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/jasmine-html.js"></script>
+  <script src="../../jasmine-standalone-2.3.4/lib/jasmine-2.3.4/boot.js"></script>
+
+
+</head>
+
+  <script type="text/babel">
+    describe("tests", function() {
+
+      it('test sin let', function() {
+
+        (function() {
+            expect(undefined).toEqual(x);
+            if(true) {
+                var x = "hola mundo";
+                expect("hola mundo").toEqual(x);
+            }
+            expect("hola mundo").toEqual(x);
+        })();
+
+      });
+
+      it('test con let (ES6)', function() {
+
+        (function() {
+
+            expect(function() {
+              console.log(x);
+            }).toThrowError();
+
+            if(true) {
+                let x = "hola mundo";
+                expect("hola mundo").toEqual(x);
+            }
+
+            expect(function() {
+              console.log(x);
+            }).toThrowError();
+        })();
+
+      });
+
+      it('scopes con funciones', function() {
+
+        (function () {
+            var foo = function () { return 1; }
+            expect(1).toEqual(foo());
+            (function () {
+                var foo = function () { return 2; }
+                expect(2).toEqual(foo());
+            })();
+            expect(1).toEqual(foo());
+        })();
+
+      });
+
+      it('scopes con llaves (ES6)', function() {
+
+        {
+            function foo() { return 1 }
+            expect(1).toEqual(foo());
+            {
+                function foo() { return 2 }
+                expect(2).toEqual(foo());
+            }
+            expect(1).toEqual(foo());
+        }
+
+      });
+
+    });
+  </script>
+
+<body>
+</body>
+</html>
