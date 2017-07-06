@@ -193,7 +193,8 @@ expect(ConstructorB.__proto__.__proto__.__proto__).toEqual(null);
 
 ## Esquema prototipos
 
-![Esquema prototipos](../img/esquema-prototipos.png)
+![Esquema prototipos](../img/esquema-prototipos.png){ width=50% text-align=center }
+
 
 ## Operador instanceof
 

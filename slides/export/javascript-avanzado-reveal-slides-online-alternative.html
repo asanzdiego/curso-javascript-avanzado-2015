@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc">
+  <meta name="description" content="JavaScript Avanzado" />
+  <meta name="author" content="Adolfo Sanz De Diego">
+  <title>JavaScript Avanzado</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/reveal.css">
+  <link rel="stylesheet" href="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js-menu//menu.css">
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/print/pdf.css' : 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <style type="text/css">
+    body {
+      background: white !important;
+      background-color: white !important;
+    }
+    code{
+      white-space: pre;
+    }
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 350% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print {
+      #only-print-parent { display: table !important; }
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 400% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">JavaScript Avanzado</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Octubre 2015</h3>
+    </div>
+</section>
+
+<section><section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">1</span> Acerca de</h1></section><section id="autor" class="slide level2">
+<h2><span class="header-section-number">1.1</span> Autor</h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Blog: <a href="http://asanzdiego.blogspot.com.es/">asanzdiego.blogspot.com.es</a></li>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">github.com/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">twitter.com/asanzdiego</a></li>
+<li>Linkedin: <a href="http://www.linkedin.com/in/asanzdiego">in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego/">slideshare.net/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">1.2</span> Licencia</h2>
+<ul>
+<li><strong>Este obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+<li><strong>El código fuente de los programas están bajo una licencia:</strong>
+<ul>
+<li><a href="http://www.viti.es/gnu/licenses/gpl.html">GPL 3.0</a></li>
+</ul></li>
+</ul>
+</section><section id="ejemplos" class="slide level2">
+<h2><span class="header-section-number">1.3</span> Ejemplos</h2>
+<ul>
+<li>Las slides y los códigos de ejemplo los podéis encontrar en:
+<ul>
+<li><a href="https://github.com/asanzdiego/curso-javascript-avanzado-2015" class="uri">https://github.com/asanzdiego/curso-javascript-avanzado-2015</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="javascript" class="titleslide slide level1"><h1><span class="header-section-number">2</span> JavaScript</h1></section><section id="historia" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Historia</h2>
+<ul>
+<li>Lo crea <strong>Brendan Eich en Netscape en 1995</strong> para hacer páginas web dinámicas</li>
+<li>Aparece por primera vez en Netscape Navigator 2.0</li>
+<li>Cada día más usado (clientes web, videojuegos, windows 8, servidores web, bases de datos, etc.)</li>
+</ul>
+</section><section id="el-lenguaje" class="slide level2">
+<h2><span class="header-section-number">2.2</span> El lenguaje</h2>
+<ul>
+<li>Orientado a objetos</li>
+<li>Basado en prototipos</li>
+<li>Funcional</li>
+<li>Débilmente tipado</li>
+<li>Dinámico</li>
+</ul>
+</section></section>
+<section><section id="orientación-a-objetos" class="titleslide slide level1"><h1><span class="header-section-number">3</span> Orientación a objetos</h1></section><section id="qué-es-un-objeto" class="slide level2">
+<h2><span class="header-section-number">3.1</span> ¿Qué es un objeto?</h2>
+<ul>
+<li><p><strong>Colección de propiedades</strong> (pares nombre-valor).</p></li>
+<li><p>Todo son objetos (las funciones también) excepto los primitivos: <strong>strings, números, booleans, null o undefined</strong></p></li>
+<li><p>Para saber si es un objeto o un primitivo hacer <strong>typeof variable</strong></p></li>
+</ul>
+</section><section id="propiedades-i" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Propiedades (I)</h2>
+<ul>
+<li>Podemos acceder directamente o como si fuese un contenedor:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">objeto</span>.<span class="at">nombre</span> <span class="op">===</span> objeto[nombre] <span class="co">// true</span></code></pre></div>
+</section><section id="propiedades-ii" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Propiedades (II)</h2>
+<ul>
+<li>Podemos crearlas y destruirlas en tiempo de ejecución</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> objeto <span class="op">=</span> <span class="op">{};</span>
+<span class="va">objeto</span>.<span class="at">nuevaPropiedad</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> <span class="co">// añadir</span>
+<span class="kw">delete</span> <span class="va">objeto</span>.<span class="at">nuevaPropiedad</span><span class="op">;</span> <span class="co">// eliminar</span></code></pre></div>
+</section><section id="objeto-iniciador" class="slide level2">
+<h2><span class="header-section-number">3.4</span> Objeto iniciador</h2>
+<ul>
+<li>Podemos crear un objeto así:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> objeto <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Adolfo&quot;</span><span class="op">,</span>
+  <span class="dt">twitter</span><span class="op">:</span> <span class="st">&quot;@asanzdiego&quot;</span>
+<span class="op">};</span></code></pre></div>
+</section><section id="función-constructora" class="slide level2">
+<h2><span class="header-section-number">3.5</span> Función constructora</h2>
+<ul>
+<li>O con una función constructora y un new.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Persona</span>(nombre<span class="op">,</span> twitter) <span class="op">{</span>
+  <span class="kw">this</span>.<span class="at">nombre</span> <span class="op">=</span> nombre<span class="op">;</span>
+  <span class="kw">this</span>.<span class="at">twitter</span> <span class="op">=</span> twitter<span class="op">;</span>
+<span class="op">};</span>
+<span class="kw">var</span> objeto <span class="op">=</span> <span class="kw">new</span> <span class="at">Persona</span>(<span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="st">&quot;@asanzdiego&quot;</span>)<span class="op">;</span></code></pre></div>
+</section><section id="prototipos-i" class="slide level2">
+<h2><span class="header-section-number">3.6</span> Prototipos (I)</h2>
+<ul>
+<li><p>Las funciones son objetos y tienen una propiedad llamada <strong>prototype</strong>.</p></li>
+<li><p>Cuando creamos un objeto con new, la referencia a esa propiedad <strong>prototype</strong> es almacenada en una propiedad interna.</p></li>
+<li><p>El prototipo se utiliza para compartir propiedades.</p></li>
+</ul>
+</section><section id="prototipos-ii" class="slide level2">
+<h2><span class="header-section-number">3.7</span> Prototipos (II)</h2>
+<ul>
+<li>Podemos acceder al objeto prototipo de un objeto:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// Falla en Opera o IE &lt;= 8</span>
+<span class="va">Object</span>.<span class="at">getPrototypeOf</span>(objeto)<span class="op">;</span>
+
+<span class="co">// No es estandar y falla en IE</span>
+<span class="va">objeto</span>.<span class="at">__proto__</span><span class="op">;</span></code></pre></div>
+</section><section id="eficiencia-i" class="slide level2">
+<h2><span class="header-section-number">3.8</span> Eficiencia (I)</h2>
+<ul>
+<li>Si queremos que nuestro código se ejecute una sola vez y que prepare en memoria todo lo necesario para generar objetos, la mejor opción es usar una <strong>función constructora solo con el estado de una nueva instancia, y el resto (los métodos) añadirlos al prototipo</strong>.</li>
+</ul>
+</section><section id="eficiencia-ii" class="slide level2">
+<h2><span class="header-section-number">3.9</span> Eficiencia (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">ConstructorA</span>(p1) <span class="op">{</span>
+  <span class="kw">this</span>.<span class="at">p1</span> <span class="op">=</span> p1<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">// los métodos los ponenmos en el prototipo</span>
+<span class="va">ConstructorA</span>.<span class="va">prototype</span>.<span class="at">metodo1</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">p1</span>)<span class="op">;</span>
+<span class="op">};</span></code></pre></div>
+</section><section id="herencia" class="slide level2">
+<h2><span class="header-section-number">3.10</span> Herencia</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">ConstructorA</span>(p1) <span class="op">{</span>
+  <span class="kw">this</span>.<span class="at">p1</span> <span class="op">=</span> p1<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">function</span> <span class="at">ConstructorB</span>(p1<span class="op">,</span> p2) <span class="op">{</span>
+  <span class="co">// llamamos al super para que no se pierda p1.</span>
+  <span class="va">ConstructorA</span>.<span class="at">call</span>(<span class="kw">this</span><span class="op">,</span> p1)<span class="op">;</span>
+  <span class="kw">this</span>.<span class="at">p2</span> <span class="op">=</span> p2<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">// Hacemos que B herede de A</span>
+<span class="co">// Prototipo de Función Constructora B apunta al</span>
+<span class="co">// Prototipo de Función Constructora A</span>
+<span class="va">ConstructorB</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(<span class="va">ConstructorA</span>.<span class="at">prototype</span>)<span class="op">;</span></code></pre></div>
+</section><section id="cadena-de-prototipos" class="slide level2">
+<h2><span class="header-section-number">3.11</span> Cadena de prototipos</h2>
+<ul>
+<li>Cuando se invoca una llamada a una propiedad, <strong>JavaScript primero busca en el propio objeto, y si no lo encuentra busca en su prototipo</strong>, y sino en el prototipo del prototipo, así hasta el prototipo de Object que es null.</li>
+</ul>
+</section><section id="cadena-de-prototipos-de-la-instancia" class="slide level2">
+<h2><span class="header-section-number">3.12</span> Cadena de prototipos de la instancia</h2>
+<ul>
+<li>En el ejemplo anterior:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">instanciaB</span>.<span class="at">__proto__</span> <span class="op">==</span> <span class="va">ConstructorB</span>.<span class="at">prototype</span> <span class="co">// true</span>
+<span class="va">instanciaB</span>.<span class="va">__proto__</span>.<span class="at">__proto__</span> <span class="op">==</span> <span class="va">ConstructorA</span>.<span class="at">prototype</span> <span class="co">// true</span>
+<span class="va">instanciaB</span>.<span class="va">__proto__</span>.<span class="va">__proto__</span>.<span class="at">__proto__</span> <span class="op">==</span> <span class="va">Object</span>.<span class="at">prototype</span> <span class="co">// true</span>
+<span class="va">instanciaB</span>.<span class="va">__proto__</span>.<span class="va">__proto__</span>.<span class="va">__proto__</span>.<span class="at">__proto__</span> <span class="op">==</span> <span class="kw">null</span> <span class="co">// true</span></code></pre></div>
+</section><section id="cadena-de-prototipos-de-la-función-constructora" class="slide level2">
+<h2><span class="header-section-number">3.13</span> Cadena de prototipos de la función constructora</h2>
+<ul>
+<li>En el ejemplo anterior:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">expect</span>(<span class="va">ConstructorB</span>.<span class="at">__proto__</span>).<span class="at">toEqual</span>(<span class="va">Function</span>.<span class="at">prototype</span>)<span class="op">;</span>
+<span class="at">expect</span>(<span class="va">ConstructorB</span>.<span class="va">__proto__</span>.<span class="at">__proto__</span>).<span class="at">toEqual</span>(<span class="va">Object</span>.<span class="at">prototype</span>)<span class="op">;</span>
+<span class="at">expect</span>(<span class="va">ConstructorB</span>.<span class="va">__proto__</span>.<span class="va">__proto__</span>.<span class="at">__proto__</span>).<span class="at">toEqual</span>(<span class="kw">null</span>)<span class="op">;</span></code></pre></div>
+</section><section id="esquema-prototipos" class="slide level2">
+<h2><span class="header-section-number">3.14</span> Esquema prototipos</h2>
+<figure>
+<img src="../img/esquema-prototipos.png" alt="Esquema prototipos" text-align="center" style="width:50.0%" /><figcaption>Esquema prototipos</figcaption>
+</figure>
+</section><section id="operador-instanceof" class="slide level2">
+<h2><span class="header-section-number">3.15</span> Operador instanceof</h2>
+<ul>
+<li><p>La expresión <strong>instanciaB instanceof ConstructorA</strong> devolverá true, si el prototipo de la Función ConstructorA, se encuentra en la cadena de prototipos de la instanciaB.</p></li>
+<li><p>En el ejemplo anterior:</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">instanciaB <span class="kw">instanceof</span> ConstructorB<span class="op">;</span> <span class="co">// true</span>
+instanciaB <span class="kw">instanceof</span> ConstructorA<span class="op">;</span> <span class="co">// true</span>
+instanciaB <span class="kw">instanceof</span> Object<span class="op">;</span> <span class="co">// true</span></code></pre></div>
+</section><section id="extensión" class="slide level2">
+<h2><span class="header-section-number">3.16</span> Extensión</h2>
+<ul>
+<li><p>Con los prototipos podemos extender la funcionalidad del propio lenguaje.</p></li>
+<li><p>Ejemplo:</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">String</span>.<span class="va">prototype</span>.<span class="at">hola</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+  <span class="cf">return</span> <span class="st">&quot;Hola &quot;</span><span class="op">+</span><span class="kw">this</span><span class="op">;</span>
+<span class="op">}</span>
+
+<span class="st">&quot;Adolfo&quot;</span>.<span class="at">hola</span>()<span class="op">;</span> <span class="co">// &quot;Hola Adolfo&quot;</span></code></pre></div>
+</section><section id="propiedades-y-métodos-estáticos-i" class="slide level2">
+<h2><span class="header-section-number">3.17</span> Propiedades y métodos estáticos (I)</h2>
+<ul>
+<li><p>Lo que se define dentro de la función constructora va a ser propio de la instancia.</p></li>
+<li><p>Pero como hemos dicho, en JavaScript, una función es un objeto, al que podemos añadir tanto atributos como funciones.</p></li>
+<li><p><strong>Añadiendo atributos y funciones a la función constructora obtenemos propiedades y métodos estáticos.</strong></p></li>
+</ul>
+</section><section id="propiedades-y-métodos-estáticos-ii" class="slide level2">
+<h2><span class="header-section-number">3.18</span> Propiedades y métodos estáticos (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">ConstructorA</span>() <span class="op">{</span>
+
+  <span class="va">ConstructorA</span>.<span class="at">propiedadEstatica</span> <span class="op">=</span> <span class="st">&quot;propiedad estática&quot;</span><span class="op">;</span>
+<span class="op">}</span>
+
+<span class="va">ConstructorA</span>.<span class="at">metodoEstatico</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;método estático&quot;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="propiedades-y-métodos-privados-i" class="slide level2">
+<h2><span class="header-section-number">3.19</span> Propiedades y métodos privados (I)</h2>
+<ul>
+<li><p>La visibilidad de objetos depende del contexto.</p></li>
+<li><p>Los contextos en JavaScript son bloques de código entre dos {} y en general, desde uno de ellos, solo tienes acceso a lo que en él se defina y a lo que se defina en otros contextos que contengan al tuyo.</p></li>
+</ul>
+</section><section id="propiedades-y-métodos-privados-ii" class="slide level2">
+<h2><span class="header-section-number">3.20</span> Propiedades y métodos privados (II)</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">ConstructorA</span>(privada<span class="op">,</span> publica) <span class="op">{</span>
+  <span class="kw">var</span> propiedadPrivada <span class="op">=</span> privada<span class="op">;</span>
+  <span class="kw">this</span>.<span class="at">propiedadPublica</span> <span class="op">=</span> publica<span class="op">;</span>
+  <span class="kw">var</span> metodoPrivado <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;--&gt;propiedadPrivada&quot;</span><span class="op">,</span> propiedadPrivada)<span class="op">;</span>
+  <span class="op">}</span>
+  <span class="kw">this</span>.<span class="at">metodoPublico</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;--&gt;propiedadPublica&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">propiedadPublica</span>)<span class="op">;</span>
+    <span class="at">metodoPrivado</span>()<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="polimorfismo" class="slide level2">
+<h2><span class="header-section-number">3.21</span> Polimorfismo</h2>
+<ul>
+<li><p>Poder llamar a métodos sintácticamente iguales de objetos de tipos diferentes.</p></li>
+<li><p>Esto se consigue mediante herencia.</p></li>
+</ul>
+</section></section>
+<section><section id="técnicas-avanzadas" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Técnicas avanzadas</h1></section><section id="funciones" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Funciones</h2>
+<ul>
+<li><p>Son objetos con sus propiedades.</p></li>
+<li><p>Se pueden pasar como parámetros a otras funciones.</p></li>
+<li><p>Pueden guardarse en variables.</p></li>
+<li><p>Son mensajes cuyo receptor es <strong>this</strong>.</p></li>
+</ul>
+</section><section id="this" class="slide level2">
+<h2><span class="header-section-number">4.2</span> This</h2>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> nombre <span class="op">=</span> <span class="st">&quot;Laura&quot;</span><span class="op">;</span>
+
+<span class="kw">var</span> alba <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Alba&quot;</span><span class="op">,</span>
+  <span class="dt">saludo</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="cf">return</span> <span class="st">&quot;Hola &quot;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">nombre</span><span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="va">alba</span>.<span class="at">saludo</span>()<span class="op">;</span> <span class="co">// Hola Alba</span>
+
+<span class="kw">var</span> fn <span class="op">=</span> <span class="va">alba</span>.<span class="at">saludo</span><span class="op">;</span>
+
+<span class="at">fn</span>()<span class="op">;</span> <span class="co">// Hola Laura</span></code></pre></div>
+</section><section id="call-y-apply" class="slide level2">
+<h2><span class="header-section-number">4.3</span> call y apply</h2>
+<ul>
+<li>Dos funciones permiten manipular el this: <strong>call y apply</strong> que en lo único que se diferencian es en la llamada.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">fn</span>.<span class="at">call</span>(thisArg [<span class="op">,</span> arg1 [<span class="op">,</span> arg2 [...]]])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">fn</span>.<span class="at">apply</span>(thisArg [<span class="op">,</span> arglist])</code></pre></div>
+</section><section id="número-variable-de-argumentos" class="slide level2">
+<h2><span class="header-section-number">4.4</span> Número variable de argumentos</h2>
+<ul>
+<li>Las funciones en JavaScript aunque tengan especificado un número de argumentos de entrada, <strong>pueden recibir más o menos argumentos</strong> y es válido.</li>
+</ul>
+</section><section id="arguments" class="slide level2">
+<h2><span class="header-section-number">4.5</span> Arguments</h2>
+<ul>
+<li>Es un objeto que <strong>contiene los parámetros</strong> de la función.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">echoArgs</span>() <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(arguments[<span class="dv">0</span>])<span class="op">;</span> <span class="co">// Adolfo</span>
+  <span class="va">console</span>.<span class="at">log</span>(arguments[<span class="dv">1</span>])<span class="op">;</span> <span class="co">// Sanz</span>
+<span class="op">}</span>
+<span class="at">echoArgs</span>(<span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="st">&quot;Sanz&quot;</span>)<span class="op">;</span></code></pre></div>
+</section><section id="declaración-de-funciones" class="slide level2">
+<h2><span class="header-section-number">4.6</span> Declaración de funciones</h2>
+<ul>
+<li>Estas 2 declaraciones son <strong>equivalentes</strong>:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">holaMundo1</span>() <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hola Mundo 1&quot;</span>)<span class="op">;</span>
+<span class="op">}</span>
+<span class="at">holaMundo1</span>()<span class="op">;</span>
+
+<span class="kw">var</span> holaMundo2 <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hola Mundo 2&quot;</span>)<span class="op">;</span>
+<span class="op">}</span>
+<span class="at">holaMundo2</span>()<span class="op">;</span></code></pre></div>
+</section><section id="transfiriendo-funciones-a-otras-funciones" class="slide level2">
+<h2><span class="header-section-number">4.7</span> Transfiriendo funciones a otras funciones</h2>
+<ul>
+<li>Hemos dicho que las funciones son objetos, así que <strong>se pueden pasar como parámetros</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">saluda</span>() <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hola&quot;</span>)
+<span class="op">}</span>
+<span class="kw">function</span> <span class="at">ejecuta</span>(func) <span class="op">{</span>
+  <span class="at">func</span>()
+<span class="op">}</span>
+<span class="at">ejecuta</span>(saluda)<span class="op">;</span></code></pre></div>
+</section><section id="funciones-anónimas-i" class="slide level2">
+<h2><span class="header-section-number">4.8</span> Funciones anónimas (I)</h2>
+<ul>
+<li><p>Hemos dicho que las funciones se pueden declarar.</p></li>
+<li><p>Pero también <strong>podemos no declararlas y dejarlas como anónimas</strong>.</p></li>
+</ul>
+</section><section id="funciones-anónimas-ii" class="slide level2">
+<h2><span class="header-section-number">4.9</span> Funciones anónimas (II)</h2>
+<ul>
+<li>Una función anónima así declarada <strong>no se podría ejecutar</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span>(nombre) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hola &quot;</span><span class="op">+</span>nombre)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="funciones-anónimas-iii" class="slide level2">
+<h2><span class="header-section-number">4.10</span> Funciones anónimas (III)</h2>
+<ul>
+<li>Pero <strong>una función puede devolver una función anónima</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">saludador</span>(nombre) <span class="op">{</span>
+  <span class="cf">return</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hola &quot;</span><span class="op">+</span>nombre)<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="kw">var</span> saluda <span class="op">=</span> <span class="at">saludador</span>(<span class="st">&quot;mundo&quot;</span>)<span class="op">;</span>
+<span class="at">saluda</span>()<span class="op">;</span> <span class="co">// Hola mundo</span></code></pre></div>
+</section><section id="funciones-autoejecutables" class="slide level2">
+<h2><span class="header-section-number">4.11</span> Funciones autoejecutables</h2>
+<ul>
+<li>Podemos autoejecutar funciones anónimas.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>(nombre) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hola &quot;</span><span class="op">+</span>nombre)<span class="op">;</span>
+<span class="op">}</span>)(<span class="st">&quot;mundo&quot;</span>)</code></pre></div>
+</section><section id="clousures-i" class="slide level2">
+<h2><span class="header-section-number">4.12</span> Clousures (I)</h2>
+<ul>
+<li>Un closure <strong>combina una función y el entorno en que se creó</strong>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">creaSumador</span>(x) <span class="op">{</span>
+  <span class="cf">return</span> <span class="kw">function</span>(y) <span class="op">{</span>
+    <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span>
+  <span class="op">};</span>
+<span class="op">}</span>
+
+<span class="kw">var</span> suma5 <span class="op">=</span> <span class="at">creaSumador</span>(<span class="dv">5</span>)<span class="op">;</span>
+<span class="kw">var</span> suma10 <span class="op">=</span> <span class="at">creaSumador</span>(<span class="dv">10</span>)<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">suma5</span>(<span class="dv">2</span>))<span class="op">;</span>  <span class="co">// muestra 7</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">suma10</span>(<span class="dv">2</span>))<span class="op">;</span> <span class="co">// muestra 12</span></code></pre></div>
+</section><section id="clousures-ii" class="slide level2">
+<h2><span class="header-section-number">4.13</span> Clousures (II)</h2>
+<ul>
+<li>En una closures la función interna almacena una <strong>referencia al último valor</strong> de la variable establecido cuando la función externa termina de ejecutarse.</li>
+</ul>
+</section><section id="el-patrón-modulo" class="slide level2">
+<h2><span class="header-section-number">4.14</span> El patrón Modulo</h2>
+<ul>
+<li>Se trata de una función que actúa como contenedor para un contexto de ejecución.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo <span class="op">=</span> (<span class="kw">function</span>() <span class="op">{</span>
+
+  <span class="kw">var</span> propiedadPrivada<span class="op">;</span>
+
+  <span class="kw">function</span> <span class="at">metodoPrivado</span>() <span class="op">{</span> <span class="op">};</span>
+
+  <span class="co">// API publica</span>
+  <span class="cf">return</span> <span class="op">{</span>
+    <span class="dt">metodoPublico1</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span>
+    <span class="op">},</span>
+
+    <span class="dt">metodoPublico2</span><span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span>
+    <span class="op">}</span>
+  <span class="op">}</span>
+<span class="op">}</span>())<span class="op">;</span></code></pre></div>
+</section><section id="eficiencia-i-1" class="slide level2">
+<h2><span class="header-section-number">4.15</span> Eficiencia (I)</h2>
+<ul>
+<li><p>Si se ejecuta desde el navegador, <strong>se suele pasar como parámetro el objeto window para mejorar el rendimiento</strong>. Así cada vez que lo necesitemos el intérprete lo utilizará directamete en lugar de buscarlo remontando niveles.</p></li>
+<li><p>Y también <strong>se suele pasar el parámetro undefined, para evitar los errores que pueden darse si la palabra reservada ha sido reescrita</strong> en alguna parte del código y su valor no corresponda con el esperado.</p></li>
+</ul>
+</section><section id="eficiencia-ii-1" class="slide level2">
+<h2><span class="header-section-number">4.16</span> Eficiencia (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo <span class="op">=</span> (<span class="kw">function</span>(window<span class="op">,</span> <span class="kw">undefined</span>) <span class="op">{</span>
+
+  <span class="co">// El código va aquí</span>
+
+<span class="op">}</span>)( window )<span class="op">;</span></code></pre></div>
+</section><section id="el-patrón-modulo-revelado-i" class="slide level2">
+<h2><span class="header-section-number">4.17</span> El patrón Modulo Revelado (I)</h2>
+<ul>
+<li><p>El problema del patrón Modulo es pasar un método de privado a público o viceversa.</p></li>
+<li><p>Por ese motivo lo que que se suele hacer es definir todo en el cuerpo, y luego <strong>referenciar solo los públicos en el bloque return</strong>.</p></li>
+</ul>
+</section><section id="el-patrón-modulo-revelado-ii" class="slide level2">
+<h2><span class="header-section-number">4.18</span> El patrón Modulo Revelado (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">miModulo <span class="op">=</span> (<span class="kw">function</span>() <span class="op">{</span>
+
+  <span class="kw">function</span> <span class="at">metodoA</span>() <span class="op">{</span> <span class="op">};</span>
+
+  <span class="kw">function</span> <span class="at">metodoB</span>() <span class="op">{</span> <span class="op">};</span>
+
+  <span class="kw">function</span> <span class="at">metodoC</span>() <span class="op">{</span> <span class="op">};</span>
+
+  <span class="co">// API publica</span>
+  <span class="cf">return</span> <span class="op">{</span>
+    <span class="dt">metodoPublico1</span><span class="op">:</span> metodoA<span class="op">,</span>
+    <span class="dt">metodoPublico2</span><span class="op">:</span> metodoB
+  <span class="op">}</span>
+<span class="op">}</span>())<span class="op">;</span></code></pre></div>
+</section><section id="espacios-de-nombres-i" class="slide level2">
+<h2><span class="header-section-number">4.19</span> Espacios de nombres (I)</h2>
+<ul>
+<li>Para simular espacios de nombres, en JavaScript se anidan objetos.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">miBiblioteca <span class="op">=</span> miBiblioteca <span class="op">||</span> <span class="op">{};</span>
+
+<span class="va">miBiblioteca</span>.<span class="at">seccion1</span> <span class="op">=</span> <span class="va">miBiblioteca</span>.<span class="at">seccion1</span> <span class="op">||</span> <span class="op">{};</span>
+
+<span class="va">miBiblioteca</span>.<span class="at">seccion1</span> <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">priopiedad</span><span class="op">:</span> p1<span class="op">,</span>
+  <span class="dt">metodo</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="op">},</span>
+<span class="op">};</span>
+
+<span class="va">miBiblioteca</span>.<span class="at">seccion2</span> <span class="op">=</span> <span class="va">miBiblioteca</span>.<span class="at">seccion2</span> <span class="op">||</span> <span class="op">{};</span>
+
+<span class="va">miBiblioteca</span>.<span class="at">seccion2</span> <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">priopiedad</span><span class="op">:</span> p2<span class="op">,</span>
+  <span class="dt">metodo</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="op">},</span>
+<span class="op">};</span></code></pre></div>
+</section><section id="espacios-de-nombres-ii" class="slide level2">
+<h2><span class="header-section-number">4.20</span> Espacios de nombres (II)</h2>
+<ul>
+<li>Se puede combinar lo anterior con módulos autoejecutables:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+miBiblioteca <span class="op">=</span> miBiblioteca <span class="op">||</span> <span class="op">{};</span>
+
+(<span class="kw">function</span>(namespace) <span class="op">{</span>
+
+  <span class="kw">var</span> propiedadPrivada <span class="op">=</span> p1<span class="op">;</span>
+
+  <span class="va">namespace</span>.<span class="at">propiedadPublica</span> <span class="op">=</span> p2<span class="op">;</span>
+
+  <span class="kw">var</span> metodoPrivado <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span> <span class="op">};</span>
+
+  <span class="va">namespace</span>.<span class="at">metodoPublico</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span> <span class="op">};</span>
+
+<span class="op">}</span>(miBiblioteca))<span class="op">;</span></code></pre></div>
+</section></section>
+<section><section id="document-object-model" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Document Object Model</h1></section><section id="qué-es-dom" class="slide level2">
+<h2><span class="header-section-number">5.1</span> ¿Qué es DOM?</h2>
+<ul>
+<li>Acrónimo de <strong>Document Object Model</strong></li>
+<li>Es un conjunto de utilidades específicamente diseñadas para <strong>manipular documentos XML, y por extensión documentos XHTML y HTML</strong>.</li>
+<li>DOM transforma internamente el archivo XML en una estructura más fácil de manejar formada por una jerarquía de nodos.</li>
+</ul>
+</section><section id="tipos-de-nodos" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Tipos de nodos</h2>
+<ul>
+<li>Los más importantes son:
+<ul>
+<li><strong>Document</strong>: representa el nodo raíz.</li>
+<li><strong>Element</strong>: representa el contenido definido por un par de etiquetas de apertura y cierre y puede tener tanto nodos hijos como atributos.</li>
+<li><strong>Attr</strong>: representa el atrributo de un elemento.</li>
+<li><strong>Text</strong>: almacena el contenido del texto que se encuentra entre una etiqueta de apertura y una de cierre.</li>
+</ul></li>
+</ul>
+</section><section id="recorrer-el-dom" class="slide level2">
+<h2><span class="header-section-number">5.3</span> Recorrer el DOM</h2>
+<ul>
+<li>JavaScript proporciona <strong>funciones</strong> para recorrer los nodos:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">getElementById</span>(id)
+<span class="at">getElementsByName</span>(name)
+<span class="at">getElementsByTagName</span>(tagname)
+<span class="at">getElementsByClassName</span>(className)
+<span class="at">getAttribute</span>(attributeName)
+<span class="at">querySelector</span>(selector)
+<span class="at">querySelectorAll</span>(selector)</code></pre></div>
+</section><section id="manipular-el-dom" class="slide level2">
+<h2><span class="header-section-number">5.4</span> Manipular el DOM</h2>
+<ul>
+<li>JavaScript proporciona <strong>funciones</strong> para la manipulación de nodos:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">createElement</span>(tagName)
+<span class="at">createTextNode</span>(text)
+<span class="at">createAttribute</span>(attributeName)
+<span class="at">appendChild</span>(node)
+<span class="at">insertBefore</span>(newElement<span class="op">,</span> targetElement)
+<span class="at">removeAttribute</span>(attributename)
+<span class="at">removeChild</span>(childreference)
+<span class="at">replaceChild</span>(newChild<span class="op">,</span> oldChild)</code></pre></div>
+</section><section id="propiedades-nodos-i" class="slide level2">
+<h2><span class="header-section-number">5.5</span> Propiedades Nodos (I)</h2>
+<ul>
+<li>Los nodos tienen algunas <strong>propiedades</strong> muy útiles:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">attributes[]
+className
+id
+innerHTML
+nodeName
+nodeValue
+style
+tabIndex
+tagName
+title</code></pre></div>
+</section><section id="propiedades-nodos-ii" class="slide level2">
+<h2><span class="header-section-number">5.6</span> Propiedades Nodos (II)</h2>
+<ul>
+<li>Los nodos tienen algunas <strong>propiedades</strong> muy útiles:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">childNodes[]
+firstChild
+lastChild
+previousSibling
+nextSibling
+ownerDocument
+parentNode</code></pre></div>
+</section></section>
+<section><section id="librerías-y-frameworks" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Librerías y Frameworks</h1></section><section id="jquery" class="slide level2">
+<h2><span class="header-section-number">6.1</span> jQuery</h2>
+<ul>
+<li><a href="https://jquery.com/">jQuery</a>: libreria que reduce código (&quot;write less, do more&quot;).</li>
+</ul>
+<pre><code>// Vanilla JavaScript
+var elem = document.getElementById(&quot;miElemento&quot;);
+
+//jQuery
+var elem = $(&quot;#miElemento&quot;);  </code></pre>
+</section><section id="jquery-ui-mobile" class="slide level2">
+<h2><span class="header-section-number">6.2</span> jQuery UI &amp; Mobile</h2>
+<ul>
+<li><p><a href="http://jqueryui.com/">jQuery UI</a>: diseño interfaces gráficas.</p></li>
+<li><p><a href="https://jquerymobile.com/">jQuery Mobile</a>: versión adaptada para móviles (eventos y tamaño).</p></li>
+</ul>
+</section><section id="frameworks-css" class="slide level2">
+<h2><span class="header-section-number">6.3</span> Frameworks CSS</h2>
+<ul>
+<li><p><a href="http://getbootstrap.com/">Bootstrap</a> y <a href="http://foundation.zurb.com/">Foundation</a>.</p></li>
+<li><p>Fácil maquetación, sistema rejilla, clases CSS, temas, etc.</p></li>
+</ul>
+</section><section id="mvc-en-el-front" class="slide level2">
+<h2><span class="header-section-number">6.4</span> MVC en el front</h2>
+<ul>
+<li><p><a href="http://backbonejs.org/">BackboneJS</a>: ligero y flexible.</p></li>
+<li><p><a href="http://emberjs.com/">EmberJS</a>: &quot;Convention over Configuration&quot;, muy popular entre desarrolladores <a href="http://rubyonrails.org/">Ruby on Rails</a>.</p></li>
+<li><p><a href="http://angularjs.org/">AngularJS</a> extiende etiquetas HML (g-app, ng-controller, ng-model, ng-view), detrás está Google, tiene gran popularidad, abrupta curva de aprendizaje.</p></li>
+</ul>
+</section><section id="nodejs" class="slide level2">
+<h2><span class="header-section-number">6.5</span> NodeJS</h2>
+<ul>
+<li><p><a href="http://nodejs.org/">NodeJS</a> permite ejecutar JS fuera del navegador.</p></li>
+<li><p>Viene con su propio gestor de paquetes: <a href="https://www.npmjs.com/">npm</a></p></li>
+</ul>
+</section><section id="automatización-de-tareas" class="slide level2">
+<h2><span class="header-section-number">6.6</span> Automatización de tareas</h2>
+<ul>
+<li><p><a href="http://gruntjs.com/">GruntJS</a>: más popularidad y más plugins.</p></li>
+<li><p><a href="http://gulpjs.com/">GulpJS</a>: más rápido tanto al escribir (&quot;Code over Configure&quot;) como al ejecutar (streams).</p></li>
+</ul>
+</section><section id="gestión-de-dependencias" class="slide level2">
+<h2><span class="header-section-number">6.7</span> Gestión de dependencias</h2>
+<ul>
+<li><p><a href="http://bower.io/">Bower</a>: para el lado cliente. Puede trabajar con repositorios Git.</p></li>
+<li><p><a href="http://browserify.org/">Browserify</a>: permite escribir módulos como en <a href="http://nodejs.org/">NodeJS</a> y compilarlos para que se puedan usar en el navegador.</p></li>
+<li><p><a href="http://requirejs.org/">RequeriJS</a>: las dependencias se cargan de forma asíncrona y solo cuando se necesitam.</p></li>
+<li><p><a href="https://webpack.github.io/">WebPack</a>: es un empaquetador de módulos</p></li>
+</ul>
+</section><section id="aplicaciones-de-escritorio-multiplataforma" class="slide level2">
+<h2><span class="header-section-number">6.8</span> Aplicaciones de escritorio multiplataforma</h2>
+<ul>
+<li><p><a href="http://appjs.com/">AppJS</a>, y su fork <a href="http://deskshell.org/">DeskShell</a>: los más antiguos, un poco abandonados.</p></li>
+<li><p><a href="http://nwjs.io/">NW.js</a>: opción más popular y madura hoy en día.</p></li>
+<li><p><a href="http://electron.atom.io/">Electron</a>: creada para el <a href="https://atom.io/">editor Atom de GitHub</a>: está creciendo en popularidad.</p></li>
+</ul>
+</section><section id="aplicaciones-móviles-híbridas" class="slide level2">
+<h2><span class="header-section-number">6.9</span> Aplicaciones móviles híbridas</h2>
+<ul>
+<li><p><a href="https://cordova.apache.org/">cordova</a>: una de los primeros. Hoy en día, otros frameworks se basan en él.</p></li>
+<li><p><a href="http://ionicframework.com/">ionic</a>: utiliza AngularJS, tiene una CLI, muy popular.</p></li>
+<li><p><a href="https://facebook.github.io/react-native/">React Native</a>: recién liberado por facebook.</p></li>
+</ul>
+</section><section id="webcomponents" class="slide level2">
+<h2><span class="header-section-number">6.10</span> WebComponents</h2>
+<ul>
+<li><p><a href="http://www.w3.org/wiki/WebComponents/">WebComponents</a> es una especificación de la W3C para permitir crear componentes y reutilizarlos.</p></li>
+<li><p><a href="https://www.polymer-project.org/">polymer</a>: proyecto de Google para poder empezar a usar los WebComponents en todos los navegadores.</p></li>
+</ul>
+</section><section id="otros" class="slide level2">
+<h2><span class="header-section-number">6.11</span> Otros</h2>
+<ul>
+<li><p><a href="https://facebook.github.io/react/">React</a>: librería hecho por Facebook para crear interfaces que se renderizan muy rápido, ya sea en cliente o servidor.</p></li>
+<li><p><a href="https://facebook.github.io/flux/">Flux</a>: framework hecho por Facebook que utiliza React.</p></li>
+<li><p><a href="https://www.meteor.com/">Meteor</a>: es una plataforma que permite desarrollar aplicaciones real-time con JS Isomófico (se ejecuta en front y back)</p></li>
+</ul>
+</section></section>
+<section><section id="eventos" class="titleslide slide level1"><h1><span class="header-section-number">7</span> Eventos</h1></section><section id="el-patrón-pubsub-i" class="slide level2">
+<h2><span class="header-section-number">7.1</span> El patrón PubSub (I)</h2>
+<pre><code>var EventBus = {
+  topics: {},
+
+  subscribe: function(topic, listener) {
+    if (!this.topics[topic]) this.topics[topic] = [];
+    this.topics[topic].push(listener);
+  },
+
+  publish: function(topic, data) {
+    if (!this.topics[topic] || this.topics[topic].length &lt; 1) return;
+    this.topics[topic].forEach(function(listener) {
+      listener(data || {});
+    });
+  }
+};</code></pre>
+</section><section id="el-patrón-pubsub-ii" class="slide level2">
+<h2><span class="header-section-number">7.2</span> El patrón PubSub (II)</h2>
+<pre><code>EventBus.subscribe(&#39;foo&#39;, alert);
+EventBus.publish(&#39;foo&#39;, &#39;Hello World!&#39;);</code></pre>
+</section><section id="el-patrón-pubsub-iii" class="slide level2">
+<h2><span class="header-section-number">7.3</span> El patrón PubSub (III)</h2>
+<pre><code>var Mailer = function() {
+  EventBus.subscribe(&#39;order/new&#39;, this.sendPurchaseEmail);
+};
+
+Mailer.prototype = {
+  sendPurchaseEmail: function(userEmail) {
+    console.log(&quot;Sent email to &quot; + userEmail);
+  }
+};</code></pre>
+</section><section id="el-patrón-pubsub-iv" class="slide level2">
+<h2><span class="header-section-number">7.4</span> El patrón PubSub (IV)</h2>
+<pre><code>var Order = function(params) {
+  this.params = params;
+};
+
+Order.prototype = {
+  saveOrder: function() {
+    EventBus.publish(&#39;order/new&#39;, this.params.userEmail);
+  }
+};</code></pre>
+</section><section id="el-patrón-pubsub-v" class="slide level2">
+<h2><span class="header-section-number">7.5</span> El patrón PubSub (V)</h2>
+<pre><code>var mailer = new Mailer();
+var order = new Order({userEmail: &#39;john@gmail.com&#39;});
+order.saveOrder();
+&quot;Sent email to john@gmail.com&quot;</code></pre>
+</section><section id="principales-eventos-i" class="slide level2">
+<h2><span class="header-section-number">7.6</span> Principales eventos (I)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onblur</td>
+<td style="text-align: left;">Un elemento pierde el foco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onchange</td>
+<td style="text-align: left;">Un elemento ha sido modificado</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onclick</td>
+<td style="text-align: left;">Pulsar y soltar el ratón</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ondblclick</td>
+<td style="text-align: left;">Pulsar dos veces seguidas con el ratón</td>
+</tr>
+</tbody>
+</table>
+</section><section id="principales-eventos-ii" class="slide level2">
+<h2><span class="header-section-number">7.7</span> Principales eventos (II)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onfocus</td>
+<td style="text-align: left;">Un elemento obtiene el foco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onkeydown</td>
+<td style="text-align: left;">Pulsar una tecla y no soltarla</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onkeypress</td>
+<td style="text-align: left;">Pulsar una tecla</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onkeyup</td>
+<td style="text-align: left;">Soltar una tecla pulsada</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onload</td>
+<td style="text-align: left;">Página cargada completamente</td>
+</tr>
+</tbody>
+</table>
+</section><section id="principales-eventos-iii" class="slide level2">
+<h2><span class="header-section-number">7.8</span> Principales eventos (III)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onmousedown</td>
+<td style="text-align: left;">Pulsar un botón del ratón y no soltarlo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onmousemove</td>
+<td style="text-align: left;">Mover el ratón</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onmouseout</td>
+<td style="text-align: left;">El ratón &quot;sale&quot; del elemento</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onmouseover</td>
+<td style="text-align: left;">El ratón &quot;entra&quot; en el elemento</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onmouseup</td>
+<td style="text-align: left;">Soltar el botón del ratón</td>
+</tr>
+</tbody>
+</table>
+</section><section id="principales-eventos-iv" class="slide level2">
+<h2><span class="header-section-number">7.9</span> Principales eventos (IV)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">onreset</td>
+<td style="text-align: left;">Inicializar el formulario</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onresize</td>
+<td style="text-align: left;">Modificar el tamaño de la ventana</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onselect</td>
+<td style="text-align: left;">Seleccionar un texto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">onsubmit</td>
+<td style="text-align: left;">Enviar el formulario</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">onunload</td>
+<td style="text-align: left;">Se abandona la página</td>
+</tr>
+</tbody>
+</table>
+</section><section id="suscripción" class="slide level2">
+<h2><span class="header-section-number">7.10</span> Suscripción</h2>
+<ul>
+<li>Para añadir o eliminar un <strong>Listener</strong> de un evento a un elemento:</li>
+</ul>
+<pre><code>var windowOnLoad = function(e) {
+  console.log(&#39;window:load&#39;, e);
+};
+
+window.addEventListener(&#39;load&#39;, windowOnLoad);
+
+window.removeEventListener(&#39;load&#39;, windowOnLoad);</code></pre>
+</section><section id="eventos-personalizados-i" class="slide level2">
+<h2><span class="header-section-number">7.11</span> Eventos personalizados (I)</h2>
+<ul>
+<li>Podemos crear <strong>eventos personalizados</strong>:</li>
+</ul>
+<pre><code>var event = new Event(&#39;build&#39;);
+
+elem.addEventListener(&#39;build&#39;, function (e) { ... }, false);</code></pre>
+</section><section id="eventos-personalizados-ii" class="slide level2">
+<h2><span class="header-section-number">7.12</span> Eventos personalizados (II)</h2>
+<ul>
+<li>Podemos crear <strong>eventos personalizados con datos</strong>:</li>
+</ul>
+<pre><code>var event = new CustomEvent(&#39;build&#39;, { &#39;detail&#39;: detail });
+
+elem.addEventListener(&#39;build&#39;, function (e)  {
+  log(&#39;The time is: &#39; + e.detail);
+}, false);</code></pre>
+</section><section id="disparar-un-evento" class="slide level2">
+<h2><span class="header-section-number">7.13</span> Disparar un evento</h2>
+<ul>
+<li>Podemos <strong>disparar</strong> eventos:</li>
+</ul>
+<pre><code>function simulateClick() {
+  var event = new MouseEvent(&#39;click&#39;);
+  var element = document.getElementById(&#39;id&#39;);
+  element.dispatchEvent(event);
+}</code></pre>
+</section><section id="propagación-i" class="slide level2">
+<h2><span class="header-section-number">7.14</span> Propagación (I)</h2>
+<pre><code>               1              2
+              | |            / \
++-------------| |------------| |-------------+
+| DIV1        | |            | |             |
+|   +---------| |------------| |---------+   |
+|   | DIV2    | |            | |         |   |
+|   |   +-----| |------------| |-----+   |   |
+|   |   | A   \ /            | |     |   |   |
+|   |   +----------------------------+   |   |
+|   +------------------------------------+   |
+|           FASE DE        FASE DE           |
+|           CAPTURA        BURBUJA           |
+|          DE EVENTOS     DE EVENTOS         |
++--------------------------------------------+</code></pre>
+</section><section id="propagación-ii" class="slide level2">
+<h2><span class="header-section-number">7.15</span> Propagación (II)</h2>
+<pre><code>// en fase de CAPTURA
+addEventListener(&quot;eventName&quot;,callback, true);
+
+// en fase de BURBUJA
+addEventListener(&quot;eventName&quot;,callback, false); // por defecto</code></pre>
+</section><section id="propagación-iii" class="slide level2">
+<h2><span class="header-section-number">7.16</span> Propagación (III)</h2>
+<pre><code>// detiene la propagación del evento
+event.stopPropagation();
+
+// elimina las acciones por defecto (ejemplo: abrir enlace)
+event.preventDefault();</code></pre>
+</section></section>
+<section><section id="websockets" class="titleslide slide level1"><h1><span class="header-section-number">8</span> WebSockets</h1></section><section id="qué-son-los-websockets" class="slide level2">
+<h2><span class="header-section-number">8.1</span> ¿Qué son los WebSockets?</h2>
+<ul>
+<li>Nos permiten <strong>comunicación bidireccional</strong> entre cliente y servidor.</li>
+</ul>
+</section><section id="socket.io" class="slide level2">
+<h2><span class="header-section-number">8.2</span> Socket.IO</h2>
+<ul>
+<li><p>Librería cliente y servidor (NodeJS) para utilizar WebSockets:</p></li>
+<li>Simplifica la API.</li>
+<li>Permite envíar no sólo texto.</li>
+<li>Permite crear eventos propios.</li>
+<li><p>Permite utilizar navegadores sin soporte de WebSockets.</p></li>
+</ul>
+</section></section>
+<section><section id="ajax" class="titleslide slide level1"><h1><span class="header-section-number">9</span> AJAX</h1></section><section id="qué-es-ajax" class="slide level2">
+<h2><span class="header-section-number">9.1</span> ¿Qué es AJAX?</h2>
+<ul>
+<li>Acrónimo de <strong>Asynchronous JavaScript And XML</strong>.</li>
+<li>Técnica para crear <strong>aplicaciones web interactivas</strong> o RIA (Rich Internet Applications).</li>
+<li>Estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios.</li>
+<li>Mientras se mantiene la comunicación asíncrona con el servidor en segundo plano.</li>
+<li>De esta forma es posible realizar <strong>cambios sobre las páginas sin necesidad de recargarlas</strong>.</li>
+</ul>
+</section><section id="tecnologías-ajax" class="slide level2">
+<h2><span class="header-section-number">9.2</span> Tecnologías AJAX</h2>
+<ul>
+<li><p>AJAX no es una tecnología en sí misma, en realidad, se trata de varias tecnologías independientes que se unen de formas nuevas y sorprendentes.</p></li>
+<li>Las tecnologías que forman AJAX son:
+<ul>
+<li><strong>XHTML y CSS</strong>, como estándares de presentación.</li>
+<li><strong>DOM</strong>, para la manipulación dinámica de la presentación.</li>
+<li><strong>XML, JSON y otros</strong>, para la la manipulación de información.</li>
+<li><strong>XMLHttpRequest</strong>, para el intercambio asíncrono de información.</li>
+<li><strong>JavaScript</strong>, para unir todas las demás tecnologías.</li>
+</ul></li>
+</ul>
+</section><section id="qué-es-el-xmlhttprequest" class="slide level2">
+<h2><span class="header-section-number">9.3</span> ¿Qué es el XMLHttpRequest?</h2>
+<ul>
+<li><p>El intercambio de datos AJAX entre cliente y servidor se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuales.</p></li>
+<li><p><strong>No es necesario que el contenido esté formateado en XML</strong>.</p></li>
+<li><p>Su manejo puede llegar a ser complejo, aunque librerías como <strong>jQuery</strong> facilitan enormemente su uso.</p></li>
+</ul>
+</section><section id="ejemplo" class="slide level2">
+<h2><span class="header-section-number">9.4</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> http_request <span class="op">=</span> <span class="kw">new</span> <span class="at">XMLHttpRequest</span>()<span class="op">;</span>
+<span class="kw">var</span> url <span class="op">=</span> <span class="st">&quot;http://example.net/jsondata.php&quot;</span><span class="op">;</span>
+
+<span class="co">// Descarga los datos JSON del servidor.</span>
+<span class="va">http_request</span>.<span class="at">onreadystatechange</span> <span class="op">=</span> handle_json<span class="op">;</span>
+<span class="va">http_request</span>.<span class="at">open</span>(<span class="st">&quot;GET&quot;</span><span class="op">,</span> url<span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span>
+<span class="va">http_request</span>.<span class="at">send</span>(<span class="kw">null</span>)<span class="op">;</span>
+
+<span class="kw">function</span> <span class="at">handle_json</span>() <span class="op">{</span>
+  <span class="cf">if</span> (<span class="va">http_request</span>.<span class="at">status</span> <span class="op">==</span> <span class="dv">200</span>) <span class="op">{</span>
+    <span class="kw">var</span> json_data <span class="op">=</span> <span class="va">http_request</span>.<span class="at">responseText</span><span class="op">;</span>
+    <span class="kw">var</span> the_object <span class="op">=</span> <span class="at">eval</span>(<span class="st">&quot;(&quot;</span> <span class="op">+</span> json_data <span class="op">+</span> <span class="st">&quot;)&quot;</span>)<span class="op">;</span>
+  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+    <span class="at">alert</span>(<span class="st">&quot;Ocurrio un problema con la URL.&quot;</span>)<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section></section>
+<section><section id="json" class="titleslide slide level1"><h1><span class="header-section-number">10</span> JSON</h1></section><section id="qué-es-json" class="slide level2">
+<h2><span class="header-section-number">10.1</span> ¿Qué es JSON?</h2>
+<ul>
+<li>Acrónimo de <strong>JavaScript Object Notation</strong>.</li>
+<li>Es un subconjunto de la notación literal de objetos de JavaScript.</li>
+<li>Sirve como formato ligero para el intercambio de datos.</li>
+<li><strong>Su simplicidad ha generalizado su uso, especialmente como alternativa a XML en AJAX</strong>.</li>
+<li>En JavaScript, un texto JSON se puede analizar fácilmente usando la <strong>función eval()</strong>.</li>
+</ul>
+</section><section id="parse" class="slide level2">
+<h2><span class="header-section-number">10.2</span> Parse</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">miObjeto <span class="op">=</span> <span class="at">eval</span>(<span class="st">&#39;(&#39;</span> <span class="op">+</span> json_datos <span class="op">+</span> <span class="st">&#39;)&#39;</span>)<span class="op">;</span></code></pre></div>
+<ul>
+<li><p>Eval es muy rápido, pero como compila y ejecuta cualquier código JavaScript, las consideraciones de seguridad recomiendan no usarlo.</p></li>
+<li>Lo recomendable usar las librerías de <a href="http://www.json.org/">JSON.org</a>:
+<ul>
+<li><a href="http://www.json.org/js.html">JSON in JavaScript - Explanation</a></li>
+<li><a href="https://github.com/douglascrockford/JSON-js">JSON in JavaScript - Downloads</a></li>
+</ul></li>
+</ul>
+</section><section id="ejemplo-1" class="slide level2">
+<h2><span class="header-section-number">10.3</span> Ejemplo</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="op">{</span>
+    <span class="dt">curso</span><span class="op">:</span> <span class="st">&quot;AJAX y jQuery&quot;</span><span class="op">,</span>
+    <span class="dt">profesor</span><span class="op">:</span> <span class="st">&quot;Adolfo&quot;</span><span class="op">,</span>
+    <span class="dt">participantes</span><span class="op">:</span> [
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Isabel&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">35</span> <span class="op">},</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Alba&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">15</span> <span class="op">},</span>
+        <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Laura&quot;</span><span class="op">,</span> <span class="dt">edad</span><span class="op">:</span> <span class="dv">10</span> <span class="op">}</span>
+    ]
+<span class="op">}</span></code></pre></div>
+</section><section id="jsonp" class="slide level2">
+<h2><span class="header-section-number">10.4</span> JSONP</h2>
+<ul>
+<li><p>Por seguridad XMLHttpRequest sólo puede realizar peticiones al mismo dominio.</p></li>
+<li><p>JSONP envuelve el JSON en una función definida por el cliente.</p></li>
+<li><p>Esto nos permite hacer peticiones GET (sólo GET) a dominios distintos.</p></li>
+</ul>
+</section><section id="cors-i" class="slide level2">
+<h2><span class="header-section-number">10.5</span> CORS (I)</h2>
+<ul>
+<li><p>Protocolo Cross-Origin Resource Sharing (Compartición de recursos de distintos orígenes).</p></li>
+<li><p>Realizar peticiones a otros dominios siempre y cuando el dominio de destino esté de acuerdo en recibir peticiones del dominio de origen.</p></li>
+<li><p>Tanto navegador como servidor tienen que implementar el protocolo.</p></li>
+</ul>
+</section><section id="cors-ii" class="slide level2">
+<h2><span class="header-section-number">10.6</span> CORS (II)</h2>
+<ul>
+<li>Desde el servidor, se envía en cabecera:</li>
+</ul>
+<pre><code>Access-Control-Allow-Origin: http://dominio-permitido.com</code></pre>
+</section></section>
+<section><section id="apis-rest" class="titleslide slide level1"><h1><span class="header-section-number">11</span> APIs REST</h1></section><section id="qué-es-un-api-rest" class="slide level2">
+<h2><span class="header-section-number">11.1</span> ¿Qué es un API REST?</h2>
+<ul>
+<li><p>REST (Representational State Transfer) es una técnica de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.</p></li>
+<li><p>Es decir, una URL (Uniform Resource Locator) <strong>representa un recurso</strong> al que se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE).</p></li>
+</ul>
+</section><section id="por-qué-rest" class="slide level2">
+<h2><span class="header-section-number">11.2</span> ¿Por qué REST?</h2>
+<ul>
+<li>Es <strong>más sencillo</strong> (tanto la API como la implementación).</li>
+<li>Es <strong>más rápido</strong> (peticiones más ligeras que se puede cachear).</li>
+<li>Es <strong>multiformato</strong> (HTML, XML, JSON, etc.).</li>
+<li>Se complementa muy bien con <strong>AJAX</strong>.</li>
+</ul>
+</section><section id="ejemplo-api" class="slide level2">
+<h2><span class="header-section-number">11.3</span> Ejemplo API</h2>
+<ul>
+<li><strong>GET</strong> a http://myhost.com/person
+<ul>
+<li>Devuelve todas las personas</li>
+</ul></li>
+<li><strong>POST</strong> a http://myhost.com/person
+<ul>
+<li>Crear una nueva persona</li>
+</ul></li>
+<li><strong>GET</strong> a http://myhost.com/person/123
+<ul>
+<li>Devuelve la persona con id=123</li>
+</ul></li>
+<li><strong>PUT</strong> a http://myhost.com/person/123
+<ul>
+<li>Actualiza la persona con id=123</li>
+</ul></li>
+<li><strong>DELETE</strong> a http://myhost.com/person/123
+<ul>
+<li>Borra la persona con id=123</li>
+</ul></li>
+</ul>
+</section><section id="errores-http" class="slide level2">
+<h2><span class="header-section-number">11.4</span> Errores HTTP</h2>
+<ul>
+<li>200 OK</li>
+<li>201 Created</li>
+<li>202 Accepted</li>
+<li>301 Moved Permanently</li>
+<li>400 Bad Request</li>
+<li>401 Unauthorised</li>
+<li>402 Payment Required</li>
+<li>403 Forbidden</li>
+<li>404 Not Found</li>
+<li>405 Method Not Allowed</li>
+<li>500 Internal Server Error</li>
+<li>501 Not Implemented</li>
+</ul>
+</section></section>
+<section><section id="gestión-de-dependencias-1" class="titleslide slide level1"><h1><span class="header-section-number">12</span> Gestión de dependencias</h1></section><section id="amd" class="slide level2">
+<h2><span class="header-section-number">12.1</span> AMD</h2>
+<ul>
+<li><p>Definición de Módulos Asíncronos (AMD)</p></li>
+<li><p>La implementación más popular de este estándar es <a href="http://www.requirejs.org/">RequireJS</a>.</p></li>
+<li><p>Sintaxis un poco complicada.</p></li>
+<li><p>Permite la carga de módulos de forma asíncrona.</p></li>
+<li><p>Se usa principalmente en navegadores.</p></li>
+</ul>
+</section><section id="requirejs-i" class="slide level2">
+<h2><span class="header-section-number">12.2</span> RequireJS (I)</h2>
+<ul>
+<li>index.html</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+    <span class="kw">&lt;head&gt;</span>
+        <span class="kw">&lt;title&gt;</span>Page 1<span class="kw">&lt;/title&gt;</span>
+        <span class="kw">&lt;script</span><span class="ot"> data-main=</span><span class="st">&quot;js/index&quot;</span><span class="ot"> src=</span><span class="st">&quot;js/lib/require.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;/head&gt;</span>
+    <span class="kw">&lt;body&gt;</span>
+        <span class="kw">&lt;h1&gt;</span>Hola Mundo<span class="kw">&lt;/h1&gt;</span>
+    <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre></div>
+</section><section id="requirejs-ii" class="slide level2">
+<h2><span class="header-section-number">12.3</span> RequireJS (II)</h2>
+<ul>
+<li>js/index.js</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">requirejs</span>([<span class="st">&#39;./common&#39;</span>]<span class="op">,</span> <span class="kw">function</span> (common) <span class="op">{</span>
+    <span class="at">requirejs</span>([<span class="st">&#39;app/main&#39;</span>])<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="requirejs-iii" class="slide level2">
+<h2><span class="header-section-number">12.4</span> RequireJS (III)</h2>
+<ul>
+<li>app/main.js</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">define</span>(<span class="kw">function</span> (require) <span class="op">{</span>
+    <span class="kw">var</span> $ <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;jquery&#39;</span>)<span class="op">;</span>
+    <span class="kw">var</span> persona <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;./persona&#39;</span>)<span class="op">;</span>
+
+    <span class="at">$</span>(<span class="st">&#39;h1&#39;</span>).<span class="at">html</span>(<span class="st">&quot;Hola requery.js&quot;</span>)<span class="op">;</span>
+
+    <span class="kw">var</span> p <span class="op">=</span> <span class="kw">new</span> <span class="at">persona</span>(<span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="dv">30</span>)<span class="op">;</span>
+    <span class="va">p</span>.<span class="at">saludar</span>()<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="requirejs-iv" class="slide level2">
+<h2><span class="header-section-number">12.5</span> RequireJS (IV)</h2>
+<ul>
+<li>app/persona.js</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">define</span>(<span class="kw">function</span> () <span class="op">{</span>
+
+  <span class="kw">var</span> Persona <span class="op">=</span> <span class="kw">function</span>(nombre<span class="op">,</span> edad) <span class="op">{</span>
+
+      <span class="kw">this</span>.<span class="at">nombre</span> <span class="op">=</span> nombre<span class="op">;</span>
+
+      <span class="va">Persona</span>.<span class="va">prototype</span>.<span class="at">saludar</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+          <span class="at">alert</span>(<span class="st">&quot;Hola, mi nombre es &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">nombre</span>)<span class="op">;</span>
+      <span class="op">};</span>
+  <span class="op">}</span>
+
+  <span class="cf">return</span> Persona<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="commonjs" class="slide level2">
+<h2><span class="header-section-number">12.6</span> CommonJS</h2>
+<ul>
+<li><p>La implementación usada en <a href="https://nodejs.org/">NodeJS</a> y <a href="http://browserify.org/">Browserify</a>.</p></li>
+<li><p>Sintaxis sencilla.</p></li>
+<li><p>Carga los módulos de forma síncrona.</p></li>
+<li><p>Se usa principalmente en el servidor.</p></li>
+</ul>
+</section><section id="browserify-i" class="slide level2">
+<h2><span class="header-section-number">12.7</span> Browserify (I)</h2>
+<ul>
+<li>Instalar browserify</li>
+</ul>
+<pre><code>npm install -g browserify</code></pre>
+</section><section id="browserify-ii" class="slide level2">
+<h2><span class="header-section-number">12.8</span> Browserify (II)</h2>
+<ul>
+<li>Instalar dependencias de <strong>package.json</strong></li>
+</ul>
+<pre><code>npm install</code></pre>
+</section><section id="browserify-iii" class="slide level2">
+<h2><span class="header-section-number">12.9</span> Browserify (III)</h2>
+<ul>
+<li><strong>package.json</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="op">{</span>
+  <span class="st">&quot;name&quot;</span><span class="op">:</span> <span class="st">&quot;browserify-example&quot;</span><span class="op">,</span>
+  <span class="st">&quot;version&quot;</span><span class="op">:</span> <span class="st">&quot;1.0.0&quot;</span><span class="op">,</span>
+  <span class="st">&quot;dependencies&quot;</span><span class="op">:</span> <span class="op">{</span>
+    <span class="st">&quot;jquery&quot;</span><span class="op">:</span> <span class="st">&quot;^2.1.3&quot;</span>
+  <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="browserify-iv" class="slide level2">
+<h2><span class="header-section-number">12.10</span> Browserify (IV)</h2>
+<ul>
+<li>Compilar las dependencias a <strong>bundle.js</strong></li>
+</ul>
+<pre><code>browserify js/main.js -o js/bundle.js</code></pre>
+</section><section id="browserify-v" class="slide level2">
+<h2><span class="header-section-number">12.11</span> Browserify (V)</h2>
+<ul>
+<li>index.html</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="er">&lt;</span>!doctype html&gt;
+<span class="kw">&lt;html&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;title&gt;</span>Browserify Playground<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Hola Mundo<span class="kw">&lt;/h1&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/bundle.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre></div>
+</section><section id="browserify-vi" class="slide level2">
+<h2><span class="header-section-number">12.12</span> Browserify (VI)</h2>
+<ul>
+<li>js/app/main.js</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> $ <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;jquery&#39;</span>)<span class="op">;</span>
+<span class="kw">var</span> persona <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;./persona&#39;</span>)<span class="op">;</span>
+
+<span class="at">$</span>(<span class="st">&#39;h1&#39;</span>).<span class="at">html</span>(<span class="st">&#39;Hola Browserify&#39;</span>)<span class="op">;</span>
+
+<span class="kw">var</span> p <span class="op">=</span> <span class="kw">new</span> <span class="at">persona</span>(<span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="dv">30</span>)<span class="op">;</span>
+<span class="va">p</span>.<span class="at">saludar</span>()<span class="op">;</span></code></pre></div>
+</section><section id="browserify-vii" class="slide level2">
+<h2><span class="header-section-number">12.13</span> Browserify (VII)</h2>
+<ul>
+<li>js/app/persona.js</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> Persona <span class="op">=</span> <span class="kw">function</span>(nombre<span class="op">,</span> edad) <span class="op">{</span>
+
+    <span class="kw">this</span>.<span class="at">nombre</span> <span class="op">=</span> nombre<span class="op">;</span>
+
+    <span class="va">Persona</span>.<span class="va">prototype</span>.<span class="at">saludar</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+        <span class="at">alert</span>(<span class="st">&quot;Hola, mi nombre es &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">nombre</span>)<span class="op">;</span>
+    <span class="op">};</span>
+<span class="op">}</span>
+
+<span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> Persona<span class="op">;</span></code></pre></div>
+</section><section id="ecmascript-6" class="slide level2">
+<h2><span class="header-section-number">12.14</span> ECMAScript 6</h2>
+<ul>
+<li><p>Coje lo mejor de los 2 enfoques:</p>
+<ul>
+<li>Similitudes con <strong>CommonJS</strong>: sintaxis sencilla.</li>
+<li>Similitudes con <strong>AMD</strong>: soporte para carga asíncrona.</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="es6" class="titleslide slide level1"><h1><span class="header-section-number">13</span> ES6</h1></section><section id="como-usarlo-hoy" class="slide level2">
+<h2><span class="header-section-number">13.1</span> Como usarlo hoy</h2>
+<ul>
+<li><a href="https://babeljs.io/">Babel</a> nos permite utilizar ES6 hoy en día.</li>
+</ul>
+</section><section id="función-arrow-i" class="slide level2">
+<h2><span class="header-section-number">13.2</span> Función Arrow (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// ES5</span>
+<span class="kw">var</span> data <span class="op">=</span> [<span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">},</span> ...]<span class="op">;</span>  
+<span class="va">data</span>.<span class="at">forEach</span>(<span class="kw">function</span>(elem)<span class="op">{</span>  
+    <span class="va">console</span>.<span class="at">log</span>(elem)
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="función-arrow-i-1" class="slide level2">
+<h2><span class="header-section-number">13.3</span> Función Arrow (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> data <span class="op">=</span> [<span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">},</span> ...]<span class="op">;</span>  
+<span class="va">data</span>.<span class="at">forEach</span>(elem <span class="op">=&gt;</span> <span class="op">{</span>  
+    <span class="va">console</span>.<span class="at">log</span>(elem)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="función-arrow-iii" class="slide level2">
+<h2><span class="header-section-number">13.4</span> Función Arrow (III)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// ES5</span>
+<span class="kw">var</span> miFuncion <span class="op">=</span> <span class="kw">function</span>(num1<span class="op">,</span> num2) <span class="op">{</span>  
+    <span class="cf">return</span> num1 <span class="op">+</span> num2<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="función-arrow-iv" class="slide level2">
+<h2><span class="header-section-number">13.5</span> Función Arrow (IV)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// ES6</span>
+<span class="kw">var</span> miFuncion <span class="op">=</span> (num1<span class="op">,</span> num2) <span class="op">=&gt;</span> num1 <span class="op">+</span> num2<span class="op">;</span>  </code></pre></div>
+</section><section id="this-i" class="slide level2">
+<h2><span class="header-section-number">13.6</span> This (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">var</span> objEJ5 <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">data </span><span class="op">:</span> [<span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="st">&quot;Isabel&quot;</span><span class="op">,</span> <span class="st">&quot;Alba&quot;</span>]<span class="op">,</span>
+  <span class="dt">duplicar </span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="kw">var</span> that <span class="op">=</span> <span class="kw">this</span><span class="op">;</span>
+    <span class="kw">this</span>.<span class="va">data</span>.<span class="at">forEach</span>(<span class="kw">function</span>(elem)<span class="op">{</span>
+        <span class="va">that</span>.<span class="va">data</span>.<span class="at">push</span>(elem)<span class="op">;</span>
+    <span class="op">}</span>)<span class="op">;</span>
+    <span class="cf">return</span> <span class="kw">this</span>.<span class="at">data</span><span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="this-ii" class="slide level2">
+<h2><span class="header-section-number">13.7</span> This (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> objEJ6 <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">data </span><span class="op">:</span> [<span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="st">&quot;Isabel&quot;</span><span class="op">,</span> <span class="st">&quot;Alba&quot;</span>]<span class="op">,</span>
+  <span class="dt">duplicar </span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="kw">this</span>.<span class="va">data</span>.<span class="at">forEach</span>((elem) <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="kw">this</span>.<span class="va">data</span>.<span class="at">push</span>(elem)<span class="op">;</span>
+    <span class="op">}</span>)<span class="op">;</span>
+    <span class="cf">return</span> <span class="kw">this</span>.<span class="at">data</span><span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="definición-de-clases-i" class="slide level2">
+<h2><span class="header-section-number">13.8</span> Definición de Clases (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">var</span> Shape <span class="op">=</span> <span class="kw">function</span> (id<span class="op">,</span> x<span class="op">,</span> y) <span class="op">{</span>
+    <span class="kw">this</span>.<span class="at">id</span> <span class="op">=</span> id<span class="op">;</span>
+    <span class="kw">this</span>.<span class="at">move</span>(x<span class="op">,</span> y)<span class="op">;</span>
+<span class="op">};</span>
+<span class="va">Shape</span>.<span class="va">prototype</span>.<span class="at">move</span> <span class="op">=</span> <span class="kw">function</span> (x<span class="op">,</span> y) <span class="op">{</span>
+    <span class="kw">this</span>.<span class="at">x</span> <span class="op">=</span> x<span class="op">;</span>
+    <span class="kw">this</span>.<span class="at">y</span> <span class="op">=</span> y<span class="op">;</span>
+<span class="op">};</span></code></pre></div>
+</section><section id="definición-de-clases-ii" class="slide level2">
+<h2><span class="header-section-number">13.9</span> Definición de Clases (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">class</span> Shape <span class="op">{</span>
+    <span class="at">constructor</span> (id<span class="op">,</span> x<span class="op">,</span> y) <span class="op">{</span>
+        <span class="kw">this</span>.<span class="at">id</span> <span class="op">=</span> id
+        <span class="kw">this</span>.<span class="at">move</span>(x<span class="op">,</span> y)
+    <span class="op">}</span>
+    <span class="at">move</span> (x<span class="op">,</span> y) <span class="op">{</span>
+        <span class="kw">this</span>.<span class="at">x</span> <span class="op">=</span> x
+        <span class="kw">this</span>.<span class="at">y</span> <span class="op">=</span> y
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="herencia-de-clases-i" class="slide level2">
+<h2><span class="header-section-number">13.10</span> Herencia de Clases (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">var</span> Rectangle <span class="op">=</span> <span class="kw">function</span> (id<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> width<span class="op">,</span> height) <span class="op">{</span>
+    <span class="va">Shape</span>.<span class="at">call</span>(<span class="kw">this</span><span class="op">,</span> id<span class="op">,</span> x<span class="op">,</span> y)<span class="op">;</span>
+    <span class="kw">this</span>.<span class="at">width</span>  <span class="op">=</span> width<span class="op">;</span>
+    <span class="kw">this</span>.<span class="at">height</span> <span class="op">=</span> height<span class="op">;</span>
+<span class="op">};</span>
+<span class="va">Rectangle</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(<span class="va">Shape</span>.<span class="at">prototype</span>)<span class="op">;</span>
+<span class="va">Rectangle</span>.<span class="va">prototype</span>.<span class="at">constructor</span> <span class="op">=</span> Rectangle<span class="op">;</span>
+
+<span class="kw">var</span> Circle <span class="op">=</span> <span class="kw">function</span> (id<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> radius) <span class="op">{</span>
+    <span class="va">Shape</span>.<span class="at">call</span>(<span class="kw">this</span><span class="op">,</span> id<span class="op">,</span> x<span class="op">,</span> y)<span class="op">;</span>
+    <span class="kw">this</span>.<span class="at">radius</span> <span class="op">=</span> radius<span class="op">;</span>
+<span class="op">};</span>
+<span class="va">Circle</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(<span class="va">Shape</span>.<span class="at">prototype</span>)<span class="op">;</span>
+<span class="va">Circle</span>.<span class="va">prototype</span>.<span class="at">constructor</span> <span class="op">=</span> Circle<span class="op">;</span></code></pre></div>
+</section><section id="herencia-de-clases-ii" class="slide level2">
+<h2><span class="header-section-number">13.11</span> Herencia de Clases (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">class</span> Rectangle <span class="kw">extends</span> Shape <span class="op">{</span>
+    <span class="at">constructor</span> (id<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> width<span class="op">,</span> height) <span class="op">{</span>
+        <span class="kw">super</span>(id<span class="op">,</span> x<span class="op">,</span> y)
+        <span class="kw">this</span>.<span class="at">width</span>  <span class="op">=</span> width
+        <span class="kw">this</span>.<span class="at">height</span> <span class="op">=</span> height
+    <span class="op">}</span>
+<span class="op">}</span>
+<span class="kw">class</span> Circle <span class="kw">extends</span> Shape <span class="op">{</span>
+    <span class="at">constructor</span> (id<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> radius) <span class="op">{</span>
+        <span class="kw">super</span>(id<span class="op">,</span> x<span class="op">,</span> y)
+        <span class="kw">this</span>.<span class="at">radius</span> <span class="op">=</span> radius
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="let-i" class="slide level2">
+<h2><span class="header-section-number">13.12</span> let (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+(<span class="kw">function</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span> <span class="co">// x no está definida aún.</span>
+    <span class="cf">if</span>(<span class="kw">true</span>) <span class="op">{</span>
+        <span class="kw">var</span> x <span class="op">=</span> <span class="st">&quot;hola mundo&quot;</span><span class="op">;</span>
+    <span class="op">}</span>
+    <span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span>
+    <span class="co">// Imprime &quot;hola mundo&quot;, porque &quot;var&quot;</span>
+    <span class="co">// hace que sea global a la función;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre></div>
+</section><section id="let-ii" class="slide level2">
+<h2><span class="header-section-number">13.13</span> let (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+(<span class="kw">function</span>() <span class="op">{</span>
+    <span class="cf">if</span>(<span class="kw">true</span>) <span class="op">{</span>
+        <span class="kw">let</span> x <span class="op">=</span> <span class="st">&quot;hola mundo&quot;</span><span class="op">;</span>
+    <span class="op">}</span>
+    <span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span>
+    <span class="co">//Da error, porque &quot;x&quot; ha sido definida dentro del &quot;if&quot;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre></div>
+</section><section id="scopes-i" class="slide level2">
+<h2><span class="header-section-number">13.14</span> Scopes (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+(<span class="kw">function</span> () <span class="op">{</span>
+    <span class="kw">var</span> foo <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span> <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span> <span class="op">}</span>
+    <span class="at">foo</span>() <span class="op">===</span> <span class="dv">1</span><span class="op">;</span>
+    (<span class="kw">function</span> () <span class="op">{</span>
+        <span class="kw">var</span> foo <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span> <span class="cf">return</span> <span class="dv">2</span><span class="op">;</span> <span class="op">}</span>
+        <span class="at">foo</span>() <span class="op">===</span> <span class="dv">2</span><span class="op">;</span>
+    <span class="op">}</span>)()<span class="op">;</span>
+    <span class="at">foo</span>() <span class="op">===</span> <span class="dv">1</span><span class="op">;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre></div>
+</section><section id="scopes-ii" class="slide level2">
+<h2><span class="header-section-number">13.15</span> Scopes (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="op">{</span>
+    <span class="kw">function</span> <span class="at">foo</span> () <span class="op">{</span> <span class="cf">return</span> <span class="dv">1</span> <span class="op">}</span>
+    <span class="at">foo</span>() <span class="op">===</span> <span class="dv">1</span>
+    <span class="op">{</span>
+        <span class="kw">function</span> <span class="at">foo</span> () <span class="op">{</span> <span class="cf">return</span> <span class="dv">2</span> <span class="op">}</span>
+        <span class="at">foo</span>() <span class="op">===</span> <span class="dv">2</span>
+    <span class="op">}</span>
+    <span class="at">foo</span>() <span class="op">===</span> <span class="dv">1</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="const-i" class="slide level2">
+<h2><span class="header-section-number">13.16</span> const (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+(<span class="kw">function</span>() <span class="op">{</span>
+    <span class="kw">const</span> PI<span class="op">;</span>
+    PI <span class="op">=</span> <span class="fl">3.15</span><span class="op">;</span>
+    <span class="co">// ERROR, porque ha de asignarse un valor en la declaración</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre></div>
+</section><section id="const-ii" class="slide level2">
+<h2><span class="header-section-number">13.17</span> const (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+(<span class="kw">function</span>() <span class="op">{</span>
+    <span class="kw">const</span> PI <span class="op">=</span> <span class="fl">3.15</span><span class="op">;</span>
+    PI <span class="op">=</span> <span class="fl">3.14159</span><span class="op">;</span>
+    <span class="co">// ERROR de nuevo, porque es de sólo-lectura</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre></div>
+</section><section id="template-strings-i" class="slide level2">
+<h2><span class="header-section-number">13.18</span> Template Strings (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">let</span> nombre1 <span class="op">=</span> <span class="st">&quot;JavaScript&quot;</span><span class="op">;</span>  
+<span class="kw">let</span> nombre2 <span class="op">=</span> <span class="st">&quot;awesome&quot;</span><span class="op">;</span>  
+<span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Sólo quiero decir que </span><span class="sc">${</span>nombre1<span class="sc">}</span><span class="vs"> is </span><span class="sc">${</span>nombre2<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span>  
+<span class="co">// Solo quiero decir que JavaScript is awesome</span></code></pre></div>
+</section><section id="template-strings-ii" class="slide level2">
+<h2><span class="header-section-number">13.19</span> Template Strings (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">var</span> saludo <span class="op">=</span> <span class="st">&quot;ola &quot;</span> <span class="op">+</span>  
+<span class="st">&quot;que &quot;</span> <span class="op">+</span>
+<span class="st">&quot;ase &quot;</span><span class="op">;</span></code></pre></div>
+</section><section id="template-strings-iii" class="slide level2">
+<h2><span class="header-section-number">13.20</span> Template Strings (III)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> saludo <span class="op">=</span> <span class="vs">`ola  </span>
+<span class="vs">que  </span>
+<span class="vs">ase`</span><span class="op">;</span></code></pre></div>
+</section><section id="destructuring-i" class="slide level2">
+<h2><span class="header-section-number">13.21</span> Destructuring (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> [a<span class="op">,</span> b] <span class="op">=</span> [<span class="st">&quot;hola&quot;</span><span class="op">,</span> <span class="st">&quot;mundo&quot;</span>]<span class="op">;</span>  
+<span class="va">console</span>.<span class="at">log</span>(a)<span class="op">;</span> <span class="co">// &quot;hola&quot;  </span>
+<span class="va">console</span>.<span class="at">log</span>(b)<span class="op">;</span> <span class="co">// &quot;mundo&quot;</span></code></pre></div>
+</section><section id="destructuring-ii" class="slide level2">
+<h2><span class="header-section-number">13.22</span> Destructuring (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">nombre</span><span class="op">:</span> <span class="st">&quot;Adolfo&quot;</span><span class="op">,</span> <span class="dt">apellido</span><span class="op">:</span> <span class="st">&quot;Sanz&quot;</span> <span class="op">};</span>  
+<span class="kw">var</span> <span class="op">{</span> nombre<span class="op">,</span> apellido <span class="op">}</span> <span class="op">=</span> obj<span class="op">;</span>  
+<span class="va">console</span>.<span class="at">log</span>(nombre)<span class="op">;</span> <span class="co">// &quot;Adolfo&quot;  </span>
+<span class="va">console</span>.<span class="at">log</span>(apellido)<span class="op">;</span> <span class="co">// &quot;Sanz&quot;  </span></code></pre></div>
+</section><section id="destructuring-iii" class="slide level2">
+<h2><span class="header-section-number">13.23</span> Destructuring (III)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> foo <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>  
+    <span class="cf">return</span> [<span class="st">&quot;180&quot;</span><span class="op">,</span> <span class="st">&quot;78&quot;</span>]<span class="op">;</span>
+<span class="op">};</span>
+<span class="kw">var</span> [estatura<span class="op">,</span> peso] <span class="op">=</span> <span class="at">foo</span>()<span class="op">;</span>  
+<span class="va">console</span>.<span class="at">log</span>(estatura)<span class="op">;</span> <span class="co">//180</span>
+<span class="va">console</span>.<span class="at">log</span>(peso)<span class="op">;</span> <span class="co">//78</span></code></pre></div>
+</section><section id="parámetros-con-nombre-i" class="slide level2">
+<h2><span class="header-section-number">13.24</span> Parámetros con nombre (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">function</span> <span class="at">f</span> (arg) <span class="op">{</span>
+    <span class="kw">var</span> name <span class="op">=</span> arg[<span class="dv">0</span>]<span class="op">;</span>
+    <span class="kw">var</span> val  <span class="op">=</span> arg[<span class="dv">1</span>]<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(name<span class="op">,</span> val)<span class="op">;</span>
+<span class="op">};</span>
+<span class="kw">function</span> <span class="at">g</span> (arg) <span class="op">{</span>
+    <span class="kw">var</span> n <span class="op">=</span> <span class="va">arg</span>.<span class="at">name</span><span class="op">;</span>
+    <span class="kw">var</span> v <span class="op">=</span> <span class="va">arg</span>.<span class="at">val</span><span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(n<span class="op">,</span> v)<span class="op">;</span>
+<span class="op">};</span>
+<span class="kw">function</span> <span class="at">h</span> (arg) <span class="op">{</span>
+    <span class="kw">var</span> name <span class="op">=</span> <span class="va">arg</span>.<span class="at">name</span><span class="op">;</span>
+    <span class="kw">var</span> val  <span class="op">=</span> <span class="va">arg</span>.<span class="at">val</span><span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(name<span class="op">,</span> val)<span class="op">;</span>
+<span class="op">};</span>
+<span class="at">f</span>([ <span class="st">&quot;bar&quot;</span><span class="op">,</span> <span class="dv">42</span> ])<span class="op">;</span>
+<span class="at">g</span>(<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;foo&quot;</span><span class="op">,</span> <span class="dt">val</span><span class="op">:</span>  <span class="dv">7</span> <span class="op">}</span>)<span class="op">;</span>
+<span class="at">h</span>(<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;bar&quot;</span><span class="op">,</span> <span class="dt">val</span><span class="op">:</span> <span class="dv">42</span> <span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="parámetros-con-nombre-ii" class="slide level2">
+<h2><span class="header-section-number">13.25</span> Parámetros con nombre (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">function</span> <span class="at">f</span> ([ name<span class="op">,</span> val ]) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(name<span class="op">,</span> val)
+<span class="op">}</span>
+<span class="kw">function</span> <span class="at">g</span> (<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> n<span class="op">,</span> <span class="dt">val</span><span class="op">:</span> v <span class="op">}</span>) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(n<span class="op">,</span> v)
+<span class="op">}</span>
+<span class="kw">function</span> <span class="at">h</span> (<span class="op">{</span> name<span class="op">,</span> val <span class="op">}</span>) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(name<span class="op">,</span> val)
+<span class="op">}</span>
+<span class="at">f</span>([ <span class="st">&quot;bar&quot;</span><span class="op">,</span> <span class="dv">42</span> ])
+<span class="at">g</span>(<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;foo&quot;</span><span class="op">,</span> <span class="dt">val</span><span class="op">:</span>  <span class="dv">7</span> <span class="op">}</span>)
+<span class="at">h</span>(<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;bar&quot;</span><span class="op">,</span> <span class="dt">val</span><span class="op">:</span> <span class="dv">42</span> <span class="op">}</span>)</code></pre></div>
+</section><section id="resto-parámetros-i" class="slide level2">
+<h2><span class="header-section-number">13.26</span> Resto parámetros (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">function</span> <span class="at">f</span> (x<span class="op">,</span> y) <span class="op">{</span>
+    <span class="kw">var</span> a <span class="op">=</span> <span class="va">Array</span>.<span class="va">prototype</span>.<span class="va">slice</span>.<span class="at">call</span>(arguments<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span>
+    <span class="cf">return</span> (x <span class="op">+</span> y) <span class="op">*</span> <span class="va">a</span>.<span class="at">length</span><span class="op">;</span>
+<span class="op">};</span>
+<span class="at">f</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="st">&quot;hello&quot;</span><span class="op">,</span> <span class="kw">true</span><span class="op">,</span> <span class="dv">7</span>) <span class="op">===</span> <span class="dv">9</span><span class="op">;</span></code></pre></div>
+</section><section id="resto-parámetros-ii" class="slide level2">
+<h2><span class="header-section-number">13.27</span> Resto parámetros (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">function</span> <span class="at">f</span> (x<span class="op">,</span> y<span class="op">,</span> ...<span class="at">a</span>) <span class="op">{</span>
+    <span class="cf">return</span> (x <span class="op">+</span> y) <span class="op">*</span> <span class="va">a</span>.<span class="at">length</span>
+<span class="op">}</span>
+<span class="at">f</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="st">&quot;hello&quot;</span><span class="op">,</span> <span class="kw">true</span><span class="op">,</span> <span class="dv">7</span>) <span class="op">===</span> <span class="dv">9</span></code></pre></div>
+</section><section id="valores-por-defecto-i" class="slide level2">
+<h2><span class="header-section-number">13.28</span> Valores por defecto (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES5</span>
+<span class="kw">function</span>(valor) <span class="op">{</span>  
+    valor <span class="op">=</span> valor <span class="op">||</span> <span class="st">&quot;foo&quot;</span><span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+</section><section id="valores-por-defecto-i-1" class="slide level2">
+<h2><span class="header-section-number">13.29</span> Valores por defecto (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">function</span>(valor <span class="op">=</span> <span class="st">&quot;foo&quot;</span>) <span class="op">{</span>...<span class="op">};</span>  </code></pre></div>
+</section><section id="exportar-módulos" class="slide level2">
+<h2><span class="header-section-number">13.30</span> Exportar módulos</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="co">// lib/math.js</span>
+<span class="im">export</span> <span class="kw">function</span> <span class="at">sum</span> (x<span class="op">,</span> y) <span class="op">{</span> <span class="cf">return</span> x <span class="op">+</span> y <span class="op">}</span>
+<span class="im">export</span> <span class="kw">function</span> <span class="at">div</span> (x<span class="op">,</span> y) <span class="op">{</span> <span class="cf">return</span> x / y <span class="op">}</span>
+<span class="im">export</span> <span class="kw">var</span> pi <span class="op">=</span> <span class="fl">3.141593</span></code></pre></div>
+</section><section id="importar-módulos" class="slide level2">
+<h2><span class="header-section-number">13.31</span> Importar módulos</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="co">// someApp.js</span>
+<span class="im">import</span> <span class="op">*</span> <span class="im">as</span> math <span class="im">from</span> <span class="st">&quot;lib/math&quot;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;2π = &quot;</span> <span class="op">+</span> <span class="va">math</span>.<span class="at">sum</span>(<span class="va">math</span>.<span class="at">pi</span><span class="op">,</span> <span class="va">math</span>.<span class="at">pi</span>))
+
+<span class="co">// otherApp.js</span>
+<span class="im">import</span> <span class="op">{</span> sum<span class="op">,</span> pi <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;lib/math&quot;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;2π = &quot;</span> <span class="op">+</span> <span class="at">sum</span>(pi<span class="op">,</span> pi))</code></pre></div>
+</section><section id="generadores" class="slide level2">
+<h2><span class="header-section-number">13.32</span> Generadores</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">function</span> <span class="op">*</span><span class="at">soyUnGenerador</span>(i) <span class="op">{</span>  
+  <span class="kw">yield</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>
+  <span class="kw">yield</span> i <span class="op">+</span> <span class="dv">2</span><span class="op">;</span>
+  <span class="kw">yield</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">var</span> gen <span class="op">=</span> <span class="at">soyUnGenerador</span>(<span class="dv">1</span>)<span class="op">;</span>  
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">gen</span>.<span class="at">next</span>())<span class="op">;</span>  
+<span class="co">//  Object {value: 2, done: false}</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">gen</span>.<span class="at">next</span>())<span class="op">;</span>  
+<span class="co">//  Object {value: 3, done: false}</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">gen</span>.<span class="at">next</span>())<span class="op">;</span>  
+<span class="co">//  Object {value: 4, done: false}</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">gen</span>.<span class="at">next</span>())<span class="op">;</span>  
+<span class="co">//  Object {value: undefined, done: true}</span></code></pre></div>
+</section><section id="set" class="slide level2">
+<h2><span class="header-section-number">13.33</span> Set</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">let</span> s <span class="op">=</span> <span class="kw">new</span> <span class="at">Set</span>()
+<span class="va">s</span>.<span class="at">add</span>(<span class="st">&quot;hello&quot;</span>).<span class="at">add</span>(<span class="st">&quot;goodbye&quot;</span>).<span class="at">add</span>(<span class="st">&quot;hello&quot;</span>)
+<span class="va">s</span>.<span class="at">size</span> <span class="op">===</span> <span class="dv">2</span>
+<span class="va">s</span>.<span class="at">has</span>(<span class="st">&quot;hello&quot;</span>) <span class="op">===</span> <span class="kw">true</span>
+<span class="cf">for</span> (<span class="kw">let</span> key of <span class="va">s</span>.<span class="at">values</span>()) <span class="op">{</span> <span class="co">// insertion order</span>
+  <span class="va">console</span>.<span class="at">log</span>(key)
+<span class="op">}</span></code></pre></div>
+</section><section id="map" class="slide level2">
+<h2><span class="header-section-number">13.34</span> Map</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">let</span> m <span class="op">=</span> <span class="kw">new</span> <span class="at">Map</span>()
+<span class="va">m</span>.<span class="at">set</span>(<span class="st">&quot;hello&quot;</span><span class="op">,</span> <span class="dv">42</span>)
+<span class="va">m</span>.<span class="at">set</span>(s<span class="op">,</span> <span class="dv">34</span>)
+<span class="va">m</span>.<span class="at">get</span>(s) <span class="op">===</span> <span class="dv">34</span>
+<span class="va">m</span>.<span class="at">size</span> <span class="op">===</span> <span class="dv">2</span>
+<span class="cf">for</span> (<span class="kw">let</span> [ key<span class="op">,</span> val ] of <span class="va">m</span>.<span class="at">entries</span>()) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(key <span class="op">+</span> <span class="st">&quot; = &quot;</span> <span class="op">+</span> val)
+<span class="op">}</span></code></pre></div>
+</section><section id="nuevos-métodos-en-string" class="slide level2">
+<h2><span class="header-section-number">13.35</span> Nuevos métodos en String</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="st">&quot;hello&quot;</span>.<span class="at">startsWith</span>(<span class="st">&quot;ello&quot;</span><span class="op">,</span> <span class="dv">1</span>) <span class="co">// true</span>
+<span class="st">&quot;hello&quot;</span>.<span class="at">endsWith</span>(<span class="st">&quot;hell&quot;</span><span class="op">,</span> <span class="dv">4</span>)   <span class="co">// true</span>
+<span class="st">&quot;hello&quot;</span>.<span class="at">includes</span>(<span class="st">&quot;ell&quot;</span>)       <span class="co">// true</span>
+<span class="st">&quot;hello&quot;</span>.<span class="at">includes</span>(<span class="st">&quot;ell&quot;</span><span class="op">,</span> <span class="dv">1</span>)    <span class="co">// true</span>
+<span class="st">&quot;hello&quot;</span>.<span class="at">includes</span>(<span class="st">&quot;ell&quot;</span><span class="op">,</span> <span class="dv">2</span>)    <span class="co">// false</span></code></pre></div>
+</section><section id="nuevos-métodos-en-number" class="slide level2">
+<h2><span class="header-section-number">13.36</span> Nuevos métodos en Number</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="va">Number</span>.<span class="at">isNaN</span>(<span class="dv">42</span>) <span class="op">===</span> <span class="kw">false</span>
+<span class="va">Number</span>.<span class="at">isNaN</span>(<span class="kw">NaN</span>) <span class="op">===</span> <span class="kw">true</span>
+<span class="va">Number</span>.<span class="at">isSafeInteger</span>(<span class="dv">42</span>) <span class="op">===</span> <span class="kw">true</span>
+<span class="va">Number</span>.<span class="at">isSafeInteger</span>(<span class="dv">9007199254740992</span>) <span class="op">===</span> <span class="kw">false</span></code></pre></div>
+</section><section id="proxies" class="slide level2">
+<h2><span class="header-section-number">13.37</span> Proxies</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">let</span> target <span class="op">=</span> <span class="op">{</span>
+    <span class="dt">foo</span><span class="op">:</span> <span class="st">&quot;Welcome, foo&quot;</span>
+<span class="op">}</span>
+<span class="kw">let</span> proxy <span class="op">=</span> <span class="kw">new</span> <span class="at">Proxy</span>(target<span class="op">,</span> <span class="op">{</span>
+    <span class="at">get</span> (receiver<span class="op">,</span> name) <span class="op">{</span>
+        <span class="cf">return</span> name <span class="kw">in</span> receiver <span class="op">?</span> receiver[name] : <span class="vs">`Hello, </span><span class="sc">${</span>name<span class="sc">}</span><span class="vs">`</span>
+    <span class="op">}</span>
+<span class="op">}</span>)
+<span class="va">proxy</span>.<span class="at">foo</span>   <span class="op">===</span> <span class="st">&quot;Welcome, foo&quot;</span>
+<span class="va">proxy</span>.<span class="at">world</span> <span class="op">===</span> <span class="st">&quot;Hello, world&quot;</span></code></pre></div>
+</section><section id="internacionalization-i" class="slide level2">
+<h2><span class="header-section-number">13.38</span> Internacionalization (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> i10nUSD <span class="op">=</span> <span class="kw">new</span> <span class="va">Intl</span>.<span class="at">NumberFormat</span>(<span class="st">&quot;en-US&quot;</span><span class="op">,</span> <span class="op">{</span> <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;currency&quot;</span><span class="op">,</span> <span class="dt">currency</span><span class="op">:</span> <span class="st">&quot;USD&quot;</span> <span class="op">}</span>)
+<span class="kw">var</span> i10nGBP <span class="op">=</span> <span class="kw">new</span> <span class="va">Intl</span>.<span class="at">NumberFormat</span>(<span class="st">&quot;en-GB&quot;</span><span class="op">,</span> <span class="op">{</span> <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;currency&quot;</span><span class="op">,</span> <span class="dt">currency</span><span class="op">:</span> <span class="st">&quot;GBP&quot;</span> <span class="op">}</span>)
+<span class="va">i10nUSD</span>.<span class="at">format</span>(<span class="fl">100200300.40</span>) <span class="op">===</span> <span class="st">&quot;$100,200,300.40&quot;</span>
+<span class="va">i10nGBP</span>.<span class="at">format</span>(<span class="fl">100200300.40</span>) <span class="op">===</span> <span class="st">&quot;£100,200,300.40&quot;</span></code></pre></div>
+</section><section id="internacionalization-ii" class="slide level2">
+<h2><span class="header-section-number">13.39</span> Internacionalization (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> i10nEN <span class="op">=</span> <span class="kw">new</span> <span class="va">Intl</span>.<span class="at">DateTimeFormat</span>(<span class="st">&quot;en-US&quot;</span>)
+<span class="kw">var</span> i10nDE <span class="op">=</span> <span class="kw">new</span> <span class="va">Intl</span>.<span class="at">DateTimeFormat</span>(<span class="st">&quot;de-DE&quot;</span>)
+<span class="va">i10nEN</span>.<span class="at">format</span>(<span class="kw">new</span> <span class="at">Date</span>(<span class="st">&quot;2015-01-02&quot;</span>)) <span class="op">===</span> <span class="st">&quot;1/2/2015&quot;</span>
+<span class="va">i10nDE</span>.<span class="at">format</span>(<span class="kw">new</span> <span class="at">Date</span>(<span class="st">&quot;2015-01-02&quot;</span>)) <span class="op">===</span> <span class="st">&quot;2.1.2015&quot;</span></code></pre></div>
+</section><section id="promesas-i" class="slide level2">
+<h2><span class="header-section-number">13.40</span> Promesas (I)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+<span class="kw">var</span> promise <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>(<span class="kw">function</span>(resolve<span class="op">,</span> reject) <span class="op">{</span>
+
+  <span class="kw">var</span> todoCorrecto <span class="op">=</span> <span class="kw">true</span><span class="op">;</span> <span class="co">// o false dependiendo de como ha ido</span>
+
+  <span class="cf">if</span> (todoCorrecto) <span class="op">{</span>
+    <span class="at">resolve</span>(<span class="st">&quot;Promesa Resuelta!&quot;</span>)<span class="op">;</span>
+  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+    <span class="at">reject</span>(<span class="st">&quot;Promesa Rechazada!&quot;</span>)<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="promesas-ii" class="slide level2">
+<h2><span class="header-section-number">13.41</span> Promesas (II)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="co">// llamamos el metodo &#39;then&#39; de la promesa</span>
+<span class="co">// con 2 callbacks (resolve y reject)</span>
+<span class="va">promise</span>.<span class="at">then</span>(<span class="kw">function</span>(result) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(result)<span class="op">;</span> <span class="co">// &quot;Promesa Resuelta!&quot;</span>
+<span class="op">},</span> <span class="kw">function</span>(err) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(err)<span class="op">;</span> <span class="co">// Error: &quot;Promesa Rechazada!&quot;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="promesas-iii" class="slide level2">
+<h2><span class="header-section-number">13.42</span> Promesas (III)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="co">// podemos también llamar al &#39;then&#39; con el callback &#39;resolve&#39;</span>
+<span class="co">// y luego al &#39;catch&#39; con el callback &#39;reject&#39;</span>
+<span class="va">promise</span>.<span class="at">then</span>(<span class="kw">function</span>(result) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(result)<span class="op">;</span> <span class="co">// &quot;Promesa Resuelta!&quot;</span>
+<span class="op">}</span>).<span class="at">catch</span>(<span class="kw">function</span>(err) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(err)<span class="op">;</span> <span class="co">// Error: &quot;Promesa Rechazada!&quot;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="promesas-iv" class="slide level2">
+<h2><span class="header-section-number">13.43</span> Promesas (IV)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="va">Promise</span>.<span class="at">all</span>([promesa1<span class="op">,</span>promesa2]).<span class="at">then</span>(<span class="kw">function</span>(results) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(results)<span class="op">;</span> <span class="co">// cuando todas las promesas terminen</span>
+<span class="op">}</span>).<span class="at">catch</span>(<span class="kw">function</span>(err) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(err)<span class="op">;</span> <span class="co">// Error: &quot;Error en alguna promesa!&quot;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section><section id="promesas-v" class="slide level2">
+<h2><span class="header-section-number">13.44</span> Promesas (V)</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//ES6</span>
+
+<span class="va">Promise</span>.<span class="at">race</span>([promesa1<span class="op">,</span>promesa2]).<span class="at">then</span>(<span class="kw">function</span>(firstResult) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(firstResult)<span class="op">;</span> <span class="co">// cuando termine la primera</span>
+<span class="op">}</span>).<span class="at">catch</span>(<span class="kw">function</span>(err) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(err)<span class="op">;</span> <span class="co">// Error: &quot;Error en alguna promesa!&quot;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</section></section>
+<section><section id="enlaces" class="titleslide slide level1"><h1><span class="header-section-number">14</span> Enlaces</h1></section><section id="general-es" class="slide level2">
+<h2><span class="header-section-number">14.1</span> General (ES)</h2>
+<ul>
+<li><a href="http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5">http://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Obsolete_Pages/Gu%C3%ADa_JavaScript_1.5</a></li>
+<li><a href="http://cevichejs.com/" class="uri">http://cevichejs.com/</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/" class="uri">http://www.arkaitzgarro.com/javascript/</a></li>
+<li><a href="http://www.etnassoft.com/category/javascript/" class="uri">http://www.etnassoft.com/category/javascript/</a></li>
+</ul>
+</section><section id="general-en" class="slide level2">
+<h2><span class="header-section-number">14.2</span> General (EN)</h2>
+<ul>
+<li><a href="http://www.javascriptkit.com/" class="uri">http://www.javascriptkit.com/</a></li>
+<li><a href="http://javascript.info/" class="uri">http://javascript.info/</a></li>
+<li><a href="http://www.howtocreate.co.uk/tutorials/javascript/" class="uri">http://www.howtocreate.co.uk/tutorials/javascript/</a></li>
+</ul>
+</section><section id="orientación-objetos-es-i" class="slide level2">
+<h2><span class="header-section-number">14.3</span> Orientación Objetos (ES) (I)</h2>
+<ul>
+<li><a href="http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/" class="uri">http://www.programania.net/diseno-de-software/entendiendo-los-prototipos-en-javascript/</a></li>
+<li><a href="http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/" class="uri">http://www.programania.net/diseno-de-software/creacion-de-objetos-eficiente-en-javascript/</a></li>
+<li><a href="http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/" class="uri">http://blog.amatiasq.com/2012/01/javascript-conceptos-basicos-herencia-por-prototipos/</a></li>
+</ul>
+</section><section id="orientación-objetos-es-ii" class="slide level2">
+<h2><span class="header-section-number">14.4</span> Orientación Objetos (ES) (II)</h2>
+<ul>
+<li><a href="http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo" class="uri">http://albertovilches.com/profundizando-en-javascript-parte-1-funciones-para-todo</a></li>
+<li><a href="http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces" class="uri">http://albertovilches.com/profundizando-en-javascript-parte-2-objetos-prototipos-herencia-y-namespaces</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/capitulo-9.html" class="uri">http://www.arkaitzgarro.com/javascript/capitulo-9.html</a></li>
+<li><a href="http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/" class="uri">http://www.etnassoft.com/2011/04/15/concepto-de-herencia-prototipica-en-javascript/</a></li>
+</ul>
+</section><section id="orientación-objetos-en" class="slide level2">
+<h2><span class="header-section-number">14.5</span> Orientación Objetos (EN)</h2>
+<ul>
+<li><a href="http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns" class="uri">http://www.codeproject.com/Articles/687093/Understanding-JavaScript-Object-Creation-Patterns</a></li>
+<li><a href="http://javascript.info/tutorial/object-oriented-programming" class="uri">http://javascript.info/tutorial/object-oriented-programming</a></li>
+<li><a href="http://www.howtocreate.co.uk/tutorials/javascript/objects" class="uri">http://www.howtocreate.co.uk/tutorials/javascript/objects</a></li>
+</ul>
+</section><section id="técnicas-avanzadas-es-i" class="slide level2">
+<h2><span class="header-section-number">14.6</span> Técnicas avanzadas (ES) (I)</h2>
+<ul>
+<li><a href="http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/" class="uri">http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/</a></li>
+<li><a href="http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/" class="uri">http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Closures" class="uri">https://developer.mozilla.org/es/docs/Web/JavaScript/Closures</a></li>
+<li><a href="http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html" class="uri">http://www.variablenotfound.com/2012/10/closures-en-javascript-entiendelos-de.html</a></li>
+</ul>
+</section><section id="técnicas-avanzadas-es-ii" class="slide level2">
+<h2><span class="header-section-number">14.7</span> Técnicas avanzadas (ES) (II)</h2>
+<ul>
+<li><a href="http://www.webanalyst.es/espacios-de-nombres-en-javascript/" class="uri">http://www.webanalyst.es/espacios-de-nombres-en-javascript/</a></li>
+<li><a href="http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/" class="uri">http://www.etnassoft.com/2011/04/11/el-patron-de-modulo-en-javascript-en-profundidad/</a></li>
+<li><a href="http://www.etnassoft.com/2011/04/18/ampliando-patron-modulo-javascript-submodulos/" class="uri">http://www.etnassoft.com/2011/04/18/ampliando-patron-modulo-javascript-submodulos/</a></li>
+<li><a href="http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html" class="uri">http://notasjs.blogspot.com.es/2012/04/el-patron-modulo-en-javascript.html</a></li>
+</ul>
+</section><section id="dom-es" class="slide level2">
+<h2><span class="header-section-number">14.8</span> DOM (ES)</h2>
+<ul>
+<li><a href="http://cevichejs.com/3-dom-cssom#dom" class="uri">http://cevichejs.com/3-dom-cssom#dom</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/capitulo-13.html" class="uri">http://www.arkaitzgarro.com/javascript/capitulo-13.html</a></li>
+</ul>
+</section><section id="dom-en" class="slide level2">
+<h2><span class="header-section-number">14.9</span> DOM (EN)</h2>
+<ul>
+<li><a href="http://www.javascriptkit.com/domref/" class="uri">http://www.javascriptkit.com/domref/</a></li>
+<li><a href="http://javascript.info/tutorial/dom" class="uri">http://javascript.info/tutorial/dom</a></li>
+</ul>
+</section><section id="frameworks-es" class="slide level2">
+<h2><span class="header-section-number">14.10</span> Frameworks (ES)</h2>
+<ul>
+<li><a href="https://carlosazaustre.es/blog/frameworks-de-javascript/" class="uri">https://carlosazaustre.es/blog/frameworks-de-javascript/</a></li>
+<li><a href="https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit" class="uri">https://docs.google.com/drawings/d/1bhe9-kxhhGvWU0LsB7LlJfMurP3DGCIuUOmqEOklzaQ/edit</a></li>
+<li><a href="http://www.lostiemposcambian.com/blog/javascript/backbone-vs-angular-vs-ember/" class="uri">http://www.lostiemposcambian.com/blog/javascript/backbone-vs-angular-vs-ember/</a></li>
+<li><a href="http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/" class="uri">http://blog.koalite.com/2015/06/grunt-o-gulp-que-uso/</a></li>
+</ul>
+</section><section id="frameworks-en" class="slide level2">
+<h2><span class="header-section-number">14.11</span> Frameworks (EN)</h2>
+<ul>
+<li><a href="http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone" class="uri">http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone</a></li>
+<li><a href="http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs" class="uri">http://stackshare.io/stackups/backbone-vs-emberjs-vs-angularjs</a></li>
+<li><a href="http://www.hongkiat.com/blog/gulp-vs-grunt/" class="uri">http://www.hongkiat.com/blog/gulp-vs-grunt/</a></li>
+<li><a href="https://mattdesl.svbtle.com/browserify-vs-webpack" class="uri">https://mattdesl.svbtle.com/browserify-vs-webpack</a></li>
+<li><a href="http://hackhat.com/p/110/module-loader-webpack-vs-requirejs-vs-browserify/" class="uri">http://hackhat.com/p/110/module-loader-webpack-vs-requirejs-vs-browserify/</a></li>
+<li><a href="http://devzum.com/2014/02/10-best-node-js-mvc-frameworks-for-javascript-developers/" class="uri">http://devzum.com/2014/02/10-best-node-js-mvc-frameworks-for-javascript-developers/</a></li>
+<li><a href="http://www.tivix.com/blog/nwjs-and-electronjs-web-technology-desktop/" class="uri">http://www.tivix.com/blog/nwjs-and-electronjs-web-technology-desktop/</a></li>
+<li><a href="http://stackshare.io/stackups/phonegap-vs-ionic-vs-react-native" class="uri">http://stackshare.io/stackups/phonegap-vs-ionic-vs-react-native</a></li>
+<li><a href="https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options" class="uri">https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options</a></li>
+</ul>
+</section><section id="eventos-es" class="slide level2">
+<h2><span class="header-section-number">14.12</span> Eventos (ES)</h2>
+<ul>
+<li><a href="http://cevichejs.com/3-dom-cssom#eventos" class="uri">http://cevichejs.com/3-dom-cssom#eventos</a></li>
+<li><a href="http://www.arkaitzgarro.com/javascript/capitulo-15.html" class="uri">http://www.arkaitzgarro.com/javascript/capitulo-15.html</a></li>
+<li><a href="http://codexexempla.org/curso/curso_4_3_e.php" class="uri">http://codexexempla.org/curso/curso_4_3_e.php</a></li>
+</ul>
+</section><section id="eventos-en" class="slide level2">
+<h2><span class="header-section-number">14.13</span> Eventos (EN)</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" class="uri">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" class="uri">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></li>
+<li><a href="http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/" class="uri">http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/</a></li>
+<li><a href="https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault" class="uri">https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault</a></li>
+</ul>
+</section><section id="websockets-es" class="slide level2">
+<h2><span class="header-section-number">14.14</span> WebSockets (ES)</h2>
+<ul>
+<li><a href="http://www.html5rocks.com/es/tutorials/websockets/basics/" class="uri">http://www.html5rocks.com/es/tutorials/websockets/basics/</a></li>
+<li><a href="https://carlosazaustre.es/blog/websockets-como-utilizar-socket-io-en-tu-aplicacion-web/" class="uri">https://carlosazaustre.es/blog/websockets-como-utilizar-socket-io-en-tu-aplicacion-web/</a></li>
+</ul>
+</section><section id="websockets-en" class="slide level2">
+<h2><span class="header-section-number">14.15</span> WebSockets (EN)</h2>
+<ul>
+<li><a href="https://davidwalsh.name/websocket" class="uri">https://davidwalsh.name/websocket</a></li>
+<li><a href="http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270" class="uri">http://code.tutsplus.com/tutorials/start-using-html5-websockets-today--net-13270</a></li>
+</ul>
+</section><section id="ajax-json-rest-es" class="slide level2">
+<h2><span class="header-section-number">14.16</span> AJAX, JSON, REST (ES)</h2>
+<ul>
+<li><a href="https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/" class="uri">https://fernetjs.com/2012/09/jsonp-cors-y-como-los-soportamos-desde-nodejs/</a></li>
+<li><a href="http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/" class="uri">http://blog.koalite.com/2012/03/sopa-de-siglas-ajax-json-jsonp-y-cors/</a></li>
+<li><a href="https://eamodeorubio.wordpress.com/category/webservices/rest/" class="uri">https://eamodeorubio.wordpress.com/category/webservices/rest/</a></li>
+<li><a href="https://eamodeorubio.wordpress.com/category/webservices/rest/" class="uri">https://eamodeorubio.wordpress.com/category/webservices/rest/</a></li>
+</ul>
+</section><section id="es6-es" class="slide level2">
+<h2><span class="header-section-number">14.17</span> ES6 (ES)</h2>
+<ul>
+<li><a href="http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/" class="uri">http://rlbisbe.net/2014/08/26/articulo-invitado-ecmascript-6-y-la-nueva-era-de-javascript-por-ckgrafico/</a></li>
+<li><a href="http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/" class="uri">http://carlosazaustre.es/blog/ecmascript-6-el-nuevo-estandar-de-javascript/</a></li>
+<li><a href="http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html" class="uri">http://asanzdiego.blogspot.com.es/2015/06/principios-solid-con-ecmascript-6-el-nuevo-estandar-de-javascript.html</a></li>
+<li><a href="http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/" class="uri">http://www.cristalab.com/tutoriales/uso-de-modulos-en-javascript-con-ecmascript-6-c114342l/</a></li>
+<li><a href="https://burabure.github.io/tut-ES6-promises-generators/" class="uri">https://burabure.github.io/tut-ES6-promises-generators/</a></li>
+</ul>
+</section><section id="es6-en" class="slide level2">
+<h2><span class="header-section-number">14.18</span> ES6 (EN)</h2>
+<ul>
+<li><a href="http://es6-features.org/" class="uri">http://es6-features.org/</a></li>
+<li><a href="http://kangax.github.io/compat-table/es5/" class="uri">http://kangax.github.io/compat-table/es5/</a></li>
+<li><a href="http://www.2ality.com/2015/11/sequential-execution.html" class="uri">http://www.2ality.com/2015/11/sequential-execution.html</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" class="uri">http://www.html5rocks.com/en/tutorials/es6/promises/</a></li>
+<li><a href="http://www.datchley.name/es6-promises/" class="uri">http://www.datchley.name/es6-promises/</a></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//lib/js/head.min.js"></script>
+  <script src="https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+transition: 'convex',
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+        height: 960,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.9,
+
+        menu: {
+            // Specifies which side of the presentation the menu will
+            // be shown. Use 'left' or 'right'.
+            side: 'left',
+
+            // Add slide numbers to the titles in the slide list.
+            // Use 'true' or format string (same as reveal.js slide numbers)
+            numbers: false,
+
+            // Specifies which slide elements will be used for generating
+            // the slide titles in the menu. The default selects the first
+            // heading element found in the slide, but you can specify any
+            // valid css selector and the text from the first matching
+            // element will be used.
+            // Note: that a section data-menu-title attribute or an element
+            // with a menu-title class will take precedence over this option
+            titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+            // Hide slides from the menu that do not have a title.
+            // Set to 'true' to only list slides with titles.
+            hideMissingTitles: false,
+
+            // Add markers to the slide titles to indicate the
+            // progress through the presentation
+            markers: false,
+
+            // Specify custom panels to be included in the menu, by
+            // providing an array of objects with 'title', 'icon'
+            // properties, and either a 'src' or 'content' property.
+            custom: false,
+
+            // Specifies the themes that will be available in the themes
+            // menu panel. Set to 'false' to hide themes panel.
+            themes: [
+                { name: 'Black', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/black.css' },
+                { name: 'White', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/white.css' },
+                { name: 'League', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/league.css' },
+                { name: 'Sky', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/sky.css' },
+                { name: 'Beige', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/beige.css' },
+                { name: 'Simple', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/simple.css' },
+                { name: 'Serif', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/serif.css' },
+                { name: 'Blood', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/blood.css' },
+                { name: 'Night', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/night.css' },
+                { name: 'Moon', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/moon.css' },
+                { name: 'Solarized', theme: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//css/theme/solarized.css' }
+            ],
+
+            // Specifies if the transitions menu panel will be shown.
+            transitions: true,
+
+            // Adds a menu button to the slides to open the menu panel.
+            // Set to 'false' to hide the button.
+            openButton: true,
+
+            // If 'true' allows the slide number in the presentation to
+            // open the menu panel. The reveal.js slideNumber option must
+            // be displayed for this to take effect
+            openSlideNumber: false,
+
+            // If true allows the user to open and navigate the menu using
+            // the keyboard. Standard keyboard interaction with reveal
+            // will be disabled while the menu is open.
+            keyboard: true
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//plugin/notes/notes.js', async: true },
+          //{ src: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js//plugin/search/search.js', async: true },
+          { src: 'https://asanzdiego.github.io/markdownslides/doc/lib/reveal.js-menu//menu.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
